@@ -1,0 +1,83 @@
+﻿BCS Degree Navigator
+Project Description
+Who is it for?
+The BCS Degree Navigator is for BCS students and (possibly) alumni.
+What will it do? 
+The web service will enable BCS students to track the credits that they have earned to date and plan the courses in which they will enroll in the future. The web service will help students navigate the BCS degree by highlighting which requirements have been met and which requirements remain outstanding. The web service will store data for each student account, so that students can update their plan as they progress through the degree.
+What type of data will it store?
+The BCS Degree Navigator will store account identifying information (Full name, student number(key), password), contact information (email address), information regarding the courses completed to date, and (possibly) information regarding the chosen bridging module.
+What will users be able to do with this data?
+Users of the BCS Degree Navigator will be able to:
+* Enter data via forms.
+* Store data regarding account and contact information.
+* Store data regarding courses that they have completed, courses in which they are currently enrolled, and courses in which they plan to enroll in the future.
+* Confirm which degree requirements have been met.
+* Determine which degree requirements are currently outstanding.
+* Visualize their progress graphically.
+* Discover information regarding course prerequisites.
+* See their Cumulative GPA
+What additional functionality might you add or remove based on time constraints?
+Depending upon time constraints, users of the BCS Degree Navigator might be able to:
+* Search for courses by course code, course title, or instructor.
+* Store data regarding when a course is taken and the grade achieved. 
+* Determine which (if any) prerequisite courses are completed and/or outstanding for specific courses.
+* View course suggestions based on completed prerequisites and/or known course hierarchies.
+* Find contact information for instructors and professors teaching in the Department of Computer Science → links to RateMyProf?
+Project Tasks
+Minimal Requirements
+Users of the BCS Degree Navigator will be able to:
+* Enter data via forms 
+* Store data regarding account and contact information.
+* Store data regarding courses that they have completed, courses in which they are currently enrolled, and courses in which they plan to enroll in the future.
+* Confirm which degree requirements have been completed and determine which degree requirements are currently outstanding.
+* Visualize their progress graphically.
+* Discover information regarding course prerequisites.
+* Ability for student to enter course exemptions
+Standard Requirements
+Depending upon time constraints, users of the BCS Degree Navigator will likely be able to:
+* View the web service easily on any device, big or small (responsive design).
+* Search for courses by course code and course title
+* Store data regarding when a course is taken and the grade achieved. 
+* Determine which (if any) prerequisite courses are completed and/or outstanding for specific courses.
+* Find contact information for instructors and professors teaching in the Department of Computer Science.
+* Display GPA
+Stretch Requirements
+Depending upon time constraints, users of the BCS Degree Navigator might be able to:
+* View course suggestions based on completed prerequisites and/or known course hierarchies.
+* Search for courses by instructor.
+* Find contact information for instructors and professors teaching in the Department of Computer Science.
+* Accommodate students with extraneous circumstances
+* Auto-complete drop down
+Task Breakdown
+Task 1: Data Entry and Data Persistence
+1. Data entries → name, student number, bridging module, courses taken, courses student wants to take, exemptions.
+   1. Form 1) Name, student number, e-mail (prompt user to create an account)
+      1. Check that email or student ID is valid
+      2. Check that email or student ID is unique
+      3. Check that password is adequately secure
+   1. Form 2) Courses taken
+      1. Divided three sections: Exemptions, Core, Bridging Module
+      2. Drop down menus for department and course number
+      3. Grades entered as written input
+      4. An “Add” button that adds each course to a list
+      5. A “Remove” button on each item or a “Remove Selected” button for courses added in error.
+      6. A “Submit” button.
+1. Data Persistence
+   1. Stored in NoSQL MongoDB
+Task 2: Degree Requirements Completed and Outstanding
+1. Compile total list of degree requirements
+2. Figure out how to scrape course prerequisites while linking them to course
+3. Look through degree requirements rulebook for fine print. Assess what rules need to enter backend logic.
+Prototype Sketches
+
+
+Currently, BCS students are using a simple PDF file with checkboxes to monitor their progress through the BCS program. 
+
+
+We will create a web-based degree planner that allows BCS students to visualize progress and planning throughout their degree.
+
+
+Each student will have their own account that will save the students’ past input based such that the student will not have to constantly re-update it each time.
+
+
+We hope to add an attractive visual interface with “completion” bars and graphical representation, as well as suggestions for future courses based on courses students have taken in the past.
