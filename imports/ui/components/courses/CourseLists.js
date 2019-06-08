@@ -1,7 +1,7 @@
 // Danny is responsible
 import React from 'react'
 
-class CourseList extends React.component {
+class CourseLists extends React.component {
     render(){
         const courses = [
             {"dept":"CPSC", "num":110},
@@ -55,4 +55,4 @@ class CourseList extends React.component {
         )
     }
 }
-export default CourseList
+export default CourseLists
