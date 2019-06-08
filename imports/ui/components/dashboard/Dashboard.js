@@ -3,6 +3,7 @@ import Notifications from './Notifications'
 import Core from './Core'
 import Exemptions from "./Exemptions";
 import Bridging from "./Bridging";
+import CourseLists from "../courses/CourseLists";
 
 
 class Dashboard extends Component {
@@ -11,9 +12,7 @@ class Dashboard extends Component {
             <div className="dashboard container">
                 <div className="row">
                     <div className="col s12 m6">
-                    <Core />
-                    <Exemptions/>
-                    <Bridging/>
+                    <CourseLists />
                     </div>
                         <div className="col s12 m5 offset-m1"> </div>
                     <Notifications />

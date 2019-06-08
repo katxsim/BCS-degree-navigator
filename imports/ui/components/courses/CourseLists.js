@@ -1,7 +1,7 @@
-// Danny is responsible
-import React from 'react'
+// DI
+import React, {Component} from 'react'
 
-class CourseLists extends React.component {
+class CourseLists extends Component {
     render(){
         const courses = [
             {"dept":"CPSC", "num":110},
@@ -17,15 +17,15 @@ class CourseLists extends React.component {
                     <div className="courses container">
                         <ul className="collection">
                             <li className="collection-item">
-                                {course.dept} ": " {course.num}
-                                <i className="small materialized-icons">clear</i>
+                                {course.dept}: {course.num}
+                                <i className="small materialized-icons"></i>
                             </li>
                         </ul>
                     </div>
                 )
             })
         ) : ( <div className="courses container">
-                <h2>no courses</h2>
+                <h3>no courses</h3>
               </div>)
 
         const postBridging = bridging.length ? (
@@ -34,8 +34,8 @@ class CourseLists extends React.component {
                     <div className="courses container">
                         <ul className="collection">
                             <li className="collection-item">
-                                {course.dept} ": " {course.num}
-                                <i className="small materialized-icons">clear</i>
+                                {course.dept}: {course.num}
+                                <i className="small materialized-icons"></i>
                             </li>
                         </ul>
                     </div>
@@ -47,9 +47,9 @@ class CourseLists extends React.component {
 
         return (
             <div className="courses container">
-                <h2 className="center">Courses</h2>
+                <h4 className="center">Courses</h4>
                 { postCourses }
-                <h2 className="center">Bridging</h2>
+                <h4 className="center">Bridging</h4>
                 { postBridging }
             </div>
         )
