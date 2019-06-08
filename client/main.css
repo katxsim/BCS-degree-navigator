@@ -18,6 +18,10 @@ form{
   margin-top: 60px;
 }
 
+.column{
+  margin-top: 60px !important;
+}
+
 form button, form h5{
   margin: 20px 0;
 }

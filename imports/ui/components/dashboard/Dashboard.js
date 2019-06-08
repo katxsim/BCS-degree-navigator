@@ -1,22 +1,22 @@
 import React, {Component} from 'react'
-import Notifications from './Notifications'
-import Core from './Core'
-import Exemptions from "./Exemptions";
-import Bridging from "./Bridging";
-
+import Form from './Form'
+import CourseList from './CourseList'
+import Results from './Results'
 
 class Dashboard extends Component {
     render() {
         return (
             <div className="dashboard container">
                 <div className="row">
-                    <div className="col s12 m6">
-                    <Core />
-                    <Exemptions/>
-                    <Bridging/>
+                    <div className="col s12 m6 l4">
+                        <Form /> 
                     </div>
-                        <div className="col s12 m5 offset-m1"> </div>
-                    <Notifications />
+                    <div className="col s12 m6 l4">
+                        <CourseList />
+                    </div>
+                    <div className="col s12 m12 l4">
+                        <Results />
+                    </div>
                 </div>
             </div>
         )
