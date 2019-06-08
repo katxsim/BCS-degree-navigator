@@ -1,11 +1,11 @@
 import React from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom'
-import Navbar from './components/layout/Navbar'
-import Dashboard from './components/dashboard/Dashboard'
-import ProjectDetails from './components/projects/ProjectDetails'
-import SignIn from './components/auth/SignIn'
-import SignUp from './components/auth/SignUp'
-import CreateProject from './components/projects/CreateProject'
+import Navbar from '../imports/ui/components/layout/Navbar'
+import Dashboard from '../imports/ui/components/dashboard/Dashboard'
+import ProjectDetails from '../imports/ui/components/projects/ProjectDetails'
+import SignIn from '../imports/ui/components/auth/SignIn'
+import SignUp from '../imports/ui/components/auth/SignUp'
+import CreateProject from '../imports/ui/components/projects/CreateProject'
 
 
 function App() {
