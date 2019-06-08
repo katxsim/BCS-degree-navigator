@@ -1,6 +1,7 @@
 // Danny is responsible
 import React from 'react'
-class CourseList extends component {
+
+class CourseList extends React.component {
     render(){
         return{
             
