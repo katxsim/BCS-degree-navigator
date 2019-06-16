@@ -17,7 +17,7 @@ class CourseLists extends Component {
                     <div className="courses container">
                         <ul className="collection">
                             <li className="collection-item">
-                                {course.dept}: {course.num}
+                                {course.dept}: {course.num} 
                                 <i className="small materialized-icons"></i>
                             </li>
                         </ul>
