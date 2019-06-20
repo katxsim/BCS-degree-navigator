@@ -15,10 +15,13 @@ class CourseLists extends Component {
             courses.map(course => {
                 return (
                     <div className="courses container">
-                        <ul className="collection">
+                        <ul className="collection ">
                             <li className="collection-item">
                                 {course.dept}: {course.num} 
-                                <i className="small materialized-icons"></i>
+                                <button className="btn-flat right delete">
+                                    <i className="small material-icons right">clear</i>
+                                    </button>
+                                
                             </li>
                         </ul>
                     </div>
@@ -35,7 +38,9 @@ class CourseLists extends Component {
                         <ul className="collection">
                             <li className="collection-item">
                                 {course.dept}: {course.num}
-                                <i className="small materialized-icons"></i>
+                                <button className="btn-flat right delete">
+                                    <i className="small material-icons right">clear</i>
+                                    </button>
                             </li>
                         </ul>
                     </div>
