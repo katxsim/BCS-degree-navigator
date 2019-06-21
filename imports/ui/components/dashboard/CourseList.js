@@ -25,7 +25,6 @@ class CourseList extends Component {
 
         const postCore = courses ? (
             courses.core.map(course => {
-                console.log(course)
                 return this.makeView(course);
             })
         ) : (<div className="courses container">
@@ -33,8 +32,7 @@ class CourseList extends Component {
         </div>)
 
         const postBridging = courses ? (
-            courses.bridging.map(course => {
-                console.log(course.id)
+            courses.bridging.map(course => {                
                 return this.makeView(course);
             })
         ) : (<div className="courses container">
@@ -74,7 +72,6 @@ class CourseList extends Component {
 }
 
 const mapStateToProps = (state) => {
-    console.log(state.courses);
     return {
         courses: state.courses
     }
