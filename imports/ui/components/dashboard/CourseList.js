@@ -10,7 +10,7 @@ class CourseList extends Component {
 
     makeView = (course) => {
         return (
-            <div key={shortid.generate()} className="col s12 left-align collection-item z-depth-1 white">
+            <div key={shortid.generate()} className="col s12 left-align collection-item z-depth-1 white section">
                 <ul key={shortid.generate()}>
                     <li key={course.id}>
                         {course.dept}: {course.num}
@@ -63,13 +63,13 @@ class CourseList extends Component {
         return (
             <div className="center">
                 <h4>Courses</h4>
-                <h5>Core</h5>
+                <p className="flow-text">Core</p>
                 {postCore}
-                <h5>Bridging</h5>
+                <p className="flow-text">Bridging</p>
                 {postBridging}
-                <h5>Exemption Replacement</h5>
+                <p className="flow-text">Exemption Replacement</p>
                 {postReplacements}
-                <h5>Exemptions</h5>
+                <p className="flow-text">Exemptions</p>
                 {postExemptions}
             </div>
         )
