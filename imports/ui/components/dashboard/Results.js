@@ -72,8 +72,8 @@ class Results extends Component {
                     <p className={CPSC402}>elective 400+</p>
 
                     <h5 className="center">Bridging</h5>
-                    <progress max="3" value="2" className="col s12 bridging"/>
-                    <p className="incomplete">2 out of 3</p>
+                    <progress max="5" value="1" className="col s12 bridging"/>
+                    <p className="incomplete">1 out of 5</p>
 
                     <h5 className="center">Exemption Replacements</h5>
                     <progress max="3" value="3" className="col s12 replacements"/>

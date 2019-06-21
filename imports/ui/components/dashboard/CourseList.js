@@ -53,7 +53,7 @@ class CourseList extends Component {
         </div>)
 
         const postReplacements = courses.replacements ? (
-            courses.core.map(course => {
+            courses.replacements.map(course => {
                 return this.makeView(course);
             })
         ) : (<div className="courses container">
