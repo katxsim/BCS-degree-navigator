@@ -4,13 +4,20 @@ const shortid = require('shortid');
 
 class CourseList extends Component {
 
+    handleDelete = (course) => {
+        console.log(course);
+        this.props.deleteCourse(course);
+    }
+
     makeView = (course) => {
         return (
             <div key={shortid.generate()} className="courses-subContainer">
                 <ul key={shortid.generate()} className="list">
                     <li key={course.id} className="left-align collection-item">
                         {course.dept}: {course.num}
-                        <button className="btn-flat right delete">
+                        <button
+                            className="btn-flat right delete"
+                            onClick={() => this.handleDelete(course)}>
                             <i className="small material-icons right">clear</i>
                         </button>
                     </li>
@@ -22,36 +29,36 @@ class CourseList extends Component {
     render() {
         const { courses } = this.props;
 
-        const postCore = courses ? (
+        const postCore = courses.core ? (
             courses.core.map(course => {
                 return this.makeView(course);
             })
         ) : (<div className="courses container">
-            <h6>no courses</h6>
+            <h6 className="left-align"></h6>
         </div>)
 
-        const postBridging = courses ? (
-            courses.bridging.map(course => {                
+        const postBridging = courses.bridging ? (
+            courses.bridging.map(course => {
                 return this.makeView(course);
             })
         ) : (<div className="courses container">
-            <h6>no courses</h6>
+            <h6 className="left-align"></h6>
         </div>)
 
-        const postExemptions = courses ? (
+        const postExemptions = courses.exemptions ? (
             courses.exemptions.map(course => {
                 return this.makeView(course);
             })
         ) : (<div className="courses container">
-            <h6>no courses</h6>
+            <h6 className="left-align"></h6>
         </div>)
 
-        const postReplacements = courses ? (
+        const postReplacements = courses.replacements ? (
             courses.core.map(course => {
                 return this.makeView(course);
             })
         ) : (<div className="courses container">
-            <h6>no courses</h6>
+            <h6 className="left-align"></h6>
         </div>)
 
         return (
@@ -75,5 +82,10 @@ const mapStateToProps = (state) => {
         courses: state.courses
     }
 }
+const mapDispatchToProps = (dispatch) => {
+    return{
+        deleteCourse: (course) => { dispatch({type: 'DELETE_COURSE', course}) }
+    }
+}
 
-export default connect(mapStateToProps, null)(CourseList)
+export default connect(mapStateToProps, mapDispatchToProps)(CourseList)
