@@ -10,6 +10,7 @@ const initState = {
         "core": [
             { "type": "core", "dept": "CPSC", "num": 110, "id": shortid.generate() },
             { "type": "core", "dept": "CPSC", "num": 210, "id": shortid.generate() },
+            { "type": "core", "dept": "ENGL", "num": 110, "id": shortid.generate() },
             { "type": "core", "dept": "MATH", "num": 200, "id": shortid.generate() }
         ],
         "bridging": [
