@@ -1,110 +1,82 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
 
 class CourseList extends Component {
 
-    render(){
-        const core = [
-            {dept: "CPSC", code: 110},
-            {dept: "CPSC", code: 210},
-            {dept: "MATH", code: 200},
-        ]
+    makeView = (course) => {
+        return (
+            <div className="courses container">
+                <ul className="collections">
+                    <li className="collection-item">
+                        {course.dept}: {course.num}
+                        <button className="btn-flat right delete">
+                            <i className="small material-icons right">
+                                clear
+                        </i>
+                        </button>
+                    </li>
+                </ul>
+            </div>
+        )
+    }
 
-        const bridging = [
-            {dept: "STAT", code: 302}
-        ]
+    render() {
+        const { courses } = this.props;
 
-        const exemptions = [
-            {dept: "ENGL", code: 100},
-            {dept: "ENGL", code: 101}
-        ]
-
-        const replacements = [
-            {dept: "PHIL", code: 331}
-        ]
-
-        const postCore = core.length ? (
-            core.map(course => {
-                return (
-                    <div>
-                        <ul>
-                            <li>
-                                {course.dept} {course.code}
-                            </li>
-                        </ul>
-                    </div>
-                )
+        const postCore = courses ? (
+            courses.core.map(course => {
+                console.log(course)
+                return this.makeView(course);
             })
-        ) : ( 
-            <div>
-                <p className="center">no courses</p>
-            </div>)
+        ) : (<div className="courses container">
+            <h6>no courses</h6>
+        </div>)
 
-        const postBridging = bridging.length ? (
-            bridging.map(course => {
-                return (
-                    <div>
-                        <ul>
-                            <li>
-                                {course.dept} {course.code}
-                            </li>
-                        </ul>
-                    </div>
-                )
+        const postBridging = courses ? (
+            courses.bridging.map(course => {
+                return this.makeView(course);
             })
-        ) : ( 
-            <div>
-                <p className="center">no courses</p>
-            </div>)
+        ) : (<div className="courses container">
+            <h6>no courses</h6>
+        </div>)
 
-        const postExemptions = exemptions.length ? (
-            exemptions.map(course => {
-                return (
-                    <div>
-                        <ul>
-                            <li>
-                                {course.dept} {course.code}
-                            </li>
-                        </ul>
-                    </div>
-                )
+        const postExemptions = courses ? (
+            courses.exemptions.map(course => {
+                return this.makeView(course);
             })
-        ) : ( 
-            <div>
-                <p className="center">no courses</p>
-            </div>)
+        ) : (<div className="courses container">
+            <h6>no courses</h6>
+        </div>)
 
-        const postReplacements = replacements.length ? (
-            replacements.map(course => {
-                return (
-                    <div>
-                        <ul>
-                            <li>
-                                {course.dept} {course.code}
-                            </li>
-                        </ul>
-                    </div>
-                )
+        const postReplacements = courses ? (
+            courses.core.map(course => {
+                return this.makeView(course);
             })
-        ) : ( 
-            <div>
-                <p className="center">no courses</p>
-            </div>)
+        ) : (<div className="courses container">
+            <h6>no courses</h6>
+        </div>)
 
         return (
-            <div className="post card column">
-                <p className="center">Core</p>
-                { postCore }
-                <p className="center">Bridging</p>
-                { postBridging }
-                <p className="center">Exemptions</p>
-                { postExemptions }
-                <p className="center">Exemption Replacements</p>
-                { postReplacements }
-                <br/>
-                <button type="button">Submit</button>
+            <div className="courses container center">
+                <h4 className="courses center">Courses</h4>
+                <h5 className="courses center">Core</h5>
+                {postCore}
+                <h5 className="courses center">Bridging</h5>
+                {postBridging}
+                <h5 className="courses center">Exemption Replacement</h5>
+                {postReplacements}
+                <h5 className="courses center">Exemptions</h5>
+                {postExemptions}
             </div>
         )
     }
 }
 
-export default CourseList
+const mapStateToProps = (state) => {
+    console.log(state.courses);
+    return {
+        courses: state.courses
+    }
+}
+
+export default connect(mapStateToProps, null)(CourseList)
