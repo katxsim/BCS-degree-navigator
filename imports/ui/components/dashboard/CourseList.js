@@ -1,18 +1,17 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+const shortid = require('shortid');
 
 class CourseList extends Component {
 
     makeView = (course) => {
         return (
-            <div className="courses-subContainer">
-                <ul className="list">
+            <div key={shortid.generate()} className="courses-subContainer">
+                <ul key={shortid.generate()} className="list">
                     <li key={course.id} className="left-align collection-item">
                         {course.dept}: {course.num}
                         <button className="btn-flat right delete">
-                            <i className="small material-icons right">
-                                clear
-                        </i>
+                            <i className="small material-icons right">clear</i>
                         </button>
                     </li>
                 </ul>
