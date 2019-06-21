@@ -14,8 +14,12 @@ body {
   min-height: 100%;
 }
 
+li {
+  font-size: 1em;
+}
+
 p {
-  font-size: 1.4em;
+  font-size: 1em;
 }
 
 p.complete {
