@@ -21,7 +21,6 @@ class CourseLists extends Component {
                                 <button className="btn-flat right delete">
                                     <i className="small material-icons right">clear</i>
                                     </button>
-                                
                             </li>
                         </ul>
                     </div>

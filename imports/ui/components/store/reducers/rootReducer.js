@@ -1,5 +1,11 @@
 const shortid = require('shortid');
 const initState = {
+    "users": [
+        { "email": "test1@gmail.com", "name": "test1" },
+        { "email": "test2@gmail.com", "name": "test2" },
+        { "email": "test3@gmail.com", "name": "test3" }
+    ],
+
     "courses": {
         "core": [
             { "dept": "CPSC", "num": 110, "id": shortid.generate() },
@@ -75,19 +81,6 @@ const rootReducer = (state = initState, action) => {
             replacements: newReplacements
         }
     }
-    // if (action.type === 'ADD_CLIMB') {
-    //     const climb = action.climb
-    //     let climbs = [...state.climbs, climb]
-    //     console.log(state)
-    //     // console.log(state);
-    //     // console.log(action.climb);
-
-    //     return {
-    //         ...state,
-    //         climbs: climbs
-    //     }
-    // }
-
     return state;
 }
 
