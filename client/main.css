@@ -9,8 +9,25 @@ body {
   background: url(/img/mario-bg.png) no-repeat;
   background-size: 100%;
   background-position: bottom;
-  background-color: #95e8f3;
+  /* background-color: #95e8f3; */
+  background-color: #42bac9;
   min-height: 100%;
+}
+
+p {
+  font-size: 1.4em;
+}
+
+p.complete {
+  color: #2bd225;
+}
+
+p.incomplete {
+  color: #f44242;
+}
+
+progress {
+ /* stub */
 }
 
 form{
