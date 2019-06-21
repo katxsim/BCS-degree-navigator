@@ -8,80 +8,58 @@ const initState = {
 
     "courses": {
         "core": [
-            { "dept": "CPSC", "num": 110, "id": shortid.generate() },
-            { "dept": "CPSC", "num": 210, "id": shortid.generate() },
-            { "dept": "MATH", "num": 200, "id": shortid.generate() }
+            { "type": "core", "dept": "CPSC", "num": 110, "id": shortid.generate() },
+            { "type": "core", "dept": "CPSC", "num": 210, "id": shortid.generate() },
+            { "type": "core", "dept": "MATH", "num": 200, "id": shortid.generate() }
         ],
         "bridging": [
-            { "dept": "STAT", "num": 302, "id": shortid.generate() },
-            { "dept": "STAT", "num": 305, "id": shortid.generate() },
-            { "dept": "STAT", "num": 306, "id": shortid.generate() }
+            { "type": "bridging", "dept": "STAT", "num": 302, "id": shortid.generate() },
+            { "type": "bridging", "dept": "STAT", "num": 305, "id": shortid.generate() },
+            { "type": "bridging", "dept": "STAT", "num": 306, "id": shortid.generate() }
         ],
         "exemptions": [
-            { "dept": "ENGL", "num": 110, "id": shortid.generate() },
-            { "dept": "STAT", "num": 200, "id": shortid.generate() },
-            { "dept": "MATH", "num": 108, "id": shortid.generate() }
+            { "type": "exemptions", "dept": "ENGL", "num": 110, "id": shortid.generate() },
+            { "type": "exemptions", "dept": "STAT", "num": 200, "id": shortid.generate() },
+            { "type": "exemptions", "dept": "MATH", "num": 108, "id": shortid.generate() }
         ],
         "replacements": [
-            { "dept": "MATH", "num": 221, "id": shortid.generate() },
-            { "dept": "MATH", "num": 200, "id": shortid.generate() },
-            { "dept": "DSCI", "num": 100, "id": shortid.generate() }
+            { "type": "replacements", "dept": "MATH", "num": 221, "id": shortid.generate() },
+            { "type": "replacements", "dept": "MATH", "num": 200, "id": shortid.generate() },
+            { "type": "replacements", "dept": "DSCI", "num": 100, "id": shortid.generate() }
         ]
     }
 }
 
 const rootReducer = (state = initState, action) => {
-    if (action.type === 'DELETE_CORE') {
-        console.log("you deleted course with id: " + action.id)
-        let newCore = state.core.filter(currCore => {
-            return currCore.id !== action.id
+    if (action.type === 'DELETE_COURSE') {
+        console.log(action.course)
+        let core = state.courses.core.filter(currCourse => {
+            // console.log(currCourse.id);
+            // console.log(action.course.id);
+            return currCourse.id !== action.course.id
         });
+        let bridging = state.courses.bridging.filter(currCourse => {
+            // console.log(currCourse.id);
+            // console.log(action.course.id);
+            return currCourse.id !== action.course.id
+        });
+        let exemptions = state.courses.exemptions.filter(currCourse => {
+            // console.log(currCourse.id);
+            // console.log(action.course.id);
+            return currCourse.id !== action.course.id
+        });
+        let replacements = state.courses.replacements.filter(currCourse => {
+            // console.log(currCourse.id);
+            // console.log(action.course.id);
+            return currCourse.id !== action.course.id
+        });
+    
         return {
             ...state,
-            core: newCore
+            "courses": { core, bridging, exemptions, replacements }
         }
     }
-    if (action.type === 'DELETE_BRIDGING') {
-        console.log("you deleted course with id: " + action.id)
-        let newBridging = state.bridging.filter(currBridging => {
-            return currBridging.id !== action.id
-        });
-        return {
-            ...state,
-            bridging: newBridging
-        }
-    }
-    if (action.type === 'DELETE_EXEMPTION') {
-        console.log("you deleted course with id: " + action.id)
-        let newExemptions = state.exemptions.filter(currExemption => {
-            return currExemption.id !== action.id
-        });
-        return {
-            ...state,
-            exemptions: newExemptions
-        }
-    }
-    if (action.type === 'DELETE_EXEMPTION') {
-        console.log("you deleted course with id: " + action.id)
-        let newExemptions = state.exemptions.filter(currExemption => {
-            return currExemption.id !== action.id
-        });
-        return {
-            ...state,
-            exemptions: newExemptions
-        }
-    }
-    if (action.type === 'DELETE_REPLACEMENT') {
-        console.log("you deleted course with id: " + action.id)
-        let newReplacements = state.replacements.filter(currReplacement => {
-            return currReplacement.id !== action.id
-        });
-        return {
-            ...state,
-            replacements: newReplacements
-        }
-    }
-    return state;
+    return state; 
 }
 
 export default rootReducer

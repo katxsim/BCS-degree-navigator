@@ -2,10 +2,10 @@ import React, { Component } from 'react'
 
 class SignUp extends Component {
     state = {
-        email: '',
-        password: '',
-        firstName: '',
-        lastName: '',
+        "email": '',
+        "password": '',
+        "firstName": '',
+        "lastName": '',
     }
     handleChange = (e) => {
         this.setState({
