@@ -32,8 +32,8 @@ class CourseList extends Component {
             courses.core.map(course => {
                 return this.makeView(course);
             })
-        ) : (<div className="courses container">
-            <h6 className="left-align"></h6>
+        ) : (<div className="">
+            <h6 className="left-align"> No Courses</h6>
         </div>)
 
         const postBridging = courses.bridging ? (
