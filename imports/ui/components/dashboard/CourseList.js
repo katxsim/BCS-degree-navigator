@@ -5,7 +5,6 @@ const shortid = require('shortid');
 class CourseList extends Component {
 
     handleDelete = (course) => {
-        console.log(course);
         this.props.deleteCourse(course);
     }
 

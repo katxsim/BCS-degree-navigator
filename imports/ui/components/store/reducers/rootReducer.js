@@ -32,7 +32,7 @@ const initState = {
 
 const rootReducer = (state = initState, action) => {
     if (action.type === 'DELETE_COURSE') {
-        console.log(action.course)
+
         let core = state.courses.core.filter(currCourse => {
             // console.log(currCourse.id);
             // console.log(action.course.id);
@@ -53,7 +53,7 @@ const rootReducer = (state = initState, action) => {
             // console.log(action.course.id);
             return currCourse.id !== action.course.id
         });
-    
+        console.log("you deleted " + action.course.dept + " " + action.course.num)
         return {
             ...state,
             "courses": { core, bridging, exemptions, replacements }
