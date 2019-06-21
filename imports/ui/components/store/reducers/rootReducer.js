@@ -9,23 +9,23 @@ const initState = {
     "courses": {
         "core": [
             { "dept": "CPSC", "num": 110, "id": shortid.generate() },
-            { "dept": "CPSC", "num": 210 },
-            { "dept": "MATH", "num": 200 }
+            { "dept": "CPSC", "num": 210, "id": shortid.generate() },
+            { "dept": "MATH", "num": 200, "id": shortid.generate() }
         ],
         "bridging": [
-            { "dept": "STAT", "num": 302 },
-            { "dept": "STAT", "num": 305 },
-            { "dept": "STAT", "num": 306 }
+            { "dept": "STAT", "num": 302, "id": shortid.generate() },
+            { "dept": "STAT", "num": 305, "id": shortid.generate() },
+            { "dept": "STAT", "num": 306, "id": shortid.generate() }
         ],
         "exemptions": [
-            { "dept": "ENGL", "num": 110 },
-            { "dept": "STAT", "num": 200 },
-            { "dept": "MATH", "num": 108 }
+            { "dept": "ENGL", "num": 110, "id": shortid.generate() },
+            { "dept": "STAT", "num": 200, "id": shortid.generate() },
+            { "dept": "MATH", "num": 108, "id": shortid.generate() }
         ],
         "replacements": [
-            { "dept": "MATH", "num": 221 },
-            { "dept": "MATH", "num": 200 },
-            { "dept": "DSCI", "num": 100 }
+            { "dept": "MATH", "num": 221, "id": shortid.generate() },
+            { "dept": "MATH", "num": 200, "id": shortid.generate() },
+            { "dept": "DSCI", "num": 100, "id": shortid.generate() }
         ]
     }
 }

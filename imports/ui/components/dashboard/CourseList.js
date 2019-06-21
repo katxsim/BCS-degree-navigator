@@ -5,75 +5,77 @@ class CourseList extends Component {
 
     makeView = (course) => {
         return (
-
-            <ul className="collections">
-                <li className="collection-item">
-                    {course.dept}: {course.num}
-                    <button className="btn-flat right delete">
-                        <i className="small material-icons right">
-                            clear
+            <div className="courses container">
+                <ul className="collections">
+                    <li className="collection-item">
+                        {course.dept}: {course.num}
+                        <button className="btn-flat right delete">
+                            <i className="small material-icons right">
+                                clear
                         </i>
-                    </button>
-                </li>
-            </ul>
+                        </button>
+                    </li>
+                </ul>
+            </div>
         )
     }
 
     render() {
         const { courses } = this.props;
 
-        const postCore = courses.length ? (
+        const postCore = courses ? (
             courses.core.map(course => {
+                console.log(course)
                 return this.makeView(course);
             })
         ) : (<div className="courses container">
-            <h3>no courses</h3>
+            <h6>no courses</h6>
         </div>)
 
-        const postBridging = courses.length ? (
+        const postBridging = courses ? (
             courses.bridging.map(course => {
                 return this.makeView(course);
             })
         ) : (<div className="courses container">
-            <h3>no courses</h3>
+            <h6>no courses</h6>
         </div>)
 
-        const postExemptions = courses.length ? (
+        const postExemptions = courses ? (
             courses.exemptions.map(course => {
                 return this.makeView(course);
             })
         ) : (<div className="courses container">
-            <h3>no courses</h3>
+            <h6>no courses</h6>
         </div>)
 
-        const postReplacements = courses.length ? (
+        const postReplacements = courses ? (
             courses.core.map(course => {
                 return this.makeView(course);
             })
         ) : (<div className="courses container">
-            <h3>no courses</h3>
+            <h6>no courses</h6>
         </div>)
 
         return (
             <div className="courses container center">
                 <h4 className="courses center">Courses</h4>
                 <h5 className="courses center">Core</h5>
-                { postCore }
+                {postCore}
                 <h5 className="courses center">Bridging</h5>
-                { postBridging }
+                {postBridging}
                 <h5 className="courses center">Exemption Replacement</h5>
-                { postReplacements }
+                {postReplacements}
                 <h5 className="courses center">Exemptions</h5>
-                { postExemptions }
+                {postExemptions}
             </div>
         )
     }
 }
 
 const mapStateToProps = (state) => {
-    console.log(state);
+    console.log(state.courses);
     return {
-        "courses": state.courses
+        courses: state.courses
     }
 }
 

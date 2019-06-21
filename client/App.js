@@ -6,7 +6,7 @@ import ProjectDetails from '../imports/ui/components/projects/ProjectDetails'
 import SignIn from '../imports/ui/components/auth/SignIn'
 import SignUp from '../imports/ui/components/auth/SignUp'
 import CreateProject from '../imports/ui/components/projects/CreateProject'
-import CourseLists from '../imports/ui/components/courses/CourseLists'
+
 
 
 function App() {
