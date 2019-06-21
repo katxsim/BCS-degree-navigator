@@ -10,9 +10,9 @@ class CourseList extends Component {
 
     makeView = (course) => {
         return (
-            <div key={shortid.generate()} className="courses-subContainer">
-                <ul key={shortid.generate()} className="list">
-                    <li key={course.id} className="left-align collection-item">
+            <div key={shortid.generate()} className="col s12 left-align collection-item z-depth-1 white">
+                <ul key={shortid.generate()}>
+                    <li key={course.id}>
                         {course.dept}: {course.num}
                         <button
                             className="btn-flat right delete"
@@ -61,15 +61,15 @@ class CourseList extends Component {
         </div>)
 
         return (
-            <div className="courses container center">
-                <h4 className="courses center">Courses</h4>
-                <h5 className="courses center">Core</h5>
+            <div className="center">
+                <h4>Courses</h4>
+                <h5>Core</h5>
                 {postCore}
-                <h5 className="courses center">Bridging</h5>
+                <h5>Bridging</h5>
                 {postBridging}
-                <h5 className="courses center">Exemption Replacement</h5>
+                <h5>Exemption Replacement</h5>
                 {postReplacements}
-                <h5 className="courses center">Exemptions</h5>
+                <h5>Exemptions</h5>
                 {postExemptions}
             </div>
         )
@@ -82,8 +82,8 @@ const mapStateToProps = (state) => {
     }
 }
 const mapDispatchToProps = (dispatch) => {
-    return{
-        deleteCourse: (course) => { dispatch({type: 'DELETE_COURSE', course}) }
+    return {
+        deleteCourse: (course) => { dispatch({ type: 'DELETE_COURSE', course }) }
     }
 }
 
