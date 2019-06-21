@@ -5,9 +5,9 @@ class CourseList extends Component {
 
     makeView = (course) => {
         return (
-            <div className="courses container">
-                <ul className="collections">
-                    <li className="collection-item">
+            <div className="courses-subContainer">
+                <ul className="list">
+                    <li key={course.id} className="left-align collection-item">
                         {course.dept}: {course.num}
                         <button className="btn-flat right delete">
                             <i className="small material-icons right">
@@ -34,6 +34,7 @@ class CourseList extends Component {
 
         const postBridging = courses ? (
             courses.bridging.map(course => {
+                console.log(course.id)
                 return this.makeView(course);
             })
         ) : (<div className="courses container">
