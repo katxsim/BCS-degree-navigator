@@ -5,9 +5,9 @@ class CourseList extends Component {
 
     makeView = (course) => {
         return (
-            <div className="courses container">
-                <ul className="collections">
-                    <li className="collection-item">
+            <div className="courses-subContainer">
+                <ul className="list">
+                    <li key={course.id} className="left-align collection-item">
                         {course.dept}: {course.num}
                         <button className="btn-flat right delete">
                             <i className="small material-icons right">
@@ -25,7 +25,6 @@ class CourseList extends Component {
 
         const postCore = courses ? (
             courses.core.map(course => {
-                console.log(course)
                 return this.makeView(course);
             })
         ) : (<div className="courses container">
@@ -33,7 +32,7 @@ class CourseList extends Component {
         </div>)
 
         const postBridging = courses ? (
-            courses.bridging.map(course => {
+            courses.bridging.map(course => {                
                 return this.makeView(course);
             })
         ) : (<div className="courses container">
@@ -73,7 +72,6 @@ class CourseList extends Component {
 }
 
 const mapStateToProps = (state) => {
-    console.log(state.courses);
     return {
         courses: state.courses
     }
