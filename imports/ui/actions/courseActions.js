@@ -1,12 +1,15 @@
+const shortid = require('shortid');
+
 export const addCourse = course => {
   console.log(course);
   return {
     type: "ADD_COURSE",
     course: {
+      type: course.type,
       dept: course.dept,
-      code: course.code,
+      num: course.num,
       grade: course.grade,
-      group: course.group
+      id: shortid.generate()
     }
   };
 };
