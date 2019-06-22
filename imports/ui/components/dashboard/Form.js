@@ -2,15 +2,13 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { addCourse } from "../../actions/courseActions";
 
-const shortid = require("shortid");
-
 class Form extends Component {
+
   state = {
     dept: "",
     num: "",
     grade: "",
-    type: "",
-    id: 0
+    type: ""
   };
 
   handleDeptChange = e =>
@@ -46,11 +44,9 @@ class Form extends Component {
         dept: "",
         num: "",
         grade: "",
-        type: "",
-        id: () => {
-          return shortid.generate();
-        }
+        type: ""
       });
+
     }
   };
 
@@ -69,10 +65,10 @@ class Form extends Component {
                 <option value="" disabled>
                   Department
                 </option>
-                <option value="computer science">Computer Science</option>
-                <option value="statistics">Statistics</option>
-                <option value="math">Math</option>
-                <option value="commerce">Commerce</option>
+                <option value="CPSC">CPSC</option>
+                <option value="STAT">STAT</option>
+                <option value="MATH">MATH</option>
+                <option value="COMM">COMM</option>
               </select>
               <br />
             </div>
@@ -86,10 +82,10 @@ class Form extends Component {
                 <option value="" disabled>
                   Course Code
                 </option>
-                <option value="CPSC 110">CPSC 110</option>
-                <option value="CPSC 121">CPSC 121</option>
-                <option value="CPSC 210">CPSC 210</option>
-                <option value="CPSC 213">CPSC 213</option>
+                <option value="110">110</option>
+                <option value="121">121</option>
+                <option value="210">210</option>
+                <option value="213">213</option>
               </select>
               <br />
             </div>

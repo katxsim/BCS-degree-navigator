@@ -1,3 +1,4 @@
+
 const shortid = require('shortid');
 
 export const addCourse = course => {
@@ -14,9 +15,9 @@ export const addCourse = course => {
   };
 };
 
-export const deleteCourse = id => {
-  return {
-    type: "DELETE_COURSE",
-    id: id
-  };
-};
+export const  deleteCourse = (course) => {
+    return {
+        type: "DELETE_COURSE",
+        course: course
+    }
+}
