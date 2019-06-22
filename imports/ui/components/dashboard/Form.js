@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { addCourse } from "../../actions/courseActions";
 
 class Form extends Component {
+
   state = {
     dept: "",
     num: "",
@@ -45,6 +46,7 @@ class Form extends Component {
         grade: "",
         type: ""
       });
+
     }
   };
 

@@ -1,4 +1,7 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import { Link } from 'react-router-dom'
+import { addUser } from '../../actions/userActions'
 
 class SignUp extends Component {
     state = {
@@ -14,7 +17,24 @@ class SignUp extends Component {
     }
     handleSubmit = (e) => {
         e.preventDefault();
-        console.log(this.state);
+        console.log(e.target);
+        console.log(e.target.email.value)
+        console.log(e.target.password.value);
+        console.log(e.target.firstName.value);
+        console.log(e.target.lastName.value);
+
+        const user = {
+            email: e.target.email.value,
+            password: e.target.password.value,
+            fristName: e.target.firstName.value,
+            lastName: e.target.lastName.value
+        }
+        this.props.addUser(user);
+
+        e.target.email.value = ""
+        e.target.password.value = ""
+        e.target.firstName.value = ""
+        e.target.lastName.value = ""
     }
     render() {
         return (
@@ -46,4 +66,10 @@ class SignUp extends Component {
     }
 }
 
-export default SignUp
+const mapDispatchToProps = (dispatch) => {
+    return {
+        addUser: (user) => { dispatch(addUser(user)) }
+    }
+}
+
+export default connect(null, mapDispatchToProps)(SignUp)

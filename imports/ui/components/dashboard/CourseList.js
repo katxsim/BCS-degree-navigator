@@ -1,6 +1,9 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { deleteCourse } from '../../actions/courseActions'
+
 const shortid = require('shortid');
+
 
 class CourseList extends Component {
 
@@ -53,7 +56,7 @@ class CourseList extends Component {
         </div>)
 
         const postReplacements = courses.replacements ? (
-            courses.core.map(course => {
+            courses.replacements.map(course => {
                 return this.makeView(course);
             })
         ) : (<div className="courses container">
@@ -67,9 +70,9 @@ class CourseList extends Component {
                 {postCore}
                 <p className="flow-text">Bridging</p>
                 {postBridging}
-                <p className="flow-text">Exemption Replacement</p>
-                {postReplacements}
                 <p className="flow-text">Exemptions</p>
+                {postReplacements}
+                <p className="flow-text">Exemption Replacements</p>
                 {postExemptions}
             </div>
         )
@@ -83,7 +86,7 @@ const mapStateToProps = (state) => {
 }
 const mapDispatchToProps = (dispatch) => {
     return {
-        deleteCourse: (course) => { dispatch({ type: 'DELETE_COURSE', course }) }
+        deleteCourse: (course) => { dispatch(deleteCourse(course)) }
     }
 }
 
