@@ -196,6 +196,7 @@ const rootReducer = (state = initState, action) => {
         let newCourses = [];
         if (action.course.type === "core") {
             newCourses = [...state.courses.core, action.course];
+            console.log(newCourses)
         } else if (action.course.type === "bridging") {
             newCourses = [...state.courses.bridging, action.course];
         } else if (action.course.type === "exemptions") {
