@@ -193,18 +193,39 @@ const rootReducer = (state = initState, action) => {
   if (action.type === "ADD_COURSE") {
     let newCourses = [];
     if (action.course.type === "core") {
+      console.log("got to core");
       newCourses = [...state.courses.core, action.course];
+      console.log(newCourses);
+      console.log({ ...state, courses: { core: newCourses } });
+      return {
+        ...state,
+        courses: { ...state.courses, core: newCourses }
+      };
     } else if (action.course.type === "bridging") {
+      console.log("got to bridging");
       newCourses = [...state.courses.bridging, action.course];
+      console.log(newCourses);
+      return {
+        ...state,
+        courses: { ...state.courses, bridging: newCourses }
+      };
     } else if (action.course.type === "exemptions") {
+      console.log("got to exemptions");
       newCourses = [...state.courses.exemptions, action.course];
+      console.log(newCourses);
+      return {
+        ...state,
+        courses: { ...state.courses, exemptions: newCourses }
+      };
     } else {
+      console.log("got to replacements");
       newCourses = [...state.courses.replacements, action.course];
+      console.log(newCourses);
+      return {
+        ...state,
+        courses: { ...state.courses, replacements: newCourses }
+      };
     }
-    return {
-      ...state,
-      courses: newCourses
-    };
   }
   if (action.type === "DELETE_COURSE") {
     let core = state.courses.core.filter(currCourse => {
