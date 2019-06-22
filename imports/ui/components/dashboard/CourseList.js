@@ -70,9 +70,9 @@ class CourseList extends Component {
                 {postCore}
                 <p className="flow-text">Bridging</p>
                 {postBridging}
-                <p className="flow-text">Exemption Replacement</p>
-                {postReplacements}
                 <p className="flow-text">Exemptions</p>
+                {postReplacements}
+                <p className="flow-text">Exemption Replacements</p>
                 {postExemptions}
             </div>
         )

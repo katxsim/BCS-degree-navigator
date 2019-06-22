@@ -54,7 +54,7 @@ class Results extends Component {
 
                     <h5 className="center">Core</h5>
                     <progress max="18" value="8" className="col s12 core"/>
-                    <p className={ENGL100}>ENGL 100+</p>
+                    <p className={ENGL100}>ENGL 100</p>
                     <p className={MATH180}>MATH 180</p>
                     <p className={STAT203}>STAT 203</p>
                     <p className={CPSC110}>CPSC 110</p>
@@ -79,7 +79,7 @@ class Results extends Component {
 
                     <h5 className="center">Exemption Replacements</h5>
                     <progress max="3" value="3" className="col s12 replacements"/>
-                    <p className="complete">all done</p>
+                    <p className="complete">5 out of 5 - CONGRATS!</p>
                 </div>
             </div>
         )

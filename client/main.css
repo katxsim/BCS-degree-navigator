@@ -5,12 +5,10 @@ html{
 body {
   margin: 0;
   padding: 0;
-  font-family: sans-serif;
-  background: url(/img/mario-bg.png) no-repeat;
+  font-family: 'Open Sans', sans-serif;
   background-size: 100%;
   background-position: bottom;
-  /* background-color: #95e8f3; */
-  background-color: #42bac9;
+  background-color: #FFFFFF;
   min-height: 100%;
 }
 
@@ -33,6 +31,8 @@ p.incomplete {
 form{
   padding: 20px;
   margin-top: 60px;
+
+
 }
 
 .column{
@@ -58,3 +58,24 @@ input[type=password]:not(.browser-default):focus:not([readonly]) + label{
   color: #ec407a !important;
 }
 
+.img{
+  left: 0;
+  position: absolute;
+  width: 70px;
+  height: 70px;
+
+}
+
+.img2{
+  position: absolute;
+  bottom: -400px;
+  right: 20px;
+  width: 300px;
+  height: 70px;
+}
+.post-card {
+  background-color: rgba(0, 167, 225, 0.54);
+  border-radius: 25px;
+  color: rgba(51, 153, 153, 0.54);
+
+}
