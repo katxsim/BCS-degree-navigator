@@ -205,7 +205,7 @@ const rootReducer = (state = initState, action) => {
         }
         return {
             ...state,
-            courses: newCourses
+            "courses": newCourses
         };
     }
     if (action.type === "DELETE_COURSE") {
