@@ -16,4 +16,3 @@ Meteor.startup(() => {
     document.getElementById("react-target")
   );
 });
-// serviceWorker.unregister();

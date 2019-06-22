@@ -1,7 +1,9 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { deleteCourse } from '../../actions/courseActions'
+
 const shortid = require('shortid');
+
 
 class CourseList extends Component {
 
