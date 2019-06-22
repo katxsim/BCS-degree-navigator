@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { deleteCourse } from '../../actions/courseActions'
 const shortid = require('shortid');
 
 class CourseList extends Component {
@@ -83,7 +84,7 @@ const mapStateToProps = (state) => {
 }
 const mapDispatchToProps = (dispatch) => {
     return {
-        deleteCourse: (course) => { dispatch({ type: 'DELETE_COURSE', course }) }
+        deleteCourse: (course) => { dispatch(deleteCourse(course)) }
     }
 }
 

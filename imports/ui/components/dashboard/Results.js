@@ -44,7 +44,9 @@ class Results extends Component {
             if (course.dept === "CPSC" && course.num >= 400) CPSC401 = "complete";
             if (course.dept === "CPSC" && course.num >= 400) CPSC402 = "complete";
         });
-        console.log(ENGL100)
+
+        // let coreCompleted = []
+        // let coreCounter = 0;
         return (
             <div>
                 <h4 className="center">Progress</h4>
