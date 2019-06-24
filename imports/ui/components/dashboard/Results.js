@@ -40,7 +40,7 @@ class Results extends Component {
                 if (checkRequirements(userCourse, requiredCourse)) {
                     userCourse.status = "complete"
                     requiredCourse.status = "complete"
-                    user.credits = user.credits + userCourse.credits; // TODO verify this is the only place being implement
+                    user.credits += userCourse.credits; // TODO verify this is the only place adding credits
                 }
             })
         });
@@ -179,7 +179,14 @@ class Results extends Component {
             } else
                 return false; // success
         }
-        
+
+        // I want to make an array of p tags populated dynamically, example: 
+        // <p className={course.status}>{course.dept} {course.num}</p>
+        let coreArray = requirements.forEach(function(course) {
+            coreArray.push()
+            
+        })
+
         return (
             <div>
                 <h4 className="center">Progress</h4>
