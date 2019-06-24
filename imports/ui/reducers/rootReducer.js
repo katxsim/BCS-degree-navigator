@@ -8,6 +8,7 @@ const initState = {
       "lastName": "test1",
       "creditsEarned": 0,
       "bridgingCpscCounter": 0,
+      "electiveCounter": [3,0], // counts num 300, 400 electives
       "exemptionLevels": [100, 200, 300], // update this when adding exemption and sort it
       "courses": [
         { "type": "core", "dept": "CPSC", "num": 110, "id": shortid.generate() },

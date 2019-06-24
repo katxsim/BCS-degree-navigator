@@ -7,88 +7,134 @@ class Results extends Component {
         const { user } = this.props; // 
         // core
         let requirements = [
-            { "type": "core", "dept": "ENGL", "num": 100, "status": "incomplete", "complex": true },
-            { "type": "core", "dept": "MATH", "num": 180, "status": "incomplete", "complex": false },
-            { "type": "core", "dept": "STAT", "num": 203, "status": "incomplete", "complex": false },
-            { "type": "core", "dept": "CPSC", "num": 110, "status": "incomplete", "complex": false },
-            { "type": "core", "dept": "CPSC", "num": 121, "status": "incomplete", "complex": false },
-            { "type": "core", "dept": "CPSC", "num": 210, "status": "incomplete", "complex": false },
-            { "type": "core", "dept": "CPSC", "num": 221, "status": "incomplete", "complex": false },
-            { "type": "core", "dept": "COMM", "num": 300, "status": "incomplete", "complex": true },
-            { "type": "core", "dept": "CPSC", "num": 213, "status": "incomplete", "complex": false },
-            { "type": "core", "dept": "CPSC", "num": 310, "status": "incomplete", "complex": false },
-            { "type": "core", "dept": "CPSC", "num": 313, "status": "incomplete", "complex": false },
-            { "type": "core", "dept": "CPSC", "num": 320, "status": "incomplete", "complex": false },
-            { "type": "elective", "dept": "CPSC", "num": 300, "status": "incomplete", "complex": true },
-            { "type": "elective", "dept": "CPSC", "num": 300, "status": "incomplete", "complex": true },
-            { "type": "elective", "dept": "CPSC", "num": 300, "status": "incomplete", "complex": true },
-            { "type": "elective", "dept": "CPSC", "num": 400, "status": "incomplete", "complex": true },
-            { "type": "elective", "dept": "CPSC", "num": 400, "status": "incomplete", "complex": true },
-            { "type": "elective", "dept": "CPSC", "num": 400, "status": "incomplete", "complex": true },
-            { "type": "bridging", "dept": "", "num": 0, "status": "incomplete", "complex": false },
-            { "type": "bridging", "dept": "", "num": 0, "status": "incomplete", "complex": false },
-            { "type": "bridging", "dept": "", "num": 0, "status": "incomplete", "complex": false },
-            { "type": "bridging", "dept": "", "num": 0, "status": "incomplete", "complex": false },
-            { "type": "bridging", "dept": "", "num": 0, "status": "incomplete", "complex": false }
+            { "type": "core", "dept": "ENGL", "num": 100, "status": "incomplete", "credits": 3 },
+            { "type": "core", "dept": "MATH", "num": 180, "status": "incomplete", "credits": 3 },
+            { "type": "core", "dept": "STAT", "num": 203, "status": "incomplete", "credits": 3 },
+            { "type": "core", "dept": "CPSC", "num": 110, "status": "incomplete", "credits": 4 },
+            { "type": "core", "dept": "CPSC", "num": 121, "status": "incomplete", "credits": 4 },
+            { "type": "core", "dept": "CPSC", "num": 210, "status": "incomplete", "credits": 4 },
+            { "type": "core", "dept": "CPSC", "num": 221, "status": "incomplete", "credits": 4 },
+            { "type": "core", "dept": "COMM", "num": 300, "status": "incomplete", "credits": 3 },
+            { "type": "core", "dept": "CPSC", "num": 213, "status": "incomplete", "credits": 4 },
+            { "type": "core", "dept": "CPSC", "num": 310, "status": "incomplete", "credits": 4 },
+            { "type": "core", "dept": "CPSC", "num": 313, "status": "incomplete", "credits": 3 },
+            { "type": "core", "dept": "CPSC", "num": 320, "status": "incomplete", "credits": 3 },
+            { "type": "elective", "dept": "CPSC", "num": 300, "status": "incomplete", "credits": 3 },
+            { "type": "elective", "dept": "CPSC", "num": 300, "status": "incomplete", "credits": 3 },
+            { "type": "elective", "dept": "CPSC", "num": 300, "status": "incomplete", "credits": 3 },
+            { "type": "elective", "dept": "CPSC", "num": 400, "status": "incomplete", "credits": 3 },
+            { "type": "elective", "dept": "CPSC", "num": 400, "status": "incomplete", "credits": 3 },
+            { "type": "elective", "dept": "CPSC", "num": 400, "status": "incomplete", "credits": 3 },
+            { "type": "bridging", "dept": "", "num": 0, "status": "incomplete", "credits": 3 },
+            { "type": "bridging", "dept": "", "num": 0, "status": "incomplete", "credits": 3 },
+            { "type": "bridging", "dept": "", "num": 0, "status": "incomplete", "credits": 3 },
+            { "type": "bridging", "dept": "", "num": 0, "status": "incomplete", "credits": 3 },
+            { "type": "bridging", "dept": "", "num": 0, "status": "incomplete", "credits": 3 }
         ]
 
-        // iterate over completed courses and compare to requirements
+        // iterate over completed courses and compare to requirements, one by one
         // runs in O(n^2) can be improved? constant time? hashtable? 
+        // given a course have direct access to a lookup of the required course
         user.courses.forEach(function (userCourse) {
             requirements.forEach(function (requiredCourse) {
-                if (checkRequirement(userCourse, requiredCourse)) {
+                if (checkRequirements(userCourse, requiredCourse)) {
                     userCourse.status = "complete"
                     requiredCourse.status = "complete"
+                    user.credits = user.credits + userCourse.credits; // TODO verify this is the only place being implement
                 }
             })
         });
 
-        function checkRequirement(userCourse, requiredCourse) {
+        function checkRequirements(userCourse, requiredCourse) {
             if (userCourse.type === "core" ||
                 userCourse.type === "exemption" &&
                 !alreadyComplete(userCourse, requiredCourse)) {
-                checkIfValidCoreAndExemption(userCourse, requiredCourse)
+                return checkIfValidCoreAndExemption(userCourse, requiredCourse)
             }
             else if
                 (userCourse.type === "elective" &&
                 !alreadyComplete(userCourse, requiredCourse)) {
-                checkIfValidElective(userCourse, requiredCourse)
+                return checkIfValidElective(userCourse)
             }
-            else if
+            else if 
                 (userCourse.type === "bridging" &&
                 !alreadyComplete(userCourse, requiredCourse)) {
-                checkIfValidBridging(userCourse)
+                return checkIfValidBridging(userCourse)
             }
             else if
-                // done
                 (userCourse.type === "replacement" &&
                 !alreadyComplete(userCourse, requiredCourse)) {
-                checkIfValidReplacement(userCourse)
+                return checkIfValidReplacement(userCourse)
             }
+            alert(`Warning: In uncharted territory with ${userCourse.dept} ${userCourse.num}`)
+            return true; // let them add it anyway, we should never get here, that's what the logging is for
         }
 
         function checkIfValidCoreAndExemption(userCourse, requiredCourse) {
-            // TODO
+            if (userCourse.dept === "ENGL" &&
+                requiredCourse.dept === "ENGL" &&
+                userCourse.num >= 100) {
+                return true;
+            }
+            // 300 level communication requirement
+            if (userCourse.dept === "ENGL" ||
+                userCourse.dept === "COMM" ||
+                userCourse.dept === "SCIE" ||
+                userCourse.dept === "BUSI" &&
+                userCourse.num >= 300 &&
+                requiredCourse.dept === "COMM") {
+                return true;
+            }
+            // clearcut core requirement 
+            if (userCourse.dept === requiredCourse.dept &&
+                userCourse.num === requiredCourse.num)
+                return true;
         }
 
-        function checkIfValidElective(userCourse, requiredCourse) {
-            // TODO
+        function checkIfValidElective(userCourse) {
+            // this is designed off of cross table, like in 110
+            if (userCourse.dept !== "CPSC") return false;
+            if (userCourse.num < 300) return false;
+            if (userCourse.num < 400 &&
+                user.electiveCounter[0] < 3) {
+                ++user.electiveCounter[0];
+                return true;
+            }
+            if (userCourse.num >= 400 &&
+                user.electiveCounter[1] < 3) {
+                ++user.electiveCounter[1];
+                return true;
+            }
+            if (userCourse.num >= 400 &&
+                user.electiveCounter[1] > 3) {
+                alert(`Warning: ${userCourse.dept} ${userCourse.num} is a superfluous course`)
+                return true; // let them take it anyway 
+            }
+            if (userCourse.num < 400 &&
+                user.electiveCounter[0] > 3) {
+                alert(`Warning: ${userCourse.dept} ${userCourse.num} is a superfluous course`)
+                return true; // let them take it anyway this alert will pop up on every reload TODO
+            } else {
+                // they have finished all of their electives
+                return true; // to let them add course, but it is superfluous
+            }
+
         }
 
         function checkIfValidBridging(userCourse) {
+            // guard from excessive CPSC courses
             if (user.bridgingCpscCounter > 2)
                 alert("Warning: too many CPSC bridging courses"); // should never reach here
             if (userCourse.dept === "CPSC" &&
                 user.bridgingCpscCounter >= 2) {
                 alert("Warning: There are too many CPSC Bridging courses") // should never reach here
                 return false;
+                // otherwise good to add
             } else if (userCourse.num >= 300) return true;
-            // if you reach here...
+            // otherwise the course is below 300
             return false;
         }
 
-        // check for course level exemption allowance and if valid, 
-        //remove it from exemption allowance
         function checkIfValidReplacement(userCourse) {
             let courseLevel = Math.floor(userCourse.num / 100) * 100;
             // best case, course level matches an exemption level
@@ -108,13 +154,32 @@ class Results extends Component {
         }
 
         function alreadyComplete(userCourse, requiredCourse) {
-            if (requiredCourse.status === "complete" ||
-                userCourse.status === "complete") {
-                alert(" You can't add the same course twice :) ")
+            if (userCourse.dept === "ENGL" &&
+                requiredCourse.dept === "ENGL" &&
+                requiredCourse.status === "complete") {
+                alert(`you have already met the 100 level english requirement`)
+                return true;
+            }
+            if (userCourse.dept === "ENGL" ||
+                userCourse.dept === "COMM" ||
+                userCourse.dept === "BUSI" ||
+                userCourse.dept === "SCIE" &&
+                userCourse.num >= 300 &&
+                requiredCourse.dept === "COMM" &&
+                requiredCourse.status === "complete") {
+                alert(`You have already met the 300 level communication requirement`)
+                return true;
+            }
+            if (userCourse.dept === requiredCourse.dept &&
+                userCourse.num === requiredCourse.num &&
+                (requiredCourse.status === "complete" ||
+                userCourse.status === "complete")) {
+                alert(`Warning: You have already taken ${userCourse.dept} ${userCourse.num}`)
                 return true;
             } else
-                return false;
+                return false; // success
         }
+        
         return (
             <div>
                 <h4 className="center">Progress</h4>
