@@ -2,58 +2,77 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
 class Results extends Component {
+
     render() {
         const { courses } = this.props;
         // core
-        let ENGL100 = "incomplete"; 
-        let MATH180 = "incomplete";
-        let STAT203 = "incomplete";
-        let CPSC110 = "incomplete";
-        let CPSC121 = "incomplete";
-        let CPSC210 = "incomplete";
-        let CPSC221 = "incomplete";
-        let COMM300 = "incomplete";
-        let CPSC213 = "incomplete";
-        let CPSC310 = "incomplete";
-        let CPSC313 = "incomplete";
-        let CPSC320 = "incomplete";
-        let CPSC300 = "incomplete";
-        let CPSC301 = "incomplete";
-        let CPSC302 = "incomplete";
-        let CPSC400 = "incomplete";
-        let CPSC401 = "incomplete";
-        let CPSC402 = "incomplete";
+        let requirements = [
+            { "type": "core", "dept": ENGL, "num": 100, "status": "incomplete" },
+            { "type": "core", "dept": MATH, "num": 180, "status": "incomplete" },
+            { "type": "core", "dept": STAT, "num": 203, "status": "incomplete" },
+            { "type": "core", "dept": CPSC, "num": 110, "status": "incomplete" },
+            { "type": "core", "dept": CPSC, "num": 121, "status": "incomplete" },
+            { "type": "core", "dept": CPSC, "num": 210, "status": "incomplete" },
+            { "type": "core", "dept": CPSC, "num": 221, "status": "incomplete" },
+            { "type": "core", "dept": COMM, "num": 300, "status": "incomplete" },
+            { "type": "core", "dept": CPSC, "num": 213, "status": "incomplete" },
+            { "type": "core", "dept": CPSC, "num": 310, "status": "incomplete" },
+            { "type": "core", "dept": CPSC, "num": 313, "status": "incomplete" },
+            { "type": "core", "dept": CPSC, "num": 320, "status": "incomplete" },
+            { "type": "elective", "dept": CPSC, "num": 300, "status": "incomplete" },
+            { "type": "elective", "dept": CPSC, "num": 301, "status": "incomplete" },
+            { "type": "elective", "dept": CPSC, "num": 302, "status": "incomplete" },
+            { "type": "elective", "dept": CPSC, "num": 400, "status": "incomplete" },
+            { "type": "elective", "dept": CPSC, "num": 401, "status": "incomplete" },
+            { "type": "elective", "dept": CPSC, "num": 402, "status": "incomplete" }
+        ]
 
-        courses.core.forEach(function(course) {
-            if (course.dept === "ENGL" && course.num >= 100) ENGL100 = "complete";
-            if (course.dept === "MATH" && course.num == 180) MATH180 = "complete";
-            if (course.dept === "STAT" && course.num == 203) STAT203 = "complete";
-            if (course.dept === "CPSC" && course.num == 110) CPSC110 = "complete";
-            if (course.dept === "CPSC" && course.num == 121) CPSC121 = "complete";
-            if (course.dept === "CPSC" && course.num == 210) CPSC210 = "complete";
-            if (course.dept === "CPSC" && course.num == 221) CPSC221 = "complete";
-            if (course.dept === "ENGL" || course.dept === "SCIE" && course.num >= 300) COMM300 = "complete";
-            if (course.dept === "CPSC" && course.num == 213) CPSC213 = "complete";
-            if (course.dept === "CPSC" && course.num == 310) CPSC310 = "complete";
-            if (course.dept === "CPSC" && course.num == 313) CPSC313 = "complete";
-            if (course.dept === "CPSC" && course.num == 320) CPSC320 = "complete";
-            if (course.dept === "CPSC" && course.num >= 300) CPSC300 = "complete";
-            if (course.dept === "CPSC" && course.num >= 300) CPSC301 = "complete";
-            if (course.dept === "CPSC" && course.num >= 300) CPSC302 = "complete";
-            if (course.dept === "CPSC" && course.num >= 400) CPSC400 = "complete";
-            if (course.dept === "CPSC" && course.num >= 400) CPSC401 = "complete";
-            if (course.dept === "CPSC" && course.num >= 400) CPSC402 = "complete";
+        function coreCoursesMatch (userCourse, requiredCourse) {
+            if (userCourse.type === requiredCourse.type &&
+                userCourse.dept === requiredCourse.dept &&
+                userCourse.num === requiredCourse.num) {
+                if (requiredCourse.status === "complete" ||
+                    userCourse.status === "complete") {
+                    alert("can't add same course twice")
+                    return false;
+                } else {
+                    return true;
+                }
+            } 
+            // if here then no match
+            return false;
+                
+
+        }
+        
+        function checkRequirement(userCourse, requiredCourse) {
+            // check specific course requirement
+            if (coreCoursesMatch(userCourse, requiredCourse)) {
+                userCourse.status = "complete"
+                requiredCourse.status = "complete"
+            }
+            // check elective requirements
+            else if (electiveCoursesMatch(userCourse, requiredCourse)) {
+
+            }
+                
+            }
+
+        
+
+        courses.forEach(function (userCourse) {
+            requirements.forEach(function (requiredCourse) {
+                checkRequirement(userCourse, requiredCourse)
+            })
         });
 
-        // let coreCompleted = []
-        // let coreCounter = 0;
         return (
             <div>
                 <h4 className="center">Progress</h4>
                 <div className="col s12 card">
 
                     <h5 className="center">Core</h5>
-                    <progress max="18" value="8" className="col s12 core"/>
+                    <progress max="18" value="8" className="col s12 core" />
                     <p className={ENGL100}>ENGL 100</p>
                     <p className={MATH180}>MATH 180</p>
                     <p className={STAT203}>STAT 203</p>
@@ -74,18 +93,18 @@ class Results extends Component {
                     <p className={CPSC402}>elective 400+</p>
 
                     <h5 className="center">Bridging</h5>
-                    <progress max="5" value="1" className="col s12 bridging"/>
+                    <progress max="5" value="1" className="col s12 bridging" />
                     <p className="incomplete">1 out of 5</p>
 
                     <h5 className="center">Exemption Replacements</h5>
-                    <progress max="3" value="3" className="col s12 replacements"/>
+                    <progress max="3" value="3" className="col s12 replacements" />
                     <p className="complete">5 out of 5 - CONGRATS!</p>
                 </div>
             </div>
         )
     }
 }
-    const mapStateToProps = (state) => {
+const mapStateToProps = (state) => {
     return {
         courses: state.courses
     }
