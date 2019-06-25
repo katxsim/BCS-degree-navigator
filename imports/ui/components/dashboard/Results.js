@@ -181,11 +181,13 @@ class Results extends Component {
         }
 
         // I want to make an array of p tags populated dynamically, example: 
-        // <p className={course.status}>{course.dept} {course.num}</p>
-        let coreArray = requirements.forEach(function(course) {
-            coreArray.push()
-            
+        //<p className={course.status}>{course.dept} {course.num}</p>
+        let htmlArray = requirements.forEach(function(course) {
+            coreArray.push("somehow generate valid html here")
         })
+
+
+        htmlArray
 
         return (
             <div>
