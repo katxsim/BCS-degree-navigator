@@ -30,34 +30,42 @@ class CourseList extends Component {
 
     render() {
         const { courses } = this.props;
+        console.log(courses);
 
-        const postCore = courses.core ? (
-            courses.core.map(course => {
-                return this.makeView(course);
+        const postCore = courses ? (
+            courses.map(course => {
+                if (course.type == "core") {
+                    return this.makeView(course);
+                }
             })
         ) : (<div className="">
             <h6 className="left-align"> No Courses</h6>
         </div>)
 
-        const postBridging = courses.bridging ? (
-            courses.bridging.map(course => {
-                return this.makeView(course);
+        const postBridging = courses ? (
+            courses.map(course => {
+                if (course.type == "bridging")
+                    return this.makeView(course);
             })
         ) : (<div className="courses container">
             <h6 className="left-align"></h6>
         </div>)
 
-        const postExemptions = courses.exemptions ? (
-            courses.exemptions.map(course => {
-                return this.makeView(course);
+        const postExemptions = courses ? (
+            courses.map(course => {
+                if (course.type == "exemptions")
+                    return this.makeView(course);
             })
         ) : (<div className="courses container">
             <h6 className="left-align"></h6>
         </div>)
 
-        const postReplacements = courses.replacements ? (
-            courses.replacements.map(course => {
-                return this.makeView(course);
+        const postReplacements = courses ? (
+            courses.map(course => {
+                if (course.type == "replacements") {
+                    console.log(course);
+                    return this.makeView(course);
+                }
             })
         ) : (<div className="courses container">
             <h6 className="left-align"></h6>
@@ -71,9 +79,9 @@ class CourseList extends Component {
                 <p className="flow-text">Bridging</p>
                 {postBridging}
                 <p className="flow-text">Exemptions</p>
-                {postReplacements}
-                <p className="flow-text">Exemption Replacements</p>
                 {postExemptions}
+                <p className="flow-text">Exemption Replacements</p>
+                {postReplacements}
             </div>
         )
     }
@@ -81,7 +89,7 @@ class CourseList extends Component {
 
 const mapStateToProps = (state) => {
     return {
-        courses: state.courses
+        courses: state.users[0].courses
     }
 }
 const mapDispatchToProps = (dispatch) => {

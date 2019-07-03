@@ -2,59 +2,201 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
 class Results extends Component {
-    render() {
-        const { courses } = this.props;
-        // core
-        let ENGL100 = "incomplete"; 
-        let MATH180 = "incomplete";
-        let STAT203 = "incomplete";
-        let CPSC110 = "incomplete";
-        let CPSC121 = "incomplete";
-        let CPSC210 = "incomplete";
-        let CPSC221 = "incomplete";
-        let COMM300 = "incomplete";
-        let CPSC213 = "incomplete";
-        let CPSC310 = "incomplete";
-        let CPSC313 = "incomplete";
-        let CPSC320 = "incomplete";
-        let CPSC300 = "incomplete";
-        let CPSC301 = "incomplete";
-        let CPSC302 = "incomplete";
-        let CPSC400 = "incomplete";
-        let CPSC401 = "incomplete";
-        let CPSC402 = "incomplete";
 
-        courses.core.forEach(function(course) {
-            if (course.dept === "ENGL" && course.num >= 100) ENGL100 = "complete";
-            if (course.dept === "MATH" && course.num == 180) MATH180 = "complete";
-            if (course.dept === "STAT" && course.num == 203) STAT203 = "complete";
-            if (course.dept === "CPSC" && course.num == 110) CPSC110 = "complete";
-            if (course.dept === "CPSC" && course.num == 121) CPSC121 = "complete";
-            if (course.dept === "CPSC" && course.num == 210) CPSC210 = "complete";
-            if (course.dept === "CPSC" && course.num == 221) CPSC221 = "complete";
-            if (course.dept === "ENGL" || course.dept === "SCIE" && course.num >= 300) COMM300 = "complete";
-            if (course.dept === "CPSC" && course.num == 213) CPSC213 = "complete";
-            if (course.dept === "CPSC" && course.num == 310) CPSC310 = "complete";
-            if (course.dept === "CPSC" && course.num == 313) CPSC313 = "complete";
-            if (course.dept === "CPSC" && course.num == 320) CPSC320 = "complete";
-            if (course.dept === "CPSC" && course.num >= 300) CPSC300 = "complete";
-            if (course.dept === "CPSC" && course.num >= 300) CPSC301 = "complete";
-            if (course.dept === "CPSC" && course.num >= 300) CPSC302 = "complete";
-            if (course.dept === "CPSC" && course.num >= 400) CPSC400 = "complete";
-            if (course.dept === "CPSC" && course.num >= 400) CPSC401 = "complete";
-            if (course.dept === "CPSC" && course.num >= 400) CPSC402 = "complete";
+    render() {
+        const { user } = this.props; // 
+        // core
+        let requirements = [
+            { "type": "core", "dept": "ENGL", "num": 100, "status": "incomplete", "credits": 3 },
+            { "type": "core", "dept": "MATH", "num": 180, "status": "incomplete", "credits": 3 },
+            { "type": "core", "dept": "STAT", "num": 203, "status": "incomplete", "credits": 3 },
+            { "type": "core", "dept": "CPSC", "num": 110, "status": "incomplete", "credits": 4 },
+            { "type": "core", "dept": "CPSC", "num": 121, "status": "incomplete", "credits": 4 },
+            { "type": "core", "dept": "CPSC", "num": 210, "status": "incomplete", "credits": 4 },
+            { "type": "core", "dept": "CPSC", "num": 221, "status": "incomplete", "credits": 4 },
+            { "type": "core", "dept": "COMM", "num": 300, "status": "incomplete", "credits": 3 },
+            { "type": "core", "dept": "CPSC", "num": 213, "status": "incomplete", "credits": 4 },
+            { "type": "core", "dept": "CPSC", "num": 310, "status": "incomplete", "credits": 4 },
+            { "type": "core", "dept": "CPSC", "num": 313, "status": "incomplete", "credits": 3 },
+            { "type": "core", "dept": "CPSC", "num": 320, "status": "incomplete", "credits": 3 },
+            { "type": "elective", "dept": "CPSC", "num": 300, "status": "incomplete", "credits": 3 },
+            { "type": "elective", "dept": "CPSC", "num": 300, "status": "incomplete", "credits": 3 },
+            { "type": "elective", "dept": "CPSC", "num": 300, "status": "incomplete", "credits": 3 },
+            { "type": "elective", "dept": "CPSC", "num": 400, "status": "incomplete", "credits": 3 },
+            { "type": "elective", "dept": "CPSC", "num": 400, "status": "incomplete", "credits": 3 },
+            { "type": "elective", "dept": "CPSC", "num": 400, "status": "incomplete", "credits": 3 },
+            { "type": "bridging", "dept": "", "num": 0, "status": "incomplete", "credits": 3 },
+            { "type": "bridging", "dept": "", "num": 0, "status": "incomplete", "credits": 3 },
+            { "type": "bridging", "dept": "", "num": 0, "status": "incomplete", "credits": 3 },
+            { "type": "bridging", "dept": "", "num": 0, "status": "incomplete", "credits": 3 },
+            { "type": "bridging", "dept": "", "num": 0, "status": "incomplete", "credits": 3 }
+        ]
+
+        // iterate over completed courses and compare to requirements, one by one
+        // runs in O(n^2) can be improved? constant time? hashtable? 
+        // given a course have direct access to a lookup of the required course
+        user.courses.forEach(function (userCourse) {
+            requirements.forEach(function (requiredCourse) {
+                if (checkRequirements(userCourse, requiredCourse)) {
+                    userCourse.status = "complete"
+                    requiredCourse.status = "complete"
+                    user.credits += userCourse.credits; // TODO verify this is the only place adding credits
+                }
+            })
         });
 
-        // let coreCompleted = []
-        // let coreCounter = 0;
+        function checkRequirements(userCourse, requiredCourse) {
+            if (userCourse.type === "core" ||
+                userCourse.type === "exemption" &&
+                !alreadyComplete(userCourse, requiredCourse)) {
+                return checkIfValidCoreAndExemption(userCourse, requiredCourse)
+            }
+            else if
+                (userCourse.type === "elective" &&
+                !alreadyComplete(userCourse, requiredCourse)) {
+                return checkIfValidElective(userCourse)
+            }
+            else if
+                (userCourse.type === "bridging" &&
+                !alreadyComplete(userCourse, requiredCourse)) {
+                return checkIfValidBridging(userCourse)
+            }
+            else if
+                (userCourse.type === "replacement" &&
+                !alreadyComplete(userCourse, requiredCourse)) {
+                return checkIfValidReplacement(userCourse)
+            }
+            // alert(`Warning: In uncharted territory with ${userCourse.dept} ${userCourse.num}`)
+            return true; // let them add it anyway, we should never get here, that's what the logging is for
+        }
+
+        function checkIfValidCoreAndExemption(userCourse, requiredCourse) {
+            if (userCourse.dept === "ENGL" &&
+                requiredCourse.dept === "ENGL" &&
+                userCourse.num >= 100) {
+                return true;
+            }
+            // 300 level communication requirement
+            if (userCourse.dept === "ENGL" ||
+                userCourse.dept === "COMM" ||
+                userCourse.dept === "SCIE" ||
+                userCourse.dept === "BUSI" &&
+                userCourse.num >= 300 &&
+                requiredCourse.dept === "COMM") {
+                return true;
+            }
+            // clearcut core requirement 
+            if (userCourse.dept === requiredCourse.dept &&
+                userCourse.num === requiredCourse.num)
+                return true;
+        }
+
+        function checkIfValidElective(userCourse) {
+            // this is designed off of cross table, like in 110
+            if (userCourse.dept !== "CPSC") return false; // elective must be cpsc
+            if (userCourse.num < 300) return false; // elective must be > 300
+            if (userCourse.num < 400 &&
+                user.electiveCounter[0] < 3) {
+                ++user.electiveCounter[0];
+                return true;
+            }
+            if (userCourse.num >= 400 &&
+                user.electiveCounter[1] < 3) {
+                ++user.electiveCounter[1];
+                return true;
+            }
+            if (userCourse.num >= 400 &&
+                user.electiveCounter[1] >= 3) {
+                alert(`Warning: ${userCourse.dept} ${userCourse.num} is a superfluous course`)
+                return true; // let them take it anyway 
+            }
+            if (userCourse.num < 400 &&
+                user.electiveCounter[0] >= 3) {
+                alert(`Warning: ${userCourse.dept} ${userCourse.num} is a superfluous course`)
+                return true; // let them take it anyway this alert will pop up on every reload TODO
+            } else {
+                // they have finished all of their electives
+                return true; // to let them add course, but it is superfluous
+            }
+
+        }
+
+        function checkIfValidBridging(userCourse) {
+            // guard from excessive CPSC courses
+            if (user.bridgingCpscCounter > 2)
+                alert("Warning: too many CPSC bridging courses"); // should never reach here
+            if (userCourse.dept === "CPSC" &&
+                user.bridgingCpscCounter >= 2) {
+                alert("Warning: There are too many CPSC Bridging courses") // should never reach here
+                return false;
+                // otherwise good to add
+            } else if (userCourse.num >= 300) return true;
+            // otherwise the course is below 300
+            return false;
+        }
+
+        function checkIfValidReplacement(userCourse) {
+            let courseLevel = Math.floor(userCourse.num / 100) * 100;
+            // best case, course level matches an exemption level
+            if (user.exemptionLevels.includes(courseLevel)) {
+                // remove exemption allowance from list since it is being used
+                user.exemptionLevels.splice(user.exemptionLevels.indexOf(courseLevel), 1);
+                return true;
+            } else if
+                // replacement is higher level than needed (surpassing the requirement)
+                (Math.max(user.exemptionLevels) <= courseLevel) {
+                user.exemptionLevels.splice(
+                    user.exemptionLevels.indexOf(Math.max(user.exemptionLevels)), 1);
+                return true;
+            } else { // your replacement is below the exemption level required
+                return false;
+            }
+        }
+
+        function alreadyComplete(userCourse, requiredCourse) {
+            if (userCourse.dept === "ENGL" &&
+                requiredCourse.dept === "ENGL" &&
+                requiredCourse.status === "complete") {
+                alert(`you have already met the 100 level english requirement`)
+                return true;
+            }
+            if (userCourse.dept === "ENGL" ||
+                userCourse.dept === "COMM" ||
+                userCourse.dept === "BUSI" ||
+                userCourse.dept === "SCIE" &&
+                userCourse.num >= 300 &&
+                requiredCourse.dept === "COMM" &&
+                requiredCourse.status === "complete") {
+                alert(`You have already met the 300 level communication requirement`)
+                return true;
+            }
+            if (userCourse.dept === requiredCourse.dept &&
+                userCourse.num === requiredCourse.num &&
+                (requiredCourse.status === "complete" ||
+                    userCourse.status === "complete")) {
+                alert(`Warning: You have already taken ${userCourse.dept} ${userCourse.num}`)
+                return true;
+            } else
+                return false; // success
+        }
+
+        // I want to make an array of p tags populated dynamically, example: 
+        //<p className={course.status}>{course.dept} {course.num}</p>
+        // let htmlArray = requirements.forEach(function(course) {
+        //     coreArray.push("somehow generate valid html here")
+        // })
+
+        // htmlArray
+
         return (
             <div>
                 <h4 className="center">Progress</h4>
                 <div className="col s12 card">
 
                     <h5 className="center">Core</h5>
-                    <progress max="18" value="8" className="col s12 core"/>
-                    <p className={ENGL100}>ENGL 100</p>
+                    <progress max="18" value="8" className="col s12 core" />
+                    {/* iterate to produce array of divs which can be inserted */}
+                    {/* <p className={ENGL100}>ENGL 100</p>
                     <p className={MATH180}>MATH 180</p>
                     <p className={STAT203}>STAT 203</p>
                     <p className={CPSC110}>CPSC 110</p>
@@ -71,23 +213,23 @@ class Results extends Component {
                     <p className={CPSC302}>elective 300+</p>
                     <p className={CPSC400}>elective 400+</p>
                     <p className={CPSC401}>elective 400+</p>
-                    <p className={CPSC402}>elective 400+</p>
+                    <p className={CPSC402}>elective 400+</p> */}
 
                     <h5 className="center">Bridging</h5>
-                    <progress max="5" value="1" className="col s12 bridging"/>
+                    <progress max="5" value="1" className="col s12 bridging" />
                     <p className="incomplete">1 out of 5</p>
 
                     <h5 className="center">Exemption Replacements</h5>
-                    <progress max="3" value="3" className="col s12 replacements"/>
+                    <progress max="3" value="3" className="col s12 replacements" />
                     <p className="complete">5 out of 5 - CONGRATS!</p>
                 </div>
             </div>
         )
     }
 }
-    const mapStateToProps = (state) => {
+const mapStateToProps = (state) => {
     return {
-        courses: state.courses
+        user: state.users[0]
     }
 }
 
