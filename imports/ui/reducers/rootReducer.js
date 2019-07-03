@@ -13,7 +13,7 @@ const initState = {
       "courses": [
         { "type": "core", "dept": "CPSC", "num": 110, "id": shortid.generate() },
         { "type": "core", "dept": "CPSC", "num": 210, "id": shortid.generate() },
-        { "type": "core", "dept": "ENGL", "num": 110, "id": shortid.generate() },
+        // { "type": "core", "dept": "ENGL", "num": 110, "id": shortid.generate() },
         { "type": "core", "dept": "MATH", "num": 200, "id": shortid.generate() },
         { "type": "bridging", "dept": "STAT", "num": 302, "id": shortid.generate() },
         { "type": "bridging", "dept": "STAT", "num": 305, "id": shortid.generate() },
@@ -30,7 +30,7 @@ const initState = {
 } // end initState
 
 const rootReducer = (state = initState, action) => {
-    console.log(state)
+    // console.log(state)
     if (action.type === 'DELETE_COURSE') {
 
       let core = state.courses.core.filter(currCourse => {

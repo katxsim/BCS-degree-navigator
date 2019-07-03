@@ -66,7 +66,7 @@ class Results extends Component {
                 !alreadyComplete(userCourse, requiredCourse)) {
                 return checkIfValidReplacement(userCourse)
             }
-            alert(`Warning: In uncharted territory with ${userCourse.dept} ${userCourse.num}`)
+            // alert(`Warning: In uncharted territory with ${userCourse.dept} ${userCourse.num}`)
             return true; // let them add it anyway, we should never get here, that's what the logging is for
         }
 
@@ -93,8 +93,8 @@ class Results extends Component {
 
         function checkIfValidElective(userCourse) {
             // this is designed off of cross table, like in 110
-            if (userCourse.dept !== "CPSC") return false;
-            if (userCourse.num < 300) return false;
+            if (userCourse.dept !== "CPSC") return false; // elective must be cpsc
+            if (userCourse.num < 300) return false; // elective must be > 300
             if (userCourse.num < 400 &&
                 user.electiveCounter[0] < 3) {
                 ++user.electiveCounter[0];
@@ -106,12 +106,12 @@ class Results extends Component {
                 return true;
             }
             if (userCourse.num >= 400 &&
-                user.electiveCounter[1] > 3) {
+                user.electiveCounter[1] >= 3) {
                 alert(`Warning: ${userCourse.dept} ${userCourse.num} is a superfluous course`)
                 return true; // let them take it anyway 
             }
             if (userCourse.num < 400 &&
-                user.electiveCounter[0] > 3) {
+                user.electiveCounter[0] >= 3) {
                 alert(`Warning: ${userCourse.dept} ${userCourse.num} is a superfluous course`)
                 return true; // let them take it anyway this alert will pop up on every reload TODO
             } else {
@@ -182,12 +182,12 @@ class Results extends Component {
 
         // I want to make an array of p tags populated dynamically, example: 
         //<p className={course.status}>{course.dept} {course.num}</p>
-        let htmlArray = requirements.forEach(function(course) {
-            coreArray.push("somehow generate valid html here")
-        })
+        // let htmlArray = requirements.forEach(function(course) {
+        //     coreArray.push("somehow generate valid html here")
+        // })
 
 
-        htmlArray
+        // htmlArray
 
         return (
             <div>
