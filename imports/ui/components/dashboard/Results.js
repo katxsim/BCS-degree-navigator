@@ -56,7 +56,7 @@ class Results extends Component {
                 !alreadyComplete(userCourse, requiredCourse)) {
                 return checkIfValidElective(userCourse)
             }
-            else if 
+            else if
                 (userCourse.type === "bridging" &&
                 !alreadyComplete(userCourse, requiredCourse)) {
                 return checkIfValidBridging(userCourse)
@@ -173,7 +173,7 @@ class Results extends Component {
             if (userCourse.dept === requiredCourse.dept &&
                 userCourse.num === requiredCourse.num &&
                 (requiredCourse.status === "complete" ||
-                userCourse.status === "complete")) {
+                    userCourse.status === "complete")) {
                 alert(`Warning: You have already taken ${userCourse.dept} ${userCourse.num}`)
                 return true;
             } else
@@ -185,7 +185,6 @@ class Results extends Component {
         // let htmlArray = requirements.forEach(function(course) {
         //     coreArray.push("somehow generate valid html here")
         // })
-
 
         // htmlArray
 

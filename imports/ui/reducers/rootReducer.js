@@ -1,5 +1,6 @@
-const shortid = require('shortid');
+const shortid = require("shortid");
 const initState = {
+
   "users": [
     // user 1
     {
@@ -8,7 +9,7 @@ const initState = {
       "lastName": "test1",
       "creditsEarned": 0,
       "bridgingCpscCounter": 0,
-      "electiveCounter": [3,0], // counts num 300, 400 electives
+      "electiveCounter": [3, 0], // counts num 300, 400 electives
       "exemptionLevels": [100, 200, 300], // update this when adding exemption and sort it
       "courses": [
         { "type": "core", "dept": "CPSC", "num": 110, "id": shortid.generate() },
@@ -30,37 +31,76 @@ const initState = {
 } // end initState
 
 const rootReducer = (state = initState, action) => {
-    // console.log(state)
-    if (action.type === 'DELETE_COURSE') {
-
-      let core = state.courses.core.filter(currCourse => {
-        return currCourse.id !== action.course.id
-      });
-      let bridging = state.courses.bridging.filter(currCourse => {
-        return currCourse.id !== action.course.id
-      });
-      let exemptions = state.courses.exemptions.filter(currCourse => {
-        return currCourse.id !== action.course.id
-      });
-      let replacements = state.courses.replacements.filter(currCourse => {
-        return currCourse.id !== action.course.id
-      });
-      console.log("you deleted " + action.course.dept + " " + action.course.num)
+  // console.log(state)
+  if (action.type === "ADD_COURSE") {
+    let newCourses = [];
+    if (action.course.type === "core") {
+      console.log("got to core");
+      newCourses = [...state.courses.core, action.course];
+      console.log(newCourses);
+      console.log({ ...state, courses: { core: newCourses } });
       return {
         ...state,
-        "courses": { core, bridging, exemptions, replacements }
-      }
-    }
-    if (action.type === 'ADD_USER') {
-      console.log(action.user)
-      let newUsers = [...state.users, action.user]
-      console.log(newUsers)
+        courses: { ...state.courses, core: newCourses }
+      };
+    } else if (action.course.type === "bridging") {
+      console.log("got to bridging");
+      newCourses = [...state.courses.bridging, action.course];
+      console.log(newCourses);
       return {
         ...state,
-        "users": newUsers
-      }
+        courses: { ...state.courses, bridging: newCourses }
+      };
+    } else if (action.course.type === "exemptions") {
+      console.log("got to exemptions");
+      newCourses = [...state.courses.exemptions, action.course];
+      console.log(newCourses);
+      return {
+        ...state,
+        courses: { ...state.courses, exemptions: newCourses }
+      };
+    } else {
+      console.log("got to replacements");
+      newCourses = [...state.courses.replacements, action.course];
+      console.log(newCourses);
+      return {
+        ...state,
+        courses: { ...state.courses, replacements: newCourses }
+      };
     }
-    return state;
   }
 
-export default rootReducer
+  console.log(state)
+  if (action.type === 'DELETE_COURSE') {
+
+    let core = state.courses.core.filter(currCourse => {
+      return currCourse.id !== action.course.id
+    });
+    let bridging = state.courses.bridging.filter(currCourse => {
+      return currCourse.id !== action.course.id
+    });
+    let exemptions = state.courses.exemptions.filter(currCourse => {
+      return currCourse.id !== action.course.id
+    });
+    let replacements = state.courses.replacements.filter(currCourse => {
+      return currCourse.id !== action.course.id
+    });
+    console.log("you deleted " + action.course.dept + " " + action.course.num)
+    return {
+      ...state,
+      "courses": { core, bridging, exemptions, replacements }
+    }
+  }
+  if (action.type === 'ADD_USER') {
+    console.log(action.user)
+    let newUsers = [...state.users, action.user]
+    console.log(newUsers)
+    return {
+      ...state,
+      "users": newUsers
+    }
+  }
+  return state;
+}
+
+export default rootReducer;
