@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { addCourse } from "../../actions/courseActions";
+import { Courses } from "../../../collections/courses";
 
 class Form extends Component {
-
   state = {
     dept: "",
     num: "",
@@ -39,14 +39,18 @@ class Form extends Component {
       this.state.grade !== "" &&
       this.state.type !== ""
     ) {
-      this.props.addCourse(this.state);
-      this.setState({
-        dept: "",
-        num: "",
-        grade: "",
-        type: ""
+      Courses.insert({
+        type: this.state.type,
+        dept: this.state.dept,
+        num: this.state.num,
+        grade: this.state.grade
       });
-
+      // this.props.addCourse(this.state);
+      // this.setState({
+      //   dept: "",
+      //   num: "",
+      //   grade: "",
+      //   type: ""
     }
   };
 
