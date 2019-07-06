@@ -7,7 +7,7 @@ const shortid = require("shortid");
 
 class CourseList extends Component {
   handleDelete = course => {
-    this.props.deleteCourse(course);
+    Courses.remove(course._id);
   };
 
   makeView = course => {
@@ -96,19 +96,6 @@ class CourseList extends Component {
     );
   }
 }
-
-const mapStateToProps = state => {
-  return {
-    courses: state.users[0].courses
-  };
-};
-const mapDispatchToProps = dispatch => {
-  return {
-    deleteCourse: course => {
-      dispatch(deleteCourse(course));
-    }
-  };
-};
 
 export default createContainer(() => {
   // Set up subscription
