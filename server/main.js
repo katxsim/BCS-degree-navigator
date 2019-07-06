@@ -26,7 +26,7 @@ Meteor.startup(() => {
     });
   }
 
-  Meteor.publish("courses", function() {
-    return Courses.find({}, { limit: 20 });
+  Meteor.publish("courses", function(per_page) {
+    return Courses.find({}, { limit: per_page });
   });
 });
