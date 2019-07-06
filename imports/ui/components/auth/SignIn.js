@@ -1,37 +1,48 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { addUser } from "../../actions/userActions";
+import {Courses} from "../../../collections/courses";
 
 class SignIn extends Component {
     state = {
         "email": '',
         "password": ''
-    }
-    handleChange = (e) => {
+    };
+
+    handleChange = e => {
         this.setState({
             [e.target.id]: e.target.value
         })
-    }
+    };
 
     handleSubmit = (e) => {
         e.preventDefault();
-        console.log(e.target.email)
+        console.log(e.target.email);
         console.log(e.target);
-        
+
         const user = {
             email: e.target.name.value,
             password: e.target.password,
-            fristName: e.target.firstName,
+            firstName: e.target.firstName,
             lastName: e.target.lastName
+        };
+        console.log(user);
+        if (
+            this.state.email !== "" &&
+            this.state.password !== "" &&
+            this.state.firstName !== "" &&
+            this.state.lastName !== ""
+        ) {
+            Users.insert({
+                email: this.state.email,
+                password: this.state.password,
+                firstName: this.state.firstName,
+                lastName: this.state.lastName
+            });
+            // this.setState({state: ""})
         }
-        console.log(user)
-        this.props.addUser(user);
-        // clear the form
-        e.target.email = ""
-        e.target.password = ""
-        e.target.firstName = ""
-        e.target.lastName = ""
-        // this.setState({state: ""})
-    }
+    };
+
     render() {
         // const { users } = this.props;
         return (
@@ -54,12 +65,6 @@ class SignIn extends Component {
         )
     }
 }
-
-// const mapStateToProps = (users) => {
-//     return {
-//         users: state.users
-//     }
-// }
 
 const mapDispatchToProps = (dispatch) => {
     return {

@@ -20,4 +20,4 @@ export const  deleteCourse = (course) => {
         type: "DELETE_COURSE",
         course: course
     }
-}
+};
