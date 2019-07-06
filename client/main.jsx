@@ -5,6 +5,7 @@ import { render } from "react-dom";
 import { Meteor } from "meteor/meteor";
 import App from "/imports/ui/App";
 import rootReducer from "../imports/ui/reducers/rootReducer";
+// import { Links } from '../imports/collections/links';
 
 const store = createStore(rootReducer);
 

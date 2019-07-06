@@ -2,6 +2,7 @@ import { Meteor } from "meteor/meteor";
 import { Courses } from "../imports/collections/courses";
 import _ from "lodash";
 import { image, helpers } from "faker";
+// import { Links } from '../imports/collections/links';
 
 Meteor.startup(() => {
   // Check to see if data exists in the collection
