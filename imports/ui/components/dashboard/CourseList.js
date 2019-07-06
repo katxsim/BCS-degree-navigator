@@ -1,5 +1,6 @@
+import { createContainer } from "meteor/react-meteor-data";
+import { Courses } from "../../../../imports/collections/courses";
 import React, { Component } from "react";
-import { connect } from "react-redux";
 import { deleteCourse } from "../../actions/courseActions";
 
 const shortid = require("shortid");
@@ -41,30 +42,30 @@ class CourseList extends Component {
         }
       })
     ) : (
-      <div className="">
-        <h6 className="left-align"> No Courses</h6>
-      </div>
-    );
+        <div className="">
+          <h6 className="left-align"> No Courses</h6>
+        </div>
+      );
 
     const postBridging = courses ? (
       courses.map(course => {
         if (course.type == "bridging") return this.makeView(course);
       })
     ) : (
-      <div className="courses container">
-        <h6 className="left-align" />
-      </div>
-    );
+        <div className="courses container">
+          <h6 className="left-align" />
+        </div>
+      );
 
     const postExemptions = courses ? (
       courses.map(course => {
         if (course.type == "exemptions") return this.makeView(course);
       })
     ) : (
-      <div className="courses container">
-        <h6 className="left-align" />
-      </div>
-    );
+        <div className="courses container">
+          <h6 className="left-align" />
+        </div>
+      );
 
     const postReplacements = courses ? (
       courses.map(course => {
@@ -74,10 +75,10 @@ class CourseList extends Component {
         }
       })
     ) : (
-      <div className="courses container">
-        <h6 className="left-align" />
-      </div>
-    );
+        <div className="courses container">
+          <h6 className="left-align" />
+        </div>
+      );
 
     return (
       <div className="center">
@@ -108,7 +109,10 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(CourseList);
+export default createContainer(() => {
+  // Set up subscription
+  Meteor.subscribe("courses");
+  // Return an object as props
+  return { courses: Courses.find({}).fetch() };
+}, CourseList);
+
