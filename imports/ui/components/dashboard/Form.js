@@ -45,12 +45,6 @@ class Form extends Component {
         num: this.state.num,
         grade: this.state.grade
       });
-      // this.props.addCourse(this.state);
-      // this.setState({
-      //   dept: "",
-      //   num: "",
-      //   grade: "",
-      //   type: ""
     }
   };
 
@@ -120,23 +114,6 @@ class Form extends Component {
               </select>
               <br />
             </div>
-
-            {/* <label>
-              <input type="radio" className="with-gap" name="course-group" />
-              <span>Core</span>
-            </label>
-            <label>
-              <input type="radio" className="with-gap" name="course-group" />
-              <span>Bridging</span>
-            </label>
-            <label>
-              <input type="radio" className="with-gap" name="course-group" />
-              <span>Exemption</span>
-            </label>
-            <label>
-              <input type="radio" className="with-gap" name="course-group" />
-              <span>Exemption Replacement</span>
-            </label> */}
 
             <button type="button" onClick={this.handleClick.bind(this)}>
               Add Course
