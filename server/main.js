@@ -1,31 +1,36 @@
-import { Meteor } from 'meteor/meteor';
-import Links from '/imports/api/links';
+import { Meteor } from "meteor/meteor";
+import { Courses } from "../imports/collections/courses";
+import _ from "lodash";
+import { image, helpers } from "faker";
 
-function insertLink(title, url) {
-  Links.insert({ title, url, createdAt: new Date() });
-}
+const shortid = require("shortid");
 
 Meteor.startup(() => {
-  // If the Links collection is empty, add some data.
-  if (Links.find().count() === 0) {
-    insertLink(
-      'Do the Tutorial',
-      'https://www.meteor.com/tutorials/react/creating-an-app'
-    );
-
-    insertLink(
-      'Follow the Guide',
-      'http://guide.meteor.com'
-    );
-
-    insertLink(
-      'Read the Docs',
-      'https://docs.meteor.com'
-    );
-
-    insertLink(
-      'Discussions',
-      'https://forums.meteor.com'
+  // Check to see if data exists in the collection
+  const numRecords = Courses.find({}).count();
+  if (!numRecords) {
+    // Generate data using lodash and faker
+    Courses.insert(
+      [
+        { "type": "core", "dept": "CPSC", "num": 110, "id": shortid.generate() },
+        { "type": "core", "dept": "CPSC", "num": 210, "id": shortid.generate() },
+        { "type": "core", "dept": "ENGL", "num": 110, "id": shortid.generate() },
+        { "type": "core", "dept": "MATH", "num": 200, "id": shortid.generate() },
+        { "type": "bridging", "dept": "STAT", "num": 302, "id": shortid.generate() },
+        { "type": "bridging", "dept": "STAT", "num": 305, "id": shortid.generate() },
+        { "type": "bridging", "dept": "STAT", "num": 306, "id": shortid.generate() },
+        { "type": "exemptions", "dept": "ENGL", "num": 110, "id": shortid.generate() },
+        { "type": "exemptions", "dept": "STAT", "num": 200, "id": shortid.generate() },
+        { "type": "exemptions", "dept": "MATH", "num": 180, "id": shortid.generate() },
+        { "type": "replacements", "dept": "MATH", "num": 221, "id": shortid.generate() },
+        { "type": "replacements", "dept": "MATH", "num": 200, "id": shortid.generate() },
+        { "type": "replacements", "dept": "DSCI", "num": 100, "id": shortid.generate() }
+      ]
     );
   }
+
+
+  Meteor.publish("courses", function () {
+    return Courses.find({}, { limit: 20 });
+  });
 });

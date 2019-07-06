@@ -1,0 +1,16 @@
+
+// To connect to serverside via commandline
+https://forums.meteor.dbcom/t/where-does-meteor-create-new-mongo-databases/43863/4
+
+// basic tutorial  // fail
+https://www.meteor.com/tutorials/blaze/collections
+
+// meteor collections guide
+https://guide.meteor.com/collections.html
+
+// data loading circle
+https://guide.meteor.com/data-loading.html
+
+// methods 
+https://guide.meteor.com/methods.html
+
