@@ -17,5 +17,5 @@ export default createContainer(() => {
   // Set up subscription
   Meteor.subscribe("courses");
   // Return an object as props
-  return { courses: Courses.find({}).fetch() };
+  return { courses: Courses.find().fetch() };
 }, CourseList);

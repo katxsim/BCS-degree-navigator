@@ -70,7 +70,7 @@ const rootReducer = (state = initState, action) => {
     }
   }
 
-  console.log(state)
+
   if (action.type === 'DELETE_COURSE') {
 
     let core = state.courses.core.filter(currCourse => {

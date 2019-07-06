@@ -17,7 +17,7 @@ class CourseList extends Component {
         className="col s12 left-align collection-item z-depth-1 white section"
       >
         <ul key={shortid.generate()}>
-          <li key={course.id}>
+          <li key={course._id}>
             {course.dept}: {course.num}
             <button
               className="btn-flat right delete"
@@ -32,7 +32,8 @@ class CourseList extends Component {
   };
 
   render() {
-    const { courses } = this.props;
+    const courses = this.props.courses;
+    console.log(this.props);
     console.log(courses);
 
     const postCore = courses ? (
