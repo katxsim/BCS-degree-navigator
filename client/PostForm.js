@@ -132,7 +132,7 @@ class PostForm extends React.Component {
         event.preventDefault();
 
         Courses.insert({
-            type: "exemptions",
+            type: "core",
             dept: "CPSC",
             num: "121",
         });
@@ -231,13 +231,13 @@ class PostForm extends React.Component {
 
 
 
-    handleSubmit(event) {
+    handleClick = e => {
         console.log('A dept was submitted: ' + this.state.dept);
         console.log('A num was submitted: ' + this.state.num);
         console.log('A grade was submitted: ' + this.state.grade);
         console.log('A type was submitted: ' + this.state.type);
 
-        event.preventDefault();
+        e.preventDefault();
 
         if (
             this.state.dept !== "" &&
@@ -412,7 +412,7 @@ class PostForm extends React.Component {
                             <Button value="replacement" onClick={this.handleReplacementChange.bind(this)}>Replacement</Button>
                         </Button.Group>
                     </div>
-                    <Button className="submitB" type='submit' onClick={this.handleSubmit.bind(this)}>Add Course</Button>
+                    <Button className="submitB" type='submit' onClick={this.handleClick.bind(this)}>Add Course</Button>
 
                 </Form>
             </Container>
