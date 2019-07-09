@@ -409,7 +409,7 @@ class PostForm extends React.Component {
                             <Button.Or/>
                             <Button value="exemption" onClick={this.handleExemptionChange.bind(this)}>Exemption</Button>
                             <Button.Or/>
-                            <Button value="replacement" onClick={this.handleReplacementChange.bind(this)}>Replacement</Button>
+                            <Button value="exemption replacement" onClick={this.handleReplacementChange.bind(this)}>Replacement</Button>
                         </Button.Group>
                     </div>
                     <Button className="submitB" type='submit' onClick={this.handleClick.bind(this)}>Add Course</Button>

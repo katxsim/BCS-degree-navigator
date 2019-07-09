@@ -3,6 +3,7 @@ import Form from './Form'
 import CourseList from './CourseList'
 import PostForm from "../../../../client/PostForm";
 import Progress from "./Progress";
+import CourseList2 from "./CourseList2";
 
 
 class Dashboard extends Component {
@@ -23,7 +24,7 @@ class Dashboard extends Component {
                         <PostForm/>
                     </div>
                     <div className="col s24 m12 l8">
-                        <CourseList />
+                        <CourseList2 />
                     </div>
                 </div>
                 <div>

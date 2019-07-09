@@ -29,9 +29,9 @@ class Results extends Component {
                 { "type": "exemptions", "dept": "ENGL", "num": 110, "id": shortid.generate() },
                 { "type": "exemptions", "dept": "STAT", "num": 200, "id": shortid.generate() },
                 { "type": "exemptions", "dept": "MATH", "num": 180, "id": shortid.generate() },
-                { "type": "replacements", "dept": "MATH", "num": 221, "id": shortid.generate() },
-                { "type": "replacements", "dept": "MATH", "num": 200, "id": shortid.generate() },
-                { "type": "replacements", "dept": "DSCI", "num": 100, "id": shortid.generate() }
+                { "type": "replacement", "dept": "MATH", "num": 221, "id": shortid.generate() },
+                { "type": "replacement", "dept": "MATH", "num": 200, "id": shortid.generate() },
+                { "type": "replacement", "dept": "DSCI", "num": 100, "id": shortid.generate() }
             ] // end courses
         } // end user; //
         // core
@@ -91,7 +91,7 @@ class Results extends Component {
                 return checkIfValidBridging(userCourse)
             }
             else if
-                (userCourse.type === "replacement" &&
+                (userCourse.type === "exemption replacement" &&
                 !alreadyComplete(userCourse, requiredCourse)) {
                 return checkIfValidReplacement(userCourse)
             }
@@ -243,14 +243,6 @@ class Results extends Component {
                     <p className={CPSC400}>elective 400+</p>
                     <p className={CPSC401}>elective 400+</p>
                     <p className={CPSC402}>elective 400+</p> */}
-
-                    <h5 className="center">Bridging</h5>
-                    <progress max="5" value="1" className="col s12 bridging" />
-                    <p className="incomplete">1 out of 5</p>
-
-                    <h5 className="center">Exemption Replacements</h5>
-                    <progress max="3" value="3" className="col s12 replacements" />
-                    <p className="complete">5 out of 5 - CONGRATS!</p>
                 </div>
             </div>
         )
