@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { addCourse } from "../../actions/courseActions";
 import { Courses } from "../../../collections/courses";
+import { createContainer } from "meteor/react-meteor-data";
+
 
 class Form extends Component {
   state = {
@@ -125,17 +127,10 @@ class Form extends Component {
   }
 }
 
-const mapDispatchToProps = dispatch => {
-  return {
-    addCourse: id => {
-      dispatch(addCourse(id));
-    }
-  };
-};
+export default createContainer(() => {
+  // Set up subscription
+  Meteor.subscribe("courses");
+  // Return an object as props
+  return { courses: Courses.find({}).fetch() };
+}, Form);
 
-export default connect(
-  () => {
-    return {};
-  },
-  mapDispatchToProps
-)(Form);

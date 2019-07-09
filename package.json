@@ -8,18 +8,24 @@
     "visualize": "meteor --production --extra-packages bundle-visualizer"
   },
   "dependencies": {
-    "@babel/runtime": "^7.4.5",
+    "@babel/runtime": "^7.5.2",
+    "bootstrap": "^4.3.1",
     "faker": "^4.1.0",
+    "jquery": "^3.4.1",
     "lodash": "^4.17.11",
     "material-design-icons": "^3.0.1",
+    "material-ui": "^0.20.2",
     "meteor-node-stubs": "^0.4.1",
     "react": "^16.8.6",
     "react-addons-pure-render-mixin": "^15.6.2",
+    "react-bootstrap": "^1.0.0-beta.9",
     "react-dom": "^16.8.6",
     "react-redux": "^7.1.0",
     "react-router-dom": "^5.0.1",
     "redux": "^4.0.1",
-    "shortid": "^2.2.14"
+    "semantic-ui-react": "^0.87.2",
+    "shortid": "^2.2.14",
+    "simpl-schema": "^1.5.5"
   },
   "meteor": {
     "mainModule": {
@@ -27,5 +33,27 @@
       "server": "server/main.js"
     },
     "testModule": "tests/main.js"
+  },
+  "devDependencies": {
+    "autoprefixer": "^6.7.7",
+    "postcss": "^6.0.22",
+    "postcss-load-config": "^1.2.0",
+    "postcss-easy-import": "^1.0.1",
+    "postcss-nested": "^1.0.0",
+    "postcss-simple-vars": "^3.0.0",
+    "rucksack-css": "^0.8.6"
+  },
+  "postcss": {
+    "plugins": {
+      "postcss-easy-import": {},
+      "postcss-nested": {},
+      "postcss-simple-vars": {},
+      "rucksack-css": {},
+      "autoprefixer": {
+        "browsers": [
+          "last 2 versions"
+        ]
+      }
+    }
   }
 }

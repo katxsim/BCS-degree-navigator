@@ -79,3 +79,15 @@ input[type=password]:not(.browser-default):focus:not([readonly]) + label{
   color: rgba(51, 153, 153, 0.54);
 
 }
+
+.submitB {
+  margin-top:20px !important;
+}
+
+.easyS {
+  margin-top:20px !important;
+}
+
+.pForm {
+  /*background-color:rgba(98, 173, 202, 0.2) !important;*/
+}
