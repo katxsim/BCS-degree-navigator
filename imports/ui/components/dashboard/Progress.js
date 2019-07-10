@@ -19,7 +19,7 @@ const ProgressExampleSize = () => (
             Overall Progress: 65%
         </Header>
         <Progress percent={65} color='grey' active/>
-        <Message info header='Overall Progress Details' content="You need 6 more courses overall to be finished!" />
+        <Message className="lProg" info header='Overall Progress Details' content="You need 6 more courses overall to be finished!" />
 
     </div>
 )

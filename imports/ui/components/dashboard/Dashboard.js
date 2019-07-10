@@ -4,6 +4,7 @@ import CourseList from './CourseList'
 import PostForm from "../../../../client/PostForm";
 import Progress from "./Progress";
 import CourseList2 from "./CourseList2";
+import Footer from "../layout/Footer";
 
 
 class Dashboard extends Component {
@@ -29,6 +30,7 @@ class Dashboard extends Component {
                 </div>
                 <div>
                     <Progress/>
+                    <Footer/>
                 </div>
             </div>
         )
