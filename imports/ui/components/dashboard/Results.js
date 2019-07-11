@@ -1,10 +1,39 @@
 import React, { Component } from 'react'
+import { createContainer } from "meteor/react-meteor-data";
+
 import { connect } from 'react-redux'
+import {Users} from "../../../collections/users";
+
+
+const shortid = require('shortid');
 
 class Results extends Component {
 
     render() {
-        const { user } = this.props; // 
+        const  user  =  {
+            "email": "test1@gmail.com",
+            "firstName": "test1",
+            "lastName": "test1",
+            "creditsEarned": 0,
+            "bridgingCpscCounter": 0,
+            "electiveCounter": [3, 0], // counts num 300, 400 electives
+            "exemptionLevels": [100, 200, 300], // update this when adding exemption and sort it
+            "courses": [
+                { "type": "core", "dept": "CPSC", "num": 110, "id": shortid.generate() },
+                { "type": "core", "dept": "CPSC", "num": 210, "id": shortid.generate() },
+                // { "type": "core", "dept": "ENGL", "num": 110, "id": shortid.generate() },
+                { "type": "core", "dept": "MATH", "num": 200, "id": shortid.generate() },
+                { "type": "bridging", "dept": "STAT", "num": 302, "id": shortid.generate() },
+                { "type": "bridging", "dept": "STAT", "num": 305, "id": shortid.generate() },
+                { "type": "bridging", "dept": "STAT", "num": 306, "id": shortid.generate() },
+                { "type": "exemptions", "dept": "ENGL", "num": 110, "id": shortid.generate() },
+                { "type": "exemptions", "dept": "STAT", "num": 200, "id": shortid.generate() },
+                { "type": "exemptions", "dept": "MATH", "num": 180, "id": shortid.generate() },
+                { "type": "replacement", "dept": "MATH", "num": 221, "id": shortid.generate() },
+                { "type": "replacement", "dept": "MATH", "num": 200, "id": shortid.generate() },
+                { "type": "replacement", "dept": "DSCI", "num": 100, "id": shortid.generate() }
+            ] // end courses
+        } // end user; //
         // core
         let requirements = [
             { "type": "core", "dept": "ENGL", "num": 100, "status": "incomplete", "credits": 3 },
@@ -62,7 +91,7 @@ class Results extends Component {
                 return checkIfValidBridging(userCourse)
             }
             else if
-                (userCourse.type === "replacement" &&
+                (userCourse.type === "exemption replacement" &&
                 !alreadyComplete(userCourse, requiredCourse)) {
                 return checkIfValidReplacement(userCourse)
             }
@@ -214,23 +243,10 @@ class Results extends Component {
                     <p className={CPSC400}>elective 400+</p>
                     <p className={CPSC401}>elective 400+</p>
                     <p className={CPSC402}>elective 400+</p> */}
-
-                    <h5 className="center">Bridging</h5>
-                    <progress max="5" value="1" className="col s12 bridging" />
-                    <p className="incomplete">1 out of 5</p>
-
-                    <h5 className="center">Exemption Replacements</h5>
-                    <progress max="3" value="3" className="col s12 replacements" />
-                    <p className="complete">5 out of 5 - CONGRATS!</p>
                 </div>
             </div>
         )
     }
 }
-const mapStateToProps = (state) => {
-    return {
-        user: state.users[0]
-    }
-}
 
-export default connect(mapStateToProps, null)(Results)
+export default Results

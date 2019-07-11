@@ -1,7 +1,11 @@
 import React, {Component} from 'react'
 import Form from './Form'
 import CourseList from './CourseList'
-import Results from './Results'
+import PostForm from "../../../../client/PostForm";
+import Progress from "./Progress";
+import CourseList2 from "./CourseList2";
+import Footer from "../layout/Footer";
+
 
 class Dashboard extends Component {
     render() {
@@ -17,16 +21,16 @@ class Dashboard extends Component {
                 </div>
 
                 <div className="row">
-                    <div className="col s12 m6 l4">
-                        <Form /> 
+                    <div className="col s24 m14 l8">
+                        <PostForm/>
                     </div>
-                    <div className="col s12 m6 l4">
-                        <CourseList />
+                    <div className="col s24 m12 l8">
+                        <CourseList2 />
                     </div>
-                    <div className="col s12 m12 l4">
-                        <Results />
-                        <img className="img2" src="https://brand3.sites.olt.ubc.ca/files/2018/09/5NarrowLogo_ex_768.png" alt=""/>
-                    </div>
+                </div>
+                <div>
+                    <Progress/>
+                    <Footer/>
                 </div>
             </div>
         )

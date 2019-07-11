@@ -70,7 +70,7 @@ class CourseList extends Component {
 
     const postReplacements = courses ? (
       courses.map(course => {
-        if (course.type == "replacements") {
+        if (course.type == "exemption replacement") {
           console.log(course);
           return this.makeView(course);
         }
