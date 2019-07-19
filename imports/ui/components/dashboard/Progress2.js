@@ -5,7 +5,9 @@ class Progress2 extends Component {
   render() {
     return (
       <div>
-        <div className="ui bottom attached segment tab">Progress 2 Display</div>
+        <div className="ui bottom attached segment active tab">
+          Progress 2 Display
+        </div>
       </div>
     );
   }

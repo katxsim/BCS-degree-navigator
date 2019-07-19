@@ -5,14 +5,35 @@ import Progress2 from "./Progress2";
 import Progress3 from "./Progress3";
 
 const panes = [
-  { menuItem: "1", pane: <Progress1 /> },
-  { menuItem: "2", pane: <Progress2 /> },
-  { menuItem: "3", pane: <Progress3 /> }
+  {
+    menuItem: "1",
+    render: () => (
+      <Tab.Pane>
+        <Progress1 />
+      </Tab.Pane>
+    )
+  },
+  {
+    menuItem: "2",
+    render: () => (
+      <Tab.Pane>
+        <Progress2 />
+      </Tab.Pane>
+    )
+  },
+  {
+    menuItem: "3",
+    render: () => (
+      <Tab.Pane>
+        <Progress3 />
+      </Tab.Pane>
+    )
+  }
 ];
 
 class Progress extends Component {
   render() {
-    return <Tab panes={panes} renderActiveOnly={false} />;
+    return <Tab panes={panes} />;
   }
 }
 
