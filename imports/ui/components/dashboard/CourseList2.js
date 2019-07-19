@@ -1,5 +1,5 @@
 import React from 'react';
-import {Button, Form, Header, Image, List} from 'semantic-ui-react'
+import { Button, Form, Header, Image, List } from 'semantic-ui-react'
 import { Courses } from "../../../../imports/collections/courses";
 import { createContainer } from "meteor/react-meteor-data";
 
@@ -9,6 +9,7 @@ const shortid = require("shortid");
 class CourseList2 extends React.Component {
     handleDelete = course => {
         Courses.remove(course._id);
+        console.log(Courses)
     };
 
     makeView = course => {
@@ -42,30 +43,30 @@ class CourseList2 extends React.Component {
                 }
             })
         ) : (
-            <div className="">
-                <h6 className="left-align"> No Courses</h6>
-            </div>
-        );
+                <div className="">
+                    <h6 className="left-align"> No Courses</h6>
+                </div>
+            );
 
         const postBridging = courses ? (
             courses.map(course => {
                 if (course.type == "bridging") return this.makeView(course);
             })
         ) : (
-            <div className="courses container">
-                <h6 className="left-align" />
-            </div>
-        );
+                <div className="courses container">
+                    <h6 className="left-align" />
+                </div>
+            );
 
         const postExemptions = courses ? (
             courses.map(course => {
                 if (course.type == "exemptions") return this.makeView(course);
             })
         ) : (
-            <div className="courses container">
-                <h6 className="left-align" />
-            </div>
-        );
+                <div className="courses container">
+                    <h6 className="left-align" />
+                </div>
+            );
 
         const postReplacements = courses ? (
             courses.map(course => {
@@ -75,10 +76,10 @@ class CourseList2 extends React.Component {
                 }
             })
         ) : (
-            <div className="courses container">
-                <h6 className="left-align" />
-            </div>
-        );
+                <div className="courses container">
+                    <h6 className="left-align" />
+                </div>
+            );
 
         return (
             <List divided verticalAlign='middle' size='huge'>
@@ -87,8 +88,8 @@ class CourseList2 extends React.Component {
                 <List.Item>
                     <Header size="large">
                         <Image circular
-                               src="https://www.pngkey.com/png/detail/113-1132113_image-royalty-free-library-rocking-clipart-grey-rock.png" />
-                               Core
+                            src="https://www.pngkey.com/png/detail/113-1132113_image-royalty-free-library-rocking-clipart-grey-rock.png" />
+                        Core
                     </Header>
                     <List.Content floated='right'>
                     </List.Content>
@@ -100,7 +101,7 @@ class CourseList2 extends React.Component {
 
                     <Header size="large">
                         <Image circular
-                               src='http://clipart-library.com/img/1005262.jpg' />
+                            src='http://clipart-library.com/img/1005262.jpg' />
                         Bridging
                     </Header>
                     <List.Content floated='right'>
@@ -113,7 +114,7 @@ class CourseList2 extends React.Component {
 
                     <Header size="large">
                         <Image circular
-                               src="https://cdn2.iconfinder.com/data/icons/cloud-12/164/12-512.png" />
+                            src="https://cdn2.iconfinder.com/data/icons/cloud-12/164/12-512.png" />
                         Exemptions
                     </Header>
                     <List.Content floated='right'>
@@ -124,7 +125,7 @@ class CourseList2 extends React.Component {
                 <List.Item>
                     <Header size="large">
                         <Image circular
-                               src='https://cdn.iconscout.com/icon/premium/png-512-thumb/initializing-7-386139.png' />
+                            src='https://cdn.iconscout.com/icon/premium/png-512-thumb/initializing-7-386139.png' />
                         Exemption Replacements
                     </Header>
                     <List.Content floated='right'>
