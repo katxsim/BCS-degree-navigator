@@ -1,28 +1,42 @@
-import React from 'react'
-import { Header, Progress, Message } from 'semantic-ui-react'
+import React, { Component } from "react";
+import { Tab } from "semantic-ui-react";
+import Progress1 from "./Progress1";
+import Progress2 from "./Progress2";
+import Progress3 from "./Progress3";
 // import { Users } from "../../../../collection/users"
 
-const ProgressExampleSize = () => (
-    <div>
-        <Header as='h3' block>
-            Core Progress: 70%
-        </Header>
-        <Progress percent={70} color='olive' active />
-        <Message info header='Core Progress Details' content="You need 2 more core courses." />
+const panes = [
+  {
+    menuItem: "1",
+    render: () => (
+      <Tab.Pane>
+        <Progress1 />
+      </Tab.Pane>
+    )
+  },
+  {
+    menuItem: "2",
+    render: () => (
+      <Tab.Pane>
+        <Progress2 />
+      </Tab.Pane>
+    )
+  },
+  {
+    menuItem: "3",
+    render: () => (
+      <Tab.Pane>
+        <Progress3 />
+      </Tab.Pane>
+    )
+  }
+];
 
-        <Header as='h3' block>
-            Bridging Progress: 30%
-        </Header>
-        <Progress percent={30} color='violet' active />
-        <Message info header='Bridging Progress Details' content="You need 3 more bridging courses." />
+class Progress extends Component {
+  render() {
+    return <Tab panes={panes} />;
+  }
+}
 
-        <Header as='h3' block>
-            Overall Progress: 65%
-        </Header>
-        <Progress percent={65} color='grey' active />
-        <Message className="lProg" info header='Overall Progress Details' content="You need 6 more courses overall to be finished!" />
+export default Progress;
 
-    </div>
-)
-
-export default ProgressExampleSize
