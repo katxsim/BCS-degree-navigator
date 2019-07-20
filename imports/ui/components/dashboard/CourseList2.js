@@ -91,7 +91,7 @@ class CourseList2 extends React.Component {
             <List divided verticalAlign='middle' size='huge'>
 
 
-                <List.Item>
+                <List.Item key={shortid.generate()} >
                     <Header size="large">
                         <Image circular
                             src="https://www.pngkey.com/png/detail/113-1132113_image-royalty-free-library-rocking-clipart-grey-rock.png" />
@@ -103,7 +103,7 @@ class CourseList2 extends React.Component {
                 </List.Item>
 
 
-                <List.Item>
+                <List.Item key={shortid.generate()} >
 
                     <Header size="large">
                         <Image circular
@@ -116,7 +116,7 @@ class CourseList2 extends React.Component {
                 </List.Item>
 
 
-                <List.Item>
+                <List.Item key={shortid.generate()} >
 
                     <Header size="large">
                         <Image circular
@@ -128,7 +128,7 @@ class CourseList2 extends React.Component {
                     <List.Content>{postExemptions}</List.Content>
                 </List.Item>
 
-                <List.Item>
+                <List.Item key={shortid.generate()} >
                     <Header size="large">
                         <Image circular
                             src='https://cdn.iconscout.com/icon/premium/png-512-thumb/initializing-7-386139.png' />

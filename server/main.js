@@ -22,30 +22,27 @@ Meteor.startup(() => {
       "firstName": "Good",
       "lastName": "Student",
       "creditsEarned": 0,
-      "bridgingCpscCounter": 0,
-      "electiveCounter": [3, 0], // counts num 300, 400 electives
-      "exemptionLevels": [100, 200, 300], // update this when adding exemption and sort it
       "requirements": {
         "core":
         {
           CPSC: [
-            { "110": "incomplete" },
-            { "121": "incomplete" },
-            { "210": "incomplete" },
-            { "221": "incomplete" },
-            { "213": "incomplete" },
-            { "310": "incomplete" },
-            { "313": "incomplete" },
-            { "320": "incomplete" }
+            { "num": 110, status: "incomplete" },
+            { "num": "121", "status": "incomplete" },
+            { "num": "210", "status": "incomplete" },
+            { "num": "221", "status": "incomplete" },
+            { "num": "213", "status": "incomplete" },
+            { "num": "310", "status": "incomplete" },
+            { "num": "313", "status": "incomplete" },
+            { "num": "320", "status": "incomplete" }
           ],
           "ENGL": "incomplete",
           "MATH": "incomplete",
           "STAT": "incomplete",
           "COMM": "incomplete"
         },
-        "elective": [0, 0], // elective[0] is num <400 completed
-        "bridging": [0, 0], // bridging[0] is cpsc bridging courses completed
-        "replacements": [100, 100, 200] // list of min course levels that can be used to replace
+        "elective": [0, 0], // elective[0] is 300 < num <400 completed
+        "bridging": { "CPSC": 0, "OTHER": 0 },
+        "replacements": [100, 100, 200] // list of min course levels that can be used to replace an exemption
       },
       "courses": [
         { "type": "core", "dept": "CPSC", "num": 110, "id": shortid.generate() },
