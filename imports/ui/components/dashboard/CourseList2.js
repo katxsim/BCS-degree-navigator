@@ -1,13 +1,11 @@
 import React from 'react';
 import { Button, Form, Header, Image, List } from 'semantic-ui-react'
 import { Users } from "../../../../imports/collections/users";
+import { BaseRequirements } from "../../../../imports/collections/usefulBits";
 import { createContainer } from "meteor/react-meteor-data";
 
-
 const shortid = require("shortid");
-
-
-
+console.log(BaseRequirements)
 
 class CourseList2 extends React.Component {
 
@@ -19,13 +17,9 @@ class CourseList2 extends React.Component {
         })
         let newUser = user;
         newUser.courses = newCourses;
-        // console.log(newUser.courses);
+        newUser.requirements = BaseRequirements;
         Users.update({ "_id": userID }, newUser);
-
-
-
-        // Users.updateOne({ email: "test1@gmail.com", newUserObject })
-        // console.log(Users.find({ email: "test1@gmail.com" }).fetch()[0].courses)
+        console.log("deleted: " + course.dept + " " + course.num)
     }
 
 
@@ -42,7 +36,6 @@ class CourseList2 extends React.Component {
                     <Image avatar className="core" src='http://clipart-library.com/images/6iyooG6bT.png' />
                     <List.Content>{course.dept}: {course.num}</List.Content>
                 </List.Item>
-
 
             </List>
         );
@@ -87,7 +80,6 @@ class CourseList2 extends React.Component {
         const postReplacements = courses ? (
             courses.map(course => {
                 if (course.type == "replacement") {
-                    console.log(course);
                     return this.makeView(course, user);
                 }
             })
@@ -101,7 +93,7 @@ class CourseList2 extends React.Component {
             <List divided verticalAlign='middle' size='huge'>
 
 
-                <List.Item>
+                <List.Item key={shortid.generate()} >
                     <Header size="large">
                         <Image circular
                             src="https://www.pngkey.com/png/detail/113-1132113_image-royalty-free-library-rocking-clipart-grey-rock.png" />
@@ -113,7 +105,7 @@ class CourseList2 extends React.Component {
                 </List.Item>
 
 
-                <List.Item>
+                <List.Item key={shortid.generate()} >
 
                     <Header size="large">
                         <Image circular
@@ -126,7 +118,7 @@ class CourseList2 extends React.Component {
                 </List.Item>
 
 
-                <List.Item>
+                <List.Item key={shortid.generate()} >
 
                     <Header size="large">
                         <Image circular
@@ -138,7 +130,7 @@ class CourseList2 extends React.Component {
                     <List.Content>{postExemptions}</List.Content>
                 </List.Item>
 
-                <List.Item>
+                <List.Item key={shortid.generate()} >
                     <Header size="large">
                         <Image circular
                             src='https://cdn.iconscout.com/icon/premium/png-512-thumb/initializing-7-386139.png' />
