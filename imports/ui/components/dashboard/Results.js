@@ -2,14 +2,18 @@ import React, { Component } from 'react'
 import { createContainer } from "meteor/react-meteor-data";
 
 import { connect } from 'react-redux'
-import { Users } from "../../../collections/users";
+import { Users } from "../../../collection/users"
 
 
 const shortid = require('shortid');
 
+
+
 class Results extends Component {
 
     render() {
+        const user = Users.find({})
+        console.log(user);
         const user = {
             "email": "test1@gmail.com",
             "firstName": "Good",

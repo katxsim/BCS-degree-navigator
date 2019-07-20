@@ -1,24 +1,44 @@
 import React from 'react';
 import { Button, Form, Header, Image, List } from 'semantic-ui-react'
-import { Courses } from "../../../../imports/collections/courses";
+import { Users } from "../../../../imports/collections/users";
 import { createContainer } from "meteor/react-meteor-data";
 
 
 const shortid = require("shortid");
 
-class CourseList2 extends React.Component {
-    handleDelete = course => {
-        Courses.remove(course._id);
-        console.log(Courses)
-    };
 
-    makeView = course => {
+
+
+class CourseList2 extends React.Component {
+
+    handleDelete = (course, user) => {
+        const id = course.id;
+        const userID = user._id;
+        console.log(userID)
+        const newCourses = user.courses.filter(function (course) {
+            return course.id !== id;
+        })
+        let newUser = user;
+        newUser.courses = newCourses;
+        // console.log(newUser.courses);
+        Users.update({ "_id": userID }, newUser);
+
+
+
+        // Users.updateOne({ email: "test1@gmail.com", newUserObject })
+        // console.log(Users.find({ email: "test1@gmail.com" }).fetch()[0].courses)
+    }
+
+
+
+
+    makeView = (course, user) => {
         return (
             <List divided verticalAlign='middle' size='small'>
 
                 <List.Item key={shortid.generate()}>
                     <List.Content key={course._id} floated='right'>
-                        <Button onClick={() => this.handleDelete(course)}>Delete</Button>
+                        <Button onClick={() => this.handleDelete(course, user)}>Delete</Button>
                     </List.Content>
                     <Image avatar className="core" src='http://clipart-library.com/images/6iyooG6bT.png' />
                     <List.Content>{course.dept}: {course.num}</List.Content>
@@ -29,17 +49,16 @@ class CourseList2 extends React.Component {
         );
     };
 
-
-
     render() {
-        const courses = this.props.courses;
-        console.log(this.props);
-        console.log(courses);
+        const user = this.props.user;
+        console.log(user);
+        const courses = user ? user.courses : "";
+        console.log(courses)
 
         const postCore = courses ? (
             courses.map(course => {
                 if (course.type == "core") {
-                    return this.makeView(course);
+                    return this.makeView(course, user);
                 }
             })
         ) : (
@@ -50,7 +69,7 @@ class CourseList2 extends React.Component {
 
         const postBridging = courses ? (
             courses.map(course => {
-                if (course.type == "bridging") return this.makeView(course);
+                if (course.type == "bridging") return this.makeView(course, user);
             })
         ) : (
                 <div className="courses container">
@@ -60,7 +79,7 @@ class CourseList2 extends React.Component {
 
         const postExemptions = courses ? (
             courses.map(course => {
-                if (course.type == "exemptions") return this.makeView(course);
+                if (course.type == "exemptions") return this.makeView(course, user);
             })
         ) : (
                 <div className="courses container">
@@ -70,9 +89,9 @@ class CourseList2 extends React.Component {
 
         const postReplacements = courses ? (
             courses.map(course => {
-                if (course.type == "exemption replacement") {
+                if (course.type == "replacement") {
                     console.log(course);
-                    return this.makeView(course);
+                    return this.makeView(course, user);
                 }
             })
         ) : (
@@ -134,12 +153,16 @@ class CourseList2 extends React.Component {
                 </List.Item>
             </List>
         );
+
+
     }
 }
 
 export default createContainer(() => {
     // Set up subscription
-    Meteor.subscribe("courses");
+    Meteor.subscribe("users");
     // Return an object as props
-    return { courses: Courses.find({}).fetch() };
+    return ({
+        user: Users.find({ email: "test1@gmail.com" }).fetch()[0]
+    });
 }, CourseList2);
