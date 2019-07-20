@@ -14,7 +14,6 @@ class CourseList2 extends React.Component {
     handleDelete = (course, user) => {
         const id = course.id;
         const userID = user._id;
-        console.log(userID)
         const newCourses = user.courses.filter(function (course) {
             return course.id !== id;
         })
@@ -51,9 +50,7 @@ class CourseList2 extends React.Component {
 
     render() {
         const user = this.props.user;
-        console.log(user);
         const courses = user ? user.courses : "";
-        console.log(courses)
 
         const postCore = courses ? (
             courses.map(course => {
