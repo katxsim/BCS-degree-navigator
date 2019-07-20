@@ -59,7 +59,7 @@ class Progress2 extends Component {
                 <Icon name="checkmark" />
                 MATH 180
               </Table.Cell>
-              <Table.Cell negative>Bridging 5</Table.Cell>
+              <Table.Cell warning>Bridging 5</Table.Cell>
             </Table.Row>
             <Table.Row>
               <Table.Cell positive>
@@ -117,7 +117,7 @@ class Progress2 extends Component {
               <Table.Cell />
             </Table.Row>
             <Table.Row>
-              <Table.Cell negative>CPSC 4xx</Table.Cell>
+              <Table.Cell warning>CPSC 4xx</Table.Cell>
               <Table.Cell />
             </Table.Row>
             <Table.Row>
