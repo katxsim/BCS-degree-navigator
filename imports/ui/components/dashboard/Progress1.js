@@ -1,8 +1,98 @@
 import React, { Component } from "react";
 import { Header, Progress, Message } from "semantic-ui-react";
+import { createContainer } from "meteor/react-meteor-data";
+import { Users } from "../../../../imports/collections/users";
+
+
 
 class Progress1 extends Component {
   render() {
+    const user = this.props.user
+
+    user ? user.courses.forEach(function (course) {
+      switch (course.type) {
+        case "core":
+          switch (course.dept) {
+            case "CPSC":
+              switch (course.num) {
+                case "110":
+                  break;
+                case "121":
+                  break;
+                case "210":
+                  break;
+                case "221":
+                  break;
+                case "213":
+                  break;
+                case "310":
+                  break;
+                case "313":
+                  break;
+                case "320":
+                  break;
+              } // end  CORE CPSC
+              break;
+            case "ENGL":
+              break;
+            case "MATH":
+              break;
+            case "STAT":
+              break;
+            case "COMM":
+              break;
+          } // END CORE
+          break;
+        case "elective":
+          checkElective(course);
+          break;
+        case "bridging":
+          checkBridging(course);
+          break;
+        case "replacement":
+          checkReplacement(course);
+          break;
+      }
+    }) : "";
+
+    function checkCore(course) {
+      // user.requirements.core.
+    }
+    function checkElective(course) {
+
+    }
+    function checkBridging(course) {
+
+    }
+    function checkReplacement(course) {
+
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+    // if (course.type === "core") {
+    //   checkCore(course)
+    // }
+    // if (course.type === "elective") {
+    //   checkElective(course)
+    // }
+    // if (course.type === "bridging") {
+    //   checkbridging(course)
+    // }
+    // if (course.type === "replacement") {
+    //   checkReplacement(course)
+    // }
+    // update the list of requirements, send to server, and render it
+
     return (
       <div>
         <div className="ui bottom attached segment active tab">
@@ -42,4 +132,11 @@ class Progress1 extends Component {
   }
 }
 
-export default Progress1;
+export default createContainer(() => {
+  // Set up subscription
+  Meteor.subscribe("users");
+  // Return an object as props
+  return ({
+    user: Users.find({ "email": "test1@gmail.com" }).fetch()[0]
+  });
+}, Progress1);

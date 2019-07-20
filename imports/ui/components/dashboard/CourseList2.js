@@ -3,11 +3,7 @@ import { Button, Form, Header, Image, List } from 'semantic-ui-react'
 import { Users } from "../../../../imports/collections/users";
 import { createContainer } from "meteor/react-meteor-data";
 
-
 const shortid = require("shortid");
-
-
-
 
 class CourseList2 extends React.Component {
 
@@ -21,11 +17,7 @@ class CourseList2 extends React.Component {
         newUser.courses = newCourses;
         // console.log(newUser.courses);
         Users.update({ "_id": userID }, newUser);
-
-
-
-        // Users.updateOne({ email: "test1@gmail.com", newUserObject })
-        // console.log(Users.find({ email: "test1@gmail.com" }).fetch()[0].courses)
+        console.log("deleted: " + course.dept + " " + course.num)
     }
 
 
@@ -42,7 +34,6 @@ class CourseList2 extends React.Component {
                     <Image avatar className="core" src='http://clipart-library.com/images/6iyooG6bT.png' />
                     <List.Content>{course.dept}: {course.num}</List.Content>
                 </List.Item>
-
 
             </List>
         );
@@ -87,7 +78,6 @@ class CourseList2 extends React.Component {
         const postReplacements = courses ? (
             courses.map(course => {
                 if (course.type == "replacement") {
-                    console.log(course);
                     return this.makeView(course, user);
                 }
             })

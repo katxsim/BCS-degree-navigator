@@ -10,8 +10,9 @@ Meteor.startup(() => {
   // console.log(process.env.MONGO_URL);
   // process.env.MONGO_URL = "mongodb://m001-student:m001-mongodb-basics@cluster0-n7b3j.mongodb.net/bcsdn?retryWrites=true&w=majority"
   // Check to see if data exists in the collection
-  const numRecords = Users.find({ email: "test1@gmail.com" }).count();
-  const users = Users.find({ email: "test1@gmail.com" }).fetch();
+  const numRecords = Users.find().count();
+  const users = Users.find().fetch();
+
   console.log(users)
   console.log(numRecords);
 
@@ -24,6 +25,28 @@ Meteor.startup(() => {
       "bridgingCpscCounter": 0,
       "electiveCounter": [3, 0], // counts num 300, 400 electives
       "exemptionLevels": [100, 200, 300], // update this when adding exemption and sort it
+      "requirements": {
+        "core":
+        {
+          CPSC: [
+            { "110": "incomplete" },
+            { "121": "incomplete" },
+            { "210": "incomplete" },
+            { "221": "incomplete" },
+            { "213": "incomplete" },
+            { "310": "incomplete" },
+            { "313": "incomplete" },
+            { "320": "incomplete" }
+          ],
+          "ENGL": "incomplete",
+          "MATH": "incomplete",
+          "STAT": "incomplete",
+          "COMM": "incomplete"
+        },
+        "elective": [0, 0], // elective[0] is num <400 completed
+        "bridging": [0, 0], // bridging[0] is cpsc bridging courses completed
+        "replacements": [100, 100, 200] // list of min course levels that can be used to replace
+      },
       "courses": [
         { "type": "core", "dept": "CPSC", "num": 110, "id": shortid.generate() },
         { "type": "core", "dept": "CPSC", "num": 210, "id": shortid.generate() },
