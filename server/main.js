@@ -25,14 +25,14 @@ Meteor.startup(() => {
         "core":
         {
           CPSC: [
-            { "num": 110, "status": "incomplete" },
-            { "num": 121, "status": "incomplete" },
-            { "num": 210, "status": "incomplete" },
-            { "num": 221, "status": "incomplete" },
-            { "num": 213, "status": "incomplete" },
-            { "num": 310, "status": "incomplete" },
-            { "num": 313, "status": "incomplete" },
-            { "num": 320, "status": "incomplete" }
+            { "num": s, "status": "incomplete" },
+            { "num": s, "status": "incomplete" },
+            { "num": s, "status": "incomplete" },
+            { "num": s, "status": "incomplete" },
+            { "num": s, "status": "incomplete" },
+            { "num": s, "status": "incomplete" },
+            { "num": s, "status": "incomplete" },
+            { "num": s, "status": "incomplete" }
           ],
           "ENGL": "incomplete",
           "MATH": "incomplete",
