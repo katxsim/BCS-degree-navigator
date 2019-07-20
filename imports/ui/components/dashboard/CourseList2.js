@@ -1,23 +1,43 @@
 import React from 'react';
-import {Button, Form, Header, Image, List} from 'semantic-ui-react'
-import { Courses } from "../../../../imports/collections/courses";
+import { Button, Form, Header, Image, List } from 'semantic-ui-react'
+import { Users } from "../../../../imports/collections/users";
 import { createContainer } from "meteor/react-meteor-data";
 
 
 const shortid = require("shortid");
 
-class CourseList2 extends React.Component {
-    handleDelete = course => {
-        Courses.remove(course._id);
-    };
 
-    makeView = course => {
+
+
+class CourseList2 extends React.Component {
+
+    handleDelete = (course, user) => {
+        const id = course.id;
+        const userID = user._id;
+        const newCourses = user.courses.filter(function (course) {
+            return course.id !== id;
+        })
+        let newUser = user;
+        newUser.courses = newCourses;
+        // console.log(newUser.courses);
+        Users.update({ "_id": userID }, newUser);
+
+
+
+        // Users.updateOne({ email: "test1@gmail.com", newUserObject })
+        // console.log(Users.find({ email: "test1@gmail.com" }).fetch()[0].courses)
+    }
+
+
+
+
+    makeView = (course, user) => {
         return (
             <List divided verticalAlign='middle' size='small'>
 
                 <List.Item key={shortid.generate()}>
                     <List.Content key={course._id} floated='right'>
-                        <Button onClick={() => this.handleDelete(course)}>Delete</Button>
+                        <Button onClick={() => this.handleDelete(course, user)}>Delete</Button>
                     </List.Content>
                     <Image avatar className="core" src='http://clipart-library.com/images/6iyooG6bT.png' />
                     <List.Content>{course.dept}: {course.num}</List.Content>
@@ -28,57 +48,54 @@ class CourseList2 extends React.Component {
         );
     };
 
-
-
     render() {
-        const courses = this.props.courses;
-        console.log(this.props);
-        console.log(courses);
+        const user = this.props.user;
+        const courses = user ? user.courses : "";
 
         const postCore = courses ? (
             courses.map(course => {
                 if (course.type == "core") {
-                    return this.makeView(course);
+                    return this.makeView(course, user);
                 }
             })
         ) : (
-            <div className="">
-                <h6 className="left-align"> No Courses</h6>
-            </div>
-        );
+                <div className="">
+                    <h6 className="left-align"> No Courses</h6>
+                </div>
+            );
 
         const postBridging = courses ? (
             courses.map(course => {
-                if (course.type == "bridging") return this.makeView(course);
+                if (course.type == "bridging") return this.makeView(course, user);
             })
         ) : (
-            <div className="courses container">
-                <h6 className="left-align" />
-            </div>
-        );
+                <div className="courses container">
+                    <h6 className="left-align" />
+                </div>
+            );
 
         const postExemptions = courses ? (
             courses.map(course => {
-                if (course.type == "exemptions") return this.makeView(course);
+                if (course.type == "exemptions") return this.makeView(course, user);
             })
         ) : (
-            <div className="courses container">
-                <h6 className="left-align" />
-            </div>
-        );
+                <div className="courses container">
+                    <h6 className="left-align" />
+                </div>
+            );
 
         const postReplacements = courses ? (
             courses.map(course => {
-                if (course.type == "exemption replacement") {
+                if (course.type == "replacement") {
                     console.log(course);
-                    return this.makeView(course);
+                    return this.makeView(course, user);
                 }
             })
         ) : (
-            <div className="courses container">
-                <h6 className="left-align" />
-            </div>
-        );
+                <div className="courses container">
+                    <h6 className="left-align" />
+                </div>
+            );
 
         return (
             <List divided verticalAlign='middle' size='huge'>
@@ -87,8 +104,8 @@ class CourseList2 extends React.Component {
                 <List.Item>
                     <Header size="large">
                         <Image circular
-                               src="https://www.pngkey.com/png/detail/113-1132113_image-royalty-free-library-rocking-clipart-grey-rock.png" />
-                               Core
+                            src="https://www.pngkey.com/png/detail/113-1132113_image-royalty-free-library-rocking-clipart-grey-rock.png" />
+                        Core
                     </Header>
                     <List.Content floated='right'>
                     </List.Content>
@@ -100,7 +117,7 @@ class CourseList2 extends React.Component {
 
                     <Header size="large">
                         <Image circular
-                               src='http://clipart-library.com/img/1005262.jpg' />
+                            src='http://clipart-library.com/img/1005262.jpg' />
                         Bridging
                     </Header>
                     <List.Content floated='right'>
@@ -113,7 +130,7 @@ class CourseList2 extends React.Component {
 
                     <Header size="large">
                         <Image circular
-                               src="https://cdn2.iconfinder.com/data/icons/cloud-12/164/12-512.png" />
+                            src="https://cdn2.iconfinder.com/data/icons/cloud-12/164/12-512.png" />
                         Exemptions
                     </Header>
                     <List.Content floated='right'>
@@ -124,7 +141,7 @@ class CourseList2 extends React.Component {
                 <List.Item>
                     <Header size="large">
                         <Image circular
-                               src='https://cdn.iconscout.com/icon/premium/png-512-thumb/initializing-7-386139.png' />
+                            src='https://cdn.iconscout.com/icon/premium/png-512-thumb/initializing-7-386139.png' />
                         Exemption Replacements
                     </Header>
                     <List.Content floated='right'>
@@ -133,12 +150,16 @@ class CourseList2 extends React.Component {
                 </List.Item>
             </List>
         );
+
+
     }
 }
 
 export default createContainer(() => {
     // Set up subscription
-    Meteor.subscribe("courses");
+    Meteor.subscribe("users");
     // Return an object as props
-    return { courses: Courses.find({}).fetch() };
+    return ({
+        user: Users.find({ email: "test1@gmail.com" }).fetch()[0]
+    });
 }, CourseList2);

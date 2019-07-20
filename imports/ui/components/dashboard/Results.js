@@ -2,18 +2,22 @@ import React, { Component } from 'react'
 import { createContainer } from "meteor/react-meteor-data";
 
 import { connect } from 'react-redux'
-import {Users} from "../../../collections/users";
+import { Users } from "../../../collection/users"
 
 
 const shortid = require('shortid');
 
+
+
 class Results extends Component {
 
     render() {
-        const  user  =  {
+        const user = Users.find({})
+        console.log(user);
+        const user = {
             "email": "test1@gmail.com",
-            "firstName": "test1",
-            "lastName": "test1",
+            "firstName": "Good",
+            "lastName": "Student",
             "creditsEarned": 0,
             "bridgingCpscCounter": 0,
             "electiveCounter": [3, 0], // counts num 300, 400 electives
@@ -21,7 +25,7 @@ class Results extends Component {
             "courses": [
                 { "type": "core", "dept": "CPSC", "num": 110, "id": shortid.generate() },
                 { "type": "core", "dept": "CPSC", "num": 210, "id": shortid.generate() },
-                // { "type": "core", "dept": "ENGL", "num": 110, "id": shortid.generate() },
+                { "type": "core", "dept": "ENGL", "num": 110, "id": shortid.generate() },
                 { "type": "core", "dept": "MATH", "num": 200, "id": shortid.generate() },
                 { "type": "bridging", "dept": "STAT", "num": 302, "id": shortid.generate() },
                 { "type": "bridging", "dept": "STAT", "num": 305, "id": shortid.generate() },

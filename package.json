@@ -2,7 +2,7 @@
   "name": "BCS-degree-navigator",
   "private": true,
   "scripts": {
-    "start": "meteor",
+    "start": "set MONGO_URL='mongodb://m001-student:Areyoukiddingme@cluster0-n7b3j.mongodb.net/bcsdn?retryWrites=true' && set MONGO_OPLOG_URL='mongodb://m001-student:Areyoukiddingme@cluster0-n7b3j.mongodb.net/bcsdn?retryWrites=true' && meteor run",
     "test": "meteor test --once --driver-package meteortesting:mocha",
     "test-app": "TEST_WATCH=1 meteor test --full-app --driver-package meteortesting:mocha",
     "visualize": "meteor --production --extra-packages bundle-visualizer"
