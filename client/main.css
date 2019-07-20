@@ -1,6 +1,6 @@
 .left {
   float: left;
-  margin-left: 0em;
+  margin-left: 0em !important;
 }
 
 html {
