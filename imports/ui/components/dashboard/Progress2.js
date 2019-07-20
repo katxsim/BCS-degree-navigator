@@ -5,7 +5,7 @@ class Progress2 extends Component {
   render() {
     return (
       <div className="ui bottom attached segment active tab">
-        <Table celled>
+        <Table fixed unstackable>
           <Table.Header>
             <Table.Row>
               <Table.HeaderCell>Core</Table.HeaderCell>
@@ -59,7 +59,12 @@ class Progress2 extends Component {
                 <Icon name="checkmark" />
                 MATH 180
               </Table.Cell>
-              <Table.Cell warning>Bridging 5</Table.Cell>
+              <Table.Cell warning>
+                <span className="left">
+                  <Icon name="chevron right" />
+                </span>
+                Bridging 5
+              </Table.Cell>
             </Table.Row>
             <Table.Row>
               <Table.Cell positive>
@@ -69,7 +74,10 @@ class Progress2 extends Component {
               <Table.Cell />
             </Table.Row>
             <Table.Row>
-              <Table.Cell negative>Communication Requirement</Table.Cell>
+              <Table.Cell negative>
+                <Icon name="times" />
+                Communication Requirement
+              </Table.Cell>
               <Table.Cell />
             </Table.Row>
             <Table.Row>
@@ -101,27 +109,47 @@ class Progress2 extends Component {
               <Table.Cell />
             </Table.Row>
             <Table.Row>
-              <Table.Cell negative>CPSC 313</Table.Cell>
+              <Table.Cell negative>
+                <Icon name="times" />
+                CPSC 313
+              </Table.Cell>
               <Table.Cell />
             </Table.Row>
             <Table.Row>
-              <Table.Cell negative>CPSC 320</Table.Cell>
+              <Table.Cell negative>
+                <Icon name="times" />
+                CPSC 320
+              </Table.Cell>
               <Table.Cell />
             </Table.Row>
             <Table.Row>
-              <Table.Cell negative>CPSC 3xx</Table.Cell>
+              <Table.Cell negative>
+                <Icon name="times" />
+                CPSC 3xx
+              </Table.Cell>
               <Table.Cell />
             </Table.Row>
             <Table.Row>
-              <Table.Cell negative>CPSC 3xx</Table.Cell>
+              <Table.Cell negative>
+                <Icon name="times" />
+                CPSC 3xx
+              </Table.Cell>
               <Table.Cell />
             </Table.Row>
             <Table.Row>
-              <Table.Cell warning>CPSC 4xx</Table.Cell>
+              <Table.Cell warning>
+                <span className="left">
+                  <Icon name="chevron right" />
+                </span>
+                CPSC 4xx
+              </Table.Cell>
               <Table.Cell />
             </Table.Row>
             <Table.Row>
-              <Table.Cell negative>CPSC 4xx</Table.Cell>
+              <Table.Cell negative>
+                <Icon name="times" />
+                CPSC 4xx
+              </Table.Cell>
               <Table.Cell />
             </Table.Row>
           </Table.Body>
