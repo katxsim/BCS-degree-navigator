@@ -4,166 +4,286 @@ import { createContainer } from "meteor/react-meteor-data";
 import { Users } from "../../../../imports/collections/users";
 
 
-
 class Progress1 extends Component {
   render() {
     const user = this.props.user
 
-    try {
+    if (user) {
       user.courses.forEach(function (course) {
-        switch (course.type) {
-          case "core":
-            switch (course.dept) {
-              case "CPSC":
-                switch (course.num) {
-                  case 110:
-                    user.requirements.core.cpsc.forEach(function (coreCS) {
-                      if (coreCS.num === "110") coreCS.status = "complete"
-                    })
-                    break;
-                  case 121:
-                    user.requirements.core.cpsc.forEach(function (coreCS) {
-                      if (coreCS.num === "121") coreCS.status = "complete"
-                    })
-                    break;
-                  case 210:
-                    user.requirements.core.cpsc.forEach(function (coreCS) {
-                      if (coreCS.num === "210") coreCS.status = "complete"
-                    })
-                    break;
-                  case 221:
-                    user.requirements.core.cpsc.forEach(function (coreCS) {
-                      if (coreCS.num === "221") coreCS.status = "complete"
-                    })
-                    break;
-                  case 213:
-                    user.requirements.core.cpsc.forEach(function (coreCS) {
-                      if (coreCS.num === "213") coreCS.status = "complete"
-                    })
-                    break;
-                  case 310:
-                    user.requirements.core.cpsc.forEach(function (coreCS) {
-                      if (coreCS.num === "310") coreCS.status = "complete"
-                    })
-                    break;
-                  case 313:
-                    user.requirements.core.cpsc.forEach(function (coreCS) {
-                      if (coreCS.num === "313") coreCS.status = "complete"
-                    })
-                    break;
-                  case 320:
-                    user.requirements.core.cpsc.forEach(function (coreCS) {
-                      if (coreCS.num === "320") coreCS.status = "complete"
-                    })
-                    break;
-                } // end of CORE CPSC
-                break;
-              case "ENGL":
-                if (course.num > 100) user.requirements.core.ENGL = "complete"
-                break;
-              case "MATH":
-                if (course.num == 180) user.requirements.core.MATH = "complete"
-                break;
-              case "STAT":
-                if (course.num == 203) user.requirements.core.STAT = "complete"
-                break;
-              case "COMM":
-                if (
-                  course.dept === "ENGL" ||
-                  course.dept === "COMM" ||
-                  course.dept === "SCIE" ||
-                  course.dept === "BUSI" &&
-                  course.num >= 300) user.requirements.core.COMM = "complete"
-                break;
-            } // END CORE
-            break;
-          case "elective":
-            switch (course.dept == "CPSC") {
-              case (course.num < 300):
-                console.log("Not a valid elective " + course.dept + " " + course.num);
-                console.log("Usage: must be CPSC 300 or higher, and not a core requirement")
-                break;
-              case (course.num < 400):
-                user.requirements.elective[0]++;
-                break;
-              default:
-                user.requirements.elective[1]++;
-            }
-            user.requirements.elective[0]
-            break;
-          case "bridging":
-            if (
-              course.dept == "CPSC" &&
-              course.num >= 300 &&
-              user.requirements.bridging.CPSC <= 2) {
-              user.requirements.bridging.CPSC++;
-            } else if (
-              course.num >= 300 &&
-              user.requirements.bridging.OTHER <= 3) {
-              user.requirements.bridging.OTHER++;
-            }
-            break;
-          case "replacement":
-            let courseLevel = Math.floor(course.num / 100) * 100;
-            // remove highest possible replacement level
-            if (user.requirements.replacements.includes(courseLevel)) {
-              user.requirements.replacements.splice(
-                user.requirements.replacements.indexOf(courseLevel), 1);
-            } else if
-              // replacement is higher level than needed (surpassing the requirement)
-              (Math.max(user.requirements.replacements) <= courseLevel) {
-              user.requirements.replacements.splice(
-                user.requirements.replacements.indexOf(Math.max(user.requirements.replacements)), 1);
-            } else { // course num must be too low to quailify
-              console.log(course.dept + " " + course.num + " was not a valid exemption replacement");
-            }
-            break;
-        }
-      })
-    } catch (error) { } // user was not yet loaded...
+        try {
+          // console.log(course.type + course.dept + course.num);
+          switch (course.type) {
+            case "core":
+              switch (course.dept) {
+                case "CPSC":
+                  switch (course.num) {
+                    case 110:
+                      user.requirements.core.CPSC.forEach(function (coreCS) {
+                        if (coreCS.num == 110) {
+                          coreCS.status = "complete"
+                          user.requirements.core.counter++;
+                        }
+                      })
+                      return;
+                    case 121:
+                      user.requirements.core.CPSC.forEach(function (coreCS) {
+                        if (coreCS.num == 121) {
+                          coreCS.status = "complete"
+                          user.requirements.core.counter++;
+                        }
+                      })
+                      return;
+                    case 210:
+                      user.requirements.core.CPSC.forEach(function (coreCS) {
+                        if (coreCS.num == 210) {
+                          coreCS.status = "complete"
+                          user.requirements.core.counter++;
+                        }
+                      })
+                      return;
+                    case 221:
+                      user.requirements.core.CPSC.forEach(function (coreCS) {
+                        if (coreCS.num == 221) {
+                          coreCS.status = "complete"
+                          user.requirements.core.counter++;
+                        }
+                      })
+                      return;
+                    case 213:
+                      user.requirements.core.CPSC.forEach(function (coreCS) {
+                        if (coreCS.num == 213) {
+                          coreCS.status = "complete"
+                          user.requirements.core.counter++;
+                        }
+                      })
+                      return;
+                    case 310:
+                      user.requirements.core.CPSC.forEach(function (coreCS) {
+                        if (coreCS.num == 310) {
+                          coreCS.status = "complete"
+                          user.requirements.core.counter++;
+                        }
+                      })
+                      return;
+                    case 313:
+                      user.requirements.core.CPSC.forEach(function (coreCS) {
+                        if (coreCS.num == 313) {
+                          coreCS.status = "complete"
+                          user.requirements.core.counter++;
+                        }
+                      })
+                      return;
+                    case 320:
+                      user.requirements.core.CPSC.forEach(function (coreCS) {
+                        if (coreCS.num == 320) {
+                          coreCS.status = "complete"
+                          user.requirements.core.counter++;
+                        }
+                      })
+                      return;
+                  }
+                  return;
 
-    if (user) { // check how their requirements are doing
-      console.log("user requirements: ");
-      console.log(user.requirements);
+                case "ENGL":
+                  if (course.num > 100) user.requirements.core.ENGL = "complete"
+                  console.log(course);
+                  return;
+                case "MATH":
+                  console.log(course.dept + course.num);
+                  if (course.num == 180) user.requirements.core.MATH = "complete"
+                  return;
+                case "STAT":
+                  if (course.num == 203) user.requirements.core.STAT = "complete"
+                  return;
+                default:
+                  if (
+                    course.dept === "ENGL" ||
+                    course.dept === "COMM" ||
+                    course.dept === "SCIE" ||
+                    course.dept === "BUSI" &&
+                    course.num >= 300) user.requirements.core.COMM = "complete"
+                  return;
+              }
+
+            case "exemptions":
+              switch (course.dept) {
+                case "CPSC":
+                  switch (course.num) {
+                    case 110:
+                      user.requirements.core.CPSC.forEach(function (coreCS) {
+                        if (coreCS.num == 110) {
+                          coreCS.status = "complete"
+                          user.requirements.core.counter++;
+                        }
+                      })
+                      return;
+                    case 121:
+                      user.requirements.core.CPSC.forEach(function (coreCS) {
+                        if (coreCS.num == 121) {
+                          coreCS.status = "complete"
+                          user.requirements.core.counter++;
+                        }
+                      })
+                      return;
+                    case 210:
+                      user.requirements.core.CPSC.forEach(function (coreCS) {
+                        if (coreCS.num == 210) {
+                          coreCS.status = "complete"
+                          user.requirements.core.counter++;
+                        }
+                      })
+                      return;
+                    case 221:
+                      user.requirements.core.CPSC.forEach(function (coreCS) {
+                        if (coreCS.num == 221) {
+                          coreCS.status = "complete"
+                          user.requirements.core.counter++;
+                        }
+                      })
+                      return;
+                    case 213:
+                      user.requirements.core.CPSC.forEach(function (coreCS) {
+                        if (coreCS.num == 213) {
+                          coreCS.status = "complete"
+                          user.requirements.core.counter++;
+                        }
+                      })
+                      console.log("should not have made it here " + course.dept + " " + course.num);
+                      return;
+                  }
+                case "ENGL": if (course.num > 100) {
+                  user.requirements.core.ENGL = "complete"
+                  user.requirements.core.counter++;
+                }
+                  return;
+                case "MATH": if (course.num === 180) {
+                  user.requirements.core.MATH = "complete"
+                  user.requirements.core.counter++;
+                }
+                  return;
+                case "STAT": if (course.num === 200 || course.num === 203) {
+                  user.requirements.core.STAT = "complete"
+                  user.requirements.core.counter++;
+                }
+                  return;
+                default: if (course.num >= 300) {
+                  user.requirements.core.COMM = "complete"
+                  user.requirements.core.counter++;
+                }
+                  return;
+              }
+
+            case "electives":
+              switch (course.dept == "CPSC") {
+                case (course.num < 300):
+                  console.log("Not a valid elective " + course.dept + " " + course.num);
+                  console.log("Usage: must be CPSC 300 or higher, and not a core requirement")
+                  return;
+                case (course.num < 400):
+                  if (!course.consumed) {
+                    user.requirements.elective[0]++;
+                    course.consumed = true;
+                    console.log("used " + course.dept + " " + course.num + " as 300 level elective")
+                  }
+                  return;
+                default:
+                  if (!course.consumed) {
+                    user.requirements.elective[1]++;
+                    course.consumed = true;
+                    console.log("used " + course.dept + " " + course.num + " as 400 level elective")
+                  }
+                  return;
+              }
+
+            case "bridging":
+              if (
+                course.dept == "CPSC" &&
+                course.num >= 300 &&
+                user.requirements.bridging.CPSC <= 2) {
+                user.requirements.bridging.CPSC++;
+              } else if (
+                course.num >= 300 &&
+                user.requirements.bridging.OTHER <= 3) {
+                user.requirements.bridging.OTHER++;
+              }
+              return;
+
+            case "replacement":
+              let courseLevel = Math.floor(course.num / 100) * 100;
+              // remove highest possible replacement level
+              if (user.requirements.replacements.includes(courseLevel)) {
+                user.requirements.replacements.splice(
+                  user.requirements.replacements.indexOf(courseLevel), 1);
+                console.log("used " + course.dept + " " + course.num + " for an exemption replacement");
+                return;
+              } else if
+                // replacement is higher level than needed (surpassing the requirement)
+                (Math.max(...user.requirements.replacements) <= courseLevel) {
+                user.requirements.replacements.splice(
+                  user.requirements.replacements.indexOf(Math.max(...user.requirements.replacements)), 1);
+                console.log("used " + course.dept + " " + course.num + " for an exemption replacement");
+                return;
+              } else { // course num must be too low to quailify
+                console.log(course.dept + " " + course.num + " was not a valid exemption replacement");
+              }
+              return;
+          } // end switch
+        } catch (error) { } // do nothing 
+      })
     }
 
-    // update the list of requirements, send to server, and render it
+    // stop infinite loop
+    if (this.componentDidUpdate)
+      Users.update({ "_id": user._id }, user)
 
-    return (
-      <div>
-        <div className="ui bottom attached segment active tab">
-          <Header as="h3" block>
-            Core Progress: 70%
-          </Header>
-          <Progress percent={70} color="olive" active />
-          <Message
-            info
-            header="Core Progress Details"
-            content="You need 2 more core courses."
-          />
+    // Prepare for render 
+    const coreComplete = user ? user.requirements.core.counter : ""
+    const corePercent = user ? Math.floor((coreComplete / 12) * 100) : ""
 
-          <Header as="h3" block>
-            Bridging Progress: 30%
-          </Header>
-          <Progress percent={30} color="violet" active />
-          <Message
-            info
-            header="Bridging Progress Details"
-            content="You need 3 more bridging courses."
-          />
+    const bridgingComplete = user ? user.requirements.bridging.CPSC + user.requirements.bridging.OTHER : ""
+    const bridgingPercent = user ? Math.floor(bridgingComplete / 5 * 100) : ""
 
-          <Header as="h3" block>
-            Overall Progress: 65%
+    const electiveComplete = user ? user.requirements.elective[0] + user.requirements.elective[1] : ""
+    const electivePercent = user ? Math.floor(electiveComplete / 6 * 100) : ""
+
+    const replacementsLeft = user ? user.requirements.replacements.length : ""
+
+
+
+
+
+
+
+
+
+    // NOW FOR THE FINAL RETURN
+    return (user ? (<div>
+      <div className="ui bottom attached segment active tab">
+        <Header as="h3" block>
+          Core Progress: {corePercent}%
+        </Header>
+        <Progress percent={corePercent} color="olive" active />
+
+
+        <Header as="h3" block>
+          Bridging Progress: {bridgingPercent}%
           </Header>
-          <Progress percent={65} color="grey" active />
-          <Message
-            className="lProg"
-            info
-            header="Overall Progress Details"
-            content="You need 6 more courses overall to be finished!"
-          />
-        </div>
+        <Progress percent={bridgingPercent} color="violet" active />
+
+
+        <Header as="h3" block>
+          Elective Progress: {electivePercent}%
+          </Header>
+        <Progress percent={electivePercent} color="blue" active />
+
+
+        <Header as="h3" block>
+          Exemption Replacements Remaining: {replacementsLeft}
+        </Header>
+
       </div>
+    </div>
+    ) : ""
     );
   }
 }

@@ -1,9 +1,11 @@
 import React from 'react';
 import { Button, Form, Header, Image, List } from 'semantic-ui-react'
 import { Users } from "../../../../imports/collections/users";
+import { BaseRequirements } from "../../../../imports/collections/usefulBits";
 import { createContainer } from "meteor/react-meteor-data";
 
 const shortid = require("shortid");
+console.log(BaseRequirements)
 
 class CourseList2 extends React.Component {
 
@@ -15,7 +17,7 @@ class CourseList2 extends React.Component {
         })
         let newUser = user;
         newUser.courses = newCourses;
-        // console.log(newUser.courses);
+        newUser.requirements = BaseRequirements;
         Users.update({ "_id": userID }, newUser);
         console.log("deleted: " + course.dept + " " + course.num)
     }

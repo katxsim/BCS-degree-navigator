@@ -13,8 +13,7 @@ Meteor.startup(() => {
   const numRecords = Users.find().count();
   const users = Users.find().fetch();
 
-  console.log(users)
-  console.log(numRecords);
+  console.log("number of users: " + numRecords);
 
   if (numRecords == 0) {
     Users.insert({
@@ -26,19 +25,20 @@ Meteor.startup(() => {
         "core":
         {
           CPSC: [
-            { "num": 110, status: "incomplete" },
-            { "num": "121", "status": "incomplete" },
-            { "num": "210", "status": "incomplete" },
-            { "num": "221", "status": "incomplete" },
-            { "num": "213", "status": "incomplete" },
-            { "num": "310", "status": "incomplete" },
-            { "num": "313", "status": "incomplete" },
-            { "num": "320", "status": "incomplete" }
+            { "num": 110, "status": "incomplete" },
+            { "num": 121, "status": "incomplete" },
+            { "num": 210, "status": "incomplete" },
+            { "num": 221, "status": "incomplete" },
+            { "num": 213, "status": "incomplete" },
+            { "num": 310, "status": "incomplete" },
+            { "num": 313, "status": "incomplete" },
+            { "num": 320, "status": "incomplete" }
           ],
           "ENGL": "incomplete",
           "MATH": "incomplete",
           "STAT": "incomplete",
-          "COMM": "incomplete"
+          "COMM": "incomplete",
+          "counter": 0
         },
         "elective": [0, 0], // elective[0] is 300 < num <400 completed
         "bridging": { "CPSC": 0, "OTHER": 0 },
@@ -46,12 +46,19 @@ Meteor.startup(() => {
       },
       "courses": [
         { "type": "core", "dept": "CPSC", "num": 110, "id": shortid.generate() },
+        { "type": "core", "dept": "CPSC", "num": 121, "id": shortid.generate() },
         { "type": "core", "dept": "CPSC", "num": 210, "id": shortid.generate() },
-        { "type": "core", "dept": "ENGL", "num": 110, "id": shortid.generate() },
-        { "type": "core", "dept": "MATH", "num": 200, "id": shortid.generate() },
+        { "type": "core", "dept": "CPSC", "num": 221, "id": shortid.generate() },
+        { "type": "core", "dept": "CPSC", "num": 213, "id": shortid.generate() },
+        { "type": "core", "dept": "CPSC", "num": 310, "id": shortid.generate() },
+        { "type": "core", "dept": "SCIE", "num": 300, "id": shortid.generate() },
+        { "type": "electives", "consumed": false, "dept": "CPSC", "num": 316, "id": shortid.generate() },
+        { "type": "electives", "consumed": false, "dept": "CPSC", "num": 319, "id": shortid.generate() },
+        { "type": "electives", "consumed": false, "dept": "CPSC", "num": 436, "id": shortid.generate() },
         { "type": "bridging", "dept": "STAT", "num": 302, "id": shortid.generate() },
         { "type": "bridging", "dept": "STAT", "num": 305, "id": shortid.generate() },
         { "type": "bridging", "dept": "STAT", "num": 306, "id": shortid.generate() },
+        { "type": "bridging", "dept": "CPSC", "num": 330, "id": shortid.generate() },
         { "type": "exemptions", "dept": "ENGL", "num": 110, "id": shortid.generate() },
         { "type": "exemptions", "dept": "STAT", "num": 200, "id": shortid.generate() },
         { "type": "exemptions", "dept": "MATH", "num": 180, "id": shortid.generate() },
