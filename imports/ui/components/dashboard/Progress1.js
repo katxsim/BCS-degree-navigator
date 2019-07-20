@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Header, Progress, Message } from "semantic-ui-react";
 import { createContainer } from "meteor/react-meteor-data";
 import { Users } from "../../../../imports/collections/users";
+const shortid = require("shortid");
 
 
 class Progress1 extends Component {
@@ -248,13 +249,35 @@ class Progress1 extends Component {
 
     const replacementsLeft = user ? user.requirements.replacements.length : ""
 
+    function makeView(course) {
+      return (
+        <p className="complete" key={shortid.generate()}>{course.dept} {course.num}</p>
+      )
+    }
 
+    const postBridging = user ? (
+      user.courses.map(course => {
+        if (course.type === "bridging") {
+          return makeView(course);
+        }
+      })
+    ) : "";
 
+    const PostElectives = user ? (
+      user.courses.map(course => {
+        if (course.type === "electives") {
+          return makeView(course);
+        }
+      })
+    ) : "";
 
-
-
-
-
+    const postExemptionReplacements = user ? (
+      user.courses.map(course => {
+        if (course.type === "replacement") {
+          return makeView(course);
+        }
+      })
+    ) : "";
 
     // NOW FOR THE FINAL RETURN
     return (user ? (<div>
@@ -263,23 +286,39 @@ class Progress1 extends Component {
           Core Progress: {corePercent}%
         </Header>
         <Progress percent={corePercent} color="olive" active />
-
+        <p className={user.requirements.core.CPSC[0].status}>CPSC 110</p>
+        <p className={user.requirements.core.CPSC[1].status}>CPSC 121</p>
+        <p className={user.requirements.core.CPSC[2].status}>CPSC 210</p>
+        <p className={user.requirements.core.CPSC[3].status}>CPSC 221</p>
+        <p className={user.requirements.core.CPSC[4].status}>CPSC 213</p>
+        <p className={user.requirements.core.CPSC[5].status}>CPSC 310</p>
+        <p className={user.requirements.core.CPSC[6].status}>CPSC 313</p>
+        <p className={user.requirements.core.CPSC[7].status}>CPSC 320</p>
+        <p className={user.requirements.core.ENGL}> ENGL 100+</p>
+        <p className={user.requirements.core.MATH}>MATH 180</p>
+        <p className={user.requirements.core.STAT}>STAT 203</p>
+        <p className={user.requirements.core.COMM}>300+ Communication Requirement</p>
 
         <Header as="h3" block>
           Bridging Progress: {bridgingPercent}%
           </Header>
         <Progress percent={bridgingPercent} color="violet" active />
+        <p>You have completed {bridgingComplete} of 5 bridging courses</p>
+        {postBridging}
 
 
         <Header as="h3" block>
           Elective Progress: {electivePercent}%
           </Header>
-        <Progress percent={electivePercent} color="blue" active />
-
+        <Progress percent={electivePercent} color="yellow" active />
+        <p>You have completed {electiveComplete} of 6 electives</p>
+        {PostElectives}
 
         <Header as="h3" block>
           Exemption Replacements Remaining: {replacementsLeft}
         </Header>
+        <p>You have used the following exemption replacements</p>
+        {postExemptionReplacements}
 
       </div>
     </div>
