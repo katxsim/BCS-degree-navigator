@@ -1,6 +1,4 @@
 import React, { Component } from "react";
-import Form from "./Form";
-import CourseList from "./CourseList";
 import PostForm from "../../../../client/PostForm";
 import Progress from "./Progress";
 import CourseList2 from "./CourseList2";

@@ -7,7 +7,7 @@ import Progress3 from "./Progress3";
 
 const panes = [
   {
-    menuItem: "1",
+    menuItem: "Summary",
     render: () => (
       <Tab.Pane>
         <Progress1 />
@@ -15,7 +15,7 @@ const panes = [
     )
   },
   {
-    menuItem: "2",
+    menuItem: "Course List",
     render: () => (
       <Tab.Pane>
         <Progress2 />
@@ -23,7 +23,7 @@ const panes = [
     )
   },
   {
-    menuItem: "3",
+    menuItem: "Grades",
     render: () => (
       <Tab.Pane>
         <Progress3 />

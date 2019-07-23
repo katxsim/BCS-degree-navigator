@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import { Users } from "../../../collections/users";
-import {addUser} from "../../actions/userActions";
 import { connect } from 'react-redux'
 import {Courses} from "../../../collections/courses";
 import { createContainer } from "meteor/react-meteor-data";

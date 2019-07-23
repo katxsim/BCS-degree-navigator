@@ -1,8 +1,4 @@
 import React, { Component } from "react";
-import { Menu, Input } from "semantic-ui-react";
-import { Link } from "react-router-dom";
-import SignedInLinks from "./SignedInLinks";
-import SignedOutLinks from "./SignedOutLinks";
 
 class Footer extends Component {
   render() {
