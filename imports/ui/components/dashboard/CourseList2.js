@@ -102,7 +102,7 @@ class CourseList2 extends React.Component {
                 );
 
         return (
-            <List divided verticalAlign='middle' size='large'>
+            <List divided verticalAlign='middle' size='medium'>
 
 
                 <List.Item key={shortid.generate()} >
