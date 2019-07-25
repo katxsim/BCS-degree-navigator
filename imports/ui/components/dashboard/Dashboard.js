@@ -3,12 +3,16 @@ import PostForm from "../../../../client/PostForm";
 import Progress from "./Progress";
 import CourseList2 from "./CourseList2";
 import Footer from "../layout/Footer";
+import EmailSteve from "../EmailSteve";
+import { Container, Divider } from 'semantic-ui-react'
+
 
 class Dashboard extends Component {
   render() {
     return (
       <div className="dashboard container">
         <div className="jumbotron jumbotron-fluid">
+        <EmailSteve/>
           <div className="container">
             <h1 className="display-4">Welcome, Joe</h1>
             <p className="lead">

@@ -46,6 +46,11 @@ class PostForm extends React.Component {
             type: e.target.value
         });
 
+        handleElectiveChange = e =>
+        this.setState({
+            type: e.target.value
+        });
+
     handleENGL112ChangeCore(event) {
         event.preventDefault();
 
@@ -410,6 +415,8 @@ class PostForm extends React.Component {
                             <Button value="exemption" onClick={this.handleExemptionChange.bind(this)}>Exemption</Button>
                             <Button.Or/>
                             <Button value="exemption replacement" onClick={this.handleReplacementChange.bind(this)}>Replacement</Button>
+                            <Button.Or/>
+                            <Button value="electives" onClick={this.handleElectiveChange.bind(this)}>CPSC Elective</Button>
                         </Button.Group>
                     </div>
                     <Button className="submitB" type='submit' onClick={this.handleClick.bind(this)}>Add Course</Button>
