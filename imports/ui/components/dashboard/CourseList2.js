@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Form, Header, Image, List } from 'semantic-ui-react'
+import { Button, Form, Header, Image, List, Icon } from 'semantic-ui-react'
 import { Users } from "../../../../imports/collections/users";
 import { BaseRequirements } from "../../../../imports/collections/usefulBits";
 import { createContainer } from "meteor/react-meteor-data";
@@ -33,7 +33,7 @@ class CourseList2 extends React.Component {
                     <List.Content key={course._id} floated='right'>
                         <Button onClick={() => this.handleDelete(course, user)}>Delete</Button>
                     </List.Content>
-                    <Image avatar className="core" src='http://clipart-library.com/images/6iyooG6bT.png' />
+                    <Icon name='check circle' size='large' />
                     <List.Content>{course.dept}: {course.num}</List.Content>
                 </List.Item>
 
@@ -89,8 +89,20 @@ class CourseList2 extends React.Component {
                 </div>
             );
 
+            const postElectives = courses ? (
+                courses.map(course => {
+                    if (course.type == "electives") {
+                        return this.makeView(course, user);
+                    }
+                })
+            ) : (
+                    <div className="courses container">
+                        <h6 className="left-align" />
+                    </div>
+                );
+
         return (
-            <List divided verticalAlign='middle' size='huge'>
+            <List divided verticalAlign='middle' size='medium'>
 
 
                 <List.Item key={shortid.generate()} >
@@ -140,6 +152,18 @@ class CourseList2 extends React.Component {
                     </List.Content>
                     <List.Content>{postReplacements}</List.Content>
                 </List.Item>
+
+                <List.Item key={shortid.generate()} >
+                    <Header size="large">
+                    <Icon name='computer' size='large' />
+                        CPSC Electives
+                    </Header>
+                    <List.Content floated='right'>
+                    </List.Content>
+                    <List.Content>{postElectives}</List.Content>
+                </List.Item>
+
+
             </List>
         );
 

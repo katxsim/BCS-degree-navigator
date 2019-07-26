@@ -205,7 +205,7 @@ class Progress1 extends Component {
         <Header as="h3" block>
           Core Progress: {corePercent}%
         </Header>
-        <Progress percent={corePercent} color="olive" active />
+        <Progress percent={corePercent} color="olive" active/>
         <p className={user.requirements.core.CPSC[0].status}>CPSC 110</p>
         <p className={user.requirements.core.CPSC[1].status}>CPSC 121</p>
         <p className={user.requirements.core.CPSC[2].status}>CPSC 210</p>
@@ -222,7 +222,7 @@ class Progress1 extends Component {
         <Header as="h3" block>
           Bridging Progress: {bridgingPercent}%
           </Header>
-        <Progress percent={bridgingPercent} color="violet" active />
+        <Progress percent={bridgingPercent} size='large' active/>
         <p>You have completed {bridgingComplete} of 5 bridging courses</p>
         {postBridging}
 
@@ -230,7 +230,7 @@ class Progress1 extends Component {
         <Header as="h3" block>
           Elective Progress: {electivePercent}%
           </Header>
-        <Progress percent={electivePercent} color="yellow" active />
+        <Progress percent={electivePercent} size='large' color="violet" active />
         <p>You have completed {electiveComplete} of 6 electives</p>
         {PostElectives}
 
