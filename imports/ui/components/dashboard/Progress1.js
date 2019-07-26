@@ -9,82 +9,32 @@ class Progress1 extends Component {
   render() {
     const user = this.props.user
 
+    function labelCoreCompleteAndIncrementCounter(coreCS) {
+      coreCS.status = "complete";
+      user.requirements.core.counter++;
+    }
+
     if (user) {
       user.courses.forEach(function (course) {
         try {
-          // console.log(course.type + course.dept + course.num);
           switch (course.type) {
             case "core":
               switch (course.dept) {
                 case "CPSC":
-                  switch (course.num) {
-                    case 110:
-                      user.requirements.core.CPSC.forEach(function (coreCS) {
-                        if (coreCS.num == 110) {
-                          coreCS.status = "complete"
-                          user.requirements.core.counter++;
-                        }
-                      })
-                      return;
-                    case 121:
-                      user.requirements.core.CPSC.forEach(function (coreCS) {
-                        if (coreCS.num == 121) {
-                          coreCS.status = "complete"
-                          user.requirements.core.counter++;
-                        }
-                      })
-                      return;
-                    case 210:
-                      user.requirements.core.CPSC.forEach(function (coreCS) {
-                        if (coreCS.num == 210) {
-                          coreCS.status = "complete"
-                          user.requirements.core.counter++;
-                        }
-                      })
-                      return;
-                    case 221:
-                      user.requirements.core.CPSC.forEach(function (coreCS) {
-                        if (coreCS.num == 221) {
-                          coreCS.status = "complete"
-                          user.requirements.core.counter++;
-                        }
-                      })
-                      return;
-                    case 213:
-                      user.requirements.core.CPSC.forEach(function (coreCS) {
-                        if (coreCS.num == 213) {
-                          coreCS.status = "complete"
-                          user.requirements.core.counter++;
-                        }
-                      })
-                      return;
-                    case 310:
-                      user.requirements.core.CPSC.forEach(function (coreCS) {
-                        if (coreCS.num == 310) {
-                          coreCS.status = "complete"
-                          user.requirements.core.counter++;
-                        }
-                      })
-                      return;
-                    case 313:
-                      user.requirements.core.CPSC.forEach(function (coreCS) {
-                        if (coreCS.num == 313) {
-                          coreCS.status = "complete"
-                          user.requirements.core.counter++;
-                        }
-                      })
-                      return;
-                    case 320:
-                      user.requirements.core.CPSC.forEach(function (coreCS) {
-                        if (coreCS.num == 320) {
-                          coreCS.status = "complete"
-                          user.requirements.core.counter++;
-                        }
-                      })
-                      return;
-                  }
+                  user.requirements.core.CPSC.forEach(function (coreCS) {
+                    if (
+                      coreCS.num == 110 ||
+                      coreCS.num == 121 ||
+                      coreCS.num == 210 ||
+                      coreCS.num == 221 ||
+                      coreCS.num == 213 ||
+                      coreCS.num == 310 ||
+                      coreCS.num == 313 ||
+                      coreCS.num == 320)
+                      labelCoreCompleteAndIncrementCounter(coreCS);
+                    return;
+                  });
                   return;
-
                 case "ENGL":
                   if (course.num > 100) user.requirements.core.ENGL = "complete"
                   console.log(course);
@@ -105,53 +55,23 @@ class Progress1 extends Component {
                     course.num >= 300) user.requirements.core.COMM = "complete"
                   return;
               }
-
             case "exemptions":
               switch (course.dept) {
                 case "CPSC":
-                  switch (course.num) {
-                    case 110:
-                      user.requirements.core.CPSC.forEach(function (coreCS) {
-                        if (coreCS.num == 110) {
-                          coreCS.status = "complete"
-                          user.requirements.core.counter++;
-                        }
-                      })
-                      return;
-                    case 121:
-                      user.requirements.core.CPSC.forEach(function (coreCS) {
-                        if (coreCS.num == 121) {
-                          coreCS.status = "complete"
-                          user.requirements.core.counter++;
-                        }
-                      })
-                      return;
-                    case 210:
-                      user.requirements.core.CPSC.forEach(function (coreCS) {
-                        if (coreCS.num == 210) {
-                          coreCS.status = "complete"
-                          user.requirements.core.counter++;
-                        }
-                      })
-                      return;
-                    case 221:
-                      user.requirements.core.CPSC.forEach(function (coreCS) {
-                        if (coreCS.num == 221) {
-                          coreCS.status = "complete"
-                          user.requirements.core.counter++;
-                        }
-                      })
-                      return;
-                    case 213:
-                      user.requirements.core.CPSC.forEach(function (coreCS) {
-                        if (coreCS.num == 213) {
-                          coreCS.status = "complete"
-                          user.requirements.core.counter++;
-                        }
-                      })
-                      console.log("should not have made it here " + course.dept + " " + course.num);
-                      return;
-                  }
+                  user.requirements.core.CPSC.forEach(function (coreCS) {
+                    if (
+                      coreCS.num == 110 ||
+                      coreCS.num == 121 ||
+                      coreCS.num == 210 ||
+                      coreCS.num == 221 ||
+                      coreCS.num == 213 ||
+                      coreCS.num == 310 ||
+                      coreCS.num == 313 ||
+                      coreCS.num == 320)
+                      labelCoreCompleteAndIncrementCounter(coreCS);
+                    return;
+                  });
+                  return;
                 case "ENGL": if (course.num > 100) {
                   user.requirements.core.ENGL = "complete"
                   user.requirements.core.counter++;
