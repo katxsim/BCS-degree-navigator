@@ -9,32 +9,82 @@ class Progress1 extends Component {
   render() {
     const user = this.props.user
 
-    function labelCoreCompleteAndIncrementCounter(coreCS) {
-      coreCS.status = "complete";
-      user.requirements.core.counter++;
-    }
-
     if (user) {
       user.courses.forEach(function (course) {
         try {
+          // console.log(course.type + course.dept + course.num);
           switch (course.type) {
             case "core":
               switch (course.dept) {
                 case "CPSC":
-                  user.requirements.core.CPSC.forEach(function (coreCS) {
-                    if (
-                      coreCS.num == 110 ||
-                      coreCS.num == 121 ||
-                      coreCS.num == 210 ||
-                      coreCS.num == 221 ||
-                      coreCS.num == 213 ||
-                      coreCS.num == 310 ||
-                      coreCS.num == 313 ||
-                      coreCS.num == 320)
-                      labelCoreCompleteAndIncrementCounter(coreCS);
-                    return;
-                  });
+                  switch (course.num) {
+                    case 110:
+                      user.requirements.core.CPSC.forEach(function (coreCS) {
+                        if (coreCS.num == 110) {
+                          coreCS.status = "complete"
+                          user.requirements.core.counter++;
+                        }
+                      })
+                      return;
+                    case 121:
+                      user.requirements.core.CPSC.forEach(function (coreCS) {
+                        if (coreCS.num == 121) {
+                          coreCS.status = "complete"
+                          user.requirements.core.counter++;
+                        }
+                      })
+                      return;
+                    case 210:
+                      user.requirements.core.CPSC.forEach(function (coreCS) {
+                        if (coreCS.num == 210) {
+                          coreCS.status = "complete"
+                          user.requirements.core.counter++;
+                        }
+                      })
+                      return;
+                    case 221:
+                      user.requirements.core.CPSC.forEach(function (coreCS) {
+                        if (coreCS.num == 221) {
+                          coreCS.status = "complete"
+                          user.requirements.core.counter++;
+                        }
+                      })
+                      return;
+                    case 213:
+                      user.requirements.core.CPSC.forEach(function (coreCS) {
+                        if (coreCS.num == 213) {
+                          coreCS.status = "complete"
+                          user.requirements.core.counter++;
+                        }
+                      })
+                      return;
+                    case 310:
+                      user.requirements.core.CPSC.forEach(function (coreCS) {
+                        if (coreCS.num == 310) {
+                          coreCS.status = "complete"
+                          user.requirements.core.counter++;
+                        }
+                      })
+                      return;
+                    case 313:
+                      user.requirements.core.CPSC.forEach(function (coreCS) {
+                        if (coreCS.num == 313) {
+                          coreCS.status = "complete"
+                          user.requirements.core.counter++;
+                        }
+                      })
+                      return;
+                    case 320:
+                      user.requirements.core.CPSC.forEach(function (coreCS) {
+                        if (coreCS.num == 320) {
+                          coreCS.status = "complete"
+                          user.requirements.core.counter++;
+                        }
+                      })
+                      return;
+                  }
                   return;
+
                 case "ENGL":
                   if (course.num > 100) user.requirements.core.ENGL = "complete"
                   console.log(course);
@@ -55,23 +105,53 @@ class Progress1 extends Component {
                     course.num >= 300) user.requirements.core.COMM = "complete"
                   return;
               }
+
             case "exemptions":
               switch (course.dept) {
                 case "CPSC":
-                  user.requirements.core.CPSC.forEach(function (coreCS) {
-                    if (
-                      coreCS.num == 110 ||
-                      coreCS.num == 121 ||
-                      coreCS.num == 210 ||
-                      coreCS.num == 221 ||
-                      coreCS.num == 213 ||
-                      coreCS.num == 310 ||
-                      coreCS.num == 313 ||
-                      coreCS.num == 320)
-                      labelCoreCompleteAndIncrementCounter(coreCS);
-                    return;
-                  });
-                  return;
+                  switch (course.num) {
+                    case 110:
+                      user.requirements.core.CPSC.forEach(function (coreCS) {
+                        if (coreCS.num == 110) {
+                          coreCS.status = "complete"
+                          user.requirements.core.counter++;
+                        }
+                      })
+                      return;
+                    case 121:
+                      user.requirements.core.CPSC.forEach(function (coreCS) {
+                        if (coreCS.num == 121) {
+                          coreCS.status = "complete"
+                          user.requirements.core.counter++;
+                        }
+                      })
+                      return;
+                    case 210:
+                      user.requirements.core.CPSC.forEach(function (coreCS) {
+                        if (coreCS.num == 210) {
+                          coreCS.status = "complete"
+                          user.requirements.core.counter++;
+                        }
+                      })
+                      return;
+                    case 221:
+                      user.requirements.core.CPSC.forEach(function (coreCS) {
+                        if (coreCS.num == 221) {
+                          coreCS.status = "complete"
+                          user.requirements.core.counter++;
+                        }
+                      })
+                      return;
+                    case 213:
+                      user.requirements.core.CPSC.forEach(function (coreCS) {
+                        if (coreCS.num == 213) {
+                          coreCS.status = "complete"
+                          user.requirements.core.counter++;
+                        }
+                      })
+                      console.log("should not have made it here " + course.dept + " " + course.num);
+                      return;
+                  }
                 case "ENGL": if (course.num > 100) {
                   user.requirements.core.ENGL = "complete"
                   user.requirements.core.counter++;
@@ -205,7 +285,7 @@ class Progress1 extends Component {
         <Header as="h3" block>
           Core Progress: {corePercent}%
         </Header>
-        <Progress percent={corePercent} color="olive" active/>
+        <Progress percent={corePercent} color="olive" active />
         <p className={user.requirements.core.CPSC[0].status}>CPSC 110</p>
         <p className={user.requirements.core.CPSC[1].status}>CPSC 121</p>
         <p className={user.requirements.core.CPSC[2].status}>CPSC 210</p>
@@ -222,7 +302,7 @@ class Progress1 extends Component {
         <Header as="h3" block>
           Bridging Progress: {bridgingPercent}%
           </Header>
-        <Progress percent={bridgingPercent} size='large' active/>
+        <Progress percent={bridgingPercent} color="violet" active />
         <p>You have completed {bridgingComplete} of 5 bridging courses</p>
         {postBridging}
 
@@ -230,7 +310,7 @@ class Progress1 extends Component {
         <Header as="h3" block>
           Elective Progress: {electivePercent}%
           </Header>
-        <Progress percent={electivePercent} size='large' color="violet" active />
+        <Progress percent={electivePercent} color="yellow" active />
         <p>You have completed {electiveComplete} of 6 electives</p>
         {PostElectives}
 

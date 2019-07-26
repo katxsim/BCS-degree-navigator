@@ -2,7 +2,6 @@ import { Meteor } from "meteor/meteor";
 import { Courses } from "../imports/collections/courses";
 import { Users } from "../imports/collections/users";
 import _ from "lodash";
-
 const shortid = require("shortid");
 
 Meteor.startup(() => {
@@ -45,26 +44,26 @@ Meteor.startup(() => {
         "replacements": [100, 100, 200] // list of min course levels that can be used to replace an exemption
       },
       "courses": [
-        { "type": "core", "dept": "CPSC", "num": 110 },
-        { "type": "core", "dept": "CPSC", "num": 121 },
-        { "type": "core", "dept": "CPSC", "num": 210 },
-        { "type": "core", "dept": "CPSC", "num": 221 },
-        { "type": "core", "dept": "CPSC", "num": 213 },
-        { "type": "core", "dept": "CPSC", "num": 310 },
-        { "type": "core", "dept": "SCIE", "num": 300 },
-        { "type": "electives", "consumed": false, "dept": "CPSC", "num": 316 },
-        { "type": "electives", "consumed": false, "dept": "CPSC", "num": 319 },
-        { "type": "electives", "consumed": false, "dept": "CPSC", "num": 436 },
-        { "type": "bridging", "dept": "STAT", "num": 302 },
-        { "type": "bridging", "dept": "STAT", "num": 305 },
-        { "type": "bridging", "dept": "STAT", "num": 306 },
-        { "type": "bridging", "dept": "CPSC", "num": 330 },
-        { "type": "exemptions", "dept": "ENGL", "num": 110 },
-        { "type": "exemptions", "dept": "STAT", "num": 200 },
-        { "type": "exemptions", "dept": "MATH", "num": 180 },
-        { "type": "replacement", "dept": "MATH", "num": 221 },
-        { "type": "replacement", "dept": "MATH", "num": 200 },
-        { "type": "replacement", "dept": "DSCI", "num": 100 }
+        { "type": "core", "dept": "CPSC", "num": 110, "id": shortid.generate() },
+        { "type": "core", "dept": "CPSC", "num": 121, "id": shortid.generate() },
+        { "type": "core", "dept": "CPSC", "num": 210, "id": shortid.generate() },
+        { "type": "core", "dept": "CPSC", "num": 221, "id": shortid.generate() },
+        { "type": "core", "dept": "CPSC", "num": 213, "id": shortid.generate() },
+        { "type": "core", "dept": "CPSC", "num": 310, "id": shortid.generate() },
+        { "type": "core", "dept": "SCIE", "num": 300, "id": shortid.generate() },
+        { "type": "electives", "consumed": false, "dept": "CPSC", "num": 316, "id": shortid.generate() },
+        { "type": "electives", "consumed": false, "dept": "CPSC", "num": 319, "id": shortid.generate() },
+        { "type": "electives", "consumed": false, "dept": "CPSC", "num": 436, "id": shortid.generate() },
+        { "type": "bridging", "dept": "STAT", "num": 302, "id": shortid.generate() },
+        { "type": "bridging", "dept": "STAT", "num": 305, "id": shortid.generate() },
+        { "type": "bridging", "dept": "STAT", "num": 306, "id": shortid.generate() },
+        { "type": "bridging", "dept": "CPSC", "num": 330, "id": shortid.generate() },
+        { "type": "exemptions", "dept": "ENGL", "num": 112, "id": "ENGL112" },
+        { "type": "exemptions", "dept": "STAT", "num": 200, "id": shortid.generate() },
+        { "type": "exemptions", "dept": "MATH", "num": 180, "id": shortid.generate() },
+        { "type": "replacement", "dept": "MATH", "num": 221, "id": shortid.generate() },
+        { "type": "replacement", "dept": "MATH", "num": 200, "id": shortid.generate() },
+        { "type": "replacement", "dept": "DSCI", "num": 100, "id": shortid.generate() }
       ] // end courses
     }) // end user; //)
   }

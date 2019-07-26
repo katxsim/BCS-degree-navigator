@@ -5,15 +5,16 @@ import { BaseRequirements } from "../../../../imports/collections/usefulBits";
 import { createContainer } from "meteor/react-meteor-data";
 
 const shortid = require("shortid");
-console.log(BaseRequirements)
+// console.log(BaseRequirements)
 
 class CourseList2 extends React.Component {
 
     handleDelete = (course, user) => {
         const id = course.id;
         const userID = user._id;
+        console.log(course);
         const newCourses = user.courses.filter(function (course) {
-            return course.id !== id;
+            return (course.id !== id);
         })
         let newUser = user;
         newUser.courses = newCourses;
@@ -21,9 +22,6 @@ class CourseList2 extends React.Component {
         Users.update({ "_id": userID }, newUser);
         console.log("deleted: " + course.dept + " " + course.num)
     }
-
-
-
 
     makeView = (course, user) => {
         return (
@@ -89,17 +87,17 @@ class CourseList2 extends React.Component {
                 </div>
             );
 
-            const postElectives = courses ? (
-                courses.map(course => {
-                    if (course.type == "electives") {
-                        return this.makeView(course, user);
-                    }
-                })
-            ) : (
-                    <div className="courses container">
-                        <h6 className="left-align" />
-                    </div>
-                );
+        const postElectives = courses ? (
+            courses.map(course => {
+                if (course.type == "electives") {
+                    return this.makeView(course, user);
+                }
+            })
+        ) : (
+                <div className="courses container">
+                    <h6 className="left-align" />
+                </div>
+            );
 
         return (
             <List divided verticalAlign='middle' size='medium'>
@@ -155,7 +153,7 @@ class CourseList2 extends React.Component {
 
                 <List.Item key={shortid.generate()} >
                     <Header size="large">
-                    <Icon name='computer' size='large' />
+                        <Icon name='computer' size='large' />
                         CPSC Electives
                     </Header>
                     <List.Content floated='right'>

@@ -1,14 +1,15 @@
 import React from 'react';
 import { Container, Form, Button, Header, Popup, Grid } from 'semantic-ui-react'
-import {Courses} from "../imports/collections/courses";
+import { Courses } from "../imports/collections/courses";
 import { createContainer } from "meteor/react-meteor-data";
+import { Users } from "../imports/collections/users";
+const shortid = require("shortid");
 
 
 class PostForm extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {dept: '', num: '', grade: '', type: ''};
-
+        this.state = { dept: '', num: '', grade: '', type: '' };
     }
 
     handleDeptChange = e =>
@@ -46,29 +47,44 @@ class PostForm extends React.Component {
             type: e.target.value
         });
 
-        handleElectiveChange = e =>
+    handleElectiveChange = e =>
         this.setState({
             type: e.target.value
         });
 
     handleENGL112ChangeCore(event) {
         event.preventDefault();
-
-        Courses.insert({
-            type: "core",
-            dept: "ENGL",
-            num: "112",
-        });
+        let user = this.props.user
+        let courses = user.courses
+        if (!courses.includes(Object.values())) {
+            console.log("inside")
+            courses.push({
+                "type": "core",
+                "dept": "ENGL",
+                "num": "112",
+                "id": "ENGL112"
+            })
+        }
+        user.courses = courses;
+        console.log(user)
+        Users.update({ "_id": user._id }, user)
     }
 
     handleENGL112ChangeExempt(event) {
         event.preventDefault();
-
-        Courses.insert({
-            type: "exemptions",
-            dept: "ENGL",
-            num: "112",
-        });
+        let user = this.props.user
+        let courses = user.courses
+        courses.push({
+            "type": "exemptions",
+            "dept": "ENGL",
+            "num": "112",
+            "id": shortid.generate()
+        })
+        user.courses = courses;
+        // now they require a 100 level repacement
+        user.requirements.replacements.push(100)
+        console.log(user)
+        Users.update({ "_id": user._id }, user)
     }
 
     handleCPSC110ChangeCore(event) {
@@ -131,7 +147,7 @@ class PostForm extends React.Component {
             num: "180",
         });
     }
-// cpsc121 cpsc210
+    // cpsc121 cpsc210
 
     handleCPSC121ChangeCore(event) {
         event.preventDefault();
@@ -260,6 +276,8 @@ class PostForm extends React.Component {
     }
 
     render() {
+        console.log(this.props)
+
         return (
             <Container className="pForm" fluid>
                 <Form>
@@ -394,28 +412,28 @@ class PostForm extends React.Component {
                     <Form.Field>
                         <Header size='large'>Department</Header>
                         <input placeholder='4 letter course code (i.e CPSC)' value={this.state.dept}
-                               onChange={this.handleDeptChange.bind(this)}/>
+                            onChange={this.handleDeptChange.bind(this)} />
                     </Form.Field>
                     <Form.Field>
                         <Header size='large'>Course Number</Header>
                         <input placeholder='(i.e 221)' value={this.state.num}
-                               onChange={this.handleNumChange.bind(this)}/>
+                            onChange={this.handleNumChange.bind(this)} />
                     </Form.Field>
                     <Form.Field>
                         <Header size='large'>Grade Received</Header>
                         <input placeholder='(i.e 100)' value={this.state.grade}
-                               onChange={this.handleGradeChange.bind(this)}/>
+                            onChange={this.handleGradeChange.bind(this)} />
                     </Form.Field>
                     <div>
                         <Button.Group>
                             <Button value="core" onClick={this.handleCoreChange.bind(this)}>Core</Button>
-                            <Button.Or/>
+                            <Button.Or />
                             <Button value="bridging" onClick={this.handleBridgingChange.bind(this)}>Bridging</Button>
-                            <Button.Or/>
+                            <Button.Or />
                             <Button value="exemption" onClick={this.handleExemptionChange.bind(this)}>Exemption</Button>
-                            <Button.Or/>
+                            <Button.Or />
                             <Button value="exemption replacement" onClick={this.handleReplacementChange.bind(this)}>Replacement</Button>
-                            <Button.Or/>
+                            <Button.Or />
                             <Button value="electives" onClick={this.handleElectiveChange.bind(this)}>CPSC Elective</Button>
                         </Button.Group>
                     </div>
@@ -427,9 +445,12 @@ class PostForm extends React.Component {
     }
 }
 
-    export default createContainer(() => {
+export default createContainer(() => {
     // Set up subscription
-    Meteor.subscribe("courses");
+    Meteor.subscribe("users");
     // Return an object as props
-    return { courses: Courses.find({}).fetch() };
+    return {
+        user: Users.find({ "email": "test1@gmail.com" }).fetch()[0],
+        dept: '', num: '', grade: '', type: ''
+    };
 }, PostForm);
