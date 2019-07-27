@@ -1,26 +1,20 @@
 import React from 'react';
 import { Button, Form, Header, Image, List, Icon } from 'semantic-ui-react'
-import { Users } from "../../../../imports/collections/users";
-import { BaseRequirements } from "../../../../imports/collections/usefulBits";
+import { Users } from "../../../collections/users";
+import { BaseRequirements } from "../../../ComputeRequirements";
 import { createContainer } from "meteor/react-meteor-data";
 
 const shortid = require("shortid");
 // console.log(BaseRequirements)
 
-class CourseList2 extends React.Component {
+class CourseList extends React.Component {
 
     handleDelete = (course, user) => {
-        const id = course.id;
-        const userID = user._id;
-        console.log(course);
-        const newCourses = user.courses.filter(function (course) {
-            return (course.id !== id);
-        })
-        let newUser = user;
-        newUser.courses = newCourses;
-        newUser.requirements = BaseRequirements;
-        Users.update({ "_id": userID }, newUser);
-        console.log("deleted: " + course.dept + " " + course.num)
+        delete user.courses[course.dept + course.num]
+        // console.log(user.courses);
+        Users.update({ "_id": user._id }, user); // get response?
+        // console.log("deleted: " + course.dept + " " + course.num)
+        this.forceUpdate();
     }
 
     makeView = (course, user) => {
@@ -28,7 +22,7 @@ class CourseList2 extends React.Component {
             <List divided verticalAlign='middle' size='small'>
 
                 <List.Item key={shortid.generate()}>
-                    <List.Content key={course._id} floated='right'>
+                    <List.Content key={shortid.generate()} floated='right'>
                         <Button onClick={() => this.handleDelete(course, user)}>Delete</Button>
                     </List.Content>
                     <Icon name='check circle' size='large' />
@@ -41,10 +35,12 @@ class CourseList2 extends React.Component {
 
     render() {
         const user = this.props.user;
+        console.log(user)
         const courses = user ? user.courses : "";
+        if (courses) console.log(courses);
 
         const postCore = courses ? (
-            courses.map(course => {
+            Object.values(courses).map(course => {
                 if (course.type == "core") {
                     return this.makeView(course, user);
                 }
@@ -56,7 +52,7 @@ class CourseList2 extends React.Component {
             );
 
         const postBridging = courses ? (
-            courses.map(course => {
+            Object.values(courses).map(course => {
                 if (course.type == "bridging") return this.makeView(course, user);
             })
         ) : (
@@ -66,7 +62,7 @@ class CourseList2 extends React.Component {
             );
 
         const postExemptions = courses ? (
-            courses.map(course => {
+            Object.values(courses).map(course => {
                 if (course.type == "exemptions") return this.makeView(course, user);
             })
         ) : (
@@ -76,7 +72,7 @@ class CourseList2 extends React.Component {
             );
 
         const postReplacements = courses ? (
-            courses.map(course => {
+            Object.values(courses).map(course => {
                 if (course.type == "replacement") {
                     return this.makeView(course, user);
                 }
@@ -88,7 +84,7 @@ class CourseList2 extends React.Component {
             );
 
         const postElectives = courses ? (
-            courses.map(course => {
+            Object.values(courses).map(course => {
                 if (course.type == "electives") {
                     return this.makeView(course, user);
                 }
@@ -176,4 +172,4 @@ export default createContainer(() => {
     return ({
         user: Users.find({ email: "test1@gmail.com" }).fetch()[0]
     });
-}, CourseList2);
+}, CourseList);

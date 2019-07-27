@@ -184,12 +184,12 @@
         <option value="$PROJECT_DIR$/server/main.js" />
         <option value="$PROJECT_DIR$/imports/ui/components/dashboard/Temp.js" />
         <option value="$PROJECT_DIR$/imports/ui/components/dashboard/TempList.js" />
-        <option value="$PROJECT_DIR$/client/PostForm.js" />
+        <option value="$PROJECT_DIR$/client/AddCourse.js" />
         <option value="$PROJECT_DIR$/imports/ui/components/dashboard/Results.js" />
         <option value="$PROJECT_DIR$/imports/ui/components/dashboard/Courses.js" />
         <option value="$PROJECT_DIR$/imports/ui/components/dashboard/CourseList.js" />
         <option value="$PROJECT_DIR$/imports/ui/components/layout/SignedInLinks.js" />
-        <option value="$PROJECT_DIR$/imports/ui/components/dashboard/CourseList2.js" />
+        <option value="$PROJECT_DIR$/imports/ui/components/dashboard/CourseList.js" />
         <option value="$PROJECT_DIR$/imports/ui/components/layout/LeNavbar.js" />
         <option value="$PROJECT_DIR$/client/App.js" />
         <option value="$PROJECT_DIR$/client/main.html" />
@@ -501,7 +501,7 @@
     <entry file="file://$PROJECT_DIR$/imports/ui/components/dashboard/Temp.js" />
     <entry file="file://$PROJECT_DIR$/imports/ui/components/dashboard/TempList.js" />
     <entry file="file://$PROJECT_DIR$/imports/ui/components/layout/LeNavbar.js" />
-    <entry file="file://$PROJECT_DIR$/imports/ui/components/dashboard/CourseList2.js">
+    <entry file="file://$PROJECT_DIR$/imports/ui/components/dashboard/CourseList.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1785">
           <caret line="119" column="35" selection-start-line="119" selection-start-column="35" selection-end-line="119" selection-end-column="35" />
@@ -624,7 +624,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/client/PostForm.js">
+    <entry file="file://$PROJECT_DIR$/client/AddCourse.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="4140">
           <caret line="276" column="23" selection-start-line="276" selection-start-column="23" selection-end-line="276" selection-end-column="23" />

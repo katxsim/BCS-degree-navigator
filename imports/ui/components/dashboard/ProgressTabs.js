@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Tab } from "semantic-ui-react";
-import Progress1 from "./Progress1";
+import Progress1 from "./SummaryView";
 import Progress2 from "./Progress2";
 import Progress3 from "./Progress3";
 
