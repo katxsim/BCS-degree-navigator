@@ -4,6 +4,7 @@ import Progress1 from "./Progress1";
 import Progress2 from "./Progress2";
 import Progress3 from "./Progress3";
 import Progress4 from "./Progress4";
+import Progress5 from "./Progress5";
 
 const panes = [
   {
@@ -23,7 +24,7 @@ const panes = [
     )
   },
   {
-    menuItem: "Grades",
+    menuItem: "Course List 2",
     render: () => (
       <Tab.Pane>
         <Progress3 />
@@ -35,6 +36,14 @@ const panes = [
     render: () => (
       <Tab.Pane>
         <Progress4 />
+      </Tab.Pane>
+    )
+  },
+  {
+    menuItem: "Grades",
+    render: () => (
+      <Tab.Pane>
+        <Progress5 />
       </Tab.Pane>
     )
   }
