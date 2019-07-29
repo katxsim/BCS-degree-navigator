@@ -3,7 +3,7 @@ import { Tab } from "semantic-ui-react";
 import Progress1 from "./Progress1";
 import Progress2 from "./Progress2";
 import Progress3 from "./Progress3";
-
+import Progress4 from "./Progress4";
 
 const panes = [
   {
@@ -29,6 +29,14 @@ const panes = [
         <Progress3 />
       </Tab.Pane>
     )
+  },
+  {
+    menuItem: "Timeline",
+    render: () => (
+      <Tab.Pane>
+        <Progress4 />
+      </Tab.Pane>
+    )
   }
 ];
 
@@ -39,4 +47,3 @@ class Progress extends Component {
 }
 
 export default Progress;
-

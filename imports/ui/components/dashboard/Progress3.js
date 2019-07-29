@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Icon, Table } from "semantic-ui-react";
 
-class Progress2 extends Component {
+class Progress3 extends Component {
   render() {
     return (
       <div className="ui bottom attached segment active tab">
@@ -175,4 +175,4 @@ class Progress2 extends Component {
   }
 }
 
-export default Progress2;
+export default Progress3;
