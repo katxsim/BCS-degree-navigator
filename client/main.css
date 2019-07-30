@@ -1,8 +1,19 @@
+/* Chevron Right Icon */
 .left {
   float: left;
   margin-left: 0em !important;
 }
 
+/* Horizontal Scrolling Box */
+/* https://codeburst.io/how-to-create-horizontal-scrolling-containers-d8069651e9c6 */
+.scrolling-wrapper {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch; /* momentum & bounce */
+}
+
+/* Other Stuff */
 html {
   min-height: 100%;
 }

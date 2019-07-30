@@ -4,7 +4,7 @@ import { Icon, Step } from "semantic-ui-react";
 class Progress4 extends Component {
   render() {
     return (
-      <div className="ui bottom attached segment active tab">
+      <div className="ui bottom attached segment active tab scrolling-wrapper">
         <Step.Group>
           <Step completed>
             <Icon name="checkmark" />
