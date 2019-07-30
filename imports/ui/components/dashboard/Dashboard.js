@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import AddCourse from "../../../../client/AddCourse";
+import AddCourse from "./AddCourse";
 import Progress from "./ProgressTabs";
 import CourseList from "./CourseList";
 import Footer from "../layout/Footer";

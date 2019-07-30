@@ -1,9 +1,8 @@
 import React from 'react';
 import { Container, Form, Button, Header, Popup, Grid } from 'semantic-ui-react'
 import { createContainer } from "meteor/react-meteor-data";
-import { Users } from "../imports/collections/users";
+import { Users } from "../../../collections/users";
 const shortid = require("shortid");
-
 
 class AddCourse extends React.Component {
     constructor(props) {
