@@ -1,28 +1,30 @@
-const requirements = {
-    "core":
-    {
-        CPSC: [
-            { "num": 110, "status": "incomplete" },
-            { "num": 121, "status": "incomplete" },
-            { "num": 210, "status": "incomplete" },
-            { "num": 221, "status": "incomplete" },
-            { "num": 213, "status": "incomplete" },
-            { "num": 310, "status": "incomplete" },
-            { "num": 313, "status": "incomplete" },
-            { "num": 320, "status": "incomplete" }
-        ],
-        "ENGL": "incomplete",
-        "MATH": "incomplete",
-        "STAT": "incomplete",
-        "COMM": "incomplete",
-        "counter": 0
-    },
-    "elective": [0, 0], // elective[0] is 300 < num <400 completed
-    "bridging": { "CPSC": 0, "OTHER": 0 },
-    "replacements": [] // list of min course levels that can be used to replace an exemption
+function getFreshRequirements() {
+    return {
+        "core":
+        {
+            CPSC: [
+                { "num": 110, "status": "incomplete" },
+                { "num": 121, "status": "incomplete" },
+                { "num": 210, "status": "incomplete" },
+                { "num": 221, "status": "incomplete" },
+                { "num": 213, "status": "incomplete" },
+                { "num": 310, "status": "incomplete" },
+                { "num": 313, "status": "incomplete" },
+                { "num": 320, "status": "incomplete" }
+            ],
+            "ENGL": "incomplete",
+            "MATH": "incomplete",
+            "STAT": "incomplete",
+            "COMM": "incomplete",
+            "counter": 0
+        },
+        "elective": [0, 0], // elective[0] is 300 < num <400 completed
+        "bridging": { "CPSC": 0, "OTHER": 0 },
+        "replacements": [] // list of min course levels that can be used to replace an exemption
+    };
 }
 
-function getExemptionCount(user) {
+function getExemptionCount(user, requirements) {
     let exemptions = Object.values(user.courses).filter(course => course.type === "exemptions");
     exemptions.forEach(exemption => {
         let courseLevel = Math.floor(exemption.num / 100) * 100;
@@ -30,13 +32,12 @@ function getExemptionCount(user) {
         // add course level of course replacement required 
         requirements.replacements.push(courseLevel);
     })
-
-    return requirements.replacements;
 }
 // return a user object with updated requirements object 
 export function updateRequirements(user) {
-    // first set up number of courses needed to exempt 
-    requirements.replacements = getExemptionCount(user);
+    // first set up number of courses needed to exempt
+    const requirements = getFreshRequirements();
+    getExemptionCount(user, requirements);
 
     // iterate over courses and check off requirements
     Object.values(user.courses).forEach(function (course) {
@@ -211,14 +212,14 @@ export function updateRequirements(user) {
                         if (!course.consumed) {
                             requirements.elective[0]++;
                             course.consumed = true;
-                            console.log("used " + course.dept + " " + course.num + " as 300 level elective")
+                            // console.log("used " + course.dept + " " + course.num + " as 300 level elective")
                         }
                         return;
                     default:
                         if (!course.consumed) {
                             requirements.elective[1]++;
                             course.consumed = true;
-                            console.log("used " + course.dept + " " + course.num + " as 400 level elective")
+                            // console.log("used " + course.dept + " " + course.num + " as 400 level elective")
                         }
                         return;
                 }
@@ -242,14 +243,14 @@ export function updateRequirements(user) {
                 if (requirements.replacements.includes(courseLevel)) {
                     requirements.replacements.splice(
                         requirements.replacements.indexOf(courseLevel), 1);
-                    console.log("used " + course.dept + " " + course.num + " for an exemption replacement");
+                    // console.log("used " + course.dept + " " + course.num + " for an exemption replacement");
                     return;
                 } else if
                     // replacement is higher level than needed (surpassing the requirement)
                     (Math.max(...requirements.replacements) <= courseLevel) {
                     requirements.replacements.splice(
                         requirements.replacements.indexOf(Math.max(...requirements.replacements)), 1);
-                    console.log("used " + course.dept + " " + course.num + " for an exemption replacement");
+                    // console.log("used " + course.dept + " " + course.num + " for an exemption replacement");
                     return;
                 } else { // course num must be too low to quailify
                     console.log(course.dept + " " + course.num + " was not a valid exemption replacement");

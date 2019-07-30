@@ -6,28 +6,25 @@ import { updateRequirements } from "../../../ComputeRequirements"
 const shortid = require("shortid");
 
 
-class Progress1 extends Component {
+class SummaryView extends Component {
   render() {
-    const user = this.props.user
+    let user = this.props.user
     let requirements = "";
     if (user) {
-      requirements = updateRequirements(user)
+      requirements = updateRequirements(user);
     }
 
-    // FIX ME // TODO
-    //Users.update({ "_id": user2._id }, user2)
-
     // load stats for render 
-    const coreComplete = requirements ? requirements.core.counter : "";
-    const corePercent = coreComplete ? Math.floor((coreComplete / 12) * 100) : ""
+    const coreComplete = user ? requirements.core.counter : "";
+    const corePercent = user ? Math.floor((coreComplete / 12) * 100) : ""
 
-    const bridgingComplete = requirements ? requirements.bridging.CPSC + requirements.bridging.OTHER : ""
-    const bridgingPercent = bridgingComplete ? Math.floor(bridgingComplete / 5 * 100) : ""
+    const bridgingComplete = user ? requirements.bridging.CPSC + requirements.bridging.OTHER : ""
+    const bridgingPercent = user ? Math.floor(bridgingComplete / 5 * 100) : ""
 
-    const electiveComplete = requirements ? requirements.elective[0] + requirements.elective[1] : ""
-    const electivePercent = electiveComplete ? Math.floor(electiveComplete / 6 * 100) : ""
+    const electiveComplete = user ? requirements.elective[0] + requirements.elective[1] : ""
+    const electivePercent = user ? Math.floor(electiveComplete / 6 * 100) : ""
 
-    const replacementsLeft = requirements ? requirements.replacements.length : ""
+    const replacementsLeft = user ? requirements.replacements.length : ""
 
     // these can probably be compressed! 
     // not top priority right now, though. TODO
@@ -35,7 +32,7 @@ class Progress1 extends Component {
       Object.values(user.courses).map(course => {
         if (course.type === "bridging") {
           return (
-            <p className="complete" key={shortid.generate()}>{course.dept} {course.num}</p>
+            <p className="complete" key={course.dept + course.num}>{course.dept} {course.num}</p>
           )
         }
       })
@@ -45,7 +42,7 @@ class Progress1 extends Component {
       Object.values(user.courses).map(course => {
         if (course.type === "electives") {
           return (
-            <p className="complete" key={shortid.generate()}>{course.dept} {course.num}</p>
+            <p className="complete" key={course.dept + course.num}>{course.dept} {course.num}</p>
           )
         }
       })
@@ -55,7 +52,7 @@ class Progress1 extends Component {
       Object.values(user.courses).map(course => {
         if (course.type === "replacement") {
           return (
-            <p className="complete" key={shortid.generate()}>{course.dept} {course.num}</p>
+            <p className="complete" key={course.dept + course.num}>{course.dept} {course.num}</p>
           )
         }
       })
@@ -122,4 +119,4 @@ export default createContainer(() => {
   return ({
     user: Users.find({ "email": "test1@gmail.com" }).fetch()[0]
   });
-}, Progress1);
+}, SummaryView);

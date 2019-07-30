@@ -5,24 +5,20 @@ import { BaseRequirements } from "../../../ComputeRequirements";
 import { createContainer } from "meteor/react-meteor-data";
 
 const shortid = require("shortid");
-// console.log(BaseRequirements)
 
 class CourseList extends React.Component {
 
     handleDelete = (course, user) => {
         delete user.courses[course.dept + course.num]
-        // console.log(user.courses);
-        Users.update({ "_id": user._id }, user); // get response?
-        // console.log("deleted: " + course.dept + " " + course.num)
-        this.forceUpdate();
+        Users.update({ "_id": user._id }, user);
     }
 
     makeView = (course, user) => {
         return (
-            <List divided verticalAlign='middle' size='small'>
+            <List divided verticalAlign='middle' size='small' key={course.dept + course.num}>
 
-                <List.Item key={shortid.generate()}>
-                    <List.Content key={shortid.generate()} floated='right'>
+                <List.Item>
+                    <List.Content floated='right'>
                         <Button onClick={() => this.handleDelete(course, user)}>Delete</Button>
                     </List.Content>
                     <Icon name='check circle' size='large' />
@@ -35,9 +31,7 @@ class CourseList extends React.Component {
 
     render() {
         const user = this.props.user;
-        console.log(user)
         const courses = user ? user.courses : "";
-        if (courses) console.log(courses);
 
         const postCore = courses ? (
             Object.values(courses).map(course => {
@@ -99,7 +93,7 @@ class CourseList extends React.Component {
             <List divided verticalAlign='middle' size='medium'>
 
 
-                <List.Item key={shortid.generate()} >
+                <List.Item >
                     <Header size="large">
                         <Image circular
                             src="https://www.pngkey.com/png/detail/113-1132113_image-royalty-free-library-rocking-clipart-grey-rock.png" />
@@ -111,7 +105,7 @@ class CourseList extends React.Component {
                 </List.Item>
 
 
-                <List.Item key={shortid.generate()} >
+                <List.Item >
 
                     <Header size="large">
                         <Image circular
@@ -124,7 +118,7 @@ class CourseList extends React.Component {
                 </List.Item>
 
 
-                <List.Item key={shortid.generate()} >
+                <List.Item>
 
                     <Header size="large">
                         <Image circular
@@ -136,7 +130,7 @@ class CourseList extends React.Component {
                     <List.Content>{postExemptions}</List.Content>
                 </List.Item>
 
-                <List.Item key={shortid.generate()} >
+                <List.Item >
                     <Header size="large">
                         <Image circular
                             src='https://cdn.iconscout.com/icon/premium/png-512-thumb/initializing-7-386139.png' />
@@ -147,7 +141,7 @@ class CourseList extends React.Component {
                     <List.Content>{postReplacements}</List.Content>
                 </List.Item>
 
-                <List.Item key={shortid.generate()} >
+                <List.Item >
                     <Header size="large">
                         <Icon name='computer' size='large' />
                         CPSC Electives

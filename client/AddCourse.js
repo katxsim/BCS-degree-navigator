@@ -380,7 +380,7 @@ class AddCourse extends React.Component {
             if (!Object.keys(courses).includes(this.props.dept + this.props.num)) {
                 console.log(this.props.dept)
 
-                user.courses[this.props.dept + this.props.num] = {
+                user.courses[this.state.dept + this.state.num] = {
                     "type": this.state.type,
                     "dept": this.state.dept,
                     "num": Number(this.state.num),
@@ -408,7 +408,6 @@ class AddCourse extends React.Component {
     };
 
     render() {
-        console.log(this.props)
 
         return (
             <Container className="pForm" fluid>

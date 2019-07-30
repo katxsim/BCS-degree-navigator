@@ -69,9 +69,9 @@ Meteor.startup(() => {
     }) // end user; //)
   }
 
-  Meteor.publish("courses", function () {
-    return Courses.find({});
-  });
+  // Meteor.publish("courses", function () {
+  //   return Courses.find({});
+  // });
 
   Meteor.publish("users", function () {
     // console.log(Users.find().fetch());
