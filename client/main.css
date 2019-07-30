@@ -96,8 +96,3 @@ input[type="password"]:not(.browser-default):focus:not([readonly]) + label {
 .lProg {
   margin-bottom: 40px !important;
 }
-
-.ui.menu {
-  background: #e5e5e5;
-  margin-top: 80px;
-}

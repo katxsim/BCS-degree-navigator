@@ -107,8 +107,7 @@ class CourseList2 extends React.Component {
 
                 <List.Item key={shortid.generate()} >
                     <Header size="large">
-                        <Image circular
-                            src="https://www.pngkey.com/png/detail/113-1132113_image-royalty-free-library-rocking-clipart-grey-rock.png" />
+                    <Icon name='cubes' size='large' />
                         Core
                     </Header>
                     <List.Content floated='right'>
@@ -120,8 +119,7 @@ class CourseList2 extends React.Component {
                 <List.Item key={shortid.generate()} >
 
                     <Header size="large">
-                        <Image circular
-                            src='http://clipart-library.com/img/1005262.jpg' />
+                        <Icon name='connectdevelop' size='large' />
                         Bridging
                     </Header>
                     <List.Content floated='right'>
@@ -133,8 +131,7 @@ class CourseList2 extends React.Component {
                 <List.Item key={shortid.generate()} >
 
                     <Header size="large">
-                        <Image circular
-                            src="https://cdn2.iconfinder.com/data/icons/cloud-12/164/12-512.png" />
+                    <Icon name='tasks' size='large' />
                         Exemptions
                     </Header>
                     <List.Content floated='right'>
@@ -144,8 +141,7 @@ class CourseList2 extends React.Component {
 
                 <List.Item key={shortid.generate()} >
                     <Header size="large">
-                        <Image circular
-                            src='https://cdn.iconscout.com/icon/premium/png-512-thumb/initializing-7-386139.png' />
+                    <Icon name='sync alternate' size='large' />
                         Exemption Replacements
                     </Header>
                     <List.Content floated='right'>
@@ -155,7 +151,7 @@ class CourseList2 extends React.Component {
 
                 <List.Item key={shortid.generate()} >
                     <Header size="large">
-                    <Icon name='computer' size='large' />
+                    <Icon name='laptop' size='large' />
                         CPSC Electives
                     </Header>
                     <List.Content floated='right'>
