@@ -383,12 +383,21 @@ class AddCourse extends React.Component {
 
                 user.courses = courses;
                 Users.update({ "_id": user._id }, user)
+                
+                this.setState({
+                dept: '',
+                num: '',
+                // this.state.grade !== "" &&
+                type: '',
+                grade: ''
+                })
 
             } else {
                 alert("You have already been credited for " + this.state.dept + " " + this.state.num);
             }
         }
     };
+
 
     render() {
 
