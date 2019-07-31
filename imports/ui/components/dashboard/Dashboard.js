@@ -4,7 +4,7 @@ import CourseList from "./CourseList";
 import Footer from "../layout/Footer";
 import EmailSteve from "../EmailSteve";
 import { Container, Divider } from 'semantic-ui-react'
-import AddCourse from "../AddCourse";
+import AddCourse from "./AddCourse";
 
 
 class Dashboard extends Component {
@@ -12,7 +12,7 @@ class Dashboard extends Component {
     return (
       <div className="dashboard container">
         <div className="jumbotron jumbotron-fluid">
-        <EmailSteve/>
+          <EmailSteve />
           <div className="container">
             <h1 className="display-4">Welcome, Joe</h1>
             <p className="lead">
@@ -23,10 +23,10 @@ class Dashboard extends Component {
 
         <div className="row">
           <div className="col s24 m14 l8">
-            <AddCourse/>
+            <AddCourse />
           </div>
           <div className="col s24 m12 l8">
-          <CourseList />
+            <CourseList />
           </div>
         </div>
         <div>

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Container, Form, Button, Header, Popup, Grid } from 'semantic-ui-react'
 import { createContainer } from "meteor/react-meteor-data";
-import {Users} from "../../collections/users"
+import { Users } from "../../../collections/users"
 const shortid = require("shortid");
 
 class AddCourse extends React.Component {
@@ -46,7 +46,7 @@ class AddCourse extends React.Component {
             type: e.target.value
         });
 
-        handleElectiveChange = e =>
+    handleElectiveChange = e =>
         this.setState({
             type: e.target.value
         });
@@ -91,7 +91,7 @@ class AddCourse extends React.Component {
     handleCPSC110ChangeCore(event) {
         event.preventDefault();
 
-    
+
         let user = this.props.user
         let courses = user.courses
         if (!Object.keys(courses).includes("CPSC110")) {
@@ -198,7 +198,7 @@ class AddCourse extends React.Component {
         user.courses = courses;
         Users.update({ "_id": user._id }, user)
     }
-// cpsc121 cpsc210
+    // cpsc121 cpsc210
 
     handleCPSC121ChangeCore(event) {
         event.preventDefault();
@@ -391,7 +391,7 @@ class AddCourse extends React.Component {
         if (
             this.state.dept !== "" &&
             this.state.num !== "" &&
-           // this.state.grade !== "" &&
+            // this.state.grade !== "" &&
             this.state.type !== ""
         ) {
             let user = this.props.user
@@ -563,28 +563,28 @@ class AddCourse extends React.Component {
                     <Form.Field>
                         <Header size='large'>Department</Header>
                         <input placeholder='4 letter course code (i.e CPSC)' value={this.state.dept}
-                               onChange={this.handleDeptChange.bind(this)}/>
+                            onChange={this.handleDeptChange.bind(this)} />
                     </Form.Field>
                     <Form.Field>
                         <Header size='large'>Course Number</Header>
                         <input placeholder='(i.e 221)' value={this.state.num}
-                               onChange={this.handleNumChange.bind(this)}/>
+                            onChange={this.handleNumChange.bind(this)} />
                     </Form.Field>
                     <Form.Field>
                         <Header size='large'>Grade Received</Header>
                         <input placeholder='(i.e 100)' value={this.state.grade}
-                               onChange={this.handleGradeChange.bind(this)}/>
+                            onChange={this.handleGradeChange.bind(this)} />
                     </Form.Field>
                     <div>
                         <Button.Group>
                             <Button value="core" onClick={this.handleCoreChange.bind(this)}>Core</Button>
-                            <Button.Or/>
+                            <Button.Or />
                             <Button value="bridging" onClick={this.handleBridgingChange.bind(this)}>Bridging</Button>
-                            <Button.Or/>
+                            <Button.Or />
                             <Button value="exemption" onClick={this.handleExemptionChange.bind(this)}>Exemption</Button>
-                            <Button.Or/>
+                            <Button.Or />
                             <Button value="exemption replacement" onClick={this.handleReplacementChange.bind(this)}>Replacement</Button>
-                            <Button.Or/>
+                            <Button.Or />
                             <Button value="electives" onClick={this.handleElectiveChange.bind(this)}>CPSC Elective</Button>
                         </Button.Group>
                     </div>
@@ -596,7 +596,7 @@ class AddCourse extends React.Component {
     }
 }
 
-    export default createContainer(() => {
+export default createContainer(() => {
     // Set up subscription
     Meteor.subscribe("users");
     // Return an object as props
