@@ -40,6 +40,9 @@ class Progress5 extends Component {
 
     return (
       <div className="ui bottom attached segment active tab">
+        <div>
+          <h1>GPA: 83%</h1>
+        </div>
         <Table sortable celled fixed>
           <Table.Header>
             <Table.Row>
