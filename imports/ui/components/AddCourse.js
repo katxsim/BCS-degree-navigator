@@ -1,13 +1,13 @@
 import React from 'react';
 import { Container, Form, Button, Header, Popup, Grid } from 'semantic-ui-react'
-import {Courses} from "../imports/collections/courses";
 import { createContainer } from "meteor/react-meteor-data";
+import {Users} from "../../collections/users"
+const shortid = require("shortid");
 
-
-class PostForm extends React.Component {
+class AddCourse extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {dept: '', num: '', grade: '', type: ''};
+        this.state = { dept: '', num: '', grade: '', type: '' };
 
     }
 
@@ -53,124 +53,223 @@ class PostForm extends React.Component {
 
     handleENGL112ChangeCore(event) {
         event.preventDefault();
-
-        Courses.insert({
-            type: "core",
-            dept: "ENGL",
-            num: "112",
-        });
+        let user = this.props.user
+        let courses = user.courses
+        if (!Object.keys(courses).includes("ENGL112")) {
+            courses["ENGL112"] = {
+                "type": "core",
+                "dept": "ENGL",
+                "num": 112,
+            }
+        } else {
+            console.log("You have already completed the ENGL requirement");
+        }
+        user.courses = courses;
+        // console.log(user)
+        Users.update({ "_id": user._id }, user)
     }
 
     handleENGL112ChangeExempt(event) {
         event.preventDefault();
 
-        Courses.insert({
-            type: "exemptions",
-            dept: "ENGL",
-            num: "112",
-        });
+        let user = this.props.user
+        let courses = user.courses
+        console.log(user)
+        if (!Object.keys(courses).includes("ENGL112")) {
+            courses["ENGL112"] = {
+                "type": "exemptions",
+                "dept": "ENGL",
+                "num": 112,
+            }
+        } else {
+            console.log("You have already completed the ENGL requirement");
+        }
+        user.courses = courses;
+        Users.update({ "_id": user._id }, user)
     }
 
     handleCPSC110ChangeCore(event) {
         event.preventDefault();
 
-        Courses.insert({
-            type: "core",
-            dept: "CPSC",
-            num: "110",
-        });
+    
+        let user = this.props.user
+        let courses = user.courses
+        if (!Object.keys(courses).includes("CPSC110")) {
+            courses["CPSC110"] = {
+                "type": "core",
+                "dept": "CPSC",
+                "num": 110,
+            }
+        } else {
+            console.log("You have already completed the CPSC 110 Requirement");
+        }
+        user.courses = courses;
+        Users.update({ "_id": user._id }, user)
     }
 
     handleCPSC110ChangeExempt(event) {
         event.preventDefault();
 
-        Courses.insert({
-            type: "exemptions",
-            dept: "ENGL",
-            num: "112",
-        });
+        let user = this.props.user
+        let courses = user.courses
+        if (!Object.keys(courses).includes("CPSC110")) {
+            courses["CPSC110"] = {
+                "type": "exemptions",
+                "dept": "CPSC",
+                "num": 110,
+            }
+        } else {
+            console.log("You have already completed the CPSC 110 Requirement");
+        }
+        user.courses = courses;
+        Users.update({ "_id": user._id }, user)
+
     }
 
     handleSTAT203ChangeCore(event) {
         event.preventDefault();
 
-        Courses.insert({
-            type: "core",
-            dept: "STAT",
-            num: "203",
-        });
+        let user = this.props.user
+        let courses = user.courses
+        if (!Object.keys(courses).includes("STAT203")) {
+            courses["STAT203"] = {
+                "type": "core",
+                "dept": "STAT",
+                "num": 203,
+            }
+        } else {
+            console.log("You have already completed the STAT 203 Requirement");
+        }
+        user.courses = courses;
+        Users.update({ "_id": user._id }, user)
     }
 
     handleSTAT203ChangeExempt(event) {
         event.preventDefault();
 
-        Courses.insert({
-            type: "exemptions",
-            dept: "STAT",
-            num: "203",
-        });
+        let user = this.props.user
+        let courses = user.courses
+        if (!Object.keys(courses).includes("STAT203")) {
+            courses["STAT203"] = {
+                "type": "exemptions",
+                "dept": "STAT",
+                "num": 203,
+            }
+        } else {
+            console.log("You have already completed the STAT 203 Requirement");
+        }
+        user.courses = courses;
+        Users.update({ "_id": user._id }, user)
     }
 
 
     handleMATH180ChangeCore(event) {
         event.preventDefault();
 
-        Courses.insert({
-            type: "core",
-            dept: "MATH",
-            num: "180",
-        });
+        let user = this.props.user
+        let courses = user.courses
+        if (!Object.keys(courses).includes("MATH180")) {
+            courses["MATH180"] = {
+                "type": "core",
+                "dept": "MATH",
+                "num": 180,
+            }
+        } else {
+            console.log("You have already completed the MATH 180 Requirement");
+        }
+        user.courses = courses;
+        Users.update({ "_id": user._id }, user)
     }
 
     handleMATH180ChangeExempt(event) {
         event.preventDefault();
 
-        Courses.insert({
-            type: "exemptions",
-            dept: "MATH",
-            num: "180",
-        });
+        let user = this.props.user
+        let courses = user.courses
+        if (!Object.keys(courses).includes("MATH180")) {
+            courses["MATH180"] = {
+                "type": "exemptions",
+                "dept": "MATH",
+                "num": 180,
+            }
+        } else {
+            console.log("You have already completed the MATH 180 Requirement");
+        }
+        user.courses = courses;
+        Users.update({ "_id": user._id }, user)
     }
 // cpsc121 cpsc210
 
     handleCPSC121ChangeCore(event) {
         event.preventDefault();
 
-        Courses.insert({
-            type: "core",
-            dept: "CPSC",
-            num: "121",
-        });
+        let user = this.props.user
+        let courses = user.courses
+        if (!Object.keys(courses).includes("CPSC121")) {
+            courses["CPSC121"] = {
+                "type": "core",
+                "dept": "CPSC",
+                "num": 121,
+            }
+        } else {
+            console.log("You have already completed the CPSC 121 Requirement");
+        }
+        user.courses = courses;
+        Users.update({ "_id": user._id }, user)
     }
 
     handleCPSC121ChangeExempt(event) {
         event.preventDefault();
 
-        Courses.insert({
-            type: "exemptions",
-            dept: "CPSC",
-            num: "121",
-        });
+        let user = this.props.user
+        let courses = user.courses
+        if (!Object.keys(courses).includes("CPSC121")) {
+            courses["CPSC121"] = {
+                "type": "exemptions",
+                "dept": "CPSC",
+                "num": 121,
+            }
+        } else {
+            console.log("You have already completed the CPSC 121 Requirement");
+        }
+        user.courses = courses;
+        Users.update({ "_id": user._id }, user)
     }
 
     handleCPSC210ChangeCore(event) {
         event.preventDefault();
 
-        Courses.insert({
-            type: "core",
-            dept: "CPSC",
-            num: "210",
-        });
+        let user = this.props.user
+        let courses = user.courses
+        if (!Object.keys(courses).includes("CPSC210")) {
+            courses["CPSC210"] = {
+                "type": "core",
+                "dept": "CPSC",
+                "num": 210,
+            }
+        } else {
+            console.log("You have already completed the CPSC 210 Requirement");
+        }
+        user.courses = courses;
+        Users.update({ "_id": user._id }, user)
     }
 
     handleCPSC210ChangeExempt(event) {
         event.preventDefault();
 
-        Courses.insert({
-            type: "exemptions",
-            dept: "CPSC",
-            num: "210",
-        });
+        let user = this.props.user
+        let courses = user.courses
+        if (!Object.keys(courses).includes("CPSC210")) {
+            courses["CPSC210"] = {
+                "type": "exemptions",
+                "dept": "CPSC",
+                "num": 210,
+            }
+        } else {
+            console.log("You have already completed the CPSC 210 Requirement");
+        }
+        user.courses = courses;
+        Users.update({ "_id": user._id }, user)
     }
     // engl301cpsc213 cpsc221
 
@@ -178,86 +277,156 @@ class PostForm extends React.Component {
     handleENGL301ChangeCore(event) {
         event.preventDefault();
 
-        Courses.insert({
-            type: "core",
-            dept: "ENGL",
-            num: "301",
-        });
+        let user = this.props.user
+        let courses = user.courses
+        if (!Object.keys(courses).includes("ENGL301")) {
+            courses["ENGL301"] = {
+                "type": "core",
+                "dept": "ENGL",
+                "num": 301,
+            }
+        } else {
+            console.log("You have already completed the ENGL 301 Requirement");
+        }
+        user.courses = courses;
+        Users.update({ "_id": user._id }, user)
     }
 
     handleENGL301ChangeExempt(event) {
         event.preventDefault();
 
-        Courses.insert({
-            type: "exemptions",
-            dept: "ENGL",
-            num: "301",
-        });
+        let user = this.props.user
+        let courses = user.courses
+        if (!Object.keys(courses).includes("ENGL301")) {
+            courses["ENGL301"] = {
+                "type": "exemptions",
+                "dept": "ENGL",
+                "num": 301,
+            }
+        } else {
+            console.log("You have already completed the ENGL 301 Requirement");
+        }
+        user.courses = courses;
+        Users.update({ "_id": user._id }, user)
     }
     handleCPSC213ChangeCore(event) {
         event.preventDefault();
 
-        Courses.insert({
-            type: "core",
-            dept: "CPSC",
-            num: "213",
-        });
+        let user = this.props.user
+        let courses = user.courses
+        if (!Object.keys(courses).includes("CPSC213")) {
+            courses["CPSC213"] = {
+                "type": "core",
+                "dept": "CPSC",
+                "num": 213,
+            }
+        } else {
+            console.log("You have already completed the CPSC 213 Requirement");
+        }
+        user.courses = courses;
+        Users.update({ "_id": user._id }, user)
     }
 
     handleCPSC213ChangeExempt(event) {
         event.preventDefault();
 
-        Courses.insert({
-            type: "exemptions",
-            dept: "CPSC",
-            num: "213",
-        });
+        let user = this.props.user
+        let courses = user.courses
+        if (!Object.keys(courses).includes("CPSC213")) {
+            courses["CPSC213"] = {
+                "type": "exemptions",
+                "dept": "CPSC",
+                "num": 213,
+            }
+        } else {
+            console.log("You have already completed the CPSC 213 Requirement");
+        }
+        user.courses = courses;
+        Users.update({ "_id": user._id }, user)
+
     }
 
     handleCPSC221ChangeCore(event) {
         event.preventDefault();
+        let user = this.props.user
+        let courses = user.courses
+        if (!Object.keys(courses).includes("CPSC221")) {
+            courses["CPSC221"] = {
+                "type": "core",
+                "dept": "CPSC",
+                "num": 221,
+            }
+        } else {
+            console.log("You have already completed the CPSC 221 Requirement");
+        }
+        user.courses = courses;
+        Users.update({ "_id": user._id }, user)
 
-        Courses.insert({
-            type: "core",
-            dept: "CPSC",
-            num: "221",
-        });
     }
 
     handleCPSC221ChangeExempt(event) {
         event.preventDefault();
 
-        Courses.insert({
-            type: "exemptions",
-            dept: "CPSC",
-            num: "221",
-        });
+        let user = this.props.user
+        let courses = user.courses
+        if (!Object.keys(courses).includes("CPSC221")) {
+            courses["CPSC221"] = {
+                "type": "exemptions",
+                "dept": "CPSC",
+                "num": 221,
+            }
+        } else {
+            console.log("You have already completed the CPSC 221 Requirement");
+        }
+        user.courses = courses;
+        Users.update({ "_id": user._id }, user)
     }
 
 
 
     handleClick = e => {
-        console.log('A dept was submitted: ' + this.state.dept);
-        console.log('A num was submitted: ' + this.state.num);
-        console.log('A grade was submitted: ' + this.state.grade);
-        console.log('A type was submitted: ' + this.state.type);
 
         e.preventDefault();
 
         if (
             this.state.dept !== "" &&
             this.state.num !== "" &&
-            this.state.grade !== "" &&
+           // this.state.grade !== "" &&
             this.state.type !== ""
         ) {
-            Courses.insert({
-                type: this.state.type,
-                dept: this.state.dept,
-                num: this.state.num,
-                grade: this.state.grade
-            });
+            let user = this.props.user
+            let courses = user.courses
+            console.log(user)
+
+            console.log(this.props.dept)
+
+            if (!Object.keys(courses).includes(this.props.dept + this.props.num)) {
+                console.log(this.props.dept)
+
+                user.courses[this.state.dept + this.state.num] = {
+                    "type": this.state.type,
+                    "dept": this.state.dept,
+                    "num": Number(this.state.num),
+                }
+                console.log(this.state)
+
+                console.log('A dept was submitted: ' + this.state.dept);
+                console.log('A num was submitted: ' + this.state.num);
+                console.log('A grade was submitted: ' + this.state.grade);
+                console.log('A type was submitted: ' + this.state.type);
+
+
+                user.courses = courses;
+                Users.update({ "_id": user._id }, user)
+                console.log("inside submit with user:")
+                console.log(user)
+            } else {
+                console.log("You have already been credited for " + this.state.dept + " " + this.state.num);
+            }
+
+            // update user 
         }
-    }
+    };
 
     render() {
         return (
@@ -429,7 +598,10 @@ class PostForm extends React.Component {
 
     export default createContainer(() => {
     // Set up subscription
-    Meteor.subscribe("courses");
+    Meteor.subscribe("users");
     // Return an object as props
-    return { courses: Courses.find({}).fetch() };
-}, PostForm);
+    return {
+        user: Users.find({ "email": "test1@gmail.com" }).fetch()[0],
+        dept: '', num: '', grade: '', type: ''
+    };
+}, AddCourse); 

@@ -1,10 +1,10 @@
 import React, { Component } from "react";
-import PostForm from "../../../../client/PostForm";
-import Progress from "./Progress";
-import CourseList2 from "./CourseList2";
+import Progress from "./ProgressTabs";
+import CourseList from "./CourseList";
 import Footer from "../layout/Footer";
 import EmailSteve from "../EmailSteve";
 import { Container, Divider } from 'semantic-ui-react'
+import AddCourse from "../AddCourse";
 
 
 class Dashboard extends Component {
@@ -23,10 +23,10 @@ class Dashboard extends Component {
 
         <div className="row">
           <div className="col s24 m14 l8">
-            <PostForm />
+            <AddCourse/>
           </div>
           <div className="col s24 m12 l8">
-            <CourseList2 />
+          <CourseList />
           </div>
         </div>
         <div>

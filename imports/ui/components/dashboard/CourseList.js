@@ -1,25 +1,17 @@
 import React from 'react';
 import { Button, Form, Header, Image, List, Icon } from 'semantic-ui-react'
-import { Users } from "../../../../imports/collections/users";
-import { BaseRequirements } from "../../../../imports/collections/usefulBits";
+import { Users } from "../../../collections/users";
+import { BaseRequirements } from "../../../ComputeRequirements";
 import { createContainer } from "meteor/react-meteor-data";
 
 const shortid = require("shortid");
 console.log(BaseRequirements)
 
-class CourseList2 extends React.Component {
+class CourseList extends React.Component {
 
     handleDelete = (course, user) => {
-        const id = course.id;
-        const userID = user._id;
-        const newCourses = user.courses.filter(function (course) {
-            return course.id !== id;
-        })
-        let newUser = user;
-        newUser.courses = newCourses;
-        newUser.requirements = BaseRequirements;
-        Users.update({ "_id": userID }, newUser);
-        console.log("deleted: " + course.dept + " " + course.num)
+        delete user.courses[course.dept + course.num]
+        Users.update({ "_id": user._id }, user);
     }
 
 
@@ -27,10 +19,10 @@ class CourseList2 extends React.Component {
 
     makeView = (course, user) => {
         return (
-            <List divided verticalAlign='middle' size='small'>
+            <List divided verticalAlign='middle' size='small' key={course.dept + course.num}>
 
-                <List.Item key={shortid.generate()}>
-                    <List.Content key={course._id} floated='right'>
+                    <List.Item>
+                    <List.Content floated='right'>
                         <Button onClick={() => this.handleDelete(course, user)}>Delete</Button>
                     </List.Content>
                     <Icon name='check circle' size='large' />
@@ -46,7 +38,7 @@ class CourseList2 extends React.Component {
         const courses = user ? user.courses : "";
 
         const postCore = courses ? (
-            courses.map(course => {
+            Object.values(courses).map(course => {
                 if (course.type == "core") {
                     return this.makeView(course, user);
                 }
@@ -58,7 +50,7 @@ class CourseList2 extends React.Component {
             );
 
         const postBridging = courses ? (
-            courses.map(course => {
+            Object.values(courses).map(course => {
                 if (course.type == "bridging") return this.makeView(course, user);
             })
         ) : (
@@ -68,7 +60,7 @@ class CourseList2 extends React.Component {
             );
 
         const postExemptions = courses ? (
-            courses.map(course => {
+            Object.values(courses).map(course => {
                 if (course.type == "exemptions") return this.makeView(course, user);
             })
         ) : (
@@ -78,7 +70,7 @@ class CourseList2 extends React.Component {
             );
 
         const postReplacements = courses ? (
-            courses.map(course => {
+            Object.values(courses).map(course => {
                 if (course.type == "replacement") {
                     return this.makeView(course, user);
                 }
@@ -90,7 +82,7 @@ class CourseList2 extends React.Component {
             );
 
             const postElectives = courses ? (
-                courses.map(course => {
+                Object.values(courses).map(course => {
                     if (course.type == "electives") {
                         return this.makeView(course, user);
                     }
@@ -103,9 +95,7 @@ class CourseList2 extends React.Component {
 
         return (
             <List divided verticalAlign='middle' size='medium'>
-
-
-                <List.Item key={shortid.generate()} >
+                <List.Item >
                     <Header size="large">
                     <Icon name='cubes' size='large' />
                         Core
@@ -116,8 +106,7 @@ class CourseList2 extends React.Component {
                 </List.Item>
 
 
-                <List.Item key={shortid.generate()} >
-
+                <List.Item >
                     <Header size="large">
                         <Icon name='connectdevelop' size='large' />
                         Bridging
@@ -128,7 +117,7 @@ class CourseList2 extends React.Component {
                 </List.Item>
 
 
-                <List.Item key={shortid.generate()} >
+                <List.Item>
 
                     <Header size="large">
                     <Icon name='tasks' size='large' />
@@ -139,7 +128,7 @@ class CourseList2 extends React.Component {
                     <List.Content>{postExemptions}</List.Content>
                 </List.Item>
 
-                <List.Item key={shortid.generate()} >
+                <List.Item>
                     <Header size="large">
                     <Icon name='sync alternate' size='large' />
                         Exemption Replacements
@@ -149,7 +138,7 @@ class CourseList2 extends React.Component {
                     <List.Content>{postReplacements}</List.Content>
                 </List.Item>
 
-                <List.Item key={shortid.generate()} >
+                <List.Item>
                     <Header size="large">
                     <Icon name='laptop' size='large' />
                         CPSC Electives
@@ -174,4 +163,4 @@ export default createContainer(() => {
     return ({
         user: Users.find({ email: "test1@gmail.com" }).fetch()[0]
     });
-}, CourseList2);
+}, CourseList);
