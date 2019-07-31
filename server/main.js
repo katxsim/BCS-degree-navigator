@@ -1,6 +1,6 @@
 import { Meteor } from "meteor/meteor";
 import { Courses } from "../imports/collections/courses";
-import { Users } from "../imports/collections/users";
+import { Users } from "../imports/collections/userCourses";
 import _ from "lodash";
 
 const shortid = require("shortid");
@@ -24,7 +24,7 @@ Meteor.startup(() => {
       "creditsEarned": 0,
       // "requirements": {
       //   "core":
-      //   {
+      //   { // 
       //     CPSC: [
       //       { "num": 110, "status": "incomplete" },
       //       { "num": 121, "status": "incomplete" },
@@ -53,9 +53,9 @@ Meteor.startup(() => {
         "CPSC213": { "type": "core", "dept": "CPSC", "num": 213 },
         "CPSC310": { "type": "core", "dept": "CPSC", "num": 310 },
         "SCIE300": { "type": "core", "dept": "SCIE", "num": 300 },
-        "CPSC316": { "type": "electives", "consumed": false, "dept": "CPSC", "num": 316 },
-        "CPSC319": { "type": "electives", "consumed": false, "dept": "CPSC", "num": 319 },
-        "CPSC436": { "type": "electives", "consumed": false, "dept": "CPSC", "num": 436 },
+        "CPSC316": { "type": "electives", "dept": "CPSC", "num": 316 },
+        "CPSC319": { "type": "electives", "dept": "CPSC", "num": 319 },
+        "CPSC436": { "type": "electives", "dept": "CPSC", "num": 436 },
         "STAT302": { "type": "bridging", "dept": "STAT", "num": 302 },
         "STAT305": { "type": "bridging", "dept": "STAT", "num": 305 },
         "STAT306": { "type": "bridging", "dept": "STAT", "num": 306 },
@@ -75,7 +75,6 @@ Meteor.startup(() => {
   // });
 
   Meteor.publish("users", function () {
-    // console.log(Users.find().fetch());
     return Users.find();
   });
 });
