@@ -61,10 +61,9 @@ class AddCourse extends React.Component {
                 "num": 112,
             }
         } else {
-            console.log("You have already completed the ENGL requirement");
+            alert("You have already completed the ENGL requirement");
         }
         user.courses = courses;
-        // console.log(user)
         Users.update({ "_id": user._id }, user)
     }
 
@@ -80,7 +79,7 @@ class AddCourse extends React.Component {
                 "num": 112,
             }
         } else {
-            console.log("You have already completed the ENGL requirement");
+            alert("You have already completed the ENGL requirement");
         }
         user.courses = courses;
         Users.update({ "_id": user._id }, user)
@@ -97,7 +96,7 @@ class AddCourse extends React.Component {
                 "num": 110,
             }
         } else {
-            console.log("You have already completed the CPSC 110 Requirement");
+            alert("You have already completed the CPSC 110 Requirement");
         }
         user.courses = courses;
         Users.update({ "_id": user._id }, user)
@@ -114,7 +113,7 @@ class AddCourse extends React.Component {
                 "num": 110,
             }
         } else {
-            console.log("You have already completed the CPSC 110 Requirement");
+            alert("You have already completed the CPSC 110 Requirement");
         }
         user.courses = courses;
         Users.update({ "_id": user._id }, user)
@@ -131,7 +130,7 @@ class AddCourse extends React.Component {
                 "num": 203,
             }
         } else {
-            console.log("You have already completed the STAT 203 Requirement");
+            alert("You have already completed the STAT 203 Requirement");
         }
         user.courses = courses;
         Users.update({ "_id": user._id }, user)
@@ -148,7 +147,7 @@ class AddCourse extends React.Component {
                 "num": 203,
             }
         } else {
-            console.log("You have already completed the STAT 203 Requirement");
+            alert("You have already completed the STAT 203 Requirement");
         }
         user.courses = courses;
         Users.update({ "_id": user._id }, user)
@@ -166,7 +165,7 @@ class AddCourse extends React.Component {
                 "num": 180,
             }
         } else {
-            console.log("You have already completed the MATH 180 Requirement");
+            alert("You have already completed the MATH 180 Requirement");
         }
         user.courses = courses;
         Users.update({ "_id": user._id }, user)
@@ -183,7 +182,7 @@ class AddCourse extends React.Component {
                 "num": 180,
             }
         } else {
-            console.log("You have already completed the MATH 180 Requirement");
+            alert("You have already completed the MATH 180 Requirement");
         }
         user.courses = courses;
         Users.update({ "_id": user._id }, user)
@@ -201,7 +200,7 @@ class AddCourse extends React.Component {
                 "num": 121,
             }
         } else {
-            console.log("You have already completed the CPSC 121 Requirement");
+            alert("You have already completed the CPSC 121 Requirement");
         }
         user.courses = courses;
         Users.update({ "_id": user._id }, user)
@@ -218,7 +217,7 @@ class AddCourse extends React.Component {
                 "num": 121,
             }
         } else {
-            console.log("You have already completed the CPSC 121 Requirement");
+            alert("You have already completed the CPSC 121 Requirement");
         }
         user.courses = courses;
         Users.update({ "_id": user._id }, user)
@@ -235,7 +234,7 @@ class AddCourse extends React.Component {
                 "num": 210,
             }
         } else {
-            console.log("You have already completed the CPSC 210 Requirement");
+            alert("You have already completed the CPSC 210 Requirement");
         }
         user.courses = courses;
         Users.update({ "_id": user._id }, user)
@@ -252,7 +251,7 @@ class AddCourse extends React.Component {
                 "num": 210,
             }
         } else {
-            console.log("You have already completed the CPSC 210 Requirement");
+            alert("You have already completed the CPSC 210 Requirement");
         }
         user.courses = courses;
         Users.update({ "_id": user._id }, user)
@@ -270,7 +269,7 @@ class AddCourse extends React.Component {
                 "num": 301,
             }
         } else {
-            console.log("You have already completed the ENGL 301 Requirement");
+            alert("You have already completed the ENGL 301 Requirement");
         }
         user.courses = courses;
         Users.update({ "_id": user._id }, user)
@@ -287,7 +286,7 @@ class AddCourse extends React.Component {
                 "num": 301,
             }
         } else {
-            console.log("You have already completed the ENGL 301 Requirement");
+            alert("You have already completed the ENGL 301 Requirement");
         }
         user.courses = courses;
         Users.update({ "_id": user._id }, user)
@@ -303,7 +302,7 @@ class AddCourse extends React.Component {
                 "num": 213,
             }
         } else {
-            console.log("You have already completed the CPSC 213 Requirement");
+            alert("You have already completed the CPSC 213 Requirement");
         }
         user.courses = courses;
         Users.update({ "_id": user._id }, user)
@@ -320,7 +319,7 @@ class AddCourse extends React.Component {
                 "num": 213,
             }
         } else {
-            console.log("You have already completed the CPSC 213 Requirement");
+            alert("You have already completed the CPSC 213 Requirement");
         }
         user.courses = courses;
         Users.update({ "_id": user._id }, user)
@@ -337,7 +336,7 @@ class AddCourse extends React.Component {
                 "num": 221,
             }
         } else {
-            console.log("You have already completed the CPSC 221 Requirement");
+            alert("You have already completed the CPSC 221 Requirement");
         }
         user.courses = courses;
         Users.update({ "_id": user._id }, user)
@@ -354,7 +353,7 @@ class AddCourse extends React.Component {
                 "num": 221,
             }
         } else {
-            console.log("You have already completed the CPSC 221 Requirement");
+            alert("You have already completed the CPSC 221 Requirement");
         }
         user.courses = courses;
         Users.update({ "_id": user._id }, user)
@@ -386,7 +385,7 @@ class AddCourse extends React.Component {
                 Users.update({ "_id": user._id }, user)
 
             } else {
-                console.log("You have already been credited for " + this.state.dept + " " + this.state.num);
+                alert("You have already been credited for " + this.state.dept + " " + this.state.num);
             }
         }
     };
