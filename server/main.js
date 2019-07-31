@@ -1,6 +1,6 @@
 import { Meteor } from "meteor/meteor";
 import { Courses } from "../imports/collections/courses";
-import { Users } from "../imports/collections/userCourses";
+import { userCourses } from "../imports/collections/userCourses";
 import _ from "lodash";
 
 const shortid = require("shortid");
@@ -10,14 +10,14 @@ Meteor.startup(() => {
   // console.log(process.env.MONGO_URL);
   // process.env.MONGO_URL = "mongodb://m001-student:m001-mongodb-basics@cluster0-n7b3j.mongodb.net/bcsdn?retryWrites=true&w=majority"
   // Check to see if data exists in the collection
-  const numRecords = Users.find().count();
+  const numRecords = userCourses.find().count();
   console.log(numRecords);
-  const users = Users.find().fetch();
+  const users = userCourses.find().fetch();
 
   console.log("number of users: " + numRecords);
 
   if (numRecords == 0) {
-    Users.insert({
+    userCourses.insert({
       "email": "test1@gmail.com",
       "firstName": "Good",
       "lastName": "Student",
@@ -74,7 +74,7 @@ Meteor.startup(() => {
   //   return Courses.find({});
   // });
 
-  Meteor.publish("users", function () {
-    return Users.find();
+  Meteor.publish("userCourses", function () {
+    return userCourses.find();
   });
 });

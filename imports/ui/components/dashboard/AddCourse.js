@@ -1,7 +1,7 @@
 import React from 'react';
 import { Container, Form, Button, Header, Popup, Grid } from 'semantic-ui-react'
 import { createContainer } from "meteor/react-meteor-data";
-import { Users } from "../../../collections/userCourses";
+import { userCourses } from "../../../collections/userCourses";
 const shortid = require("shortid");
 
 class AddCourse extends React.Component {
@@ -64,8 +64,9 @@ class AddCourse extends React.Component {
             alert("You have already completed the ENGL requirement");
         }
         user.courses = courses;
-        Users.update({ "_id": user._id }, user)
-    }
+
+        // console.log(user)
+        userCourses.update({ "_id": user._id }, user)
 
     handleENGL112ChangeExempt(event) {
         event.preventDefault();
@@ -82,7 +83,7 @@ class AddCourse extends React.Component {
             alert("You have already completed the ENGL requirement");
         }
         user.courses = courses;
-        Users.update({ "_id": user._id }, user)
+        userCourses.update({ "_id": user._id }, user)
     }
 
     handleCPSC110ChangeCore(event) {
@@ -99,7 +100,7 @@ class AddCourse extends React.Component {
             alert("You have already completed the CPSC 110 Requirement");
         }
         user.courses = courses;
-        Users.update({ "_id": user._id }, user)
+        userCourses.update({ "_id": user._id }, user)
     }
 
     handleCPSC110ChangeExempt(event) {
@@ -116,7 +117,7 @@ class AddCourse extends React.Component {
             alert("You have already completed the CPSC 110 Requirement");
         }
         user.courses = courses;
-        Users.update({ "_id": user._id }, user)
+        userCourses.update({ "_id": user._id }, user)
     }
 
     handleSTAT203ChangeCore(event) {
@@ -133,7 +134,7 @@ class AddCourse extends React.Component {
             alert("You have already completed the STAT 203 Requirement");
         }
         user.courses = courses;
-        Users.update({ "_id": user._id }, user)
+        userCourses.update({ "_id": user._id }, user)
     }
 
     handleSTAT203ChangeExempt(event) {
@@ -150,7 +151,7 @@ class AddCourse extends React.Component {
             alert("You have already completed the STAT 203 Requirement");
         }
         user.courses = courses;
-        Users.update({ "_id": user._id }, user)
+        userCourses.update({ "_id": user._id }, user)
     }
 
 
@@ -168,7 +169,7 @@ class AddCourse extends React.Component {
             alert("You have already completed the MATH 180 Requirement");
         }
         user.courses = courses;
-        Users.update({ "_id": user._id }, user)
+        userCourses.update({ "_id": user._id }, user)
     }
 
     handleMATH180ChangeExempt(event) {
@@ -185,7 +186,7 @@ class AddCourse extends React.Component {
             alert("You have already completed the MATH 180 Requirement");
         }
         user.courses = courses;
-        Users.update({ "_id": user._id }, user)
+        userCourses.update({ "_id": user._id }, user)
     }
     // cpsc121 cpsc210
 
@@ -203,7 +204,7 @@ class AddCourse extends React.Component {
             alert("You have already completed the CPSC 121 Requirement");
         }
         user.courses = courses;
-        Users.update({ "_id": user._id }, user)
+        userCourses.update({ "_id": user._id }, user)
     }
 
     handleCPSC121ChangeExempt(event) {
@@ -220,7 +221,7 @@ class AddCourse extends React.Component {
             alert("You have already completed the CPSC 121 Requirement");
         }
         user.courses = courses;
-        Users.update({ "_id": user._id }, user)
+        userCourses.update({ "_id": user._id }, user)
     }
 
     handleCPSC210ChangeCore(event) {
@@ -237,7 +238,7 @@ class AddCourse extends React.Component {
             alert("You have already completed the CPSC 210 Requirement");
         }
         user.courses = courses;
-        Users.update({ "_id": user._id }, user)
+        userCourses.update({ "_id": user._id }, user)
     }
 
     handleCPSC210ChangeExempt(event) {
@@ -254,7 +255,7 @@ class AddCourse extends React.Component {
             alert("You have already completed the CPSC 210 Requirement");
         }
         user.courses = courses;
-        Users.update({ "_id": user._id }, user)
+        userCourses.update({ "_id": user._id }, user)
     }
 
 
@@ -272,7 +273,7 @@ class AddCourse extends React.Component {
             alert("You have already completed the ENGL 301 Requirement");
         }
         user.courses = courses;
-        Users.update({ "_id": user._id }, user)
+        userCourses.update({ "_id": user._id }, user)
     }
 
     handleENGL301ChangeExempt(event) {
@@ -289,7 +290,7 @@ class AddCourse extends React.Component {
             alert("You have already completed the ENGL 301 Requirement");
         }
         user.courses = courses;
-        Users.update({ "_id": user._id }, user)
+        userCourses.update({ "_id": user._id }, user)
     }
     handleCPSC213ChangeCore(event) {
         event.preventDefault();
@@ -305,7 +306,7 @@ class AddCourse extends React.Component {
             alert("You have already completed the CPSC 213 Requirement");
         }
         user.courses = courses;
-        Users.update({ "_id": user._id }, user)
+        userCourses.update({ "_id": user._id }, user)
     }
 
     handleCPSC213ChangeExempt(event) {
@@ -322,7 +323,7 @@ class AddCourse extends React.Component {
             alert("You have already completed the CPSC 213 Requirement");
         }
         user.courses = courses;
-        Users.update({ "_id": user._id }, user)
+        userCourses.update({ "_id": user._id }, user)
     }
 
     handleCPSC221ChangeCore(event) {
@@ -339,7 +340,7 @@ class AddCourse extends React.Component {
             alert("You have already completed the CPSC 221 Requirement");
         }
         user.courses = courses;
-        Users.update({ "_id": user._id }, user)
+        userCourses.update({ "_id": user._id }, user)
     }
 
     handleCPSC221ChangeExempt(event) {
@@ -356,7 +357,7 @@ class AddCourse extends React.Component {
             alert("You have already completed the CPSC 221 Requirement");
         }
         user.courses = courses;
-        Users.update({ "_id": user._id }, user)
+        userCourses.update({ "_id": user._id }, user)
     }
 
     handleClick = e => {
@@ -382,16 +383,8 @@ class AddCourse extends React.Component {
                 }
 
                 user.courses = courses;
-                Users.update({ "_id": user._id }, user)
-                
-                this.setState({
-                dept: '',
-                num: '',
-                // this.state.grade !== "" &&
-                type: '',
-                grade: ''
-                })
 
+                userCourses.update({ "_id": user._id }, user)
             } else {
                 alert("You have already been credited for " + this.state.dept + " " + this.state.num);
             }
@@ -570,10 +563,10 @@ class AddCourse extends React.Component {
 
 export default createContainer(() => {
     // Set up subscription
-    Meteor.subscribe("users");
+    Meteor.subscribe("userCourses");
     // Return an object as props
     return {
-        user: Users.find({ "email": "test1@gmail.com" }).fetch()[0],
+        user: userCourses.find({ "email": "test1@gmail.com" }).fetch()[0],
         dept: '', num: '', grade: '', type: ''
     };
 }, AddCourse);
