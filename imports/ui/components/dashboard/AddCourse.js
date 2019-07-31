@@ -372,9 +372,6 @@ class AddCourse extends React.Component {
         ) {
             let user = this.props.user
             let courses = user.courses
-            console.log(user)
-
-            console.log(this.props.dept)
 
             if (!Object.keys(courses).includes(this.props.dept + this.props.num)) {
                 console.log(this.props.dept)
@@ -384,25 +381,13 @@ class AddCourse extends React.Component {
                     "dept": this.state.dept,
                     "num": Number(this.state.num),
                 }
-                console.log(this.state)
-
-                console.log('A dept was submitted: ' + this.state.dept);
-                console.log('A num was submitted: ' + this.state.num);
-                console.log('A grade was submitted: ' + this.state.grade);
-                console.log('A type was submitted: ' + this.state.type);
-
 
                 user.courses = courses;
                 Users.update({ "_id": user._id }, user)
-                console.log("inside submit with user:")
-                console.log(user)
+
             } else {
                 console.log("You have already been credited for " + this.state.dept + " " + this.state.num);
             }
-
-            // update user 
-
-
         }
     };
 
