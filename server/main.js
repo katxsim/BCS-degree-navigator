@@ -1,5 +1,4 @@
 import { Meteor } from "meteor/meteor";
-import { Courses } from "../imports/collections/courses";
 import { userCourses } from "../imports/collections/userCourses";
 import _ from "lodash";
 
@@ -11,10 +10,7 @@ Meteor.startup(() => {
   // process.env.MONGO_URL = "mongodb://m001-student:m001-mongodb-basics@cluster0-n7b3j.mongodb.net/bcsdn?retryWrites=true&w=majority"
   // Check to see if data exists in the collection
   const numRecords = userCourses.find().count();
-  console.log(numRecords);
   const users = userCourses.find().fetch();
-
-  console.log("number of users: " + numRecords);
 
   if (numRecords == 0) {
     userCourses.insert({

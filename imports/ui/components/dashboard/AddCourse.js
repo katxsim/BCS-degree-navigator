@@ -1,6 +1,7 @@
 import React from 'react';
 import { Container, Form, Button, Header, Popup, Grid } from 'semantic-ui-react';
 import { createContainer } from "meteor/react-meteor-data";
+import { updateRequirements } from "./../../../ComputeRequirements"
 import { userCourses } from "../../../collections/userCourses";
 const shortid = require("shortid");
 
@@ -372,6 +373,15 @@ class AddCourse extends React.Component {
         ) {
             let user = this.props.user
             let courses = user.courses
+            let requirements = updateRequirements(user);
+
+            if (this.state.type === "electives" &&
+                this.state.dept !== "CPSC" ||
+                this.state.num <= 300) {
+                alert("Elective must be CPSC 300 or higher");
+                return;
+            }
+
 
             if (!Object.keys(courses).includes(this.props.dept + this.props.num)) {
                 console.log(this.props.dept)
