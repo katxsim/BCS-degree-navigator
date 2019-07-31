@@ -1,14 +1,13 @@
 import React from 'react';
 import { Container, Form, Button, Header, Popup, Grid } from 'semantic-ui-react'
 import { createContainer } from "meteor/react-meteor-data";
-import { Users } from "../../../collections/users"
+import { Users } from "../../../collections/users";
 const shortid = require("shortid");
 
 class AddCourse extends React.Component {
     constructor(props) {
         super(props);
         this.state = { dept: '', num: '', grade: '', type: '' };
-
     }
 
     handleDeptChange = e =>
@@ -71,7 +70,6 @@ class AddCourse extends React.Component {
 
     handleENGL112ChangeExempt(event) {
         event.preventDefault();
-
         let user = this.props.user
         let courses = user.courses
         console.log(user)
@@ -90,8 +88,6 @@ class AddCourse extends React.Component {
 
     handleCPSC110ChangeCore(event) {
         event.preventDefault();
-
-
         let user = this.props.user
         let courses = user.courses
         if (!Object.keys(courses).includes("CPSC110")) {
@@ -109,7 +105,6 @@ class AddCourse extends React.Component {
 
     handleCPSC110ChangeExempt(event) {
         event.preventDefault();
-
         let user = this.props.user
         let courses = user.courses
         if (!Object.keys(courses).includes("CPSC110")) {
@@ -123,12 +118,10 @@ class AddCourse extends React.Component {
         }
         user.courses = courses;
         Users.update({ "_id": user._id }, user)
-
     }
 
     handleSTAT203ChangeCore(event) {
         event.preventDefault();
-
         let user = this.props.user
         let courses = user.courses
         if (!Object.keys(courses).includes("STAT203")) {
@@ -146,7 +139,6 @@ class AddCourse extends React.Component {
 
     handleSTAT203ChangeExempt(event) {
         event.preventDefault();
-
         let user = this.props.user
         let courses = user.courses
         if (!Object.keys(courses).includes("STAT203")) {
@@ -165,7 +157,6 @@ class AddCourse extends React.Component {
 
     handleMATH180ChangeCore(event) {
         event.preventDefault();
-
         let user = this.props.user
         let courses = user.courses
         if (!Object.keys(courses).includes("MATH180")) {
@@ -183,7 +174,6 @@ class AddCourse extends React.Component {
 
     handleMATH180ChangeExempt(event) {
         event.preventDefault();
-
         let user = this.props.user
         let courses = user.courses
         if (!Object.keys(courses).includes("MATH180")) {
@@ -202,7 +192,6 @@ class AddCourse extends React.Component {
 
     handleCPSC121ChangeCore(event) {
         event.preventDefault();
-
         let user = this.props.user
         let courses = user.courses
         if (!Object.keys(courses).includes("CPSC121")) {
@@ -220,7 +209,6 @@ class AddCourse extends React.Component {
 
     handleCPSC121ChangeExempt(event) {
         event.preventDefault();
-
         let user = this.props.user
         let courses = user.courses
         if (!Object.keys(courses).includes("CPSC121")) {
@@ -238,7 +226,6 @@ class AddCourse extends React.Component {
 
     handleCPSC210ChangeCore(event) {
         event.preventDefault();
-
         let user = this.props.user
         let courses = user.courses
         if (!Object.keys(courses).includes("CPSC210")) {
@@ -256,7 +243,6 @@ class AddCourse extends React.Component {
 
     handleCPSC210ChangeExempt(event) {
         event.preventDefault();
-
         let user = this.props.user
         let courses = user.courses
         if (!Object.keys(courses).includes("CPSC210")) {
@@ -271,12 +257,10 @@ class AddCourse extends React.Component {
         user.courses = courses;
         Users.update({ "_id": user._id }, user)
     }
-    // engl301cpsc213 cpsc221
 
 
     handleENGL301ChangeCore(event) {
         event.preventDefault();
-
         let user = this.props.user
         let courses = user.courses
         if (!Object.keys(courses).includes("ENGL301")) {
@@ -294,7 +278,6 @@ class AddCourse extends React.Component {
 
     handleENGL301ChangeExempt(event) {
         event.preventDefault();
-
         let user = this.props.user
         let courses = user.courses
         if (!Object.keys(courses).includes("ENGL301")) {
@@ -311,7 +294,6 @@ class AddCourse extends React.Component {
     }
     handleCPSC213ChangeCore(event) {
         event.preventDefault();
-
         let user = this.props.user
         let courses = user.courses
         if (!Object.keys(courses).includes("CPSC213")) {
@@ -329,7 +311,6 @@ class AddCourse extends React.Component {
 
     handleCPSC213ChangeExempt(event) {
         event.preventDefault();
-
         let user = this.props.user
         let courses = user.courses
         if (!Object.keys(courses).includes("CPSC213")) {
@@ -343,7 +324,6 @@ class AddCourse extends React.Component {
         }
         user.courses = courses;
         Users.update({ "_id": user._id }, user)
-
     }
 
     handleCPSC221ChangeCore(event) {
@@ -361,12 +341,10 @@ class AddCourse extends React.Component {
         }
         user.courses = courses;
         Users.update({ "_id": user._id }, user)
-
     }
 
     handleCPSC221ChangeExempt(event) {
         event.preventDefault();
-
         let user = this.props.user
         let courses = user.courses
         if (!Object.keys(courses).includes("CPSC221")) {
@@ -381,8 +359,6 @@ class AddCourse extends React.Component {
         user.courses = courses;
         Users.update({ "_id": user._id }, user)
     }
-
-
 
     handleClick = e => {
 
@@ -425,10 +401,13 @@ class AddCourse extends React.Component {
             }
 
             // update user 
+
+
         }
     };
 
     render() {
+
         return (
             <Container className="pForm" fluid>
                 <Form>
@@ -581,9 +560,9 @@ class AddCourse extends React.Component {
                             <Button.Or />
                             <Button value="bridging" onClick={this.handleBridgingChange.bind(this)}>Bridging</Button>
                             <Button.Or />
-                            <Button value="exemption" onClick={this.handleExemptionChange.bind(this)}>Exemption</Button>
+                            <Button value="exemptions" onClick={this.handleExemptionChange.bind(this)}>Exemption</Button>
                             <Button.Or />
-                            <Button value="exemption replacement" onClick={this.handleReplacementChange.bind(this)}>Replacement</Button>
+                            <Button value="replacement" onClick={this.handleReplacementChange.bind(this)}>Replacement</Button>
                             <Button.Or />
                             <Button value="electives" onClick={this.handleElectiveChange.bind(this)}>CPSC Elective</Button>
                         </Button.Group>
@@ -604,4 +583,4 @@ export default createContainer(() => {
         user: Users.find({ "email": "test1@gmail.com" }).fetch()[0],
         dept: '', num: '', grade: '', type: ''
     };
-}, AddCourse); 
+}, AddCourse);
