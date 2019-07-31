@@ -208,10 +208,13 @@ export function updateRequirements(user) {
                         console.log("Not a valid elective " + course.dept + " " + course.num);
                         console.log("Usage: must be CPSC 300 or higher, and not a core requirement")
                         return;
-                    case (course.num < 400):
-                        if (!course.consumed) {
+                    case (course.num < 400 &&
+                        course.num !== 310 &&
+                        course.num !== 313 &&
+                        course.num !== 320):
+                        if (requirements.elective[0] < 3) {
                             requirements.elective[0]++;
-                            course.consumed = true;
+                            // course.consumed = true;
                             // console.log("used " + course.dept + " " + course.num + " as 300 level elective")
                         }
                         return;

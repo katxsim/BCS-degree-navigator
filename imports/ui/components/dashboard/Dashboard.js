@@ -1,8 +1,8 @@
 import React, { Component } from "react";
-import Progress from "./ProgressTabs";
+import Progress from "./ProgressViews/ProgressTabs";
 import CourseList from "./CourseList";
 import Footer from "../layout/Footer";
-import EmailSteve from "../EmailSteve";
+import EmailSteve from "./EmailSteve";
 import { Container, Divider } from 'semantic-ui-react'
 import AddCourse from "./AddCourse";
 
