@@ -58,7 +58,7 @@ class SummaryView extends Component {
       })
     ) : "";
 
-    // successful return
+
     if (requirements) {
       return (
         <div>
