@@ -6,7 +6,7 @@ class Progress4 extends Component {
     return (
       <div className="ui bottom attached segment active tab scrolling-wrapper">
         <Step.Group>
-          <Step completed>
+          <Step completed className="positive">
             <Icon name="checkmark" />
             <Step.Content>
               <Step.Title>Before BCS</Step.Title>
@@ -22,7 +22,7 @@ class Progress4 extends Component {
               </Step.Description>
             </Step.Content>
           </Step>
-          <Step completed>
+          <Step completed className="positive">
             <Icon name="checkmark" />
             <Step.Content>
               <Step.Title>2018 Winter 1</Step.Title>
@@ -35,7 +35,7 @@ class Progress4 extends Component {
               </Step.Description>
             </Step.Content>
           </Step>
-          <Step completed>
+          <Step completed className="positive">
             <Icon name="checkmark" />
             <Step.Content>
               <Step.Title>2018 Winter 2</Step.Title>
@@ -49,7 +49,7 @@ class Progress4 extends Component {
               </Step.Description>
             </Step.Content>
           </Step>
-          <Step active>
+          <Step className="warning">
             <Icon name="chevron right" />
             <Step.Content>
               <Step.Title>2019 Summer</Step.Title>
@@ -62,7 +62,7 @@ class Progress4 extends Component {
               </Step.Description>
             </Step.Content>
           </Step>
-          <Step>
+          <Step className="negative">
             <Icon name="times" />
             <Step.Content>
               <Step.Title>2019 Winter 1</Step.Title>
@@ -74,7 +74,7 @@ class Progress4 extends Component {
               </Step.Description>
             </Step.Content>
           </Step>
-          <Step>
+          <Step className="negative">
             <Icon name="times" />
             <Step.Content>
               <Step.Title>2019 Winter 2</Step.Title>
@@ -86,7 +86,7 @@ class Progress4 extends Component {
               </Step.Description>
             </Step.Content>
           </Step>
-          <Step>
+          <Step className="negative">
             <Icon name="times" />
             <Step.Content>
               <Step.Title>2020 Summer</Step.Title>
@@ -98,7 +98,7 @@ class Progress4 extends Component {
               </Step.Description>
             </Step.Content>
           </Step>
-          <Step>
+          <Step className="negative">
             <Icon name="times" />
             <Step.Content>
               <Step.Title>2020 Winter 1</Step.Title>
@@ -110,7 +110,7 @@ class Progress4 extends Component {
               </Step.Description>
             </Step.Content>
           </Step>
-          <Step>
+          <Step className="negative">
             <Icon name="times" />
             <Step.Content>
               <Step.Title>2020 Winter 2</Step.Title>
