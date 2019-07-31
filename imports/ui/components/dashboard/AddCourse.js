@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Form, Button, Header, Popup, Grid } from 'semantic-ui-react'
+import { Container, Form, Button, Header, Popup, Grid } from 'semantic-ui-react';
 import { createContainer } from "meteor/react-meteor-data";
 import { userCourses } from "../../../collections/userCourses";
 const shortid = require("shortid");
@@ -8,7 +8,7 @@ class AddCourse extends React.Component {
     constructor(props) {
         super(props);
         this.state = { dept: '', num: '', grade: '', type: '' };
-    }
+    };
 
     handleDeptChange = e =>
         this.setState({
@@ -60,13 +60,13 @@ class AddCourse extends React.Component {
                 "dept": "ENGL",
                 "num": 112,
             }
+            // ~~ update DB ~~ // 
+            user.courses = courses;
+            userCourses.update({ "_id": user._id }, user);
         } else {
             alert("You have already completed the ENGL requirement");
         }
-        user.courses = courses;
-
-        // console.log(user)
-        userCourses.update({ "_id": user._id }, user)
+    }
 
     handleENGL112ChangeExempt(event) {
         event.preventDefault();
