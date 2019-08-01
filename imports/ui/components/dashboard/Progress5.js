@@ -12,13 +12,13 @@ import { createContainer } from "meteor/react-meteor-data";
 //   { course: "CPSC 213", grade: 80, session: "2018W2" }
 // ];
 
-state = {
-  column: null,
-  data: null,
-  direction: null
-};
-
 class Progress5 extends Component {
+  state = {
+    column: null,
+    data: null,
+    direction: null
+  };
+
   componentDidMount() {
     console.log("got here 1");
     if (this.props.user) {
@@ -50,8 +50,8 @@ class Progress5 extends Component {
   };
 
   render() {
-    console.log(state);
-    const { column, data, direction } = state;
+    console.log(this.state);
+    const { column, data, direction } = this.state;
 
     return (
       <div className="ui bottom attached segment active tab">
