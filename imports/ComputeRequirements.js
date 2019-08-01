@@ -205,21 +205,21 @@ export function updateRequirements(user) {
             case "electives":
                 switch (course.dept == "CPSC") {
                     case (course.num < 300):
-                        console.log("Not a valid elective " + course.dept + " " + course.num);
-                        console.log("Usage: must be CPSC 300 or higher, and not a core requirement")
+                        // Should seriously never get here 
+                        console.log("you found an easter egg!")
                         return;
-                    case (course.num < 400):
-                        if (!course.consumed) {
+                    case (course.num < 400 &&
+                        course.num !== 310 &&
+                        course.num !== 313 &&
+                        course.num !== 320):
+                        if (requirements.elective[0] < 3) {
                             requirements.elective[0]++;
-                            course.consumed = true;
-                            // console.log("used " + course.dept + " " + course.num + " as 300 level elective")
                         }
                         return;
                     default:
                         if (!course.consumed) {
                             requirements.elective[1]++;
                             course.consumed = true;
-                            // console.log("used " + course.dept + " " + course.num + " as 400 level elective")
                         }
                         return;
                 }
@@ -243,7 +243,6 @@ export function updateRequirements(user) {
                 if (requirements.replacements.includes(courseLevel)) {
                     requirements.replacements.splice(
                         requirements.replacements.indexOf(courseLevel), 1);
-                    // console.log("used " + course.dept + " " + course.num + " for an exemption replacement");
                     return;
                 } else if
                     // replacement is higher level than needed (surpassing the requirement)

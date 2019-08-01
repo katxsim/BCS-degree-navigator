@@ -1,6 +1,6 @@
 import React from 'react';
 import { Button, Form, Header, Image, List, Icon } from 'semantic-ui-react'
-import { Users } from "../../../collections/users";
+import { userCourses } from "../../../collections/userCourses";
 import { BaseRequirements } from "../../../ComputeRequirements";
 import { createContainer } from "meteor/react-meteor-data";
 
@@ -11,7 +11,7 @@ class CourseList extends React.Component {
 
     handleDelete = (course, user) => {
         delete user.courses[course.dept + course.num]
-        Users.update({ "_id": user._id }, user);
+        userCourses.update({ "_id": user._id }, user);
     }
 
 
@@ -21,7 +21,7 @@ class CourseList extends React.Component {
         return (
             <List divided verticalAlign='middle' size='small' key={course.dept + course.num}>
 
-                    <List.Item>
+                <List.Item>
                     <List.Content floated='right'>
                         <Button onClick={() => this.handleDelete(course, user)}>Delete</Button>
                     </List.Content>
@@ -81,23 +81,23 @@ class CourseList extends React.Component {
                 </div>
             );
 
-            const postElectives = courses ? (
-                Object.values(courses).map(course => {
-                    if (course.type == "electives") {
-                        return this.makeView(course, user);
-                    }
-                })
-            ) : (
-                    <div className="courses container">
-                        <h6 className="left-align" />
-                    </div>
-                );
+        const postElectives = courses ? (
+            Object.values(courses).map(course => {
+                if (course.type == "electives") {
+                    return this.makeView(course, user);
+                }
+            })
+        ) : (
+                <div className="courses container">
+                    <h6 className="left-align" />
+                </div>
+            );
 
         return (
             <List divided verticalAlign='middle' size='medium'>
                 <List.Item >
                     <Header size="large">
-                    <Icon name='cubes' size='large' />
+                        <Icon name='cubes' size='large' />
                         Core
                     </Header>
                     <List.Content floated='right'>
@@ -120,7 +120,7 @@ class CourseList extends React.Component {
                 <List.Item>
 
                     <Header size="large">
-                    <Icon name='tasks' size='large' />
+                        <Icon name='tasks' size='large' />
                         Exemptions
                     </Header>
                     <List.Content floated='right'>
@@ -130,7 +130,7 @@ class CourseList extends React.Component {
 
                 <List.Item>
                     <Header size="large">
-                    <Icon name='sync alternate' size='large' />
+                        <Icon name='sync alternate' size='large' />
                         Exemption Replacements
                     </Header>
                     <List.Content floated='right'>
@@ -140,7 +140,7 @@ class CourseList extends React.Component {
 
                 <List.Item>
                     <Header size="large">
-                    <Icon name='laptop' size='large' />
+                        <Icon name='laptop' size='large' />
                         CPSC Electives
                     </Header>
                     <List.Content floated='right'>
@@ -158,9 +158,9 @@ class CourseList extends React.Component {
 
 export default createContainer(() => {
     // Set up subscription
-    Meteor.subscribe("users");
+    Meteor.subscribe("userCourses");
     // Return an object as props
     return ({
-        user: Users.find({ email: "test1@gmail.com" }).fetch()[0]
+        user: userCourses.find({ email: "test1@gmail.com" }).fetch()[0]
     });
-}, CourseList);
+}, CourseList); 
