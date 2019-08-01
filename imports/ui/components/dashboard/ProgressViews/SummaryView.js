@@ -26,6 +26,11 @@ class SummaryView extends Component {
 
     const replacementsLeft = user ? requirements.replacements.length : ""
 
+
+
+    // these can probably be compressed! 
+    // not top priority right now, though. TODO
+
     const postBridging = user ? (
       Object.values(user.courses).map(course => {
         if (course.type === "bridging") {
@@ -63,6 +68,7 @@ class SummaryView extends Component {
             <Header as="h3" block>
               Core Progress: {corePercent}%
         </Header>
+
             <Progress percent={corePercent} color="olive" active />
             <p className={requirements.core.CPSC[0].status}>CPSC 110</p>
             <p className={requirements.core.CPSC[1].status}>CPSC 121</p>
