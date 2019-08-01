@@ -192,6 +192,8 @@ Meteor.startup(() => {
     }); // end user; //)
   }
 
+  // a comment
+
   // Meteor.publish("courses", function () {
   //   return Courses.find({});
   // });

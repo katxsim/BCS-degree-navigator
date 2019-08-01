@@ -52,6 +52,7 @@ class Progress5 extends Component {
   render() {
     console.log(this.state);
     const { column, data, direction } = this.state;
+    console.log(data);
 
     return (
       <div className="ui bottom attached segment active tab">
@@ -85,9 +86,9 @@ class Progress5 extends Component {
           </Table.Header>
 
           <Table.Body>
-            {_.map(data, ({ course, grade, session }) => (
-              <Table.Row key={course}>
-                <Table.Cell>{course}</Table.Cell>
+            {_.map(data, ({ dept, num, grade, session }) => (
+              <Table.Row key={dept + " " + num}>
+                <Table.Cell>{dept + " " + num}</Table.Cell>
                 <Table.Cell>{grade}</Table.Cell>
                 <Table.Cell>{session}</Table.Cell>
               </Table.Row>
