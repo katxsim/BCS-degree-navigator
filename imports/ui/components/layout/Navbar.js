@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Menu } from 'semantic-ui-react'
+import AccountsUI from '../../auth/AccountsUI';
 
 export default class MenuExampleStackable extends Component {
   state = {}
@@ -22,10 +23,8 @@ export default class MenuExampleStackable extends Component {
         >
           Home
         </Menu.Item>
-
-        <Menu.Item position="left" 
-        name='sign-in' active={activeItem === 'sign-in'} onClick={this.handleItemClick}>
-          Sign-in
+        <Menu.Item position="left">
+        <AccountsUI/>
         </Menu.Item>
       </Menu>
     )

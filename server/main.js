@@ -73,4 +73,5 @@ Meteor.startup(() => {
   Meteor.publish("userCourses", function () {
     return userCourses.find();
   });
+
 });
