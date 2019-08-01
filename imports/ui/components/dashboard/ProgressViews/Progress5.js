@@ -17,6 +17,18 @@ class Progress5 extends Component {
         data: this.props.user.courses
       });
     }
+
+    // const postBridging = user
+    // ? Object.values(user.courses).map(course => {
+    //     if (course.type === "bridging") {
+    //       return (
+    //         <p className="complete" key={course.dept + course.num}>
+    //           {course.dept} {course.num}
+    //         </p>
+    //       );
+    //     }
+    //   })
+    // : "";
   }
 
   handleSort = clickedColumn => () => {
@@ -41,10 +53,22 @@ class Progress5 extends Component {
   render() {
     const { column, data, direction } = this.state;
 
+    let sum = 0;
+    let count = 0;
+    Object.values(this.props.user.courses).forEach(function(course) {
+      sum += course.grade;
+      console.log(sum);
+      count++;
+      console.log(count);
+    });
+
+    const gpa = sum / count;
+    console.log(gpa);
+
     return (
       <div className="ui bottom attached segment active tab">
         <div>
-          <h1>GPA: 83%</h1>
+          <h1>GPA: {gpa}%</h1>
         </div>
         <Table sortable celled fixed>
           <Table.Header>
