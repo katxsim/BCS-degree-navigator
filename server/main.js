@@ -181,7 +181,7 @@ Meteor.startup(() => {
           type: "replacement",
           dept: "DSCI",
           num: 100,
-          grade: 89,
+          grade: 90,
           session: "2018W1"
         }
       } // end courses
