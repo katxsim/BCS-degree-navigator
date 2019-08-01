@@ -125,3 +125,7 @@ input[type="password"]:not(.browser-default):focus:not([readonly]) + label {
 .lProg {
   margin-bottom: 40px !important;
 }
+
+.footy {
+  padding-top: 200px;
+}
