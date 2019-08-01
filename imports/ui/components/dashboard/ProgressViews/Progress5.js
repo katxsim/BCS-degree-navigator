@@ -12,10 +12,7 @@ class Progress5 extends Component {
   };
 
   componentDidMount() {
-    console.log("got here 1");
     if (this.props.user) {
-      console.log("got here 2");
-      console.log(this.props.user.courses);
       this.setState({
         data: this.props.user.courses
       });
@@ -42,9 +39,7 @@ class Progress5 extends Component {
   };
 
   render() {
-    console.log(this.state);
     const { column, data, direction } = this.state;
-    console.log(data);
 
     return (
       <div className="ui bottom attached segment active tab">
