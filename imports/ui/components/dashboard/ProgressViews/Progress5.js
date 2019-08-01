@@ -1,7 +1,7 @@
 import _ from "lodash";
 import React, { Component } from "react";
 import { Icon, Table } from "semantic-ui-react";
-import { Users } from "../../../collections/users";
+import { userCourses } from "../../../../collections/userCourses";
 import { createContainer } from "meteor/react-meteor-data";
 
 // const tableData = [
@@ -105,6 +105,6 @@ export default createContainer(() => {
   Meteor.subscribe("users");
   // Return an object as props
   return {
-    user: Users.find({ email: "test1@gmail.com" }).fetch()[0]
+    user: userCourses.find({ email: "test1@gmail.com" }).fetch()[0]
   };
 }, Progress5);
