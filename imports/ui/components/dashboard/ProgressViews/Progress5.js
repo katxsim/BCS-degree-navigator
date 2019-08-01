@@ -4,14 +4,6 @@ import { Icon, Table } from "semantic-ui-react";
 import { userCourses } from "../../../../collections/userCourses";
 import { createContainer } from "meteor/react-meteor-data";
 
-// const tableData = [
-//   { course: "CPSC 110", grade: 91, session: "2018W1" },
-//   { course: "CPSC 121", grade: 79, session: "2018W1" },
-//   { course: "MATH 180", grade: 73, session: "2018W1" },
-//   { course: "CPSC 210", grade: 84, session: "2018W2" },
-//   { course: "CPSC 213", grade: 80, session: "2018W2" }
-// ];
-
 class Progress5 extends Component {
   state = {
     column: null,
