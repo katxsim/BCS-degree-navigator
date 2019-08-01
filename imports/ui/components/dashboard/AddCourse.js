@@ -1,14 +1,15 @@
 import React from 'react';
-import { Container, Form, Button, Header, Popup, Grid } from 'semantic-ui-react'
+import { Container, Form, Button, Header, Popup, Grid } from 'semantic-ui-react';
 import { createContainer } from "meteor/react-meteor-data";
-import { Users } from "../../../collections/users";
+import { updateRequirements } from "./../../../ComputeRequirements"
+import { userCourses } from "../../../collections/userCourses";
 const shortid = require("shortid");
 
 class AddCourse extends React.Component {
     constructor(props) {
         super(props);
         this.state = { dept: '', num: '', grade: '', type: '' };
-    }
+    };
 
     handleDeptChange = e =>
         this.setState({
@@ -60,12 +61,12 @@ class AddCourse extends React.Component {
                 "dept": "ENGL",
                 "num": 112,
             }
+            // ~~ update DB ~~ // 
+            user.courses = courses;
+            userCourses.update({ "_id": user._id }, user);
         } else {
-            console.log("You have already completed the ENGL requirement");
+            alert("You have already completed the ENGL requirement");
         }
-        user.courses = courses;
-        // console.log(user)
-        Users.update({ "_id": user._id }, user)
     }
 
     handleENGL112ChangeExempt(event) {
@@ -80,10 +81,10 @@ class AddCourse extends React.Component {
                 "num": 112,
             }
         } else {
-            console.log("You have already completed the ENGL requirement");
+            alert("You have already completed the ENGL requirement");
         }
         user.courses = courses;
-        Users.update({ "_id": user._id }, user)
+        userCourses.update({ "_id": user._id }, user)
     }
 
     handleCPSC110ChangeCore(event) {
@@ -97,10 +98,10 @@ class AddCourse extends React.Component {
                 "num": 110,
             }
         } else {
-            console.log("You have already completed the CPSC 110 Requirement");
+            alert("You have already completed the CPSC 110 Requirement");
         }
         user.courses = courses;
-        Users.update({ "_id": user._id }, user)
+        userCourses.update({ "_id": user._id }, user)
     }
 
     handleCPSC110ChangeExempt(event) {
@@ -114,10 +115,10 @@ class AddCourse extends React.Component {
                 "num": 110,
             }
         } else {
-            console.log("You have already completed the CPSC 110 Requirement");
+            alert("You have already completed the CPSC 110 Requirement");
         }
         user.courses = courses;
-        Users.update({ "_id": user._id }, user)
+        userCourses.update({ "_id": user._id }, user)
     }
 
     handleSTAT203ChangeCore(event) {
@@ -131,10 +132,10 @@ class AddCourse extends React.Component {
                 "num": 203,
             }
         } else {
-            console.log("You have already completed the STAT 203 Requirement");
+            alert("You have already completed the STAT 203 Requirement");
         }
         user.courses = courses;
-        Users.update({ "_id": user._id }, user)
+        userCourses.update({ "_id": user._id }, user)
     }
 
     handleSTAT203ChangeExempt(event) {
@@ -148,10 +149,10 @@ class AddCourse extends React.Component {
                 "num": 203,
             }
         } else {
-            console.log("You have already completed the STAT 203 Requirement");
+            alert("You have already completed the STAT 203 Requirement");
         }
         user.courses = courses;
-        Users.update({ "_id": user._id }, user)
+        userCourses.update({ "_id": user._id }, user)
     }
 
 
@@ -166,10 +167,10 @@ class AddCourse extends React.Component {
                 "num": 180,
             }
         } else {
-            console.log("You have already completed the MATH 180 Requirement");
+            alert("You have already completed the MATH 180 Requirement");
         }
         user.courses = courses;
-        Users.update({ "_id": user._id }, user)
+        userCourses.update({ "_id": user._id }, user)
     }
 
     handleMATH180ChangeExempt(event) {
@@ -183,10 +184,10 @@ class AddCourse extends React.Component {
                 "num": 180,
             }
         } else {
-            console.log("You have already completed the MATH 180 Requirement");
+            alert("You have already completed the MATH 180 Requirement");
         }
         user.courses = courses;
-        Users.update({ "_id": user._id }, user)
+        userCourses.update({ "_id": user._id }, user)
     }
     // cpsc121 cpsc210
 
@@ -201,10 +202,10 @@ class AddCourse extends React.Component {
                 "num": 121,
             }
         } else {
-            console.log("You have already completed the CPSC 121 Requirement");
+            alert("You have already completed the CPSC 121 Requirement");
         }
         user.courses = courses;
-        Users.update({ "_id": user._id }, user)
+        userCourses.update({ "_id": user._id }, user)
     }
 
     handleCPSC121ChangeExempt(event) {
@@ -218,10 +219,10 @@ class AddCourse extends React.Component {
                 "num": 121,
             }
         } else {
-            console.log("You have already completed the CPSC 121 Requirement");
+            alert("You have already completed the CPSC 121 Requirement");
         }
         user.courses = courses;
-        Users.update({ "_id": user._id }, user)
+        userCourses.update({ "_id": user._id }, user)
     }
 
     handleCPSC210ChangeCore(event) {
@@ -235,10 +236,10 @@ class AddCourse extends React.Component {
                 "num": 210,
             }
         } else {
-            console.log("You have already completed the CPSC 210 Requirement");
+            alert("You have already completed the CPSC 210 Requirement");
         }
         user.courses = courses;
-        Users.update({ "_id": user._id }, user)
+        userCourses.update({ "_id": user._id }, user)
     }
 
     handleCPSC210ChangeExempt(event) {
@@ -252,10 +253,10 @@ class AddCourse extends React.Component {
                 "num": 210,
             }
         } else {
-            console.log("You have already completed the CPSC 210 Requirement");
+            alert("You have already completed the CPSC 210 Requirement");
         }
         user.courses = courses;
-        Users.update({ "_id": user._id }, user)
+        userCourses.update({ "_id": user._id }, user)
     }
 
 
@@ -270,10 +271,10 @@ class AddCourse extends React.Component {
                 "num": 301,
             }
         } else {
-            console.log("You have already completed the ENGL 301 Requirement");
+            alert("You have already completed the ENGL 301 Requirement");
         }
         user.courses = courses;
-        Users.update({ "_id": user._id }, user)
+        userCourses.update({ "_id": user._id }, user)
     }
 
     handleENGL301ChangeExempt(event) {
@@ -287,10 +288,10 @@ class AddCourse extends React.Component {
                 "num": 301,
             }
         } else {
-            console.log("You have already completed the ENGL 301 Requirement");
+            alert("You have already completed the ENGL 301 Requirement");
         }
         user.courses = courses;
-        Users.update({ "_id": user._id }, user)
+        userCourses.update({ "_id": user._id }, user)
     }
     handleCPSC213ChangeCore(event) {
         event.preventDefault();
@@ -303,10 +304,10 @@ class AddCourse extends React.Component {
                 "num": 213,
             }
         } else {
-            console.log("You have already completed the CPSC 213 Requirement");
+            alert("You have already completed the CPSC 213 Requirement");
         }
         user.courses = courses;
-        Users.update({ "_id": user._id }, user)
+        userCourses.update({ "_id": user._id }, user)
     }
 
     handleCPSC213ChangeExempt(event) {
@@ -320,10 +321,10 @@ class AddCourse extends React.Component {
                 "num": 213,
             }
         } else {
-            console.log("You have already completed the CPSC 213 Requirement");
+            alert("You have already completed the CPSC 213 Requirement");
         }
         user.courses = courses;
-        Users.update({ "_id": user._id }, user)
+        userCourses.update({ "_id": user._id }, user)
     }
 
     handleCPSC221ChangeCore(event) {
@@ -337,10 +338,10 @@ class AddCourse extends React.Component {
                 "num": 221,
             }
         } else {
-            console.log("You have already completed the CPSC 221 Requirement");
+            alert("You have already completed the CPSC 221 Requirement");
         }
         user.courses = courses;
-        Users.update({ "_id": user._id }, user)
+        userCourses.update({ "_id": user._id }, user)
     }
 
     handleCPSC221ChangeExempt(event) {
@@ -354,10 +355,10 @@ class AddCourse extends React.Component {
                 "num": 221,
             }
         } else {
-            console.log("You have already completed the CPSC 221 Requirement");
+            alert("You have already completed the CPSC 221 Requirement");
         }
         user.courses = courses;
-        Users.update({ "_id": user._id }, user)
+        userCourses.update({ "_id": user._id }, user)
     }
 
     handleClick = e => {
@@ -372,6 +373,15 @@ class AddCourse extends React.Component {
         ) {
             let user = this.props.user
             let courses = user.courses
+            let requirements = updateRequirements(user);
+
+            if (this.state.type === "electives" &&
+                this.state.dept !== "CPSC" ||
+                this.state.num <= 300) {
+                alert("Elective must be CPSC 300 or higher");
+                return;
+            }
+
 
             if (!Object.keys(courses).includes(this.props.dept + this.props.num)) {
                 console.log(this.props.dept)
@@ -383,13 +393,14 @@ class AddCourse extends React.Component {
                 }
 
                 user.courses = courses;
-                Users.update({ "_id": user._id }, user)
 
+                userCourses.update({ "_id": user._id }, user)
             } else {
-                console.log("You have already been credited for " + this.state.dept + " " + this.state.num);
+                alert("You have already been credited for " + this.state.dept + " " + this.state.num);
             }
         }
     };
+
 
     render() {
 
@@ -562,10 +573,10 @@ class AddCourse extends React.Component {
 
 export default createContainer(() => {
     // Set up subscription
-    Meteor.subscribe("users");
+    Meteor.subscribe("userCourses");
     // Return an object as props
     return {
-        user: Users.find({ "email": "test1@gmail.com" }).fetch()[0],
+        user: userCourses.find({ "email": "test1@gmail.com" }).fetch()[0],
         dept: '', num: '', grade: '', type: ''
     };
 }, AddCourse);
