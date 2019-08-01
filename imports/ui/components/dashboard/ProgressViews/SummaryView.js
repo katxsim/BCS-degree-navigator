@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import { Header, Progress, Message } from "semantic-ui-react";
 import { createContainer } from "meteor/react-meteor-data";
-import { Users } from "../../../collections/users";
-import { updateRequirements } from "../../../ComputeRequirements"
+import { userCourses } from "../../../../collections/userCourses";
+import { updateRequirements } from "../../../../ComputeRequirements"
 const shortid = require("shortid");
 
 
@@ -56,6 +56,10 @@ class SummaryView extends Component {
       })
     ) : "";
 
+<<<<<<< HEAD:imports/ui/components/dashboard/SummaryView.js
+=======
+
+>>>>>>> 682c5fe0dedd1aaa9a5e05052a042336b984cb4e:imports/ui/components/dashboard/ProgressViews/SummaryView.js
     if (requirements) {
       return (
         <div>
@@ -110,9 +114,9 @@ class SummaryView extends Component {
 
 export default createContainer(() => {
   // Set up subscription
-  Meteor.subscribe("users");
+  Meteor.subscribe("userCourses");
   // Return an object as props
   return ({
-    user: Users.find({ "email": "test1@gmail.com" }).fetch()[0]
+    user: userCourses.find({ "email": "test1@gmail.com" }).fetch()[0]
   });
 }, SummaryView); 

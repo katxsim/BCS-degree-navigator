@@ -1,6 +1,5 @@
 import { Meteor } from "meteor/meteor";
-import { Courses } from "../imports/collections/courses";
-import { Users } from "../imports/collections/users";
+import { userCourses } from "../imports/collections/userCourses";
 import _ from "lodash";
 
 const shortid = require("shortid");
@@ -10,21 +9,18 @@ Meteor.startup(() => {
   // console.log(process.env.MONGO_URL);
   // process.env.MONGO_URL = "mongodb://m001-student:m001-mongodb-basics@cluster0-n7b3j.mongodb.net/bcsdn?retryWrites=true&w=majority"
   // Check to see if data exists in the collection
-  const numRecords = Users.find().count();
-  console.log(numRecords);
-  const users = Users.find().fetch();
-
-  console.log("number of users: " + numRecords);
+  const numRecords = userCourses.find().count();
+  const users = userCourses.find().fetch();
 
   if (numRecords == 0) {
-    Users.insert({
+    userCourses.insert({
       "email": "test1@gmail.com",
       "firstName": "Good",
       "lastName": "Student",
       "creditsEarned": 0,
       // "requirements": {
       //   "core":
-      //   {
+      //   { // 
       //     CPSC: [
       //       { "num": 110, "status": "incomplete" },
       //       { "num": 121, "status": "incomplete" },
@@ -53,9 +49,9 @@ Meteor.startup(() => {
         "CPSC213": { "type": "core", "dept": "CPSC", "num": 213 },
         "CPSC310": { "type": "core", "dept": "CPSC", "num": 310 },
         "SCIE300": { "type": "core", "dept": "SCIE", "num": 300 },
-        "CPSC316": { "type": "electives", "consumed": false, "dept": "CPSC", "num": 316 },
-        "CPSC319": { "type": "electives", "consumed": false, "dept": "CPSC", "num": 319 },
-        "CPSC436": { "type": "electives", "consumed": false, "dept": "CPSC", "num": 436 },
+        "CPSC316": { "type": "electives", "dept": "CPSC", "num": 316 },
+        "CPSC319": { "type": "electives", "dept": "CPSC", "num": 319 },
+        "CPSC436": { "type": "electives", "dept": "CPSC", "num": 436 },
         "STAT302": { "type": "bridging", "dept": "STAT", "num": 302 },
         "STAT305": { "type": "bridging", "dept": "STAT", "num": 305 },
         "STAT306": { "type": "bridging", "dept": "STAT", "num": 306 },
@@ -74,8 +70,7 @@ Meteor.startup(() => {
   //   return Courses.find({});
   // });
 
-  Meteor.publish("users", function () {
-    // console.log(Users.find().fetch());
-    return Users.find();
+  Meteor.publish("userCourses", function () {
+    return userCourses.find();
   });
 });

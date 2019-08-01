@@ -2,4 +2,4 @@
 
 import { Mongo } from "meteor/mongo";
 
-export const Courses = new Mongo.Collection("courses");
+export const userCourses = new Mongo.Collection("userCourses");
