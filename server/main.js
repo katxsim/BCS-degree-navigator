@@ -46,21 +46,21 @@ Meteor.startup(() => {
           dept: "CPSC",
           num: 121,
           grade: 88,
-          session: "2018W1"
+          session: "2017W2"
         },
         CPSC210: {
           type: "core",
           dept: "CPSC",
           num: 210,
           grade: 72,
-          session: "2018W1"
+          session: "2017W2"
         },
         CPSC110: {
           type: "core",
           dept: "CPSC",
           num: 110,
           grade: 91,
-          session: "2018W1"
+          session: "2017W1"
         },
         CPSC221: {
           type: "core",
@@ -81,7 +81,7 @@ Meteor.startup(() => {
           dept: "CPSC",
           num: 310,
           grade: 86,
-          session: "2018W1"
+          session: "2018W2"
         },
         SCIE300: {
           type: "core",
@@ -112,7 +112,7 @@ Meteor.startup(() => {
           dept: "CPSC",
           num: 436,
           grade: 84,
-          session: "2018W1"
+          session: "2019S"
         },
         STAT302: {
           type: "bridging",
@@ -161,7 +161,7 @@ Meteor.startup(() => {
           dept: "MATH",
           num: 180,
           grade: 70,
-          session: "2018W1"
+          session: "2017W1"
         },
         MATH221: {
           type: "replacement",

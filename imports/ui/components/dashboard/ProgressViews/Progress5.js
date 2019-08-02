@@ -3,6 +3,7 @@ import React, { Component } from "react";
 import { Icon, Table } from "semantic-ui-react";
 import { userCourses } from "../../../../collections/userCourses";
 import { createContainer } from "meteor/react-meteor-data";
+import { updateRequirements } from "../../../../ComputeRequirements";
 
 class Progress5 extends Component {
   state = {
@@ -17,18 +18,6 @@ class Progress5 extends Component {
         data: this.props.user.courses
       });
     }
-
-    // const postBridging = user
-    // ? Object.values(user.courses).map(course => {
-    //     if (course.type === "bridging") {
-    //       return (
-    //         <p className="complete" key={course.dept + course.num}>
-    //           {course.dept} {course.num}
-    //         </p>
-    //       );
-    //     }
-    //   })
-    // : "";
   }
 
   handleSort = clickedColumn => () => {
@@ -56,14 +45,24 @@ class Progress5 extends Component {
     let sum = 0;
     let count = 0;
     Object.values(this.props.user.courses).forEach(function(course) {
-      sum += course.grade;
-      console.log(sum);
-      count++;
-      console.log(count);
+      if (Number.isInteger(course.grade)) {
+        console.log(course.grade);
+        sum += course.grade;
+        // console.log(sum);
+        count++;
+        // console.log(count);
+
+        // !Number.isNaN(course.grade) || course.grade !== undefined
+      }
     });
 
-    const gpa = sum / count;
+    const gpa = (sum / count).toFixed(1);
     console.log(gpa);
+
+    // let requirements = "";
+    // if (this.props.user) {
+    //   requirements = updateRequirements(this.props.user);
+    // }
 
     return (
       <div className="ui bottom attached segment active tab">
@@ -110,6 +109,8 @@ class Progress5 extends Component {
     );
   }
 }
+
+// this is a comment
 
 export default createContainer(() => {
   // Set up subscription
