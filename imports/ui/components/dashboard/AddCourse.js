@@ -393,6 +393,7 @@ class AddCourse extends React.Component {
                     "type": this.state.type,
                     "dept": this.state.dept,
                     "num": Number(this.state.num),
+                    "grade": Number(this.state.grade)
                 }
 
                 user.courses = courses;

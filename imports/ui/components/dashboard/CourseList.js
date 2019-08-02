@@ -15,9 +15,6 @@ class CourseList extends React.Component {
 
     }
 
-
-
-
     makeView = (course, user) => {
         return (
             <List divided verticalAlign='middle' size='small' key={course.dept + course.num}>
