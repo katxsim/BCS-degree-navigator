@@ -17,29 +17,36 @@ class Progress5 extends Component {
         data: this.props.user.courses
       });
     }
+  }
 
-    // const postBridging = user
-    // ? Object.values(user.courses).map(course => {
-    //     if (course.type === "bridging") {
-    //       return (
-    //         <p className="complete" key={course.dept + course.num}>
-    //           {course.dept} {course.num}
-    //         </p>
-    //       );
-    //     }
-    //   })
-    // : "";
+  componentDidUpdate(prevProps) {
+    if (this.props.user !== prevProps.user) {
+      this.setState({
+        data: this.props.user.courses
+      });
+    }
   }
 
   handleSort = clickedColumn => () => {
     const { column, data, direction } = this.state;
 
     if (column !== clickedColumn) {
-      this.setState({
-        column: clickedColumn,
-        data: _.sortBy(data, [clickedColumn]),
-        direction: "ascending"
-      });
+      if (clickedColumn === "course") {
+        this.setState({
+          column: clickedColumn,
+          data: _.sortBy(Object.values(this.props.user.courses), [
+            "dept",
+            "num"
+          ]),
+          direction: "ascending"
+        });
+      } else {
+        this.setState({
+          column: clickedColumn,
+          data: _.sortBy(data, [clickedColumn]),
+          direction: "ascending"
+        });
+      }
 
       return;
     }
@@ -56,14 +63,13 @@ class Progress5 extends Component {
     let sum = 0;
     let count = 0;
     Object.values(this.props.user.courses).forEach(function(course) {
-      sum += course.grade;
-      console.log(sum);
-      count++;
-      console.log(count);
+      if (Number.isInteger(course.grade)) {
+        sum += course.grade;
+        count++;
+      }
     });
 
-    const gpa = sum / count;
-    console.log(gpa);
+    const gpa = (sum / count).toFixed(1);
 
     return (
       <div className="ui bottom attached segment active tab">
