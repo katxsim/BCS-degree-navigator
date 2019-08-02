@@ -130,6 +130,6 @@ export default createContainer(() => {
   Meteor.subscribe("userCourses");
   // Return an object as props
   return {
-    user: userCourses.find({ email: "test1@gmail.com" }).fetch()[0]
+    user: userCourses.find().fetch()[0]
   };
 }, SummaryView);
