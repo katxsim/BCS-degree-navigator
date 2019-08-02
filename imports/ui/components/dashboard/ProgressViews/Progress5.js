@@ -32,8 +32,6 @@ class Progress5 extends Component {
 
     if (column !== clickedColumn) {
       if (clickedColumn === "course") {
-        console.log(this.state.data);
-        console.log(Object.values(this.props.user.courses));
         this.setState({
           column: clickedColumn,
           data: _.sortBy(Object.values(this.props.user.courses), [
