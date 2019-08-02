@@ -3,6 +3,8 @@ import { Container, Form, Button, Header, Popup, Grid } from 'semantic-ui-react'
 import { createContainer } from "meteor/react-meteor-data";
 import { updateRequirements } from "./../../../ComputeRequirements"
 import { userCourses } from "../../../collections/userCourses";
+
+
 const shortid = require("shortid");
 
 class AddCourse extends React.Component {
@@ -56,14 +58,7 @@ class AddCourse extends React.Component {
         let user = this.props.user
         let courses = user.courses
         if (!Object.keys(courses).includes("ENGL112")) {
-            courses["ENGL112"] = {
-                "type": "core",
-                "dept": "ENGL",
-                "num": 112,
-            }
-            // ~~ update DB ~~ // 
-            user.courses = courses;
-            userCourses.update({ "_id": user._id }, user);
+           Meteor.call('addENGL112', course)
         } else {
             alert("You have already completed the ENGL requirement");
         }
@@ -196,11 +191,8 @@ class AddCourse extends React.Component {
         let user = this.props.user
         let courses = user.courses
         if (!Object.keys(courses).includes("CPSC121")) {
-            courses["CPSC121"] = {
-                "type": "core",
-                "dept": "CPSC",
-                "num": 121,
-            }
+            Meteor.call('addCPSC121', course)
+    
         } else {
             alert("You have already completed the CPSC 121 Requirement");
         }
@@ -301,13 +293,14 @@ class AddCourse extends React.Component {
             courses["CPSC213"] = {
                 "type": "core",
                 "dept": "CPSC",
-                "num": 213,
+                "num": 213
             }
+            user.courses = courses;
+            Meteor.call('addCPSC213', user);
         } else {
             alert("You have already completed the CPSC 213 Requirement");
         }
-        user.courses = courses;
-        userCourses.update({ "_id": user._id }, user)
+        
     }
 
     handleCPSC213ChangeExempt(event) {

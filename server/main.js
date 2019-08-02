@@ -1,6 +1,7 @@
 import { Meteor } from "meteor/meteor";
 import { userCourses } from "../imports/collections/userCourses";
 import _ from "lodash";
+import '../imports/api/courses';
 
 const shortid = require("shortid");
 
