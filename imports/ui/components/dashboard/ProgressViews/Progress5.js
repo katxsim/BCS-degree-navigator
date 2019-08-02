@@ -3,7 +3,6 @@ import React, { Component } from "react";
 import { Icon, Table } from "semantic-ui-react";
 import { userCourses } from "../../../../collections/userCourses";
 import { createContainer } from "meteor/react-meteor-data";
-// import { updateRequirements } from "../../../../ComputeRequirements";
 
 class Progress5 extends Component {
   state = {
@@ -14,6 +13,14 @@ class Progress5 extends Component {
 
   componentDidMount() {
     if (this.props.user) {
+      this.setState({
+        data: this.props.user.courses
+      });
+    }
+  }
+
+  componentDidUpdate(prevProps) {
+    if (this.props.user !== prevProps.user) {
       this.setState({
         data: this.props.user.courses
       });
@@ -52,11 +59,6 @@ class Progress5 extends Component {
     });
 
     const gpa = (sum / count).toFixed(1);
-
-    // let requirements = "";
-    // if (this.props.user) {
-    //   requirements = updateRequirements(this.props.user);
-    // }
 
     return (
       <div className="ui bottom attached segment active tab">
@@ -103,8 +105,6 @@ class Progress5 extends Component {
     );
   }
 }
-
-// this is a comment
 
 export default createContainer(() => {
   // Set up subscription
