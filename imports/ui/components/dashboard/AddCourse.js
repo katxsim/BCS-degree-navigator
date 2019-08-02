@@ -3,6 +3,8 @@ import { Container, Form, Button, Header, Popup, Grid } from 'semantic-ui-react'
 import { createContainer } from "meteor/react-meteor-data";
 import { updateRequirements } from "./../../../ComputeRequirements"
 import { userCourses } from "../../../collections/userCourses";
+
+
 const shortid = require("shortid");
 
 class AddCourse extends React.Component {
@@ -61,12 +63,11 @@ class AddCourse extends React.Component {
                 "dept": "ENGL",
                 "num": 112,
             }
-            // ~~ update DB ~~ // 
-            user.courses = courses;
-            userCourses.update({ "_id": user._id }, user);
         } else {
             alert("You have already completed the ENGL requirement");
         }
+        user.courses = courses;
+        Meteor.call('updateUser', user);
     }
 
     handleENGL112ChangeExempt(event) {
@@ -84,7 +85,7 @@ class AddCourse extends React.Component {
             alert("You have already completed the ENGL requirement");
         }
         user.courses = courses;
-        userCourses.update({ "_id": user._id }, user)
+        Meteor.call('updateUser', user);
     }
 
     handleCPSC110ChangeCore(event) {
@@ -101,7 +102,7 @@ class AddCourse extends React.Component {
             alert("You have already completed the CPSC 110 Requirement");
         }
         user.courses = courses;
-        userCourses.update({ "_id": user._id }, user)
+        Meteor.call('updateUser', user);
     }
 
     handleCPSC110ChangeExempt(event) {
@@ -118,7 +119,7 @@ class AddCourse extends React.Component {
             alert("You have already completed the CPSC 110 Requirement");
         }
         user.courses = courses;
-        userCourses.update({ "_id": user._id }, user)
+        Meteor.call('updateUser', user);
     }
 
     handleSTAT203ChangeCore(event) {
@@ -135,7 +136,7 @@ class AddCourse extends React.Component {
             alert("You have already completed the STAT 203 Requirement");
         }
         user.courses = courses;
-        userCourses.update({ "_id": user._id }, user)
+        Meteor.call('updateUser', user);
     }
 
     handleSTAT203ChangeExempt(event) {
@@ -152,7 +153,7 @@ class AddCourse extends React.Component {
             alert("You have already completed the STAT 203 Requirement");
         }
         user.courses = courses;
-        userCourses.update({ "_id": user._id }, user)
+        Meteor.call('updateUser', user);
     }
 
 
@@ -170,7 +171,7 @@ class AddCourse extends React.Component {
             alert("You have already completed the MATH 180 Requirement");
         }
         user.courses = courses;
-        userCourses.update({ "_id": user._id }, user)
+        Meteor.call('updateUser', user);
     }
 
     handleMATH180ChangeExempt(event) {
@@ -187,7 +188,7 @@ class AddCourse extends React.Component {
             alert("You have already completed the MATH 180 Requirement");
         }
         user.courses = courses;
-        userCourses.update({ "_id": user._id }, user)
+        Meteor.call('updateUser', user);
     }
     // cpsc121 cpsc210
 
@@ -201,11 +202,12 @@ class AddCourse extends React.Component {
                 "dept": "CPSC",
                 "num": 121,
             }
+
         } else {
             alert("You have already completed the CPSC 121 Requirement");
         }
         user.courses = courses;
-        userCourses.update({ "_id": user._id }, user)
+        Meteor.call('updateUser', user);
     }
 
     handleCPSC121ChangeExempt(event) {
@@ -222,7 +224,7 @@ class AddCourse extends React.Component {
             alert("You have already completed the CPSC 121 Requirement");
         }
         user.courses = courses;
-        userCourses.update({ "_id": user._id }, user)
+        Meteor.call('updateUser', user);
     }
 
     handleCPSC210ChangeCore(event) {
@@ -239,7 +241,7 @@ class AddCourse extends React.Component {
             alert("You have already completed the CPSC 210 Requirement");
         }
         user.courses = courses;
-        userCourses.update({ "_id": user._id }, user)
+        Meteor.call('updateUser', user);
     }
 
     handleCPSC210ChangeExempt(event) {
@@ -256,7 +258,7 @@ class AddCourse extends React.Component {
             alert("You have already completed the CPSC 210 Requirement");
         }
         user.courses = courses;
-        userCourses.update({ "_id": user._id }, user)
+        Meteor.call('updateUser', user);
     }
 
 
@@ -274,7 +276,7 @@ class AddCourse extends React.Component {
             alert("You have already completed the ENGL 301 Requirement");
         }
         user.courses = courses;
-        userCourses.update({ "_id": user._id }, user)
+        Meteor.call('updateUser', user);
     }
 
     handleENGL301ChangeExempt(event) {
@@ -291,7 +293,7 @@ class AddCourse extends React.Component {
             alert("You have already completed the ENGL 301 Requirement");
         }
         user.courses = courses;
-        userCourses.update({ "_id": user._id }, user)
+        Meteor.call('updateUser', user);
     }
     handleCPSC213ChangeCore(event) {
         event.preventDefault();
@@ -301,13 +303,14 @@ class AddCourse extends React.Component {
             courses["CPSC213"] = {
                 "type": "core",
                 "dept": "CPSC",
-                "num": 213,
+                "num": 213
             }
+            user.courses = courses;
+            Meteor.call('updateUser', user);
         } else {
             alert("You have already completed the CPSC 213 Requirement");
         }
-        user.courses = courses;
-        userCourses.update({ "_id": user._id }, user)
+
     }
 
     handleCPSC213ChangeExempt(event) {
@@ -324,7 +327,7 @@ class AddCourse extends React.Component {
             alert("You have already completed the CPSC 213 Requirement");
         }
         user.courses = courses;
-        userCourses.update({ "_id": user._id }, user)
+        Meteor.call('updateUser', user);
     }
 
     handleCPSC221ChangeCore(event) {
@@ -341,7 +344,7 @@ class AddCourse extends React.Component {
             alert("You have already completed the CPSC 221 Requirement");
         }
         user.courses = courses;
-        userCourses.update({ "_id": user._id }, user)
+        Meteor.call('updateUser', user);
     }
 
     handleCPSC221ChangeExempt(event) {
@@ -358,7 +361,7 @@ class AddCourse extends React.Component {
             alert("You have already completed the CPSC 221 Requirement");
         }
         user.courses = courses;
-        userCourses.update({ "_id": user._id }, user)
+        Meteor.call('updateUser', user);
     }
 
     handleClick = e => {
@@ -393,8 +396,7 @@ class AddCourse extends React.Component {
                 }
 
                 user.courses = courses;
-
-                userCourses.update({ "_id": user._id }, user)
+                Meteor.call('updateUser', user);
             } else {
                 alert("You have already been credited for " + this.state.dept + " " + this.state.num);
             }

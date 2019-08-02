@@ -3,7 +3,6 @@ import ReactDOM from 'react-dom';
 import { Blaze } from 'meteor/blaze'
 import { Template } from 'meteor/templating'
 
-
 export default class AccountsUI extends Component {
 
     componentDidMount() {
