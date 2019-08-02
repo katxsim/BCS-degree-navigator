@@ -3,7 +3,7 @@ import React, { Component } from "react";
 import { Icon, Table } from "semantic-ui-react";
 import { userCourses } from "../../../../collections/userCourses";
 import { createContainer } from "meteor/react-meteor-data";
-import { updateRequirements } from "../../../../ComputeRequirements";
+// import { updateRequirements } from "../../../../ComputeRequirements";
 
 class Progress5 extends Component {
   state = {
@@ -46,18 +46,12 @@ class Progress5 extends Component {
     let count = 0;
     Object.values(this.props.user.courses).forEach(function(course) {
       if (Number.isInteger(course.grade)) {
-        console.log(course.grade);
         sum += course.grade;
-        // console.log(sum);
         count++;
-        // console.log(count);
-
-        // !Number.isNaN(course.grade) || course.grade !== undefined
       }
     });
 
     const gpa = (sum / count).toFixed(1);
-    console.log(gpa);
 
     // let requirements = "";
     // if (this.props.user) {
