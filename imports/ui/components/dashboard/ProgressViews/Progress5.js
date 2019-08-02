@@ -31,11 +31,24 @@ class Progress5 extends Component {
     const { column, data, direction } = this.state;
 
     if (column !== clickedColumn) {
-      this.setState({
-        column: clickedColumn,
-        data: _.sortBy(data, [clickedColumn]),
-        direction: "ascending"
-      });
+      if (clickedColumn === "course") {
+        console.log(this.state.data);
+        console.log(Object.values(this.props.user.courses));
+        this.setState({
+          column: clickedColumn,
+          data: _.sortBy(Object.values(this.props.user.courses), [
+            "dept",
+            "num"
+          ]),
+          direction: "ascending"
+        });
+      } else {
+        this.setState({
+          column: clickedColumn,
+          data: _.sortBy(data, [clickedColumn]),
+          direction: "ascending"
+        });
+      }
 
       return;
     }
