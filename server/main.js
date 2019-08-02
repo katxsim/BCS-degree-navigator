@@ -42,69 +42,26 @@ Meteor.startup(() => {
       //   "replacements": [] // list of min course levels that can be used to replace an exemption
       // },
       courses: {
-        CPSC121: {
-          type: "core", dept: "CPSC", num: 121, grade: 88, session: "2017W2"
-        },
-        CPSC210: {
-          type: "core", dept: "CPSC", num: 210, grade: 72, session: "2017W2"
-        },
-        CPSC110: {
-          type: "core", dept: "CPSC", num: 110, grade: 91, session: "2017W1"
-        },
-        CPSC221: {
-          type: "core", dept: "CPSC", num: 221, grade: 67, session: "2018W1"
-        },
-        CPSC213: {
-          type: "core", dept: "CPSC", num: 213, grade: 83, session: "2018W1"
-        },
-        CPSC310: {
-          type: "core", dept: "CPSC", num: 310, grade: 86, session: "2018W2"
-        },
-        SCIE300: {
-          type: "core", dept: "SCIE", num: 300, grade: 75, session: "2018W1"
-        },
-        CPSC316: {
-          type: "electives", consumed: false, dept: "CPSC", num: 316, grade: 71,
-          session: "2018W1"
-        },
-        CPSC319: {
-          type: "electives", consumed: false, dept: "CPSC", num: 319, grade: 79,
-          session: "2018W1"
-        },
-        CPSC436: {
-          type: "electives", consumed: false, dept: "CPSC", num: 436, grade: 84,
-          session: "2019S"
-        },
-        STAT302: {
-          type: "bridging", dept: "STAT", num: 302, grade: 86, session: "2018W1"
-        },
-        STAT305: {
-          type: "bridging", dept: "STAT", num: 305, grade: 63, session: "2018W1"
-        },
-        STAT306: {
-          type: "bridging", dept: "STAT", num: 306, grade: 77, session: "2018W1"
-        },
-        CPSC330: {
-          type: "bridging", dept: "CPSC", num: 330, grade: 76, session: "2018W1"
-        },
-        ENGL112: {
-          type: "exemptions", dept: "ENGL", num: 112, grade: 92, session: "2018W1"
-        },
-        STAT200: {
-          type: "exemptions", dept: "STAT", num: 200, grade: 84, session: "2018W1"
-        },
-        MATH180: {
-          type: "exemptions", dept: "MATH", num: 180, grade: 70, session: "2017W1"
-        },
-        MATH221: {
-          type: "replacement", dept: "MATH", num: 221, grade: 68, session: "2018W1"
-        },
-        MATH200: {
-          type: "replacement", dept: "MATH", num: 200, grade: 63, session: "2018W1"
-        },
-        DSCI100: {
-          type: "replacement", dept: "DSCI", num: 100, grade: 90, session: "2018W1"
-        }
+        CPSC121: { type: "core", dept: "CPSC", num: 121, grade: 88, session: "2017W2" },
+        CPSC210: { type: "core", dept: "CPSC", num: 210, grade: 72, session: "2017W2" },
+        CPSC110: { type: "core", dept: "CPSC", num: 110, grade: 91, session: "2017W1" },
+        CPSC221: { type: "core", dept: "CPSC", num: 221, grade: 67, session: "2018W1" },
+        CPSC213: { type: "core", dept: "CPSC", num: 213, grade: 83, session: "2018W1" },
+        CPSC310: { type: "core", dept: "CPSC", num: 310, grade: 86, session: "2018W2" },
+        SCIE300: { type: "core", dept: "SCIE", num: 300, grade: 75, session: "2018W1" },
+        CPSC316: { type: "electives", consumed: false, dept: "CPSC", num: 316, grade: 71, session: "2018W1" },
+        CPSC319: { type: "electives", consumed: false, dept: "CPSC", num: 319, grade: 79, session: "2018W1" },
+        CPSC436: { type: "electives", consumed: false, dept: "CPSC", num: 436, grade: 84, session: "2019S" },
+        STAT302: { type: "bridging", dept: "STAT", num: 302, grade: 86, session: "2018W1" },
+        STAT305: { type: "bridging", dept: "STAT", num: 305, grade: 63, session: "2018W1" },
+        STAT306: { type: "bridging", dept: "STAT", num: 306, grade: 77, session: "2018W1" },
+        CPSC330: { type: "bridging", dept: "CPSC", num: 330, grade: 76, session: "2018W1" },
+        ENGL112: { type: "exemptions", dept: "ENGL", num: 112, grade: 92, session: "2018W1" },
+        STAT200: { type: "exemptions", dept: "STAT", num: 200, grade: 84, session: "2018W1" },
+        MATH180: { type: "exemptions", dept: "MATH", num: 180, grade: 70, session: "2017W1" },
+        MATH221: { type: "replacement", dept: "MATH", num: 221, grade: 68, session: "2018W1" },
+        MATH200: { type: "replacement", dept: "MATH", num: 200, grade: 63, session: "2018W1" },
+        DSCI100: { type: "replacement", dept: "DSCI", num: 100, grade: 90, session: "2018W1" }
       } // end courses
     }); // end user; //)
   }

@@ -380,10 +380,12 @@ class AddCourse extends React.Component {
 
             if (this.state.type === "electives" &&
                 this.state.dept !== "CPSC" ||
+                this.state.type === "electives" &&
                 this.state.num <= 300) {
                 alert("Elective must be CPSC 300 or higher");
                 return;
             }
+            console.log(this.state)
 
 
             if (!Object.keys(courses).includes(this.props.dept + this.props.num)) {
