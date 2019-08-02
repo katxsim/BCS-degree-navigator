@@ -115,10 +115,10 @@ export function updateRequirements(user) {
 
                     case "ENGL":
                         if (course.num > 100) requirements.core.ENGL = "complete"
-                        console.log(course);
+
                         return;
                     case "MATH":
-                        console.log(course.dept + course.num);
+                        // console.log(course.dept + course.num);
                         if (course.num == 180) requirements.core.MATH = "complete"
                         return;
                     case "STAT":
