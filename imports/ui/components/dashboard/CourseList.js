@@ -10,8 +10,7 @@ console.log(BaseRequirements)
 class CourseList extends React.Component {
 
     handleDelete = (course, user) => {
-        delete user.courses[course.dept + course.num]
-        Meteor.call('updateUserOnDeleteCourse', user);
+        Meteor.call('updateUserOnDeleteCourse', user, course);
 
     }
 

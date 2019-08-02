@@ -8,7 +8,8 @@ Meteor.methods({
     userCourses.update({ "_id": user._id }, user);
 },
 
-'updateUserOnDeleteCourse': function(user){
+'updateUserOnDeleteCourse': function(user, course){
+    delete user.courses[course.dept + course.num]
     userCourses.update({ "_id": user._id }, user);
 }
     
