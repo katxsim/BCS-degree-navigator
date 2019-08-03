@@ -1,11 +1,8 @@
 import React from 'react';
 import { Button, Form, Header, Image, List, Icon } from 'semantic-ui-react'
-import { userCourses } from "../../../collections/userCourses";
-import { BaseRequirements } from "../../../ComputeRequirements";
 import { createContainer } from "meteor/react-meteor-data";
 
 const shortid = require("shortid");
-console.log(BaseRequirements)
 
 class CourseList extends React.Component {
 
@@ -159,9 +156,17 @@ class CourseList extends React.Component {
 
 export default createContainer(() => {
     // Set up subscription
-    Meteor.subscribe("userCourses");
+    Meteor.subscribe("users");
+    // console.log(Meteor.users.findOne({ "_id": Meteor.userId() }))
     // Return an object as props
+    if (!Meteor.userId()) {
+        return ({
+            "name": "test account",
+            "password": "hashed",
+            "email": " how do I sign in?"
+        })
+    }
     return ({
-        user: userCourses.find({ user: this.userId }).fetch()[0]
+        user: Meteor.users.findOne({ "_id": Meteor.userId() })
     });
 }, CourseList); 

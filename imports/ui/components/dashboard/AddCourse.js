@@ -2,7 +2,7 @@ import React from 'react';
 import { Container, Form, Button, Header, Popup, Grid } from 'semantic-ui-react';
 import { createContainer } from "meteor/react-meteor-data";
 import { updateRequirements } from "./../../../ComputeRequirements"
-import { userCourses } from "../../../collections/userCourses";
+// import { userCourses } from "../../../collections/userCourses";
 
 
 const shortid = require("shortid");
@@ -55,313 +55,417 @@ class AddCourse extends React.Component {
 
     handleENGL112ChangeCore(event) {
         event.preventDefault();
-        let user = this.props.user
-        let courses = user.courses
-        if (!Object.keys(courses).includes("ENGL112")) {
-            courses["ENGL112"] = {
-                "type": "core",
-                "dept": "ENGL",
-                "num": 112,
+
+        try {
+            let user = this.props.user
+            let courses = user.courses
+
+            if (!Object.keys(courses).includes("ENGL112")) {
+                courses["ENGL112"] = {
+                    "type": "core",
+                    "dept": "ENGL",
+                    "num": 112,
+                }
+                user.courses = courses;
+                Meteor.call('updateUser', user);
+            } else {
+                alert("You have already completed the ENGL requirement");
             }
-        } else {
-            alert("You have already completed the ENGL requirement");
+        } catch (error) {
+            alert("Welcome! Please Login or Signup!")
         }
-        user.courses = courses;
-        Meteor.call('updateUser', user);
     }
 
     handleENGL112ChangeExempt(event) {
         event.preventDefault();
-        let user = this.props.user
-        let courses = user.courses
-        console.log(user)
-        if (!Object.keys(courses).includes("ENGL112")) {
-            courses["ENGL112"] = {
-                "type": "exemptions",
-                "dept": "ENGL",
-                "num": 112,
+
+        try {
+            let user = this.props.user
+            let courses = user.courses
+            if (!Object.keys(courses).includes("ENGL112")) {
+                courses["ENGL112"] = {
+                    "type": "exemptions",
+                    "dept": "ENGL",
+                    "num": 112,
+                }
+                user.courses = courses;
+                Meteor.call('updateUser', user);
+            } else {
+                alert("You have already completed the ENGL requirement");
             }
-        } else {
-            alert("You have already completed the ENGL requirement");
+        } catch (error) {
+            alert("Welcome! Please Login or Signup!")
         }
-        user.courses = courses;
-        Meteor.call('updateUser', user);
     }
 
     handleCPSC110ChangeCore(event) {
         event.preventDefault();
-        let user = this.props.user
-        let courses = user.courses
-        if (!Object.keys(courses).includes("CPSC110")) {
-            courses["CPSC110"] = {
-                "type": "core",
-                "dept": "CPSC",
-                "num": 110,
+
+        try {
+            let user = this.props.user
+            let courses = user.courses
+            if (!Object.keys(courses).includes("CPSC110")) {
+                courses["CPSC110"] = {
+                    "type": "core",
+                    "dept": "CPSC",
+                    "num": 110,
+                }
+                user.courses = courses;
+                Meteor.call('updateUser', user);
+            } else {
+                alert("You have already completed the CPSC 110 Requirement");
             }
-        } else {
-            alert("You have already completed the CPSC 110 Requirement");
+        } catch (error) {
+            alert("Welcome! Please Login or Signup!")
         }
-        user.courses = courses;
-        Meteor.call('updateUser', user);
     }
 
     handleCPSC110ChangeExempt(event) {
         event.preventDefault();
-        let user = this.props.user
-        let courses = user.courses
-        if (!Object.keys(courses).includes("CPSC110")) {
-            courses["CPSC110"] = {
-                "type": "exemptions",
-                "dept": "CPSC",
-                "num": 110,
+
+        try {
+            let user = this.props.user
+            let courses = user.courses
+            if (!Object.keys(courses).includes("CPSC110")) {
+                courses["CPSC110"] = {
+                    "type": "exemptions",
+                    "dept": "CPSC",
+                    "num": 110,
+                }
+                user.courses = courses;
+                Meteor.call('updateUser', user);
+            } else {
+                alert("You have already completed the CPSC 110 Requirement");
             }
-        } else {
-            alert("You have already completed the CPSC 110 Requirement");
+        } catch (error) {
+            alert("Welcome! Please Login or Signup!")
         }
-        user.courses = courses;
-        Meteor.call('updateUser', user);
+
     }
 
     handleSTAT203ChangeCore(event) {
         event.preventDefault();
-        let user = this.props.user
-        let courses = user.courses
-        if (!Object.keys(courses).includes("STAT203")) {
-            courses["STAT203"] = {
-                "type": "core",
-                "dept": "STAT",
-                "num": 203,
+
+        try {
+            let user = this.props.user
+            let courses = user.courses
+            if (!Object.keys(courses).includes("STAT203")) {
+                courses["STAT203"] = {
+                    "type": "core",
+                    "dept": "STAT",
+                    "num": 203,
+                }
+                user.courses = courses;
+                Meteor.call('updateUser', user);
+            } else {
+                alert("You have already completed the STAT 203 Requirement");
             }
-        } else {
-            alert("You have already completed the STAT 203 Requirement");
+        } catch (error) {
+            alert("Welcome! Please Login or Signup!")
         }
-        user.courses = courses;
-        Meteor.call('updateUser', user);
+
     }
 
     handleSTAT203ChangeExempt(event) {
         event.preventDefault();
-        let user = this.props.user
-        let courses = user.courses
-        if (!Object.keys(courses).includes("STAT203")) {
-            courses["STAT203"] = {
-                "type": "exemptions",
-                "dept": "STAT",
-                "num": 203,
+
+        try {
+            let user = this.props.user
+            let courses = user.courses
+            if (!Object.keys(courses).includes("STAT203")) {
+                courses["STAT203"] = {
+                    "type": "exemptions",
+                    "dept": "STAT",
+                    "num": 203,
+                }
+                user.courses = courses;
+                Meteor.call('updateUser', user);
+            } else {
+                alert("You have already completed the STAT 203 Requirement");
             }
-        } else {
-            alert("You have already completed the STAT 203 Requirement");
+        } catch (error) {
+            alert("Welcome! Please Login or Signup!")
         }
-        user.courses = courses;
-        Meteor.call('updateUser', user);
+
     }
 
 
     handleMATH180ChangeCore(event) {
         event.preventDefault();
-        let user = this.props.user
-        let courses = user.courses
-        if (!Object.keys(courses).includes("MATH180")) {
-            courses["MATH180"] = {
-                "type": "core",
-                "dept": "MATH",
-                "num": 180,
+
+        try {
+            let user = this.props.user
+            let courses = user.courses
+            if (!Object.keys(courses).includes("MATH180")) {
+                courses["MATH180"] = {
+                    "type": "core",
+                    "dept": "MATH",
+                    "num": 180,
+                }
+                user.courses = courses;
+                Meteor.call('updateUser', user);
+            } else {
+                alert("You have already completed the MATH 180 Requirement");
             }
-        } else {
-            alert("You have already completed the MATH 180 Requirement");
+        } catch (error) {
+            alert("Welcome! Please Login or Signup!")
         }
-        user.courses = courses;
-        Meteor.call('updateUser', user);
+
     }
 
     handleMATH180ChangeExempt(event) {
         event.preventDefault();
-        let user = this.props.user
-        let courses = user.courses
-        if (!Object.keys(courses).includes("MATH180")) {
-            courses["MATH180"] = {
-                "type": "exemptions",
-                "dept": "MATH",
-                "num": 180,
+
+        try {
+            let user = this.props.user
+            let courses = user.courses
+            if (!Object.keys(courses).includes("MATH180")) {
+                courses["MATH180"] = {
+                    "type": "exemptions",
+                    "dept": "MATH",
+                    "num": 180,
+                }
+                user.courses = courses;
+                Meteor.call('updateUser', user);
+            } else {
+                alert("You have already completed the MATH 180 Requirement");
             }
-        } else {
-            alert("You have already completed the MATH 180 Requirement");
+        } catch (error) {
+            alert("Welcome! Please Login or Signup!")
         }
-        user.courses = courses;
-        Meteor.call('updateUser', user);
+
     }
     // cpsc121 cpsc210
 
     handleCPSC121ChangeCore(event) {
         event.preventDefault();
-        let user = this.props.user
-        let courses = user.courses
-        if (!Object.keys(courses).includes("CPSC121")) {
-            courses["CPSC121"] = {
-                "type": "core",
-                "dept": "CPSC",
-                "num": 121,
-            }
 
-        } else {
-            alert("You have already completed the CPSC 121 Requirement");
+        try {
+            let user = this.props.user
+            let courses = user.courses
+            if (!Object.keys(courses).includes("CPSC121")) {
+                courses["CPSC121"] = {
+                    "type": "core",
+                    "dept": "CPSC",
+                    "num": 121,
+                }
+                user.courses = courses;
+                Meteor.call('updateUser', user);
+            } else {
+                alert("You have already completed the CPSC 121 Requirement");
+            }
+        } catch (error) {
+            alert("Welcome! Please Login or Signup!")
         }
-        user.courses = courses;
-        Meteor.call('updateUser', user);
+
+
     }
+
 
     handleCPSC121ChangeExempt(event) {
         event.preventDefault();
-        let user = this.props.user
-        let courses = user.courses
-        if (!Object.keys(courses).includes("CPSC121")) {
-            courses["CPSC121"] = {
-                "type": "exemptions",
-                "dept": "CPSC",
-                "num": 121,
+
+        try {
+            let user = this.props.user
+            let courses = user.courses
+            if (!Object.keys(courses).includes("CPSC121")) {
+                courses["CPSC121"] = {
+                    "type": "exemptions",
+                    "dept": "CPSC",
+                    "num": 121,
+                }
+                user.courses = courses;
+                Meteor.call('updateUser', user);
+            } else {
+                alert("You have already completed the CPSC 121 Requirement");
             }
-        } else {
-            alert("You have already completed the CPSC 121 Requirement");
+        } catch (error) {
+            alert("Welcome! Please Login or Signup!")
         }
-        user.courses = courses;
-        Meteor.call('updateUser', user);
+
     }
 
     handleCPSC210ChangeCore(event) {
         event.preventDefault();
-        let user = this.props.user
-        let courses = user.courses
-        if (!Object.keys(courses).includes("CPSC210")) {
-            courses["CPSC210"] = {
-                "type": "core",
-                "dept": "CPSC",
-                "num": 210,
+
+        try {
+            let user = this.props.user
+            let courses = user.courses
+            if (!Object.keys(courses).includes("CPSC210")) {
+                courses["CPSC210"] = {
+                    "type": "core",
+                    "dept": "CPSC",
+                    "num": 210,
+                }
+                user.courses = courses;
+                Meteor.call('updateUser', user);
+            } else {
+                alert("You have already completed the CPSC 210 Requirement");
             }
-        } else {
-            alert("You have already completed the CPSC 210 Requirement");
+        } catch (error) {
+            alert("Welcome! Please Login or Signup!")
         }
-        user.courses = courses;
-        Meteor.call('updateUser', user);
+
     }
 
     handleCPSC210ChangeExempt(event) {
         event.preventDefault();
-        let user = this.props.user
-        let courses = user.courses
-        if (!Object.keys(courses).includes("CPSC210")) {
-            courses["CPSC210"] = {
-                "type": "exemptions",
-                "dept": "CPSC",
-                "num": 210,
+
+        try {
+            let user = this.props.user
+            let courses = user.courses
+            if (!Object.keys(courses).includes("CPSC210")) {
+                courses["CPSC210"] = {
+                    "type": "exemptions",
+                    "dept": "CPSC",
+                    "num": 210,
+                }
+                user.courses = courses;
+                Meteor.call('updateUser', user);
+            } else {
+                alert("You have already completed the CPSC 210 Requirement");
             }
-        } else {
-            alert("You have already completed the CPSC 210 Requirement");
+        } catch (error) {
+            alert("Welcome! Please Login or Signup!")
         }
-        user.courses = courses;
-        Meteor.call('updateUser', user);
+
     }
 
 
     handleENGL301ChangeCore(event) {
         event.preventDefault();
-        let user = this.props.user
-        let courses = user.courses
-        if (!Object.keys(courses).includes("ENGL301")) {
-            courses["ENGL301"] = {
-                "type": "core",
-                "dept": "ENGL",
-                "num": 301,
+
+        try {
+            let user = this.props.user
+            let courses = user.courses
+            if (!Object.keys(courses).includes("ENGL301")) {
+                courses["ENGL301"] = {
+                    "type": "core",
+                    "dept": "ENGL",
+                    "num": 301,
+                }
+                user.courses = courses;
+                Meteor.call('updateUser', user);
+            } else {
+                alert("You have already completed the ENGL 301 Requirement");
             }
-        } else {
-            alert("You have already completed the ENGL 301 Requirement");
+        } catch (error) {
+            alert("Welcome! Please Login or Signup!")
         }
-        user.courses = courses;
-        Meteor.call('updateUser', user);
+
     }
 
     handleENGL301ChangeExempt(event) {
         event.preventDefault();
-        let user = this.props.user
-        let courses = user.courses
-        if (!Object.keys(courses).includes("ENGL301")) {
-            courses["ENGL301"] = {
-                "type": "exemptions",
-                "dept": "ENGL",
-                "num": 301,
+
+        try {
+            let user = this.props.user
+            let courses = user.courses
+            if (!Object.keys(courses).includes("ENGL301")) {
+                courses["ENGL301"] = {
+                    "type": "exemptions",
+                    "dept": "ENGL",
+                    "num": 301,
+                }
+                user.courses = courses;
+                Meteor.call('updateUser', user);
+            } else {
+                alert("You have already completed the ENGL 301 Requirement");
             }
-        } else {
-            alert("You have already completed the ENGL 301 Requirement");
+        } catch (error) {
+            alert("Welcome! Please Login or Signup!")
         }
-        user.courses = courses;
-        Meteor.call('updateUser', user);
     }
+
     handleCPSC213ChangeCore(event) {
         event.preventDefault();
-        let user = this.props.user
-        let courses = user.courses
-        if (!Object.keys(courses).includes("CPSC213")) {
-            courses["CPSC213"] = {
-                "type": "core",
-                "dept": "CPSC",
-                "num": 213
-            }
-            user.courses = courses;
-            Meteor.call('updateUser', user);
-        } else {
-            alert("You have already completed the CPSC 213 Requirement");
-        }
 
+        try {
+            let user = this.props.user
+            let courses = user.courses
+            if (!Object.keys(courses).includes("CPSC213")) {
+                courses["CPSC213"] = {
+                    "type": "core",
+                    "dept": "CPSC",
+                    "num": 213
+                }
+                user.courses = courses;
+                Meteor.call('updateUser', user);
+            } else {
+                alert("You have already completed the CPSC 213 Requirement");
+            }
+        } catch (error) {
+            alert("Welcome! Please Login or Signup!")
+        }
     }
 
     handleCPSC213ChangeExempt(event) {
         event.preventDefault();
-        let user = this.props.user
-        let courses = user.courses
-        if (!Object.keys(courses).includes("CPSC213")) {
-            courses["CPSC213"] = {
-                "type": "exemptions",
-                "dept": "CPSC",
-                "num": 213,
+
+        try {
+            let user = this.props.user
+            let courses = user.courses
+            if (!Object.keys(courses).includes("CPSC213")) {
+                courses["CPSC213"] = {
+                    "type": "exemptions",
+                    "dept": "CPSC",
+                    "num": 213,
+                }
+                user.courses = courses;
+                Meteor.call('updateUser', user);
+            } else {
+                alert("You have already completed the CPSC 213 Requirement");
             }
-        } else {
-            alert("You have already completed the CPSC 213 Requirement");
+        } catch (error) {
+            alert("Welcome! Please Login or Signup!")
         }
-        user.courses = courses;
-        Meteor.call('updateUser', user);
+
     }
 
     handleCPSC221ChangeCore(event) {
         event.preventDefault();
-        let user = this.props.user
-        let courses = user.courses
-        if (!Object.keys(courses).includes("CPSC221")) {
-            courses["CPSC221"] = {
-                "type": "core",
-                "dept": "CPSC",
-                "num": 221,
+
+        try {
+            let user = this.props.user
+            let courses = user.courses
+            if (!Object.keys(courses).includes("CPSC221")) {
+                courses["CPSC221"] = {
+                    "type": "core",
+                    "dept": "CPSC",
+                    "num": 221,
+                }
+                user.courses = courses;
+                Meteor.call('updateUser', user);
+            } else {
+                alert("You have already completed the CPSC 221 Requirement");
             }
-        } else {
-            alert("You have already completed the CPSC 221 Requirement");
+        } catch (error) {
+            alert("Welcome! Please Login or Signup!")
         }
-        user.courses = courses;
-        Meteor.call('updateUser', user);
+
     }
 
     handleCPSC221ChangeExempt(event) {
         event.preventDefault();
-        let user = this.props.user
-        let courses = user.courses
-        if (!Object.keys(courses).includes("CPSC221")) {
-            courses["CPSC221"] = {
-                "type": "exemptions",
-                "dept": "CPSC",
-                "num": 221,
+
+        try {
+            let user = this.props.user
+            let courses = user.courses
+            if (!Object.keys(courses).includes("CPSC221")) {
+                courses["CPSC221"] = {
+                    "type": "exemptions",
+                    "dept": "CPSC",
+                    "num": 221,
+                }
+                user.courses = courses;
+                Meteor.call('updateUser', user);
+            } else {
+                alert("You have already completed the CPSC 221 Requirement");
             }
-        } else {
-            alert("You have already completed the CPSC 221 Requirement");
+        } catch (error) {
+            alert("Welcome! Please Login or Signup!")
         }
-        user.courses = courses;
-        Meteor.call('updateUser', user);
+
     }
 
     handleClick = e => {
@@ -380,19 +484,21 @@ class AddCourse extends React.Component {
 
             if (this.state.type === "electives" &&
                 this.state.dept !== "CPSC" ||
+                this.state.type === "electives" &&
                 this.state.num <= 300) {
                 alert("Elective must be CPSC 300 or higher");
                 return;
             }
+            // console.log(this.state)
 
 
             if (!Object.keys(courses).includes(this.props.dept + this.props.num)) {
-                console.log(this.props.dept)
 
                 user.courses[this.state.dept + this.state.num] = {
                     "type": this.state.type,
                     "dept": this.state.dept,
                     "num": Number(this.state.num),
+                    "grade": Number(this.state.grade)
                 }
 
                 user.courses = courses;
@@ -575,10 +681,11 @@ class AddCourse extends React.Component {
 
 export default createContainer(() => {
     // Set up subscription
-    Meteor.subscribe("userCourses");
+    Meteor.subscribe("users");
+    // console.log(Meteor.users.findOne({ "_id": Meteor.userId() }))
     // Return an object as props
     return {
-        user: userCourses.find().fetch()[0],
+        user: Meteor.users.findOne({ "_id": Meteor.userId() }),
         dept: '', num: '', grade: '', type: ''
     };
 }, AddCourse);
