@@ -62,12 +62,14 @@ class Progress5 extends Component {
 
     let sum = 0;
     let count = 0;
-    Object.values(this.props.user.courses).forEach(function (course) {
-      if (Number.isInteger(course.grade)) {
-        sum += course.grade;
-        count++;
-      }
-    });
+    try {
+      Object.values(this.props.user.courses).forEach(function (course) {
+        if (Number.isInteger(course.grade)) {
+          sum += course.grade;
+          count++;
+        }
+      });
+    } catch (error) { } // do nothing if user is not loaded 
 
     const gpa = (sum / count).toFixed(1);
 
@@ -121,7 +123,6 @@ export default createContainer(() => {
   // Set up subscription
   Meteor.subscribe("users");
   // Return an object as props
-  // console.log(Meteor.users.findOne({ "_id": Meteor.userId() }))
   return {
     user: Meteor.users.findOne({ "_id": Meteor.userId() })
   };

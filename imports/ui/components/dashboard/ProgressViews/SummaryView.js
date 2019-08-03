@@ -125,7 +125,7 @@ class SummaryView extends Component {
         return <p className="loading">Loading...</p>;
       }
     } catch (error) {
-      return "Loading..."
+      return ""
     }
   }
 }
