@@ -189,11 +189,10 @@ Meteor.startup(() => {
     }); // end user; //)
   }
 
-  // Meteor.publish("courses", function () {
-  //   return Courses.find({});
-  // });
 
   Meteor.publish("userCourses", function() {
-    return userCourses.find();
+    return userCourses.find({user: this.userId});
   });
+
+
 });
