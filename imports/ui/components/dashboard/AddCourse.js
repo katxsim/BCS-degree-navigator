@@ -2,7 +2,7 @@ import React from 'react';
 import { Container, Form, Button, Header, Popup, Grid } from 'semantic-ui-react';
 import { createContainer } from "meteor/react-meteor-data";
 import { updateRequirements } from "./../../../ComputeRequirements"
-import { userCourses } from "../../../collections/userCourses";
+// import { userCourses } from "../../../collections/userCourses";
 
 
 const shortid = require("shortid");
@@ -74,7 +74,7 @@ class AddCourse extends React.Component {
         event.preventDefault();
         let user = this.props.user
         let courses = user.courses
-        console.log(user)
+        // console.log(user)
         if (!Object.keys(courses).includes("ENGL112")) {
             courses["ENGL112"] = {
                 "type": "exemptions",
@@ -153,6 +153,7 @@ class AddCourse extends React.Component {
             alert("You have already completed the STAT 203 Requirement");
         }
         user.courses = courses;
+        // console.log(user)
         Meteor.call('updateUser', user);
     }
 
@@ -380,19 +381,21 @@ class AddCourse extends React.Component {
 
             if (this.state.type === "electives" &&
                 this.state.dept !== "CPSC" ||
+                this.state.type === "electives" &&
                 this.state.num <= 300) {
                 alert("Elective must be CPSC 300 or higher");
                 return;
             }
+            // console.log(this.state)
 
 
             if (!Object.keys(courses).includes(this.props.dept + this.props.num)) {
-                console.log(this.props.dept)
 
                 user.courses[this.state.dept + this.state.num] = {
                     "type": this.state.type,
                     "dept": this.state.dept,
                     "num": Number(this.state.num),
+                    "grade": Number(this.state.grade)
                 }
 
                 user.courses = courses;
@@ -575,10 +578,11 @@ class AddCourse extends React.Component {
 
 export default createContainer(() => {
     // Set up subscription
-    Meteor.subscribe("userCourses");
+    Meteor.subscribe("users");
+    // console.log(Meteor.users.findOne({ "_id": Meteor.userId() }))
     // Return an object as props
     return {
-        user: userCourses.find().fetch()[0],
+        user: Meteor.users.findOne({ "_id": Meteor.userId() }),
         dept: '', num: '', grade: '', type: ''
     };
 }, AddCourse);

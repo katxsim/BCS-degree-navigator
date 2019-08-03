@@ -62,7 +62,7 @@ class Progress5 extends Component {
 
     let sum = 0;
     let count = 0;
-    Object.values(this.props.user.courses).forEach(function(course) {
+    Object.values(this.props.user.courses).forEach(function (course) {
       if (Number.isInteger(course.grade)) {
         sum += course.grade;
         count++;
@@ -119,9 +119,10 @@ class Progress5 extends Component {
 
 export default createContainer(() => {
   // Set up subscription
-  Meteor.subscribe("userCourses");
+  Meteor.subscribe("users");
   // Return an object as props
+  // console.log(Meteor.users.findOne({ "_id": Meteor.userId() }))
   return {
-    user: userCourses.find().fetch()[0]
+    user: Meteor.users.findOne({ "_id": Meteor.userId() })
   };
 }, Progress5);
