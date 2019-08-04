@@ -500,6 +500,11 @@ class AddCourse extends React.Component {
                     "num": Number(this.state.num),
                     "grade": Number(this.state.grade)
                 }
+                this.setState({ "type": '',
+                                "dept": '',
+                                "num": '',
+                                "grade": ''
+                         });
 
                 user.courses = courses;
                 Meteor.call('updateUser', user);
