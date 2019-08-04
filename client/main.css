@@ -129,3 +129,8 @@ input[type="password"]:not(.browser-default):focus:not([readonly]) + label {
 .footy {
   padding-top: 200px;
 }
+
+.prog {
+padding-top: 8px !important;
+padding-bottom: 30px !important;
+}
