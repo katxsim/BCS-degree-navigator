@@ -184,8 +184,6 @@ class CourseList extends React.Component {
 export default createContainer(() => {
     // Set up subscription
     Meteor.subscribe("users");
-    // console.log(Meteor.users.findOne({ "_id": Meteor.userId() }))
-    // Return an object as props
     if (!Meteor.userId()) {
         return ({
             "name": "test account",

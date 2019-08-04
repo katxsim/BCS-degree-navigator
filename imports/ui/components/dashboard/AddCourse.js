@@ -13,6 +13,7 @@ class AddCourse extends React.Component {
         this.state = { dept: '', num: '', grade: '', type: '' };
     };
 
+    
     handleDeptChange = e =>
         this.setState({
             dept: e.target.value
@@ -105,10 +106,13 @@ class AddCourse extends React.Component {
             let user = this.props.user
             let courses = user.courses
             if (!Object.keys(courses).includes("CPSC110")) {
+                let myGrade = prompt('What grade did you receive? (optional)',);
                 courses["CPSC110"] = {
                     "type": "core",
                     "dept": "CPSC",
                     "num": 110,
+                    "grade": myGrade
+
                 }
                 user.courses = courses;
                 Meteor.call('updateUser', user);
@@ -150,10 +154,12 @@ class AddCourse extends React.Component {
             let user = this.props.user
             let courses = user.courses
             if (!Object.keys(courses).includes("STAT203")) {
+                let myGrade = prompt('What grade did you receive? (optional)',);
                 courses["STAT203"] = {
                     "type": "core",
                     "dept": "STAT",
                     "num": 203,
+                    "grade": myGrade
                 }
                 user.courses = courses;
                 Meteor.call('updateUser', user);
@@ -197,10 +203,12 @@ class AddCourse extends React.Component {
             let user = this.props.user
             let courses = user.courses
             if (!Object.keys(courses).includes("MATH180")) {
+                let myGrade = prompt('What grade did you receive? (optional)',);
                 courses["MATH180"] = {
                     "type": "core",
                     "dept": "MATH",
                     "num": 180,
+                    "grade": myGrade
                 }
                 user.courses = courses;
                 Meteor.call('updateUser', user);
@@ -244,10 +252,12 @@ class AddCourse extends React.Component {
             let user = this.props.user
             let courses = user.courses
             if (!Object.keys(courses).includes("CPSC121")) {
+                let myGrade = prompt('What grade did you receive? (optional)',);
                 courses["CPSC121"] = {
                     "type": "core",
                     "dept": "CPSC",
                     "num": 121,
+                    "grade": myGrade
                 }
                 user.courses = courses;
                 Meteor.call('updateUser', user);
@@ -292,10 +302,12 @@ class AddCourse extends React.Component {
             let user = this.props.user
             let courses = user.courses
             if (!Object.keys(courses).includes("CPSC210")) {
+                let myGrade = prompt('What grade did you receive? (optional)',);
                 courses["CPSC210"] = {
                     "type": "core",
                     "dept": "CPSC",
                     "num": 210,
+                    "grade": myGrade
                 }
                 user.courses = courses;
                 Meteor.call('updateUser', user);
@@ -339,10 +351,12 @@ class AddCourse extends React.Component {
             let user = this.props.user
             let courses = user.courses
             if (!Object.keys(courses).includes("ENGL301")) {
+                let myGrade = prompt('What grade did you receive? (optional)',);
                 courses["ENGL301"] = {
                     "type": "core",
                     "dept": "ENGL",
                     "num": 301,
+                    "grade": myGrade
                 }
                 user.courses = courses;
                 Meteor.call('updateUser', user);
@@ -384,10 +398,12 @@ class AddCourse extends React.Component {
             let user = this.props.user
             let courses = user.courses
             if (!Object.keys(courses).includes("CPSC213")) {
+                let myGrade = prompt('What grade did you receive? (optional)',);
                 courses["CPSC213"] = {
                     "type": "core",
                     "dept": "CPSC",
-                    "num": 213
+                    "num": 213,
+                    "grade": myGrade
                 }
                 user.courses = courses;
                 Meteor.call('updateUser', user);
@@ -429,10 +445,12 @@ class AddCourse extends React.Component {
             let user = this.props.user
             let courses = user.courses
             if (!Object.keys(courses).includes("CPSC221")) {
+                let myGrade = prompt('What grade did you receive? (optional)',);
                 courses["CPSC221"] = {
                     "type": "core",
                     "dept": "CPSC",
                     "num": 221,
+                    "grade": myGrade
                 }
                 user.courses = courses;
                 Meteor.call('updateUser', user);
