@@ -43,7 +43,7 @@ class CourseList extends React.Component {
             })
         ) : (
                 <div className="">
-                    <h6 className="left-align"> No Courses</h6>
+                    <h6 className="left-align"> </h6>
                 </div>
             );
 
