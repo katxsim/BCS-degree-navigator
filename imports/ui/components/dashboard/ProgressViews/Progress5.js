@@ -20,10 +20,18 @@ class Progress5 extends Component {
   }
 
   componentDidUpdate(prevProps) {
-    if (this.props.user !== prevProps.user) {
-      this.setState({
-        data: this.props.user.courses
-      });
+    if (this.props.user !== undefined) {
+      if (this.props.user !== prevProps.user) {
+        this.setState({
+          data: this.props.user.courses
+        });
+      }
+    } else {
+      if (this.props.user !== prevProps.user) {
+        this.setState({
+          data: {}
+        })
+      }
     }
   }
 
