@@ -79,12 +79,17 @@ class Progress5 extends Component {
       });
     } catch (error) { } // do nothing if user is not loaded 
 
-    const gpa = (sum / count).toFixed(1);
+    let gpa = (sum / count).toFixed(1);
+    if (isNaN(gpa)) {
+      gpa = ""
+    }
+    let percent = ""
+    if (gpa) percent = "%"
 
     return (
       <div className="ui bottom attached segment active tab">
         <div>
-          <h1>GPA: {gpa}%</h1>
+          <h1>GPA: {gpa} {percent}</h1>
         </div>
         <Table sortable celled fixed>
           <Table.Header>
