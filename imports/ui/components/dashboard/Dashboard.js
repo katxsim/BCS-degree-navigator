@@ -14,7 +14,7 @@ class Dashboard extends Component {
         <div className="jumbotron jumbotron-fluid">
           <EmailSteve />
           <div className="container">
-            <h1 className="display-4">Welcome, Joe</h1>
+            <h1 className="display-4">Welcome to your BCS Degree Navigator</h1>
             <p className="lead">
               Here is your progress in the BCS Degree thus far.
             </p>
