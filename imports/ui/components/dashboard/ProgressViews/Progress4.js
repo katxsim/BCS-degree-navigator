@@ -43,10 +43,10 @@ class Progress4 extends Component {
     Object.values(this.props.user.courses).forEach(function(course) {
       let session = course.year + course.term;
       if (Object.keys(sessions).includes(session)) {
-        sessions[session].push(course);
+        sessions[session].push(course.dept + " " + course.num);
       } else {
         let sessionArray = [];
-        sessionArray.push(course);
+        sessionArray.push(course.dept + " " + course.num);
         sessions[session] = sessionArray;
       }
     });
@@ -101,8 +101,8 @@ class Progress4 extends Component {
                 <Step.Title>{session}</Step.Title>
                 <Step.Description>
                   <ul>
-                    {_.map(Object.values(sessions), ({ dept, num }) => (
-                      <li>{dept + " " + num}</li>
+                    {_.each(Object.values(sessions)).map(course => (
+                      <li>{course}</li>
                     ))}
                   </ul>
                 </Step.Description>
