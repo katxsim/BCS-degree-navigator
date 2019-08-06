@@ -10,7 +10,6 @@ class Progress4 extends Component {
 
   componentDidMount() {
     if (this.props.user) {
-      // console.log(this.props.user.courses);
       this.setState({
         data: this.props.user.courses
       });
@@ -32,76 +31,31 @@ class Progress4 extends Component {
   }
 
   render() {
-    const { data } = this.state;
-
-    // console.log(data);
-
-    // console.log(this.props.user.courses);
-
     let sessions = {};
+    let index = -1;
 
     Object.values(this.props.user.courses).forEach(function(course) {
       let session = course.year + course.term;
       if (Object.keys(sessions).includes(session)) {
         sessions[session].push(course.dept + " " + course.num);
       } else {
+        index += 1;
         let sessionArray = [];
         sessionArray.push(course.dept + " " + course.num);
         sessions[session] = sessionArray;
       }
     });
 
-    console.log(sessions);
-
-    // let steps = [];
-    // let courses = [];
-    // Object.values(sessions).forEach(function(session) {
-    //   session.forEach(function(course) {
-    //     courses.push(course);
-    //   });
-
-    //   let step = {
-    //     render: () => (
-    //       <Step>
-    //         <Step.Content>
-    //           <Step.Title>{session}</Step.Title>
-    //           <Step.Description>
-    //             <ul>
-    //               <li>{courses}</li>
-    //             </ul>
-    //           </Step.Description>
-    //         </Step.Content>
-    //       </Step>
-    //     )
-    //   };
-
-    //   steps.push(step);
-    // });
-
-    // console.log(steps);
-
-    let s = _.each(sessions);
-    console.log(s);
-
-    let s2 = _.each(s);
-    console.log(s2);
-
-    let s3 = Object.keys(sessions);
-    console.log(s3);
-
-    let s4 = Object.values(sessions);
-    console.log(s4);
-
     return (
       <div className="ui bottom attached segment active tab scrolling-wrapper">
         <Step.Group>
-          {_.map(Object.keys(sessions), session => (
+          {_.map(Object.keys(sessions), (session, index) => (
             <Step>
               <Step.Content>
                 <Step.Title>{session}</Step.Title>
                 <Step.Description>
                   <ul>
-                    {_.each(Object.values(sessions)).map(course => (
+                    {Object.values(sessions)[index].map(course => (
                       <li>{course}</li>
                     ))}
                   </ul>
