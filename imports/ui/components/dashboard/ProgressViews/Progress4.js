@@ -30,6 +30,34 @@ class Progress4 extends Component {
     }
   }
 
+  getColour(session) {
+    console.log("getColour");
+    let currentSession = "2019S";
+    let colour = "";
+    if (session === currentSession) {
+      colour = "warning";
+    } else if (session < currentSession) {
+      colour = "positive";
+    } else {
+      colour = "negative";
+    }
+    return colour;
+  }
+
+  getIcon(session) {
+    console.log("getClass");
+    let currentSession = "2019S";
+    let icon = "";
+    if (session === currentSession) {
+      icon = "chevron right";
+    } else if (session < currentSession) {
+      icon = "checkmark";
+    } else {
+      icon = "times";
+    }
+    return icon;
+  }
+
   render() {
     let sessions = {};
     let index = -1;
@@ -50,7 +78,8 @@ class Progress4 extends Component {
       <div className="ui bottom attached segment active tab scrolling-wrapper">
         <Step.Group>
           {_.map(Object.keys(sessions), (session, index) => (
-            <Step>
+            <Step className={this.getColour(session)}>
+              <Icon name={this.getIcon(session)} />
               <Step.Content>
                 <Step.Title>{session}</Step.Title>
                 <Step.Description>
