@@ -80,16 +80,30 @@ class Progress4 extends Component {
 
     // console.log(steps);
 
+    let s = _.each(sessions);
+    console.log(s);
+
+    let s2 = _.each(s);
+    console.log(s2);
+
+    let s3 = Object.keys(sessions);
+    console.log(s3);
+
+    let s4 = Object.values(sessions);
+    console.log(s4);
+
     return (
       <div className="ui bottom attached segment active tab scrolling-wrapper">
         <Step.Group>
-          {_.map(sessions, ({ session, dept, num }) => (
+          {_.map(Object.keys(sessions), session => (
             <Step>
               <Step.Content>
                 <Step.Title>{session}</Step.Title>
                 <Step.Description>
                   <ul>
-                    <li>{dept + " " + num}</li>
+                    {_.map(Object.values(sessions), ({ dept, num }) => (
+                      <li>{dept + " " + num}</li>
+                    ))}
                   </ul>
                 </Step.Description>
               </Step.Content>
