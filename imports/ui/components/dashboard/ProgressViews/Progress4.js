@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Icon, Step } from "semantic-ui-react";
 import { createContainer } from "meteor/react-meteor-data";
+import _ from "lodash";
 
 class Progress4 extends Component {
   state = {
@@ -52,37 +53,48 @@ class Progress4 extends Component {
 
     console.log(sessions);
 
-    let steps = [];
-    let courses = [];
-    Object.values(sessions).forEach(function(session) {
-      session.forEach(function(course) {
-        courses.push(course);
-      });
+    // let steps = [];
+    // let courses = [];
+    // Object.values(sessions).forEach(function(session) {
+    //   session.forEach(function(course) {
+    //     courses.push(course);
+    //   });
 
-      let step = {
-        render: () => (
-          <Step>
-            <Step.Content>
-              <Step.Title>{session}</Step.Title>
-              <Step.Description>
-                <ul>
-                  <li>{courses}</li>
-                </ul>
-              </Step.Description>
-            </Step.Content>
-          </Step>
-        )
-      };
+    //   let step = {
+    //     render: () => (
+    //       <Step>
+    //         <Step.Content>
+    //           <Step.Title>{session}</Step.Title>
+    //           <Step.Description>
+    //             <ul>
+    //               <li>{courses}</li>
+    //             </ul>
+    //           </Step.Description>
+    //         </Step.Content>
+    //       </Step>
+    //     )
+    //   };
 
-      steps.push(step);
-    });
+    //   steps.push(step);
+    // });
 
-    console.log(steps);
+    // console.log(steps);
 
     return (
       <div className="ui bottom attached segment active tab scrolling-wrapper">
         <Step.Group>
-          <Step steps={steps} />
+          {_.map(sessions, ({ session, dept, num }) => (
+            <Step>
+              <Step.Content>
+                <Step.Title>{session}</Step.Title>
+                <Step.Description>
+                  <ul>
+                    <li>{dept + " " + num}</li>
+                  </ul>
+                </Step.Description>
+              </Step.Content>
+            </Step>
+          ))}
         </Step.Group>
       </div>
     );
