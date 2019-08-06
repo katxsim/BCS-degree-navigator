@@ -9,7 +9,7 @@ class Progress4 extends Component {
 
   componentDidMount() {
     if (this.props.user) {
-      console.log(this.props.user.courses);
+      // console.log(this.props.user.courses);
       this.setState({
         data: this.props.user.courses
       });
@@ -33,19 +33,20 @@ class Progress4 extends Component {
   render() {
     const { data } = this.state;
 
-    console.log(data);
+    // console.log(data);
 
-    console.log(this.props.user.courses);
+    // console.log(this.props.user.courses);
 
     let sessions = {};
 
     Object.values(this.props.user.courses).forEach(function(course) {
-      if (Object.keys(sessions).includes(course.session)) {
-        console.log("here 1");
-        // sessions[course.session]
+      let session = course.year + course.term;
+      if (Object.keys(sessions).includes(session)) {
+        sessions[session].push(course);
       } else {
-        console.log("here 2");
-        sessions = course.session;
+        let sessionArray = [];
+        sessionArray.push(course);
+        sessions[session] = sessionArray;
       }
     });
 
