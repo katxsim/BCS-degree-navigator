@@ -52,10 +52,54 @@ class Progress4 extends Component {
 
     console.log(sessions);
 
+    let steps = [];
+    let courses = [];
+    Object.values(sessions).forEach(function(session) {
+      session.forEach(function(course) {
+        courses.push(course);
+      });
+
+      let step = {
+        render: () => (
+          <Step>
+            <Step.Content>
+              <Step.Title>{session}</Step.Title>
+              <Step.Description>
+                <ul>
+                  <li>{courses}</li>
+                </ul>
+              </Step.Description>
+            </Step.Content>
+          </Step>
+        )
+      };
+
+      steps.push(step);
+    });
+
+    console.log(steps);
+
     return (
       <div className="ui bottom attached segment active tab scrolling-wrapper">
         <Step.Group>
-          <Step completed className="positive">
+          <Step steps={steps} />
+        </Step.Group>
+      </div>
+    );
+  }
+}
+
+export default createContainer(() => {
+  // Set up subscription
+  Meteor.subscribe("users");
+  // Return an object as props
+  return {
+    user: Meteor.users.findOne({ _id: Meteor.userId() })
+  };
+}, Progress4);
+
+{
+  /* <Step completed className="positive">
             <Icon name="checkmark" />
             <Step.Content>
               <Step.Title>Before BCS</Step.Title>
@@ -170,18 +214,5 @@ class Progress4 extends Component {
                 </ul>
               </Step.Description>
             </Step.Content>
-          </Step>
-        </Step.Group>
-      </div>
-    );
-  }
+          </Step> */
 }
-
-export default createContainer(() => {
-  // Set up subscription
-  Meteor.subscribe("users");
-  // Return an object as props
-  return {
-    user: Meteor.users.findOne({ _id: Meteor.userId() })
-  };
-}, Progress4);
