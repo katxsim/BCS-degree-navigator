@@ -1,8 +1,56 @@
 import React, { Component } from "react";
 import { Icon, Step } from "semantic-ui-react";
+import { createContainer } from "meteor/react-meteor-data";
 
 class Progress4 extends Component {
+  state = {
+    data: null
+  };
+
+  componentDidMount() {
+    if (this.props.user) {
+      console.log(this.props.user.courses);
+      this.setState({
+        data: this.props.user.courses
+      });
+    }
+  }
+
+  componentDidUpdate(prevProps) {
+    if (this.props.user !== prevProps.user) {
+      if (this.props.user !== undefined) {
+        this.setState({
+          data: this.props.user.courses
+        });
+      } else {
+        this.setState({
+          data: {}
+        });
+      }
+    }
+  }
+
   render() {
+    const { data } = this.state;
+
+    console.log(data);
+
+    console.log(this.props.user.courses);
+
+    let sessions = {};
+
+    Object.values(this.props.user.courses).forEach(function(course) {
+      if (Object.keys(sessions).includes(course.session)) {
+        console.log("here 1");
+        // sessions[course.session]
+      } else {
+        console.log("here 2");
+        sessions = course.session;
+      }
+    });
+
+    console.log(sessions);
+
     return (
       <div className="ui bottom attached segment active tab scrolling-wrapper">
         <Step.Group>
@@ -128,4 +176,11 @@ class Progress4 extends Component {
   }
 }
 
-export default Progress4;
+export default createContainer(() => {
+  // Set up subscription
+  Meteor.subscribe("users");
+  // Return an object as props
+  return {
+    user: Meteor.users.findOne({ _id: Meteor.userId() })
+  };
+}, Progress4);
