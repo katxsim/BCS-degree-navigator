@@ -10,7 +10,7 @@ const shortid = require("shortid");
 class AddCourse extends React.Component {
     constructor(props) {
         super(props);
-        this.state = { dept: '', num: '', grade: '', type: '' };
+        this.state = { dept: '', num: '', grade: '', type: '', year: '', term: '' };
     };
 
 
@@ -28,6 +28,16 @@ class AddCourse extends React.Component {
         this.setState({
             grade: e.target.value
         });
+
+    handleYearChange = e =>
+        this.setState({
+            year: e.target.value
+        });
+
+    handleTermChange = e =>
+        this.setState({
+            term: e.target.value
+        })
 
     handleCoreChange = e =>
         this.setState({
@@ -107,11 +117,15 @@ class AddCourse extends React.Component {
             let courses = user.courses
             if (!Object.keys(courses).includes("CPSC110")) {
                 let myGrade = prompt('What grade did you receive? (optional)');
+                let year = prompt('During which year did/will you complete this course? (required)');
+                let term = prompt('During which term (W1, W2, or S) did/will you complete this course? (required)');
                 courses["CPSC110"] = {
                     "type": "core",
                     "dept": "CPSC",
                     "num": 110,
-                    "grade": myGrade
+                    "grade": myGrade,
+                    "year": year,
+                    "term": term
 
                 }
                 user.courses = courses;
@@ -155,11 +169,15 @@ class AddCourse extends React.Component {
             let courses = user.courses
             if (!Object.keys(courses).includes("STAT203")) {
                 let myGrade = prompt('What grade did you receive? (optional)');
+                let year = prompt('During which year did/will you complete this course? (required)');
+                let term = prompt('During which term (W1, W2, or S) did/will you complete this course? (required)');
                 courses["STAT203"] = {
                     "type": "core",
                     "dept": "STAT",
                     "num": 203,
-                    "grade": myGrade
+                    "grade": myGrade,
+                    "year": year,
+                    "term": term
                 }
                 user.courses = courses;
                 Meteor.call('updateUser', user);
@@ -204,11 +222,15 @@ class AddCourse extends React.Component {
             let courses = user.courses
             if (!Object.keys(courses).includes("MATH180")) {
                 let myGrade = prompt('What grade did you receive? (optional)');
+                let year = prompt('During which year did/will you complete this course? (required)');
+                let term = prompt('During which term (W1, W2, or S) did/will you complete this course? (required)');
                 courses["MATH180"] = {
                     "type": "core",
                     "dept": "MATH",
                     "num": 180,
-                    "grade": myGrade
+                    "grade": myGrade,
+                    "year": year,
+                    "term": term
                 }
                 user.courses = courses;
                 Meteor.call('updateUser', user);
@@ -253,11 +275,15 @@ class AddCourse extends React.Component {
             let courses = user.courses
             if (!Object.keys(courses).includes("CPSC121")) {
                 let myGrade = prompt('What grade did you receive? (optional)');
+                let year = prompt('During which year did/will you complete this course? (required)');
+                let term = prompt('During which term (W1, W2, or S) did/will you complete this course? (required)');
                 courses["CPSC121"] = {
                     "type": "core",
                     "dept": "CPSC",
                     "num": 121,
-                    "grade": myGrade
+                    "grade": myGrade,
+                    "year": year,
+                    "term": term
                 }
                 user.courses = courses;
                 Meteor.call('updateUser', user);
@@ -303,11 +329,15 @@ class AddCourse extends React.Component {
             let courses = user.courses
             if (!Object.keys(courses).includes("CPSC210")) {
                 let myGrade = prompt('What grade did you receive? (optional)');
+                let year = prompt('During which year did/will you complete this course? (required)');
+                let term = prompt('During which term (W1, W2, or S) did/will you complete this course? (required)');
                 courses["CPSC210"] = {
                     "type": "core",
                     "dept": "CPSC",
                     "num": 210,
-                    "grade": myGrade
+                    "grade": myGrade,
+                    "year": year,
+                    "term": term
                 }
                 user.courses = courses;
                 Meteor.call('updateUser', user);
@@ -352,11 +382,15 @@ class AddCourse extends React.Component {
             let courses = user.courses
             if (!Object.keys(courses).includes("ENGL301")) {
                 let myGrade = prompt('What grade did you receive? (optional)');
+                let year = prompt('During which year did/will you complete this course? (required)');
+                let term = prompt('During which term (W1, W2, or S) did/will you complete this course? (required)');
                 courses["ENGL301"] = {
                     "type": "core",
                     "dept": "ENGL",
                     "num": 301,
-                    "grade": myGrade
+                    "grade": myGrade,
+                    "year": year,
+                    "term": term
                 }
                 user.courses = courses;
                 Meteor.call('updateUser', user);
@@ -399,11 +433,15 @@ class AddCourse extends React.Component {
             let courses = user.courses
             if (!Object.keys(courses).includes("CPSC213")) {
                 let myGrade = prompt('What grade did you receive? (optional)');
+                let year = prompt('During which year did/will you complete this course? (required)');
+                let term = prompt('During which term (W1, W2, or S) did/will you complete this course? (required)');
                 courses["CPSC213"] = {
                     "type": "core",
                     "dept": "CPSC",
                     "num": 213,
-                    "grade": myGrade
+                    "grade": myGrade,
+                    "year": year,
+                    "term": term
                 }
                 user.courses = courses;
                 Meteor.call('updateUser', user);
@@ -446,11 +484,15 @@ class AddCourse extends React.Component {
             let courses = user.courses
             if (!Object.keys(courses).includes("CPSC221")) {
                 let myGrade = prompt('What grade did you receive? (optional)');
+                let year = prompt('During which year did/will you complete this course? (required)');
+                let term = prompt('During which term (W1, W2, or S) did/will you complete this course? (required)');
                 courses["CPSC221"] = {
                     "type": "core",
                     "dept": "CPSC",
                     "num": 221,
-                    "grade": myGrade
+                    "grade": myGrade,
+                    "year": year,
+                    "term": term
                 }
                 user.courses = courses;
                 Meteor.call('updateUser', user);
@@ -494,7 +536,9 @@ class AddCourse extends React.Component {
             this.state.dept !== "" &&
             this.state.num !== "" &&
             // this.state.grade !== "" &&
-            this.state.type !== ""
+            this.state.type !== "" &&
+            this.state.year !== "" &&
+            this.state.term !== ""
         ) {
             let user = this.props.user
             let courses = user.courses
@@ -514,13 +558,17 @@ class AddCourse extends React.Component {
                     "type": this.state.type,
                     "dept": this.state.dept,
                     "num": Number(this.state.num),
-                    "grade": Number(this.state.grade)
+                    "grade": Number(this.state.grade),
+                    "year": this.state.year,
+                    "term": this.state.term
                 }
                 this.setState({
                     "type": '',
                     "dept": '',
                     "num": '',
-                    "grade": ''
+                    "grade": '',
+                    "year": '',
+                    "term": ''
                 });
 
                 user.courses = courses;
@@ -672,15 +720,31 @@ class AddCourse extends React.Component {
                     </Form.Field>
                     <Form.Field>
                         <Header size='large'>Course Number</Header>
-                        <input placeholder='(i.e 221)' value={this.state.num}
+                        <input placeholder='(e.g. 221)' value={this.state.num}
                             onChange={this.handleNumChange.bind(this)} />
                     </Form.Field>
                     <Form.Field>
                         <Header size='large'>Grade Received</Header>
-                        <input placeholder='(i.e 100)' value={this.state.grade}
+                        <input placeholder='(e.g. 100)' value={this.state.grade}
                             onChange={this.handleGradeChange.bind(this)} />
                     </Form.Field>
+                    <Form.Field>
+                        <Header size='large'>Year</Header>
+                        <input placeholder='(e.g. 2019)' value={this.state.year}
+                            onChange={this.handleYearChange.bind(this)} />
+                    </Form.Field>
                     <div>
+                        <Header size='large'>Session</Header>
+                        <Button.Group>
+                            <Button value="W1" onClick={this.handleTermChange.bind(this)}>W1</Button>
+                            <Button.Or />
+                            <Button value="W2" onClick={this.handleTermChange.bind(this)}>W2</Button>
+                            <Button.Or />
+                            <Button value="S" onClick={this.handleTermChange.bind(this)}>S</Button>
+                        </Button.Group>
+                    </div>
+                    <div>
+                        <Header size='large'>Requirement Type</Header>
                         <Button.Group>
                             <Button value="core" onClick={this.handleCoreChange.bind(this)}>Core</Button>
                             <Button.Or />
@@ -708,6 +772,6 @@ export default createContainer(() => {
     // Return an object as props
     return {
         user: Meteor.users.findOne({ "_id": Meteor.userId() }),
-        dept: '', num: '', grade: '', type: ''
+        dept: '', num: '', grade: '', type: '', year: '', term: ''
     };
 }, AddCourse);
