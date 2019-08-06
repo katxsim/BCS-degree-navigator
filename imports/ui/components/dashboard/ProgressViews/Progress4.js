@@ -31,7 +31,6 @@ class Progress4 extends Component {
   }
 
   getColour(session) {
-    console.log("getColour");
     let currentSession = "2019S";
     let colour = "";
     if (session === currentSession) {
@@ -45,7 +44,6 @@ class Progress4 extends Component {
   }
 
   getIcon(session) {
-    console.log("getClass");
     let currentSession = "2019S";
     let icon = "";
     if (session === currentSession) {
