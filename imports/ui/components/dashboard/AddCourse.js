@@ -23,7 +23,7 @@ class AddCourse extends React.Component {
         this.setState({
             num: e.target.value
         });
-
+        
     handleGradeChange = e =>
         this.setState({
             grade: e.target.value
@@ -62,10 +62,12 @@ class AddCourse extends React.Component {
             let courses = user.courses
 
             if (!Object.keys(courses).includes("ENGL112")) {
+                let myGrade = prompt('What grade did you receive? (optional)',);
                 courses["ENGL112"] = {
                     "type": "core",
                     "dept": "ENGL",
                     "num": 112,
+                    "grade": myGrade
                 }
                 user.courses = courses;
                 Meteor.call('updateUser', user);

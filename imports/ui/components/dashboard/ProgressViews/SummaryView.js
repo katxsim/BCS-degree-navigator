@@ -101,7 +101,7 @@ class SummaryView extends Component {
               <Header as="h3" block>
                 Bridging Progress: {bridgingPercent}%
             </Header>
-              <Progress className="prog" percent={bridgingPercent} color="purple" large active />
+              <Progress className="prog" percent={bridgingPercent} color="red" large active />
               <p>You have completed {bridgingComplete} of 5 bridging courses</p>
               {postBridging}
 
