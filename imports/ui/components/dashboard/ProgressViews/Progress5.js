@@ -20,9 +20,15 @@ class Progress5 extends Component {
   }
 
   componentDidUpdate(prevProps) {
-    if (this.props.user !== prevProps.user) {
+    if (this.props.user !== undefined) {
+      if (this.props.user !== prevProps.user) {
+        this.setState({
+          data: this.props.user.courses
+        });
+      }
+    } else if (this.props.user !== prevProps.user) {
       this.setState({
-        data: this.props.user.courses
+        data: {}
       });
     }
   }
@@ -63,20 +69,27 @@ class Progress5 extends Component {
     let sum = 0;
     let count = 0;
     try {
-      Object.values(this.props.user.courses).forEach(function (course) {
+      Object.values(this.props.user.courses).forEach(function(course) {
         if (Number.isInteger(course.grade)) {
           sum += course.grade;
           count++;
         }
       });
-    } catch (error) { } // do nothing if user is not loaded 
+    } catch (error) {} // do nothing if user is not loaded
 
-    const gpa = (sum / count).toFixed(1);
+    let gpa = (sum / count).toFixed(1);
+    if (isNaN(gpa)) {
+      gpa = "";
+    }
+    let percent = "";
+    if (gpa) percent = "%";
 
     return (
       <div className="ui bottom attached segment active tab">
         <div>
-          <h1>GPA: {gpa}%</h1>
+          <h1>
+            GPA: {gpa} {percent}
+          </h1>
         </div>
         <Table sortable celled fixed>
           <Table.Header>
@@ -124,6 +137,6 @@ export default createContainer(() => {
   Meteor.subscribe("users");
   // Return an object as props
   return {
-    user: Meteor.users.findOne({ "_id": Meteor.userId() })
+    user: Meteor.users.findOne({ _id: Meteor.userId() })
   };
 }, Progress5);
