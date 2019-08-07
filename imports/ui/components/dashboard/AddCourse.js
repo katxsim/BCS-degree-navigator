@@ -590,7 +590,8 @@ class AddCourse extends React.Component {
                     <Form.Field>
                         <Header size='large'>Easy Select</Header>
                         <div className="easyS">
-                            <Popup trigger={<Button>ENGL 112</Button>} flowing hoverable>
+                            <Button.Group widths='3'>
+                            <Popup trigger={<Button>ENGL 112   </Button>} flowing hoverable>
                                 <Grid centered divided columns={2}>
                                     <Grid.Column textAlign='center'>
                                         <Header as='h4'>Core</Header>
@@ -629,9 +630,11 @@ class AddCourse extends React.Component {
                                     </Grid.Column>
                                 </Grid>
                             </Popup>
+                            </Button.Group>
                         </div>
-
+                        
                         <div className="easyS">
+                        <Button.Group widths='3'>
                             <Popup trigger={<Button>MATH 180</Button>} flowing hoverable>
                                 <Grid centered divided columns={2}>
                                     <Grid.Column textAlign='center'>
@@ -670,9 +673,11 @@ class AddCourse extends React.Component {
                                     </Grid.Column>
                                 </Grid>
                             </Popup>
+                            </Button.Group>
                         </div>
 
                         <div className="easyS">
+                        <Button.Group widths='3'>
                             <Popup trigger={<Button>ENGL 301</Button>} flowing hoverable>
                                 <Grid centered divided columns={2}>
                                     <Grid.Column textAlign='center'>
@@ -711,6 +716,7 @@ class AddCourse extends React.Component {
                                     </Grid.Column>
                                 </Grid>
                             </Popup>
+                            </Button.Group>
                         </div>
 
 
@@ -746,7 +752,7 @@ class AddCourse extends React.Component {
                         </Button.Group>
                     </div>
                     <div>
-                        <Header size='large'>Requirement Type</Header>
+                        <Header size='large' className="reccy">Requirement Type</Header>
                         <Button.Group>
                             <Button value="core" onClick={this.handleCoreChange.bind(this)}>Core</Button>
                             <Button.Or />
