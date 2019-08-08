@@ -60,17 +60,19 @@ class Progress4 extends Component {
     let sessions = {};
     let index = -1;
 
-    Object.values(this.props.user.courses).forEach(function (course) {
-      let session = course.year + course.term;
-      if (Object.keys(sessions).includes(session)) {
-        sessions[session].push(course.dept + " " + course.num);
-      } else {
-        index += 1;
-        let sessionArray = [];
-        sessionArray.push(course.dept + " " + course.num);
-        sessions[session] = sessionArray;
-      }
-    });
+    try {
+      Object.values(this.props.user.courses).forEach(function (course) {
+        let session = course.year + course.term;
+        if (Object.keys(sessions).includes(session)) {
+          sessions[session].push(course.dept + " " + course.num);
+        } else {
+          index += 1;
+          let sessionArray = [];
+          sessionArray.push(course.dept + " " + course.num);
+          sessions[session] = sessionArray;
+        }
+      });
+    } catch (error) { } // do nothing
     console.log(sessions)
 
     return (
