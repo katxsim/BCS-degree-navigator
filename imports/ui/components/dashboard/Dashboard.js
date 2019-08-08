@@ -3,14 +3,16 @@ import Progress from "./ProgressViews/ProgressTabs";
 import CourseList from "./CourseList";
 import Footer from "../layout/Footer";
 import EmailSteve from "./EmailSteve";
-import { Container, Divider } from 'semantic-ui-react'
+import { Divider, Grid, Image, Segment } from 'semantic-ui-react'
 import AddCourse from "./AddCourse";
 
 
 class Dashboard extends Component {
   render() {
     return (
-      <div className="dashboard container">
+      <Segment>
+        <p>
+        <div className="dashboard container">
         <div className="jumbotron jumbotron-fluid">
           <EmailSteve />
           <div className="container">
@@ -20,20 +22,24 @@ class Dashboard extends Component {
             </p>
           </div>
         </div>
-
-        <div className="row">
-          <div className="col s24 m14 l8">
-            <AddCourse />
-          </div>
-          <div className="col s24 m12 l8">
-            <CourseList />
-          </div>
         </div>
-        <div>
+        </p>
+    <Grid columns={2}>
+      <Grid.Column>
+            <AddCourse />
+      </Grid.Column>
+      <Grid.Column>
+        
+
+            <CourseList />
+
+      </Grid.Column>
+    </Grid>
+
+    <Divider vertical></Divider>
           <Progress />
           <Footer />
-        </div>
-      </div>
+  </Segment>
     );
   }
 }
