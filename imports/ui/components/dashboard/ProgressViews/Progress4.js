@@ -58,7 +58,6 @@ class Progress4 extends Component {
 
   render() {
     let sessions = {};
-    let orderedSessions = {};
     let index = -1;
 
     try {
@@ -71,22 +70,14 @@ class Progress4 extends Component {
           let sessionArray = [];
           sessionArray.push(course.dept + " " + course.num);
           sessions[session] = sessionArray;
-          console.log(sessions)
         }
-
-        // order sessions
-        const orderedSessions = {};
-        Object.keys(sessions).sort().forEach(function (key) {
-          orderedSessions[key] = sessions[key];
-        });
       });
     } catch (error) { } // do nothing when object is not loaded
-    // console.log(sessions)
 
     return (
       <div className="ui bottom attached segment active tab scrolling-wrapper">
         <Step.Group>
-          {_.map(Object.keys(sessions), (session, index) => (
+          {_.map(Object.keys(sessions).sort(), (session, index) => (
             <Step className={this.getColour(session)}>
               <Icon name={this.getIcon(session)} />
               <Step.Content>
