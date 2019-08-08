@@ -28,10 +28,12 @@ class Dashboard extends Component {
           <div className="col s24 m12 l8">
             <CourseList />
           </div>
-        </div>
+        <div className="col s24 m12 l8">
+        <Progress />
+          </div>
         <div>
-          <Progress />
           <Footer />
+          </div>
         </div>
       </div>
     );
