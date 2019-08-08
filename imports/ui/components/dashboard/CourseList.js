@@ -2,8 +2,6 @@ import React from 'react';
 import { Button, Form, Header, Image, List, Icon, Popup } from 'semantic-ui-react'
 import { createContainer } from "meteor/react-meteor-data";
 
-const shortid = require("shortid");
-
 class CourseList extends React.Component {
 
     handleDelete = (course, user) => {
@@ -23,7 +21,6 @@ class CourseList extends React.Component {
                     <Icon name='check circle' size='large' />
                     <List.Content>{course.dept}: {course.num}</List.Content>
                 </List.Item>
-
             </List>
         );
     };
