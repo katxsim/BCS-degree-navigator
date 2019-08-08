@@ -3,7 +3,7 @@ import { Icon, Step } from "semantic-ui-react";
 import { createContainer } from "meteor/react-meteor-data";
 import _ from "lodash";
 
-class Progress4 extends Component {
+class Timeline extends Component {
   state = {
     data: null
   };
@@ -61,7 +61,7 @@ class Progress4 extends Component {
     let index = -1;
 
     try {
-      Object.values(this.props.user.courses).forEach(function (course) {
+      Object.values(this.props.user.courses).forEach(function(course) {
         let session = course.year + course.term.toUpperCase();
         if (Object.keys(sessions).includes(session)) {
           sessions[session].push(course.dept + " " + course.num);
@@ -72,7 +72,7 @@ class Progress4 extends Component {
           sessions[session] = sessionArray;
         }
       });
-    } catch (error) { } // do nothing when object is not loaded
+    } catch (error) {} // do nothing when object is not loaded
 
     return (
       <div className="ui bottom attached segment active tab scrolling-wrapper">
@@ -105,4 +105,4 @@ export default createContainer(() => {
   return {
     user: Meteor.users.findOne({ _id: Meteor.userId() })
   };
-}, Progress4);
+}, Timeline);

@@ -42,38 +42,38 @@ class SummaryView extends Component {
 
       const postBridging = user
         ? Object.values(user.courses).map(course => {
-          if (course.type === "bridging") {
-            return (
-              <p className="complete" key={course.dept + course.num}>
-                {course.dept} {course.num}
-              </p>
-            );
-          }
-        })
+            if (course.type === "bridging") {
+              return (
+                <p className="complete" key={course.dept + course.num}>
+                  {course.dept} {course.num}
+                </p>
+              );
+            }
+          })
         : "";
 
       const PostElectives = user
         ? Object.values(user.courses).map(course => {
-          if (course.type === "electives") {
-            return (
-              <p className="complete" key={course.dept + course.num}>
-                {course.dept} {course.num}
-              </p>
-            );
-          }
-        })
+            if (course.type === "electives") {
+              return (
+                <p className="complete" key={course.dept + course.num}>
+                  {course.dept} {course.num}
+                </p>
+              );
+            }
+          })
         : "";
 
       const postExemptionReplacements = user
         ? Object.values(user.courses).map(course => {
-          if (course.type === "replacement") {
-            return (
-              <p className="complete" key={course.dept + course.num}>
-                {course.dept} {course.num}
-              </p>
-            );
-          }
-        })
+            if (course.type === "replacement") {
+              return (
+                <p className="complete" key={course.dept + course.num}>
+                  {course.dept} {course.num}
+                </p>
+              );
+            }
+          })
         : "";
 
       if (requirements) {
@@ -81,14 +81,38 @@ class SummaryView extends Component {
           <div>
             <div className="ui bottom attached segment active tab">
               <Header as="h3" block>
-                <Progress className="prog" percent={creditsCompleted / (63) * 100} color="olive" active big />
-                <p>You have completed {creditsCompleted} credits of the minimum 63 required</p>
+                <Progress
+                  className="prog"
+                  percent={(creditsCompleted / 63) * 100}
+                  color="olive"
+                  active
+                  big
+                />
+                <p>
+                  You have completed {creditsCompleted} credits of the minimum
+                  63 required
+                </p>
               </Header>
               <Header as="h3" block>
                 Core Progress: {corePercent}%
+                <Progress
+                  className="prog"
+                  percent={corePercent}
+                  color="olive"
+                  active
+                  big
+                />
+                <Table fixed unstackable>
+                  <Table.Header>
+                    <Table.Row>
+                      <Table.HeaderCell>Completed</Table.HeaderCell>
+                      <Table.HeaderCell>In Progress</Table.HeaderCell>
+                      <Table.HeaderCell>Incomplete</Table.HeaderCell>
+                    </Table.Row>
+                  </Table.Header>
 
-
-              <Progress className="prog" percent={corePercent} color="olive" active big />
+                  <Table.Body />
+                </Table>
                 <p className={requirements.core.CPSC[0].status}>CPSC 110</p>
                 <p className={requirements.core.CPSC[1].status}>CPSC 121</p>
                 <p className={requirements.core.CPSC[2].status}>CPSC 210</p>
@@ -102,28 +126,39 @@ class SummaryView extends Component {
                 <p className={requirements.core.STAT}>STAT 203</p>
                 <p className={requirements.core.COMM}>
                   300+ Communication Requirement
-            </p>
+                </p>
               </Header>
 
               <Header as="h3" block>
                 Bridging Progress: {bridgingPercent}%
-
-              <Progress className="prog" percent={bridgingPercent} color="olive" large active />
-                <p>You have completed {bridgingComplete} of 5 bridging courses</p>
+                <Progress
+                  className="prog"
+                  percent={bridgingPercent}
+                  color="olive"
+                  large
+                  active
+                />
+                <p>
+                  You have completed {bridgingComplete} of 5 bridging courses
+                </p>
                 {postBridging}
               </Header>
 
               <Header as="h3" block>
                 Elective Progress: {electivePercent}%
-
-              <Progress className="prog" percent={electivePercent} color="olive" large active />
+                <Progress
+                  className="prog"
+                  percent={electivePercent}
+                  color="olive"
+                  large
+                  active
+                />
                 <p>You have completed {electiveComplete} of 6 electives</p>
                 {PostElectives}
               </Header>
 
               <Header as="h3" block>
                 Exemption Replacements Remaining: {replacementsLeft}
-
                 <p>You have used the following exemption replacements</p>
                 {postExemptionReplacements}
               </Header>
@@ -135,11 +170,10 @@ class SummaryView extends Component {
         return <p className="loading">Loading...</p>;
       }
     } catch (error) {
-      return ""
+      return "";
     }
   }
 }
-
 
 export default createContainer(() => {
   // Set up subscription
@@ -147,6 +181,6 @@ export default createContainer(() => {
   // Return an object as props
   // console.log(Meteor.users.findOne(Meteor.userId()))
   return {
-    user: Meteor.users.findOne({ "_id": Meteor.userId() })
+    user: Meteor.users.findOne({ _id: Meteor.userId() })
   };
 }, SummaryView);
