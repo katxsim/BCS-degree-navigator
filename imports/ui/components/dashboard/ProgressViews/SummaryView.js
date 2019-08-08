@@ -22,53 +22,93 @@ class SummaryView extends Component {
 
   render() {
     let rows = [];
-    let index = -1;
 
     try {
+      let currentSession = "2019S";
+      let rowID = 1;
+      let row = {
+        rowID: rowID,
+        cells: []
+      };
+
+      console.log(row.cells.length);
+
       Object.values(this.props.user.courses).forEach(function(course) {
         console.log(course);
         let session = course.year + course.term.toUpperCase();
-        let currentSession = "2019S";
-        let currentRowID = 1;
-        let currentRow = {
-          rowID: currentRowID,
-          cells: []
-        };
-        let cell = {};
 
-        if (currentRow.cells.length === 3) {
-          currentRowID += 1;
-        }
+        // console.log(row.cells.length);
+        // if (row.cells.length >= 3) {
+        //   console.log("update row ID");
+        //   console.log(currentRowID);
+        //   currentRowID += 1;
+        //   console.log(currentRowID);
+        //   currentRow = {
+        //     rowID: currentRowID,
+        //     cells: null
+        //   };
+        // }
+        // console.log(row);
+
+        let cell = {};
+        let maxRow = 0;
 
         if (session === currentSession) {
           console.log("present");
+          Object.values(rows).forEach(function(row) {
+            Object.values(row.cells).forEach(function(cell) {
+              if (cell.cellColumn === "b" && cell.cellRow > maxRow) {
+                maxRow = cell.cellRow;
+              }
+            });
+          });
+
           cell = {
-            cellID: currentRowID + "a",
+            cellRow: maxRow + 1,
+            cellColumn: "b",
             course: course.dept + " " + course.num
           };
           cells.push(cell);
         } else if (session < currentSession) {
           console.log("past");
+          Object.values(rows).forEach(function(row) {
+            Object.values(row.cells).forEach(function(cell) {
+              if (cell.cellColumn === "a" && cell.cellRow > maxRow) {
+                maxRow = cell.cellRow;
+              }
+            });
+          });
+
           cell = {
-            cellID: currentRowID + "b",
+            cellRow: maxRow + 1,
+            cellColumn: "a",
             course: course.dept + " " + course.num
           };
           console.log(cell);
-          currentRow.cells.push(cell);
-          console.log(currentRow.cells);
+          row.cells.push(cell);
+          console.log(row.cells);
         } else {
           console.log("future");
+          Object.values(rows).forEach(function(row) {
+            Object.values(row.cells).forEach(function(cell) {
+              if (cell.cellColumn === "c" && cell.cellRow > maxRow) {
+                maxRow = cell.cellRow;
+              }
+            });
+          });
+
           cell = {
-            cellID: currentRowID + "c",
+            cellRow: maxRow + 1,
+            cellColumn: "c",
             course: course.dept + " " + course.num
           };
         }
 
-        console.log(currentRow);
-        currentRow.cells.push(cell);
-        console.log(currentRow);
+        console.log(row);
+        row.cells.push(cell);
+        console.log(row);
 
-        rows.push(currentRow);
+        rows.push(row);
       });
 
       //   if (Object.keys(sessions).includes(session)) {
@@ -83,6 +123,8 @@ class SummaryView extends Component {
     } catch (error) {} // do nothing when object is not loaded
 
     console.log(rows);
+
+    // let index = -1;
 
     // try {
     //   Object.values(this.props.user.courses).forEach(function(course) {
