@@ -127,3 +127,7 @@ input[type="password"]:not(.browser-default):focus:not([readonly]) + label {
 padding-top: 8px !important;
 padding-bottom: 30px !important;
 }
+
+.reccy {
+  padding-top: 10px !important;
+}
