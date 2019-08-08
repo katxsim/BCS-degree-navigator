@@ -73,11 +73,15 @@ class AddCourse extends React.Component {
 
             if (!Object.keys(courses).includes("ENGL112")) {
                 let myGrade = prompt('What grade did you receive? (optional)',);
+                let year = prompt('During which year did/will you complete this course? (required)');
+                let term = prompt('During which term (W1, W2, or S) did/will you complete this course? (required)');
                 courses["ENGL112"] = {
                     "type": "core",
                     "dept": "ENGL",
                     "num": 112,
-                    "grade": myGrade
+                    "grade": myGrade,
+                    "year": year,
+                    "term": term
                 }
                 user.courses = courses;
                 Meteor.call('updateUser', user);
