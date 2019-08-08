@@ -1,7 +1,6 @@
 import _ from "lodash";
 import React, { Component } from "react";
 import { Icon, Table } from "semantic-ui-react";
-import { userCourses } from "../../../../collections/userCourses";
 import { createContainer } from "meteor/react-meteor-data";
 
 class Progress5 extends Component {
@@ -53,7 +52,6 @@ class Progress5 extends Component {
           direction: "ascending"
         });
       }
-
       return;
     }
 
@@ -69,20 +67,30 @@ class Progress5 extends Component {
     let sum = 0;
     let count = 0;
     try {
-      Object.values(this.props.user.courses).forEach(function(course) {
-        if (Number.isInteger(course.grade)) {
-          sum += course.grade;
-          count++;
+      console.log(this.props.user.courses);
+      Object.values(this.props.user.courses).forEach(function (course) {
+        if (Number.isInteger(parseInt(course.grade))) {
+          if (course.grade != 0) {
+            console.log(course.grade);
+            sum += parseInt(course.grade);
+            count++;
+          }
         }
       });
-    } catch (error) {} // do nothing if user is not loaded
+    } catch (error) { } // do nothing if user is not loaded
 
     let gpa = (sum / count).toFixed(1);
+
     if (isNaN(gpa)) {
       gpa = "";
     }
     let percent = "";
-    if (gpa) percent = "%";
+    if (gpa) {
+      // console.log("count = " + count);
+      // console.log("sum = " + sum);
+      // console.log(this.props.user.courses)
+      percent = "%";
+    }
 
     return (
       <div className="ui bottom attached segment active tab">
