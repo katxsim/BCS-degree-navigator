@@ -1,12 +1,43 @@
 import React, { Component } from "react";
-import { Header, Progress, Message } from "semantic-ui-react";
+import { Header, Progress, Icon, Table, Message } from "semantic-ui-react";
 import { createContainer } from "meteor/react-meteor-data";
+import _ from "lodash";
 import { userCourses } from "../../../../collections/userCourses";
 import { updateRequirements } from "../../../../ComputeRequirements";
 const shortid = require("shortid");
 
 class SummaryView extends Component {
+  getIcon(session) {
+    let currentSession = "2019S";
+    let icon = "";
+    if (session === currentSession) {
+      icon = "chevron right";
+    } else if (session < currentSession) {
+      icon = "checkmark";
+    } else {
+      icon = "times";
+    }
+    return icon;
+  }
+
   render() {
+    let sessions = {};
+    let index = -1;
+
+    try {
+      Object.values(this.props.user.courses).forEach(function(course) {
+        let session = course.year + course.term.toUpperCase();
+        if (Object.keys(sessions).includes(session)) {
+          sessions[session].push(course.dept + " " + course.num);
+        } else {
+          index += 1;
+          let sessionArray = [];
+          sessionArray.push(course.dept + " " + course.num);
+          sessions[session] = sessionArray;
+        }
+      });
+    } catch (error) {} // do nothing when object is not loaded
+
     let user = this.props.user;
 
     try {
@@ -102,17 +133,34 @@ class SummaryView extends Component {
                   active
                   big
                 />
-                <Table fixed unstackable>
-                  <Table.Header>
-                    <Table.Row>
-                      <Table.HeaderCell>Completed</Table.HeaderCell>
-                      <Table.HeaderCell>In Progress</Table.HeaderCell>
-                      <Table.HeaderCell>Incomplete</Table.HeaderCell>
-                    </Table.Row>
-                  </Table.Header>
+                <div>
+                  <Table fixed unstackable>
+                    <Table.Header>
+                      <Table.Row>
+                        <Table.HeaderCell>Completed</Table.HeaderCell>
+                        <Table.HeaderCell>In Progress</Table.HeaderCell>
+                        <Table.HeaderCell>Incomplete</Table.HeaderCell>
+                      </Table.Row>
+                    </Table.Header>
 
-                  <Table.Body />
-                </Table>
+                    <Table.Body>
+                      <Table.Row>
+                        <Table.Cell>
+                          <Icon />
+                          Course
+                        </Table.Cell>
+                        <Table.Cell>
+                          <Icon />
+                          Course
+                        </Table.Cell>
+                        <Table.Cell>
+                          <Icon />
+                          Course
+                        </Table.Cell>
+                      </Table.Row>
+                    </Table.Body>
+                  </Table>
+                </div>
                 <p className={requirements.core.CPSC[0].status}>CPSC 110</p>
                 <p className={requirements.core.CPSC[1].status}>CPSC 121</p>
                 <p className={requirements.core.CPSC[2].status}>CPSC 210</p>
