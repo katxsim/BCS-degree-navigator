@@ -67,11 +67,9 @@ class Progress5 extends Component {
     let sum = 0;
     let count = 0;
     try {
-      console.log(this.props.user.courses);
       Object.values(this.props.user.courses).forEach(function (course) {
         if (Number.isInteger(parseInt(course.grade))) {
           if (course.grade != 0) {
-            console.log(course.grade);
             sum += parseInt(course.grade);
             count++;
           }
@@ -86,9 +84,6 @@ class Progress5 extends Component {
     }
     let percent = "";
     if (gpa) {
-      // console.log("count = " + count);
-      // console.log("sum = " + sum);
-      // console.log(this.props.user.courses)
       percent = "%";
     }
 
@@ -126,11 +121,11 @@ class Progress5 extends Component {
           </Table.Header>
 
           <Table.Body>
-            {_.map(data, ({ dept, num, grade, session }) => (
+            {_.map(data, ({ dept, num, grade, term, year }) => (
               <Table.Row key={dept + " " + num}>
                 <Table.Cell>{dept + " " + num}</Table.Cell>
                 <Table.Cell>{grade}</Table.Cell>
-                <Table.Cell>{session}</Table.Cell>
+                <Table.Cell>{year} {term}</Table.Cell>
               </Table.Row>
             ))}
           </Table.Body>
