@@ -84,8 +84,8 @@ class Progress4 extends Component {
                 <Step.Title>{session}</Step.Title>
                 <Step.Description>
                   <ul>
-                    {Object.values(sessions)[index].map(course => (
-                      <li>{course}</li>
+                    {sessions[session].map(course => (
+                      <li> {course} </li>
                     ))}
                   </ul>
                 </Step.Description>
