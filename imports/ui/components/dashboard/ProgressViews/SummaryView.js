@@ -21,22 +21,82 @@ class SummaryView extends Component {
   }
 
   render() {
-    let sessions = {};
+    let rows = [];
     let index = -1;
 
     try {
       Object.values(this.props.user.courses).forEach(function(course) {
+        console.log(course);
         let session = course.year + course.term.toUpperCase();
-        if (Object.keys(sessions).includes(session)) {
-          sessions[session].push(course.dept + " " + course.num);
-        } else {
-          index += 1;
-          let sessionArray = [];
-          sessionArray.push(course.dept + " " + course.num);
-          sessions[session] = sessionArray;
+        let currentSession = "2019S";
+        let currentRowID = 1;
+        let currentRow = {
+          rowID: currentRowID,
+          cells: []
+        };
+        let cell = {};
+
+        if (currentRow.cells.length === 3) {
+          currentRowID += 1;
         }
+
+        if (session === currentSession) {
+          console.log("present");
+          cell = {
+            cellID: currentRowID + "a",
+            course: course.dept + " " + course.num
+          };
+          cells.push(cell);
+        } else if (session < currentSession) {
+          console.log("past");
+          cell = {
+            cellID: currentRowID + "b",
+            course: course.dept + " " + course.num
+          };
+          console.log(cell);
+          currentRow.cells.push(cell);
+          console.log(currentRow.cells);
+        } else {
+          console.log("future");
+          cell = {
+            cellID: currentRowID + "c",
+            course: course.dept + " " + course.num
+          };
+        }
+
+        console.log(currentRow);
+        currentRow.cells.push(cell);
+        console.log(currentRow);
+
+        rows.push(currentRow);
       });
+
+      //   if (Object.keys(sessions).includes(session)) {
+      //     sessions[session].push(course.dept + " " + course.num);
+      //   } else {
+      //     index += 1;
+      //     let sessionArray = [];
+      //     sessionArray.push(course.dept + " " + course.num);
+      //     sessions[session] = sessionArray;
+      //   }
+      // });
     } catch (error) {} // do nothing when object is not loaded
+
+    console.log(rows);
+
+    // try {
+    //   Object.values(this.props.user.courses).forEach(function(course) {
+    //     let session = course.year + course.term.toUpperCase();
+    //     if (Object.keys(sessions).includes(session)) {
+    //       sessions[session].push(course.dept + " " + course.num);
+    //     } else {
+    //       index += 1;
+    //       let sessionArray = [];
+    //       sessionArray.push(course.dept + " " + course.num);
+    //       sessions[session] = sessionArray;
+    //     }
+    //   });
+    // } catch (error) {} // do nothing when object is not loaded
 
     let user = this.props.user;
 
