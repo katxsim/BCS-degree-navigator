@@ -62,7 +62,7 @@ class Progress4 extends Component {
 
     try {
       Object.values(this.props.user.courses).forEach(function (course) {
-        let session = course.year + course.term;
+        let session = course.year + course.term.toUpperCase();
         if (Object.keys(sessions).includes(session)) {
           sessions[session].push(course.dept + " " + course.num);
         } else {
@@ -72,13 +72,12 @@ class Progress4 extends Component {
           sessions[session] = sessionArray;
         }
       });
-    } catch (error) { } // do nothing
-    console.log(sessions)
+    } catch (error) { } // do nothing when object is not loaded
 
     return (
       <div className="ui bottom attached segment active tab scrolling-wrapper">
         <Step.Group>
-          {_.map(Object.keys(sessions), (session, index) => (
+          {_.map(Object.keys(sessions).sort(), (session, index) => (
             <Step className={this.getColour(session)}>
               <Icon name={this.getIcon(session)} />
               <Step.Content>
