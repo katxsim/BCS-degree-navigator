@@ -2,8 +2,6 @@ import React from 'react';
 import { Container, Form, Button, Header, Popup, Grid } from 'semantic-ui-react';
 import { createContainer } from "meteor/react-meteor-data";
 import { updateRequirements } from "./../../../ComputeRequirements"
-// import { userCourses } from "../../../collections/userCourses";
-
 
 const shortid = require("shortid");
 
@@ -72,12 +70,17 @@ class AddCourse extends React.Component {
             let courses = user.courses
 
             if (!Object.keys(courses).includes("ENGL112")) {
-                let myGrade = prompt('What grade did you receive? (optional)');
+                let myGrade = prompt('What grade did you receive? (optional)',);
+                let year = prompt('During which year did/will you complete this course?');
+                let term = prompt('During which term (W1, W2, or S) did/will you complete this course?');
+
                 courses["ENGL112"] = {
                     "type": "core",
                     "dept": "ENGL",
                     "num": 112,
-                    "grade": myGrade
+                    "grade": myGrade,
+                    "year": year,
+                    "term": term
                 }
                 user.courses = courses;
                 Meteor.call('updateUser', user);
@@ -160,7 +163,6 @@ class AddCourse extends React.Component {
         } catch (error) {
             alert("Welcome! Please Login or Signup!")
         }
-
     }
 
     handleSTAT203ChangeCore(event) {
@@ -189,7 +191,6 @@ class AddCourse extends React.Component {
         } catch (error) {
             alert("Welcome! Please Login or Signup!")
         }
-
     }
 
     handleSTAT203ChangeExempt(event) {
