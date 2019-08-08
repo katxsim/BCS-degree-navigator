@@ -23,7 +23,7 @@ class AddCourse extends React.Component {
         this.setState({
             num: e.target.value
         });
-        
+
     handleGradeChange = e =>
         this.setState({
             grade: e.target.value
@@ -72,7 +72,7 @@ class AddCourse extends React.Component {
             let courses = user.courses
 
             if (!Object.keys(courses).includes("ENGL112")) {
-                let myGrade = prompt('What grade did you receive? (optional)',);
+                let myGrade = prompt('What grade did you receive? (optional)');
                 courses["ENGL112"] = {
                     "type": "core",
                     "dept": "ENGL",
@@ -119,8 +119,8 @@ class AddCourse extends React.Component {
             let courses = user.courses
             if (!Object.keys(courses).includes("CPSC110")) {
                 let myGrade = prompt('What grade did you receive? (optional)');
-                let year = prompt('During which year did/will you complete this course? (required)');
-                let term = prompt('During which term (W1, W2, or S) did/will you complete this course? (required)');
+                let year = prompt('During which year did/will you complete this course? ');
+                let term = prompt('During which term (W1, W2, or S) did/will you complete this course? ');
                 courses["CPSC110"] = {
                     "type": "core",
                     "dept": "CPSC",
@@ -171,8 +171,8 @@ class AddCourse extends React.Component {
             let courses = user.courses
             if (!Object.keys(courses).includes("STAT203")) {
                 let myGrade = prompt('What grade did you receive? (optional)');
-                let year = prompt('During which year did/will you complete this course? (required)');
-                let term = prompt('During which term (W1, W2, or S) did/will you complete this course? (required)');
+                let year = prompt('During which year did/will you complete this course? ');
+                let term = prompt('During which term (W1, W2, or S) did/will you complete this course? ');
                 courses["STAT203"] = {
                     "type": "core",
                     "dept": "STAT",
@@ -224,8 +224,8 @@ class AddCourse extends React.Component {
             let courses = user.courses
             if (!Object.keys(courses).includes("MATH180")) {
                 let myGrade = prompt('What grade did you receive? (optional)');
-                let year = prompt('During which year did/will you complete this course? (required)');
-                let term = prompt('During which term (W1, W2, or S) did/will you complete this course? (required)');
+                let year = prompt('During which year did/will you complete this course? ');
+                let term = prompt('During which term (W1, W2, or S) did/will you complete this course? ');
                 courses["MATH180"] = {
                     "type": "core",
                     "dept": "MATH",
@@ -277,8 +277,8 @@ class AddCourse extends React.Component {
             let courses = user.courses
             if (!Object.keys(courses).includes("CPSC121")) {
                 let myGrade = prompt('What grade did you receive? (optional)');
-                let year = prompt('During which year did/will you complete this course? (required)');
-                let term = prompt('During which term (W1, W2, or S) did/will you complete this course? (required)');
+                let year = prompt('During which year did/will you complete this course? ');
+                let term = prompt('During which term (W1, W2, or S) did/will you complete this course? ');
                 courses["CPSC121"] = {
                     "type": "core",
                     "dept": "CPSC",
@@ -295,10 +295,7 @@ class AddCourse extends React.Component {
         } catch (error) {
             alert("Welcome! Please Login or Signup!")
         }
-
-
     }
-
 
     handleCPSC121ChangeExempt(event) {
         event.preventDefault();
@@ -331,8 +328,8 @@ class AddCourse extends React.Component {
             let courses = user.courses
             if (!Object.keys(courses).includes("CPSC210")) {
                 let myGrade = prompt('What grade did you receive? (optional)');
-                let year = prompt('During which year did/will you complete this course? (required)');
-                let term = prompt('During which term (W1, W2, or S) did/will you complete this course? (required)');
+                let year = prompt('During which year did/will you complete this course? ');
+                let term = prompt('During which term (W1, W2, or S) did/will you complete this course? ');
                 courses["CPSC210"] = {
                     "type": "core",
                     "dept": "CPSC",
@@ -372,9 +369,7 @@ class AddCourse extends React.Component {
         } catch (error) {
             alert("Welcome! Please Login or Signup!")
         }
-
     }
-
 
     handleENGL301ChangeCore(event) {
         event.preventDefault();
@@ -384,8 +379,8 @@ class AddCourse extends React.Component {
             let courses = user.courses
             if (!Object.keys(courses).includes("ENGL301")) {
                 let myGrade = prompt('What grade did you receive? (optional)');
-                let year = prompt('During which year did/will you complete this course? (required)');
-                let term = prompt('During which term (W1, W2, or S) did/will you complete this course? (required)');
+                let year = prompt('During which year did/will you complete this course? ');
+                let term = prompt('During which term (W1, W2, or S) did/will you complete this course? ');
                 courses["ENGL301"] = {
                     "type": "core",
                     "dept": "ENGL",
@@ -402,7 +397,6 @@ class AddCourse extends React.Component {
         } catch (error) {
             alert("Welcome! Please Login or Signup!")
         }
-
     }
 
     handleENGL301ChangeExempt(event) {
@@ -435,8 +429,8 @@ class AddCourse extends React.Component {
             let courses = user.courses
             if (!Object.keys(courses).includes("CPSC213")) {
                 let myGrade = prompt('What grade did you receive? (optional)');
-                let year = prompt('During which year did/will you complete this course? (required)');
-                let term = prompt('During which term (W1, W2, or S) did/will you complete this course? (required)');
+                let year = prompt('During which year did/will you complete this course? ');
+                let term = prompt('During which term (W1, W2, or S) did/will you complete this course? ');
                 courses["CPSC213"] = {
                     "type": "core",
                     "dept": "CPSC",
@@ -475,7 +469,6 @@ class AddCourse extends React.Component {
         } catch (error) {
             alert("Welcome! Please Login or Signup!")
         }
-
     }
 
     handleCPSC221ChangeCore(event) {
@@ -486,8 +479,8 @@ class AddCourse extends React.Component {
             let courses = user.courses
             if (!Object.keys(courses).includes("CPSC221")) {
                 let myGrade = prompt('What grade did you receive? (optional)');
-                let year = prompt('During which year did/will you complete this course? (required)');
-                let term = prompt('During which term (W1, W2, or S) did/will you complete this course? (required)');
+                let year = prompt('During which year did/will you complete this course? ');
+                let term = prompt('During which term (W1, W2, or S) did/will you complete this course? ');
                 courses["CPSC221"] = {
                     "type": "core",
                     "dept": "CPSC",
@@ -504,7 +497,6 @@ class AddCourse extends React.Component {
         } catch (error) {
             alert("Welcome! Please Login or Signup!")
         }
-
     }
 
     handleCPSC221ChangeExempt(event) {
@@ -527,7 +519,6 @@ class AddCourse extends React.Component {
         } catch (error) {
             alert("Welcome! Please Login or Signup!")
         }
-
     }
 
     handleClick = e => {
@@ -538,9 +529,9 @@ class AddCourse extends React.Component {
             this.state.dept !== "" &&
             this.state.num !== "" &&
             // this.state.grade !== "" &&
-            this.state.type !== "" &&
-            this.state.year !== "" &&
-            this.state.term !== ""
+            this.state.type !== ""
+            // this.state.year !== "" &&
+            // this.state.term !== ""
         ) {
             let user = this.props.user
             let courses = user.courses
@@ -553,7 +544,6 @@ class AddCourse extends React.Component {
                 alert("Elective must be CPSC 300 or higher");
                 return;
             }
-
             if (!Object.keys(courses).includes(this.props.dept + this.props.num)) {
 
                 user.courses[this.state.dept + this.state.num] = {
@@ -591,131 +581,131 @@ class AddCourse extends React.Component {
                         <Header size='large'>Easy Select</Header>
                         <div className="easyS">
                             <Button.Group widths='3'>
-                            <Popup trigger={<Button>ENGL 112   </Button>} flowing hoverable>
-                                <Grid centered divided columns={2}>
-                                    <Grid.Column textAlign='center'>
-                                        <Header as='h4'>Core</Header>
-                                        <Button onClick={this.handleENGL112ChangeCore.bind(this)}>Choose</Button>
-                                    </Grid.Column>
-                                    <Grid.Column textAlign='center'>
-                                        <Header as='h4'>Exemption</Header>
-                                        <Button onClick={this.handleENGL112ChangeExempt.bind(this)}>Choose</Button>
-                                    </Grid.Column>
-                                </Grid>
-                            </Popup>
+                                <Popup trigger={<Button>ENGL 112   </Button>} flowing hoverable>
+                                    <Grid centered divided columns={2}>
+                                        <Grid.Column textAlign='center'>
+                                            <Header as='h4'>Core</Header>
+                                            <Button onClick={this.handleENGL112ChangeCore.bind(this)}>Choose</Button>
+                                        </Grid.Column>
+                                        <Grid.Column textAlign='center'>
+                                            <Header as='h4'>Exemption</Header>
+                                            <Button onClick={this.handleENGL112ChangeExempt.bind(this)}>Choose</Button>
+                                        </Grid.Column>
+                                    </Grid>
+                                </Popup>
 
-                            <Popup trigger={<Button>CPSC 110</Button>} flowing hoverable>
-                                <Grid centered divided columns={2}>
-                                    <Grid.Column textAlign='center'>
-                                        <Header as='h4'>Core</Header>
-                                        <Button onClick={this.handleCPSC110ChangeCore.bind(this)}>Choose</Button>
-                                    </Grid.Column>
-                                    <Grid.Column textAlign='center'>
-                                        <Header as='h4'>Exemption</Header>
-                                        <Button onClick={this.handleCPSC110ChangeExempt.bind(this)}>Choose</Button>
+                                <Popup trigger={<Button>CPSC 110</Button>} flowing hoverable>
+                                    <Grid centered divided columns={2}>
+                                        <Grid.Column textAlign='center'>
+                                            <Header as='h4'>Core</Header>
+                                            <Button onClick={this.handleCPSC110ChangeCore.bind(this)}>Choose</Button>
+                                        </Grid.Column>
+                                        <Grid.Column textAlign='center'>
+                                            <Header as='h4'>Exemption</Header>
+                                            <Button onClick={this.handleCPSC110ChangeExempt.bind(this)}>Choose</Button>
 
-                                    </Grid.Column>
-                                </Grid>
-                            </Popup>
+                                        </Grid.Column>
+                                    </Grid>
+                                </Popup>
 
-                            <Popup trigger={<Button>STAT 203</Button>} flowing hoverable>
-                                <Grid centered divided columns={2}>
-                                    <Grid.Column textAlign='center'>
-                                        <Header as='h4'>Core</Header>
-                                        <Button onClick={this.handleSTAT203ChangeCore.bind(this)}>Choose</Button>
-                                    </Grid.Column>
-                                    <Grid.Column textAlign='center'>
-                                        <Header as='h4'>Exemption</Header>
-                                        <Button onClick={this.handleSTAT203ChangeExempt.bind(this)}>Choose</Button>
-                                    </Grid.Column>
-                                </Grid>
-                            </Popup>
-                            </Button.Group>
-                        </div>
-                        
-                        <div className="easyS">
-                        <Button.Group widths='3'>
-                            <Popup trigger={<Button>MATH 180</Button>} flowing hoverable>
-                                <Grid centered divided columns={2}>
-                                    <Grid.Column textAlign='center'>
-                                        <Header as='h4'>Core</Header>
-                                        <Button onClick={this.handleMATH180ChangeCore.bind(this)}>Choose</Button>
-                                    </Grid.Column>
-                                    <Grid.Column textAlign='center'>
-                                        <Header as='h4'>Exemption</Header>
-                                        <Button onClick={this.handleMATH180ChangeExempt.bind(this)}>Choose</Button>
-                                    </Grid.Column>
-                                </Grid>
-                            </Popup>
-
-                            <Popup trigger={<Button>CPSC 121</Button>} flowing hoverable>
-                                <Grid centered divided columns={2}>
-                                    <Grid.Column textAlign='center'>
-                                        <Header as='h4'>Core</Header>
-                                        <Button onClick={this.handleCPSC121ChangeCore.bind(this)}>Choose</Button>
-                                    </Grid.Column>
-                                    <Grid.Column textAlign='center'>
-                                        <Header as='h4'>Exemption</Header>
-                                        <Button onClick={this.handleCPSC121ChangeExempt.bind(this)}>Choose</Button>
-                                    </Grid.Column>
-                                </Grid>
-                            </Popup>
-
-                            <Popup trigger={<Button>CPSC 210</Button>} flowing hoverable>
-                                <Grid centered divided columns={2}>
-                                    <Grid.Column textAlign='center'>
-                                        <Header as='h4'>Core</Header>
-                                        <Button onClick={this.handleCPSC210ChangeCore.bind(this)}>Choose</Button>
-                                    </Grid.Column>
-                                    <Grid.Column textAlign='center'>
-                                        <Header as='h4'>Exemption</Header>
-                                        <Button onClick={this.handleCPSC210ChangeExempt.bind(this)}>Choose</Button>
-                                    </Grid.Column>
-                                </Grid>
-                            </Popup>
+                                <Popup trigger={<Button>STAT 203</Button>} flowing hoverable>
+                                    <Grid centered divided columns={2}>
+                                        <Grid.Column textAlign='center'>
+                                            <Header as='h4'>Core</Header>
+                                            <Button onClick={this.handleSTAT203ChangeCore.bind(this)}>Choose</Button>
+                                        </Grid.Column>
+                                        <Grid.Column textAlign='center'>
+                                            <Header as='h4'>Exemption</Header>
+                                            <Button onClick={this.handleSTAT203ChangeExempt.bind(this)}>Choose</Button>
+                                        </Grid.Column>
+                                    </Grid>
+                                </Popup>
                             </Button.Group>
                         </div>
 
                         <div className="easyS">
-                        <Button.Group widths='3'>
-                            <Popup trigger={<Button>ENGL 301</Button>} flowing hoverable>
-                                <Grid centered divided columns={2}>
-                                    <Grid.Column textAlign='center'>
-                                        <Header as='h4'>Core</Header>
-                                        <Button onClick={this.handleENGL301ChangeCore.bind(this)}>Choose</Button>
-                                    </Grid.Column>
-                                    <Grid.Column textAlign='center'>
-                                        <Header as='h4'>Exemption</Header>
-                                        <Button onClick={this.handleENGL301ChangeExempt.bind(this)}>Choose</Button>
-                                    </Grid.Column>
-                                </Grid>
-                            </Popup>
+                            <Button.Group widths='3'>
+                                <Popup trigger={<Button>MATH 180</Button>} flowing hoverable>
+                                    <Grid centered divided columns={2}>
+                                        <Grid.Column textAlign='center'>
+                                            <Header as='h4'>Core</Header>
+                                            <Button onClick={this.handleMATH180ChangeCore.bind(this)}>Choose</Button>
+                                        </Grid.Column>
+                                        <Grid.Column textAlign='center'>
+                                            <Header as='h4'>Exemption</Header>
+                                            <Button onClick={this.handleMATH180ChangeExempt.bind(this)}>Choose</Button>
+                                        </Grid.Column>
+                                    </Grid>
+                                </Popup>
 
-                            <Popup trigger={<Button>CPSC 213</Button>} flowing hoverable>
-                                <Grid centered divided columns={2}>
-                                    <Grid.Column textAlign='center'>
-                                        <Header as='h4'>Core</Header>
-                                        <Button onClick={this.handleCPSC213ChangeCore.bind(this)}>Choose</Button>
-                                    </Grid.Column>
-                                    <Grid.Column textAlign='center'>
-                                        <Header as='h4'>Exemption</Header>
-                                        <Button onClick={this.handleCPSC213ChangeExempt.bind(this)}>Choose</Button>
-                                    </Grid.Column>
-                                </Grid>
-                            </Popup>
+                                <Popup trigger={<Button>CPSC 121</Button>} flowing hoverable>
+                                    <Grid centered divided columns={2}>
+                                        <Grid.Column textAlign='center'>
+                                            <Header as='h4'>Core</Header>
+                                            <Button onClick={this.handleCPSC121ChangeCore.bind(this)}>Choose</Button>
+                                        </Grid.Column>
+                                        <Grid.Column textAlign='center'>
+                                            <Header as='h4'>Exemption</Header>
+                                            <Button onClick={this.handleCPSC121ChangeExempt.bind(this)}>Choose</Button>
+                                        </Grid.Column>
+                                    </Grid>
+                                </Popup>
 
-                            <Popup trigger={<Button>CPSC 221</Button>} flowing hoverable>
-                                <Grid centered divided columns={2}>
-                                    <Grid.Column textAlign='center'>
-                                        <Header as='h4'>Core</Header>
-                                        <Button onClick={this.handleCPSC221ChangeCore.bind(this)}>Choose</Button>
-                                    </Grid.Column>
-                                    <Grid.Column textAlign='center'>
-                                        <Header as='h4'>Exemption</Header>
-                                        <Button onClick={this.handleCPSC221ChangeExempt.bind(this)}>Choose</Button>
-                                    </Grid.Column>
-                                </Grid>
-                            </Popup>
+                                <Popup trigger={<Button>CPSC 210</Button>} flowing hoverable>
+                                    <Grid centered divided columns={2}>
+                                        <Grid.Column textAlign='center'>
+                                            <Header as='h4'>Core</Header>
+                                            <Button onClick={this.handleCPSC210ChangeCore.bind(this)}>Choose</Button>
+                                        </Grid.Column>
+                                        <Grid.Column textAlign='center'>
+                                            <Header as='h4'>Exemption</Header>
+                                            <Button onClick={this.handleCPSC210ChangeExempt.bind(this)}>Choose</Button>
+                                        </Grid.Column>
+                                    </Grid>
+                                </Popup>
+                            </Button.Group>
+                        </div>
+
+                        <div className="easyS">
+                            <Button.Group widths='3'>
+                                <Popup trigger={<Button>ENGL 301</Button>} flowing hoverable>
+                                    <Grid centered divided columns={2}>
+                                        <Grid.Column textAlign='center'>
+                                            <Header as='h4'>Core</Header>
+                                            <Button onClick={this.handleENGL301ChangeCore.bind(this)}>Choose</Button>
+                                        </Grid.Column>
+                                        <Grid.Column textAlign='center'>
+                                            <Header as='h4'>Exemption</Header>
+                                            <Button onClick={this.handleENGL301ChangeExempt.bind(this)}>Choose</Button>
+                                        </Grid.Column>
+                                    </Grid>
+                                </Popup>
+
+                                <Popup trigger={<Button>CPSC 213</Button>} flowing hoverable>
+                                    <Grid centered divided columns={2}>
+                                        <Grid.Column textAlign='center'>
+                                            <Header as='h4'>Core</Header>
+                                            <Button onClick={this.handleCPSC213ChangeCore.bind(this)}>Choose</Button>
+                                        </Grid.Column>
+                                        <Grid.Column textAlign='center'>
+                                            <Header as='h4'>Exemption</Header>
+                                            <Button onClick={this.handleCPSC213ChangeExempt.bind(this)}>Choose</Button>
+                                        </Grid.Column>
+                                    </Grid>
+                                </Popup>
+
+                                <Popup trigger={<Button>CPSC 221</Button>} flowing hoverable>
+                                    <Grid centered divided columns={2}>
+                                        <Grid.Column textAlign='center'>
+                                            <Header as='h4'>Core</Header>
+                                            <Button onClick={this.handleCPSC221ChangeCore.bind(this)}>Choose</Button>
+                                        </Grid.Column>
+                                        <Grid.Column textAlign='center'>
+                                            <Header as='h4'>Exemption</Header>
+                                            <Button onClick={this.handleCPSC221ChangeExempt.bind(this)}>Choose</Button>
+                                        </Grid.Column>
+                                    </Grid>
+                                </Popup>
                             </Button.Group>
                         </div>
 
