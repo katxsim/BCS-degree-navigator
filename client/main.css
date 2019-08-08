@@ -108,7 +108,11 @@ input[type="password"]:not(.browser-default):focus:not([readonly]) + label {
 }
 
 .submitB {
-  margin-top: 20px !important;
+  margin-top: 50px !important;
+  margin-left: 180px !important;
+  margin-right: 180px !important;
+  margin-bottom: 50px !important;
+
 }
 
 .easyS {
@@ -136,3 +140,11 @@ padding-bottom: 30px !important;
 .paddin{
   padding-left: 30px !important;
 }
+
+.butty{
+padding: 3px !important;
+}
+
+.progg {
+  padding-bottom: 80px !important;
+  }

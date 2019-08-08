@@ -582,7 +582,7 @@ class AddCourse extends React.Component {
                         <Header size='large'>Easy Select</Header>
                         <div className="easyS">
                             <Button.Group widths='3'>
-                                <Popup trigger={<Button>ENGL 112   </Button>} flowing hoverable>
+                                <Popup trigger={<Button>  ENGL 112   </Button>} flowing hoverable>
                                     <Grid centered divided columns={2}>
                                         <Grid.Column textAlign='center'>
                                             <Header as='h4'>Core</Header>
@@ -594,7 +594,7 @@ class AddCourse extends React.Component {
                                         </Grid.Column>
                                     </Grid>
                                 </Popup>
-
+                                <Button.Or/>
                                 <Popup trigger={<Button>CPSC 110</Button>} flowing hoverable>
                                     <Grid centered divided columns={2}>
                                         <Grid.Column textAlign='center'>
@@ -608,8 +608,7 @@ class AddCourse extends React.Component {
                                         </Grid.Column>
                                     </Grid>
                                 </Popup>
-
-                                <Popup trigger={<Button>STAT 203</Button>} flowing hoverable>
+                                <Button.Or/>                                <Popup trigger={<Button>STAT 203</Button>} flowing hoverable>
                                     <Grid centered divided columns={2}>
                                         <Grid.Column textAlign='center'>
                                             <Header as='h4'>Core</Header>
@@ -638,7 +637,7 @@ class AddCourse extends React.Component {
                                         </Grid.Column>
                                     </Grid>
                                 </Popup>
-
+                                <Button.Or/>                                
                                 <Popup trigger={<Button>CPSC 121</Button>} flowing hoverable>
                                     <Grid centered divided columns={2}>
                                         <Grid.Column textAlign='center'>
@@ -651,8 +650,8 @@ class AddCourse extends React.Component {
                                         </Grid.Column>
                                     </Grid>
                                 </Popup>
-
-                                <Popup trigger={<Button>CPSC 210</Button>} flowing hoverable>
+                                <Button.Or/>
+                                    <Popup trigger={<Button>CPSC 210</Button>} flowing hoverable>
                                     <Grid centered divided columns={2}>
                                         <Grid.Column textAlign='center'>
                                             <Header as='h4'>Core</Header>
@@ -666,7 +665,7 @@ class AddCourse extends React.Component {
                                 </Popup>
                             </Button.Group>
                         </div>
-
+    
                         <div className="easyS">
                             <Button.Group widths='3'>
                                 <Popup trigger={<Button>ENGL 301</Button>} flowing hoverable>
@@ -681,9 +680,9 @@ class AddCourse extends React.Component {
                                         </Grid.Column>
                                     </Grid>
                                 </Popup>
-
+                                <Button.Or/>                                
                                 <Popup trigger={<Button>CPSC 213</Button>} flowing hoverable>
-                                    <Grid centered divided columns={2}>
+                                    <Grid centered divided columns={2} className="progg">
                                         <Grid.Column textAlign='center'>
                                             <Header as='h4'>Core</Header>
                                             <Button onClick={this.handleCPSC213ChangeCore.bind(this)}>Choose</Button>
@@ -694,7 +693,7 @@ class AddCourse extends React.Component {
                                         </Grid.Column>
                                     </Grid>
                                 </Popup>
-
+                                <Button.Or/>
                                 <Popup trigger={<Button>CPSC 221</Button>} flowing hoverable>
                                     <Grid centered divided columns={2}>
                                         <Grid.Column textAlign='center'>
@@ -734,7 +733,7 @@ class AddCourse extends React.Component {
                     </Form.Field>
                     <div>
                         <Header size='large'>Session</Header>
-                        <Button.Group>
+                        <Button.Group widths='3'>
                             <Button value="W1" onClick={this.handleTermChange.bind(this)}>W1</Button>
                             <Button.Or />
                             <Button value="W2" onClick={this.handleTermChange.bind(this)}>W2</Button>
@@ -744,7 +743,7 @@ class AddCourse extends React.Component {
                     </div>
                     <div>
                         <Header size='large' className="reccy">Requirement Type</Header>
-                        <Button.Group>
+                        <Button.Group> 
                             <Button value="core" onClick={this.handleCoreChange.bind(this)}>Core</Button>
                             <Button.Or />
                             <Button value="bridging" onClick={this.handleBridgingChange.bind(this)}>Bridging</Button>
@@ -756,7 +755,7 @@ class AddCourse extends React.Component {
                             <Button value="electives" onClick={this.handleElectiveChange.bind(this)}>CPSC Elective</Button>
                         </Button.Group>
                     </div>
-                    <Button className="submitB" type='submit' onClick={this.handleClick.bind(this)}>Add Course</Button>
+                    <Button className="submitB" type='submit' size="big" centered onClick={this.handleClick.bind(this)}>Add Course</Button>
 
                 </Form>
             </Container>
