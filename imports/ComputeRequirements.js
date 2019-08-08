@@ -117,15 +117,24 @@ export function updateRequirements(user) {
                         return;
 
                     case "ENGL":
-                        if (course.num > 100) requirements.core.ENGL = "complete"
+                        if (course.num > 100) {
+                            requirements.core.ENGL = "complete"
+                            requirements.core.counter++;
+                        }
 
                         return;
                     case "MATH":
                         // console.log(course.dept + course.num);
-                        if (course.num == 180) requirements.core.MATH = "complete"
+                        if (course.num == 180) {
+                            requirements.core.MATH = "complete"
+                            requirements.core.counter++;
+                        }
                         return;
                     case "STAT":
-                        if (course.num == 203) requirements.core.STAT = "complete"
+                        if (course.num == 203) {
+                            requirements.core.STAT = "complete"
+                            requirements.core.counter++;
+                        }
                         return;
                     default:
                         if (
@@ -133,7 +142,10 @@ export function updateRequirements(user) {
                             course.dept === "COMM" ||
                             course.dept === "SCIE" ||
                             course.dept === "BUSI" &&
-                            course.num >= 300) requirements.core.COMM = "complete"
+                            course.num >= 300) {
+                            requirements.core.COMM = "complete"
+                            requirements.core.counter++;
+                        }
                         return;
                 }
 

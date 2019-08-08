@@ -60,7 +60,7 @@ class Progress4 extends Component {
     let sessions = {};
     let index = -1;
 
-    Object.values(this.props.user.courses).forEach(function(course) {
+    Object.values(this.props.user.courses).forEach(function (course) {
       let session = course.year + course.term;
       if (Object.keys(sessions).includes(session)) {
         sessions[session].push(course.dept + " " + course.num);
@@ -71,6 +71,7 @@ class Progress4 extends Component {
         sessions[session] = sessionArray;
       }
     });
+    console.log(sessions)
 
     return (
       <div className="ui bottom attached segment active tab scrolling-wrapper">
