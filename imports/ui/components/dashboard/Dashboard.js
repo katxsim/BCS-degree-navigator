@@ -22,7 +22,7 @@ class Dashboard extends Component {
         </div>
 
         <div className="row">
-          <div className="col s24 m14 l8">
+          <div className="col s24 m12 l8">
             <AddCourse />
           </div>
           <div className="col s24 m12 l8">

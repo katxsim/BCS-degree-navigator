@@ -80,11 +80,14 @@ class SummaryView extends Component {
         return (
           <div>
             <div className="ui bottom attached segment active tab">
+            </div>
               <Header className="reccy" as="h3" block>
                 Overall Progress:
                 <div className="reccy"></div>
                 <Progress className="prog" percent={creditsCompleted / (63) * 100} color="violet" active big />
+                <div className="paddin">
                 <p>You have completed {creditsCompleted} credits of the minimum 63 required</p>
+                </div>
                 <div className="reccy"></div>
               </Header>
               
@@ -94,6 +97,7 @@ class SummaryView extends Component {
                 <div className="reccy"></div>
 
               <Progress className="prog" percent={corePercent} color="olive" active big />
+              <div className="paddin">
                 <p className={requirements.core.CPSC[0].status}>CPSC 110</p>
                 <p className={requirements.core.CPSC[1].status}>CPSC 121</p>
                 <p className={requirements.core.CPSC[2].status}>CPSC 210</p>
@@ -108,6 +112,7 @@ class SummaryView extends Component {
                 <p className={requirements.core.COMM}>
                   300+ Communication Requirement
             </p>
+            </div>
             <div className="reccy"></div>
               </Header>
 
@@ -116,7 +121,7 @@ class SummaryView extends Component {
                 <div className="reccy"></div>
               <Progress className="prog" percent={bridgingPercent} color="olive" large active />
                 <p>You have completed {bridgingComplete} of 5 bridging courses</p>
-                {postBridging}
+                <div className="paddin">{postBridging}</div>
                 <div className="reccy"></div>
               </Header>
 
@@ -125,19 +130,18 @@ class SummaryView extends Component {
                 <div className="reccy"></div>
               <Progress className="prog" percent={electivePercent} color="olive" large active />
                 <p>You have completed {electiveComplete} of 6 electives</p>
-                {PostElectives}
+                <div className="paddin">{PostElectives}</div>
                 <div className="reccy"></div>
               </Header>
 
-              <Header className="reccy" as="h3" block>
+             <Header className="reccy" as="h3" block>
                 Exemption Replacements Remaining: {replacementsLeft}
-
+                <div className="reccy"></div>
                 <p>You have used the following exemption replacements:</p>
-                {postExemptionReplacements}
+                <div className="paddin">{postExemptionReplacements}</div>
                 <div className="reccy"></div>
               </Header>
             </div>
-          </div>
         );
       } else {
         // no user is loaded yet
