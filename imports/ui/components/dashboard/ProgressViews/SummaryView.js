@@ -22,6 +22,8 @@ class SummaryView extends Component {
 
   render() {
     let rows = [];
+    let cells = [];
+    let table = [];
 
     try {
       let currentSession = "2019S";
@@ -86,6 +88,7 @@ class SummaryView extends Component {
           // rows[cell.cellRow] = [row, ...row[cell.cellColumn], ...row];
           rows.splice(cell.cellRow, 1, row);
           console.log(rows);
+          cells.push(cell);
         } else if (session < currentSession) {
           console.log("past");
           console.log(rows);
@@ -122,6 +125,7 @@ class SummaryView extends Component {
           // rows[cell.cellRow] = [row[cell.cellColumn], ...row];
           rows.splice(cell.cellRow, 1, row);
           console.log(rows);
+          cells.push(cell);
         } else {
           console.log("future");
           rows.forEach(function(row) {
@@ -145,6 +149,7 @@ class SummaryView extends Component {
           // rows[cell.cellRow] = [row, ...row[cell.cellColumn]];
           rows.splice(cell.cellRow, 1, row);
           // console.log(rows);
+          cells.push(cell);
         }
       });
 
@@ -159,7 +164,30 @@ class SummaryView extends Component {
       // });
     } catch (error) {} // do nothing when object is not loaded
 
-    console.log(rows);
+    console.log(cells);
+
+    try {
+      let rowCount = 0;
+      cells.forEach(function(cell) {
+        if (cell.cellRow > rowCount) {
+          rowCount = cell.cellRow;
+        }
+      });
+
+      let rowNum = 0;
+      while (rowNum <= rowCount) {
+        let row = [];
+        cells.forEach(function(cell) {
+          if (cell.cellRow === rowNum) {
+            row[cell.cellColumn] = cell;
+          }
+        });
+        table.push(row);
+        rowNum++;
+      }
+
+      console.log(table);
+    } catch (error) {} // do nothing
 
     // let index = -1;
 
