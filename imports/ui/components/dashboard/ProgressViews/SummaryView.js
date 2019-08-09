@@ -108,7 +108,7 @@ class SummaryView extends Component {
       });
     } catch (error) {} // do nothing when object is not loaded
 
-    console.log(cells);
+    // console.log(cells);
 
     try {
       let rowCount = 0;
@@ -128,10 +128,7 @@ class SummaryView extends Component {
         });
         table.push(row);
         for (let column = 0; column <= 2; column++) {
-          console.log("here 1");
-          console.log(table[rowNum][column]);
           if (table[rowNum][column] === undefined) {
-            console.log("here 2");
             table[rowNum].splice(column, 1, {
               cellRow: rowNum,
               cellColumn: column,
@@ -141,7 +138,7 @@ class SummaryView extends Component {
         }
         rowNum++;
       }
-      console.log(table);
+      // console.log(table);
     } catch (error) {} // do nothing
 
     let user = this.props.user;
