@@ -51,21 +51,25 @@ class SummaryView extends Component {
         let presentMaxRow = -1;
         let futureMaxRow = -1;
 
+        console.log(cell);
+
         if (session === currentSession) {
-          // console.log("present");
-          // console.log(rows);
+          console.log("present");
+          console.log(rows);
           rows.forEach(function(row) {
-            // console.log("here 1");
+            console.log("here 1");
             row.forEach(function(cell) {
-              // console.log("here 2");
+              console.log(cell);
+              console.log("here 2");
+              console.log(presentMaxRow);
               if (cell.cellColumn === 1 && cell.cellRow > presentMaxRow) {
-                // console.log("here 3");
+                console.log("here 3");
                 presentMaxRow = cell.cellRow;
               }
             });
           });
 
-          // console.log("here 4");
+          console.log("here 4");
 
           cell = {
             cellRow: presentMaxRow + 1,
@@ -73,13 +77,13 @@ class SummaryView extends Component {
             course: course.dept + " " + course.num
           };
 
-          // console.log(cell);
+          console.log(cell);
 
           row[cell.cellColumn] = cell;
-          // console.log(row[cell.cellColumn]);
+          console.log(row[cell.cellColumn]);
 
           rows[cell.cellRow] = [row, ...row[cell.cellColumn], ...row];
-          // console.log(rows);
+          console.log(rows);
         } else if (session < currentSession) {
           console.log("past");
           // console.log(rows);
