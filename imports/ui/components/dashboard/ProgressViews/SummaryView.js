@@ -1,8 +1,6 @@
 import React, { Component } from "react";
-import { Header, Progress, Icon, Table, Message } from "semantic-ui-react";
+import { Header, Progress, Icon, Table } from "semantic-ui-react";
 import { createContainer } from "meteor/react-meteor-data";
-// import _ from "lodash";
-import { userCourses } from "../../../../collections/userCourses";
 import { updateRequirements } from "../../../../ComputeRequirements";
 const shortid = require("shortid");
 
