@@ -733,7 +733,7 @@ class AddCourse extends React.Component {
                     </Form.Field>
                     <div>
                         <Header size='large'>Session</Header>
-                        <Button.Group widths='3'>
+                        <Button.Group widths='3' className="session">
                             <Button value="W1" onClick={this.handleTermChange.bind(this)}>W1</Button>
                             <Button.Or />
                             <Button value="W2" onClick={this.handleTermChange.bind(this)}>W2</Button>

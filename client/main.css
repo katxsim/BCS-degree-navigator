@@ -1,6 +1,6 @@
 /* Chevron Right Icon */
 .left {
-  float: left;
+  float: left !important;
   margin-left: 0em !important;
 }
 
@@ -121,6 +121,10 @@ input[type="password"]:not(.browser-default):focus:not([readonly]) + label {
 
 .lProg {
   margin-bottom: 40px !important;
+}
+
+.session {
+  margin-left: 9px !important;
 }
 
 .footy {
