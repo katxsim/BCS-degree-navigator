@@ -29,50 +29,22 @@ class SummaryView extends Component {
       let currentSession = "2019S";
       let row = [];
 
-      // console.log(row.length);
-
       Object.values(this.props.user.courses).forEach(function(course) {
-        // console.log(course);
         let session = course.year + course.term.toUpperCase();
-
-        // console.log(row.cells.length);
-        // if (row.cells.length >= 3) {
-        //   console.log("update row ID");
-        //   console.log(currentRowID);
-        //   currentRowID += 1;
-        //   console.log(currentRowID);
-        //   currentRow = {
-        //     rowID: currentRowID,
-        //     cells: null
-        //   };
-        // }
-        // console.log(row);
-
         let cell = {};
         let pastMaxRow = -1;
         let presentMaxRow = -1;
         let futureMaxRow = -1;
 
-        console.log(cell);
-
         if (session === currentSession) {
-          console.log("present");
-          console.log(rows);
           rows.forEach(function(row) {
-            console.log("here 1");
             row.forEach(function(cell) {
-              console.log(cell);
-              console.log("here 2");
-              console.log(presentMaxRow);
               if (cell.cellColumn === 1 && cell.cellRow > presentMaxRow) {
-                console.log("here 3");
                 presentMaxRow = cell.cellRow;
                 rows[presentMaxRow + 1] = [];
               }
             });
           });
-
-          console.log("here 4");
 
           cell = {
             cellRow: presentMaxRow + 1,
@@ -80,34 +52,18 @@ class SummaryView extends Component {
             course: course.dept + " " + course.num
           };
 
-          console.log(cell);
-
           row[cell.cellColumn] = cell;
-          console.log(row[cell.cellColumn]);
-
-          // rows[cell.cellRow] = [row, ...row[cell.cellColumn], ...row];
           rows.splice(cell.cellRow, 1, row);
-          console.log(rows);
           cells.push(cell);
         } else if (session < currentSession) {
-          console.log("past");
-          console.log(rows);
           rows.forEach(function(row) {
-            console.log("here 1");
-            console.log(row);
             row.forEach(function(cell) {
-              console.log("here 2");
-              console.log("cell.cellRow = " + cell.cellRow);
-              console.log("pastMaxRow = " + pastMaxRow);
               if (cell.cellColumn === 0 && cell.cellRow > pastMaxRow) {
-                console.log("here");
                 pastMaxRow = cell.cellRow;
                 rows[pastMaxRow + 1] = [];
               }
             });
           });
-
-          console.log("here 4");
 
           cell = {
             cellRow: pastMaxRow + 1,
@@ -115,19 +71,10 @@ class SummaryView extends Component {
             course: course.dept + " " + course.num
           };
 
-          console.log(cell);
-          // console.log(row);
-          // console.log(rows);
-
           row[cell.cellColumn] = cell;
-          console.log(row[cell.cellColumn]);
-
-          // rows[cell.cellRow] = [row[cell.cellColumn], ...row];
           rows.splice(cell.cellRow, 1, row);
-          console.log(rows);
           cells.push(cell);
         } else {
-          console.log("future");
           rows.forEach(function(row) {
             row.forEach(function(cell) {
               if (cell.cellColumn === 2 && cell.cellRow > futureMaxRow) {
@@ -144,24 +91,10 @@ class SummaryView extends Component {
           };
 
           row[cell.cellColumn] = cell;
-          // console.log(row[cell.cellColumn]);
-
-          // rows[cell.cellRow] = [row, ...row[cell.cellColumn]];
           rows.splice(cell.cellRow, 1, row);
-          // console.log(rows);
           cells.push(cell);
         }
       });
-
-      //   if (Object.keys(sessions).includes(session)) {
-      //     sessions[session].push(course.dept + " " + course.num);
-      //   } else {
-      //     index += 1;
-      //     let sessionArray = [];
-      //     sessionArray.push(course.dept + " " + course.num);
-      //     sessions[session] = sessionArray;
-      //   }
-      // });
     } catch (error) {} // do nothing when object is not loaded
 
     console.log(cells);
@@ -188,22 +121,6 @@ class SummaryView extends Component {
 
       console.log(table);
     } catch (error) {} // do nothing
-
-    // let index = -1;
-
-    // try {
-    //   Object.values(this.props.user.courses).forEach(function(course) {
-    //     let session = course.year + course.term.toUpperCase();
-    //     if (Object.keys(sessions).includes(session)) {
-    //       sessions[session].push(course.dept + " " + course.num);
-    //     } else {
-    //       index += 1;
-    //       let sessionArray = [];
-    //       sessionArray.push(course.dept + " " + course.num);
-    //       sessions[session] = sessionArray;
-    //     }
-    //   });
-    // } catch (error) {} // do nothing when object is not loaded
 
     let user = this.props.user;
 
