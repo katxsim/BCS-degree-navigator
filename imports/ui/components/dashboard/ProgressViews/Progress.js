@@ -138,22 +138,15 @@ class Progress extends Component {
       console.log(table);
     } catch (error) {} // do nothing
 
-    console.log("here 1");
-
     let user = this.props.user;
     let requirements = "";
 
     try {
-      console.log("try");
-
       if (user.courses) {
-        console.log("if");
         requirements = updateRequirements(user);
       }
 
-      console.log("here 2");
       if (requirements) {
-        console.log("here 3");
         return (
           <div className="ui bottom attached segment active tab">
             <Table fixed unstackable>
