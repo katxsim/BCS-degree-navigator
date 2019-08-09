@@ -228,23 +228,15 @@ class SummaryView extends Component {
                     </Table.Header>
 
                     <Table.Body>
-                      {table.map((row, index) => {
+                      {table.map(row => {
                         return (
                           <Table.Row>
-                            <Table.Cell positive>
-                              <Icon name="checkmark" />
-                              {row[0].dept + " " + row[0].num}
-                            </Table.Cell>
-                            <Table.Cell warning>
-                              <span className="left">
-                                <Icon name="chevron right" />
-                              </span>
-                              {row.dept + " " + row.num}
-                            </Table.Cell>
-                            <Table.Cell negative>
-                              <Icon name="times" />
-                              {row.dept + " " + row.num}
-                            </Table.Cell>
+                            {row.map(cell => (
+                              <Table.Cell positive>
+                                <Icon name="checkmark" />
+                                {cell.course}
+                              </Table.Cell>
+                            ))}
                           </Table.Row>
                         );
                       })}
