@@ -9,11 +9,11 @@ const shortid = require("shortid");
 class SummaryView extends Component {
   getIcon(cell) {
     let icon = "";
-    if (cell.cellColumn === 0) {
+    if (cell.cellColumn === 0 && cell.course !== "") {
       icon = "checkmark";
-    } else if (cell.cellColumn === 1) {
+    } else if (cell.cellColumn === 1 && cell.course !== "") {
       icon = "chevron right";
-    } else {
+    } else if (cell.cellColumn === 2 && cell.course !== "") {
       icon = "times";
     }
     return icon;
@@ -21,11 +21,11 @@ class SummaryView extends Component {
 
   getColour(cell) {
     let colour = "";
-    if (cell.cellColumn === 0) {
+    if (cell.cellColumn === 0 && cell.course !== "") {
       colour = "positive";
-    } else if (cell.cellColumn === 1) {
+    } else if (cell.cellColumn === 1 && cell.course !== "") {
       colour = "warning";
-    } else {
+    } else if (cell.cellColumn === 2 && cell.course !== "") {
       colour = "negative";
     }
     return colour;
@@ -127,9 +127,20 @@ class SummaryView extends Component {
           }
         });
         table.push(row);
+        for (let column = 0; column <= 2; column++) {
+          console.log("here 1");
+          console.log(table[rowNum][column]);
+          if (table[rowNum][column] === undefined) {
+            console.log("here 2");
+            table[rowNum].splice(column, 1, {
+              cellRow: rowNum,
+              cellColumn: column,
+              course: ""
+            });
+          }
+        }
         rowNum++;
       }
-
       console.log(table);
     } catch (error) {} // do nothing
 
