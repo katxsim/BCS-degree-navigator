@@ -1,11 +1,10 @@
 import React, { Component } from "react";
-import Progress from "./ProgressViews/ProgressTabs";
+import ProgressTabs from "./ProgressViews/ProgressTabs";
 import CourseList from "./CourseList";
 import Footer from "../layout/Footer";
 import EmailSteve from "./EmailSteve";
-import { Container, Divider } from 'semantic-ui-react'
+import { Container, Divider } from "semantic-ui-react";
 import AddCourse from "./AddCourse";
-
 
 class Dashboard extends Component {
   render() {
@@ -30,7 +29,7 @@ class Dashboard extends Component {
           </div>
         </div>
         <div>
-          <Progress />
+          <ProgressTabs />
           <Footer />
         </div>
       </div>

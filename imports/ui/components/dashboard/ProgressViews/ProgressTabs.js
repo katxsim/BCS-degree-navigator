@@ -1,8 +1,7 @@
 import React, { Component } from "react";
 import { Tab } from "semantic-ui-react";
 import SummaryView from "./SummaryView";
-import Progress2 from "./Progress2";
-import Progress3 from "./Progress3";
+import Progress from "./Progress";
 import Timeline from "./Timeline";
 import Grades from "./Grades";
 
@@ -16,18 +15,10 @@ const panes = [
     )
   },
   {
-    menuItem: "Course List",
+    menuItem: "Progress",
     render: () => (
       <Tab.Pane>
-        <Progress2 />
-      </Tab.Pane>
-    )
-  },
-  {
-    menuItem: "Course List 2",
-    render: () => (
-      <Tab.Pane>
-        <Progress3 />
+        <Progress />
       </Tab.Pane>
     )
   },
@@ -49,10 +40,10 @@ const panes = [
   }
 ];
 
-class Progress extends Component {
+class ProgressTabs extends Component {
   render() {
     return <Tab panes={panes} />;
   }
 }
 
-export default Progress;
+export default ProgressTabs;
