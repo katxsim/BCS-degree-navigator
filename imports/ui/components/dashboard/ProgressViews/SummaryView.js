@@ -25,16 +25,12 @@ class SummaryView extends Component {
 
     try {
       let currentSession = "2019S";
-      let rowID = 1;
-      let row = {
-        rowID: rowID,
-        cells: []
-      };
+      let row = [];
 
-      console.log(row.cells.length);
+      // console.log(row.length);
 
       Object.values(this.props.user.courses).forEach(function(course) {
-        console.log(course);
+        // console.log(course);
         let session = course.year + course.term.toUpperCase();
 
         // console.log(row.cells.length);
@@ -51,64 +47,93 @@ class SummaryView extends Component {
         // console.log(row);
 
         let cell = {};
-        let maxRow = 0;
+        let pastMaxRow = -1;
+        let presentMaxRow = -1;
+        let futureMaxRow = -1;
 
         if (session === currentSession) {
-          console.log("present");
-          Object.values(rows).forEach(function(row) {
-            Object.values(row.cells).forEach(function(cell) {
-              if (cell.cellColumn === "b" && cell.cellRow > maxRow) {
-                maxRow = cell.cellRow;
+          // console.log("present");
+          // console.log(rows);
+          rows.forEach(function(row) {
+            // console.log("here 1");
+            row.forEach(function(cell) {
+              // console.log("here 2");
+              if (cell.cellColumn === 1 && cell.cellRow > presentMaxRow) {
+                // console.log("here 3");
+                presentMaxRow = cell.cellRow;
               }
             });
           });
 
+          // console.log("here 4");
+
           cell = {
-            cellRow: maxRow + 1,
-            cellColumn: "b",
+            cellRow: presentMaxRow + 1,
+            cellColumn: 1,
             course: course.dept + " " + course.num
           };
-          cells.push(cell);
+
+          // console.log(cell);
+
+          row[cell.cellColumn] = cell;
+          // console.log(row[cell.cellColumn]);
+
+          rows[cell.cellRow] = [row, ...row[cell.cellColumn], ...row];
+          // console.log(rows);
         } else if (session < currentSession) {
           console.log("past");
-          Object.values(rows).forEach(function(row) {
-            Object.values(row.cells).forEach(function(cell) {
-              if (cell.cellColumn === "a" && cell.cellRow > maxRow) {
-                maxRow = cell.cellRow;
+          // console.log(rows);
+          rows.forEach(function(row) {
+            // console.log("here 1");
+            row.forEach(function(cell) {
+              console.log("cell.cellRow = " + cell.cellRow);
+              console.log("pastMaxRow = " + pastMaxRow);
+              if (cell.cellColumn === 0 && cell.cellRow > pastMaxRow) {
+                console.log("here");
+                pastMaxRow = cell.cellRow;
               }
             });
           });
 
+          // console.log("here 4");
+
           cell = {
-            cellRow: maxRow + 1,
-            cellColumn: "a",
+            cellRow: pastMaxRow + 1,
+            cellColumn: 0,
             course: course.dept + " " + course.num
           };
-          console.log(cell);
-          row.cells.push(cell);
-          console.log(row.cells);
+
+          // console.log(cell);
+          // console.log(row);
+          // console.log(rows);
+
+          row[cell.cellColumn] = cell;
+          // console.log(row[cell.cellColumn]);
+
+          rows[cell.cellRow] = [row[cell.cellColumn], ...row];
+          // console.log(rows);
         } else {
           console.log("future");
-          Object.values(rows).forEach(function(row) {
-            Object.values(row.cells).forEach(function(cell) {
-              if (cell.cellColumn === "c" && cell.cellRow > maxRow) {
-                maxRow = cell.cellRow;
+          rows.forEach(function(row) {
+            row.forEach(function(cell) {
+              if (cell.cellColumn === 2 && cell.cellRow > futureMaxRow) {
+                futureMaxRow = cell.cellRow;
               }
             });
           });
 
           cell = {
-            cellRow: maxRow + 1,
-            cellColumn: "c",
+            cellRow: futureMaxRow + 1,
+            cellColumn: 2,
             course: course.dept + " " + course.num
           };
+
+          row[cell.cellColumn] = cell;
+          // console.log(row[cell.cellColumn]);
+
+          rows[cell.cellRow] = [row, ...row[cell.cellColumn]];
+          // console.log(rows);
         }
-
-        console.log(row);
-        row.cells.push(cell);
-        console.log(row);
-
-        rows.push(row);
       });
 
       //   if (Object.keys(sessions).includes(session)) {
