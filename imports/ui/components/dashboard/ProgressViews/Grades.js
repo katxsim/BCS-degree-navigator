@@ -3,7 +3,7 @@ import React, { Component } from "react";
 import { Icon, Table } from "semantic-ui-react";
 import { createContainer } from "meteor/react-meteor-data";
 
-class Progress5 extends Component {
+class Grades extends Component {
   state = {
     column: null,
     data: null,
@@ -67,7 +67,7 @@ class Progress5 extends Component {
     let sum = 0;
     let count = 0;
     try {
-      Object.values(this.props.user.courses).forEach(function (course) {
+      Object.values(this.props.user.courses).forEach(function(course) {
         if (Number.isInteger(parseInt(course.grade))) {
           if (course.grade != 0) {
             sum += parseInt(course.grade);
@@ -75,7 +75,7 @@ class Progress5 extends Component {
           }
         }
       });
-    } catch (error) { } // do nothing if user is not loaded
+    } catch (error) {} // do nothing if user is not loaded
 
     let gpa = (sum / count).toFixed(1);
 
@@ -125,7 +125,9 @@ class Progress5 extends Component {
               <Table.Row key={dept + " " + num}>
                 <Table.Cell>{dept + " " + num}</Table.Cell>
                 <Table.Cell>{grade}</Table.Cell>
-                <Table.Cell>{year} {term}</Table.Cell>
+                <Table.Cell>
+                  {year} {term}
+                </Table.Cell>
               </Table.Row>
             ))}
           </Table.Body>
@@ -142,4 +144,4 @@ export default createContainer(() => {
   return {
     user: Meteor.users.findOne({ _id: Meteor.userId() })
   };
-}, Progress5);
+}, Grades);
