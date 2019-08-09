@@ -7,13 +7,12 @@ import { updateRequirements } from "../../../../ComputeRequirements";
 const shortid = require("shortid");
 
 class SummaryView extends Component {
-  getIcon(session) {
-    let currentSession = "2019S";
+  getIcon(cell) {
     let icon = "";
-    if (session === currentSession) {
-      icon = "chevron right";
-    } else if (session < currentSession) {
+    if (cell.cellColumn === 0) {
       icon = "checkmark";
+    } else if (cell.cellColumn === 1) {
+      icon = "chevron right";
     } else {
       icon = "times";
     }
@@ -233,7 +232,7 @@ class SummaryView extends Component {
                           <Table.Row>
                             {row.map(cell => (
                               <Table.Cell positive>
-                                <Icon name="checkmark" />
+                                <Icon name={this.getIcon(cell)} />
                                 {cell.course}
                               </Table.Cell>
                             ))}
