@@ -29,85 +29,95 @@ class SummaryView extends Component {
     return colour;
   }
 
-  render() {
+  findCellCoordinates(courses) {
+    let currentSession = "2019S";
+    let row = [];
     let rows = [];
     let cells = [];
-    let table = [];
 
-    try {
-      let currentSession = "2019S";
-      let row = [];
+    courses.forEach(function(course) {
+      // console.log("got here");
+      // console.log(course);
+      let session = course.year + course.term.toUpperCase();
+      // console.log(session);
+      let cell = {};
+      let pastMaxRow = -1;
+      let presentMaxRow = -1;
+      let futureMaxRow = -1;
 
-      Object.values(this.props.user.courses).forEach(function(course) {
-        let session = course.year + course.term.toUpperCase();
-        let cell = {};
-        let pastMaxRow = -1;
-        let presentMaxRow = -1;
-        let futureMaxRow = -1;
-
-        if (session === currentSession) {
-          rows.forEach(function(row) {
-            row.forEach(function(cell) {
-              if (cell.cellColumn === 1 && cell.cellRow > presentMaxRow) {
-                presentMaxRow = cell.cellRow;
-                rows[presentMaxRow + 1] = [];
-              }
-            });
+      if (session === currentSession) {
+        rows.forEach(function(row) {
+          row.forEach(function(cell) {
+            if (cell.cellColumn === 1 && cell.cellRow > presentMaxRow) {
+              presentMaxRow = cell.cellRow;
+              rows[presentMaxRow + 1] = [];
+            }
           });
+        });
 
-          cell = {
-            cellRow: presentMaxRow + 1,
-            cellColumn: 1,
-            course: course.dept + " " + course.num
-          };
+        cell = {
+          cellRow: presentMaxRow + 1,
+          cellColumn: 1,
+          course: course.dept + " " + course.num
+        };
 
-          row[cell.cellColumn] = cell;
-          rows.splice(cell.cellRow, 1, row);
-          cells.push(cell);
-        } else if (session < currentSession) {
-          rows.forEach(function(row) {
-            row.forEach(function(cell) {
-              if (cell.cellColumn === 0 && cell.cellRow > pastMaxRow) {
-                pastMaxRow = cell.cellRow;
-                rows[pastMaxRow + 1] = [];
-              }
-            });
+        row[cell.cellColumn] = cell;
+        rows.splice(cell.cellRow, 1, row);
+        cells.push(cell);
+      } else if (session < currentSession) {
+        // console.log("case 2");
+        // console.log(rows);
+        rows.forEach(function(row) {
+          // console.log("first for each");
+          row.forEach(function(cell) {
+            // console.log("second for each");
+            if (cell.cellColumn === 0 && cell.cellRow > pastMaxRow) {
+              pastMaxRow = cell.cellRow;
+              rows[pastMaxRow + 1] = [];
+            }
           });
+        });
 
-          cell = {
-            cellRow: pastMaxRow + 1,
-            cellColumn: 0,
-            course: course.dept + " " + course.num
-          };
+        // console.log("h1");
 
-          row[cell.cellColumn] = cell;
-          rows.splice(cell.cellRow, 1, row);
-          cells.push(cell);
-        } else {
-          rows.forEach(function(row) {
-            row.forEach(function(cell) {
-              if (cell.cellColumn === 2 && cell.cellRow > futureMaxRow) {
-                futureMaxRow = cell.cellRow;
-                rows[futureMaxRow + 1] = [];
-              }
-            });
+        cell = {
+          cellRow: pastMaxRow + 1,
+          cellColumn: 0,
+          course: course.dept + " " + course.num
+        };
+
+        // console.log(cell);
+
+        row[cell.cellColumn] = cell;
+        rows.splice(cell.cellRow, 1, row);
+        cells.push(cell);
+        console.log(cells);
+      } else {
+        rows.forEach(function(row) {
+          row.forEach(function(cell) {
+            if (cell.cellColumn === 2 && cell.cellRow > futureMaxRow) {
+              futureMaxRow = cell.cellRow;
+              rows[futureMaxRow + 1] = [];
+            }
           });
+        });
 
-          cell = {
-            cellRow: futureMaxRow + 1,
-            cellColumn: 2,
-            course: course.dept + " " + course.num
-          };
+        cell = {
+          cellRow: futureMaxRow + 1,
+          cellColumn: 2,
+          course: course.dept + " " + course.num
+        };
 
-          row[cell.cellColumn] = cell;
-          rows.splice(cell.cellRow, 1, row);
-          cells.push(cell);
-        }
-      });
-    } catch (error) {} // do nothing when object is not loaded
+        row[cell.cellColumn] = cell;
+        rows.splice(cell.cellRow, 1, row);
+        cells.push(cell);
+      }
+    });
+    console.log(cells);
+    return cells;
+  }
 
-    // console.log(cells);
-
+  buildTable(cells) {
     try {
       let rowCount = 0;
       cells.forEach(function(cell) {
@@ -136,8 +146,57 @@ class SummaryView extends Component {
         }
         rowNum++;
       }
-      // console.log(table);
+      console.log(table);
+      return table;
     } catch (error) {} // do nothing
+  }
+
+  render() {
+    let table = [];
+
+    let coreCells = [];
+    let bridgingCells = [];
+    let electivesCells = [];
+
+    try {
+      let coreArray = [];
+      let bridgingArray = [];
+      let electivesArray = [];
+
+      console.log(this.props.user.courses);
+
+      Object.values(this.props.user.courses).forEach(function(course) {
+        if (course.type === "core") {
+          coreArray.push(course);
+        } else if (course.type === "bridging") {
+          bridgingArray.push(course);
+        } else if (course.type === "electives") {
+          electivesArray.push(course);
+        }
+      });
+
+      console.log(coreArray);
+      console.log(bridgingArray);
+      console.log(electivesArray);
+      console.log(exemptionsArray);
+
+      coreCells = this.findCellCoordinates(coreArray);
+      console.log(coreCells);
+      bridgingCells = this.findCellCoordinates(bridgingArray);
+      console.log(bridgingCells);
+      electivesCells = this.findCellCoordinates(electivesArray);
+      console.log(electivesCells);
+
+      coreTable = this.buildTable(coreCells);
+      bridgingTable = this.buildTable(bridgingCells);
+      electivesTable = this.buildTable(electivesCells);
+      exemptionsTable = this.buildTable(exemptionsCells);
+
+      console.log(coreTable);
+      console.log(bridgingTable);
+      console.log(electivesTable);
+      console.log(exemptionsTable);
+    } catch (error) {} // do nothing when object is not loaded
 
     let user = this.props.user;
 
