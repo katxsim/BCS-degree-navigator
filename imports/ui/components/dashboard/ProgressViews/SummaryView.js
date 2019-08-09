@@ -19,6 +19,18 @@ class SummaryView extends Component {
     return icon;
   }
 
+  getColour(cell) {
+    let colour = "";
+    if (cell.cellColumn === 0) {
+      colour = "positive";
+    } else if (cell.cellColumn === 1) {
+      colour = "warning";
+    } else {
+      colour = "negative";
+    }
+    return colour;
+  }
+
   render() {
     let rows = [];
     let cells = [];
@@ -231,7 +243,7 @@ class SummaryView extends Component {
                         return (
                           <Table.Row>
                             {row.map(cell => (
-                              <Table.Cell positive>
+                              <Table.Cell className={this.getColour(cell)}>
                                 <Icon name={this.getIcon(cell)} />
                                 {cell.course}
                               </Table.Cell>
