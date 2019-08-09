@@ -126,7 +126,9 @@ input[type="password"]:not(.browser-default):focus:not([readonly]) + label {
 .session {
   margin-left: 9px !important;
 }
-
+.ste {
+  margin-left: 6px !important;
+}
 .footy {
   padding-top: 200px;
 }
