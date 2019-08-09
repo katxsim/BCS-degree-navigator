@@ -65,6 +65,7 @@ class SummaryView extends Component {
               if (cell.cellColumn === 1 && cell.cellRow > presentMaxRow) {
                 console.log("here 3");
                 presentMaxRow = cell.cellRow;
+                rows[presentMaxRow + 1] = [];
               }
             });
           });
@@ -82,24 +83,28 @@ class SummaryView extends Component {
           row[cell.cellColumn] = cell;
           console.log(row[cell.cellColumn]);
 
-          rows[cell.cellRow] = [row, ...row[cell.cellColumn], ...row];
+          // rows[cell.cellRow] = [row, ...row[cell.cellColumn], ...row];
+          rows.splice(cell.cellRow, 1, row);
           console.log(rows);
         } else if (session < currentSession) {
           console.log("past");
-          // console.log(rows);
+          console.log(rows);
           rows.forEach(function(row) {
-            // console.log("here 1");
+            console.log("here 1");
+            console.log(row);
             row.forEach(function(cell) {
+              console.log("here 2");
               console.log("cell.cellRow = " + cell.cellRow);
               console.log("pastMaxRow = " + pastMaxRow);
               if (cell.cellColumn === 0 && cell.cellRow > pastMaxRow) {
                 console.log("here");
                 pastMaxRow = cell.cellRow;
+                rows[pastMaxRow + 1] = [];
               }
             });
           });
 
-          // console.log("here 4");
+          console.log("here 4");
 
           cell = {
             cellRow: pastMaxRow + 1,
@@ -107,21 +112,23 @@ class SummaryView extends Component {
             course: course.dept + " " + course.num
           };
 
-          // console.log(cell);
+          console.log(cell);
           // console.log(row);
           // console.log(rows);
 
           row[cell.cellColumn] = cell;
-          // console.log(row[cell.cellColumn]);
+          console.log(row[cell.cellColumn]);
 
-          rows[cell.cellRow] = [row[cell.cellColumn], ...row];
-          // console.log(rows);
+          // rows[cell.cellRow] = [row[cell.cellColumn], ...row];
+          rows.splice(cell.cellRow, 1, row);
+          console.log(rows);
         } else {
           console.log("future");
           rows.forEach(function(row) {
             row.forEach(function(cell) {
               if (cell.cellColumn === 2 && cell.cellRow > futureMaxRow) {
                 futureMaxRow = cell.cellRow;
+                rows[futureMaxRow + 1] = [];
               }
             });
           });
@@ -135,7 +142,8 @@ class SummaryView extends Component {
           row[cell.cellColumn] = cell;
           // console.log(row[cell.cellColumn]);
 
-          rows[cell.cellRow] = [row, ...row[cell.cellColumn]];
+          // rows[cell.cellRow] = [row, ...row[cell.cellColumn]];
+          rows.splice(cell.cellRow, 1, row);
           // console.log(rows);
         }
       });
