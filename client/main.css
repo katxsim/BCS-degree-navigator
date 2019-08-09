@@ -129,5 +129,10 @@ padding-bottom: 30px !important;
 }
 
 .reccy {
-  padding-top: 10px !important;
+  padding-top: 30px !important;
+  padding-bottom: 0px !important;
+}
+
+.paddin{
+  padding-left: 30px !important;
 }

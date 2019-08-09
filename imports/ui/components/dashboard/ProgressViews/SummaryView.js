@@ -269,56 +269,62 @@ class SummaryView extends Component {
 
       if (requirements) {
         return (
-          <div>
-            <div className="ui bottom attached segment active tab">
-              <Header as="h3" block>
-                <Progress
-                  className="prog"
-                  percent={(creditsCompleted / 63) * 100}
-                  color="olive"
-                  active
-                  big
-                />
+          <div className="ui bottom attached segment active tab">
+            <Header className="reccy" as="h3" block>
+              Overall Progress:
+              <div className="reccy" />
+              <Progress
+                className="prog"
+                percent={(creditsCompleted / 63) * 100}
+                color="violet"
+                active
+                big
+              />
+              <div className="paddin">
                 <p>
                   You have completed {creditsCompleted} credits of the minimum
                   63 required
                 </p>
-              </Header>
-              <Header as="h3" block>
-                Core Progress: {corePercent}%
-                <Progress
-                  className="prog"
-                  percent={corePercent}
-                  color="olive"
-                  active
-                  big
-                />
-                <div>
-                  <Table fixed unstackable>
-                    <Table.Header>
-                      <Table.Row>
-                        <Table.HeaderCell>Completed</Table.HeaderCell>
-                        <Table.HeaderCell>In Progress</Table.HeaderCell>
-                        <Table.HeaderCell>Incomplete</Table.HeaderCell>
-                      </Table.Row>
-                    </Table.Header>
+              </div>
+              <div className="reccy" />
+            </Header>
 
-                    <Table.Body>
-                      {table.map(row => {
-                        return (
-                          <Table.Row>
-                            {row.map(cell => (
-                              <Table.Cell className={this.getColour(cell)}>
-                                <Icon name={this.getIcon(cell)} />
-                                {cell.course}
-                              </Table.Cell>
-                            ))}
-                          </Table.Row>
-                        );
-                      })}
-                    </Table.Body>
-                  </Table>
-                </div>
+            <Header className="reccy" as="h3" block>
+              Core Progress: {corePercent}%
+              <Progress
+                className="prog"
+                percent={corePercent}
+                color="olive"
+                active
+                big
+              />
+              <div>
+                <Table fixed unstackable>
+                  <Table.Header>
+                    <Table.Row>
+                      <Table.HeaderCell>Completed</Table.HeaderCell>
+                      <Table.HeaderCell>In Progress</Table.HeaderCell>
+                      <Table.HeaderCell>Incomplete</Table.HeaderCell>
+                    </Table.Row>
+                  </Table.Header>
+
+                  <Table.Body>
+                    {table.map(row => {
+                      return (
+                        <Table.Row>
+                          {row.map(cell => (
+                            <Table.Cell className={this.getColour(cell)}>
+                              <Icon name={this.getIcon(cell)} />
+                              {cell.course}
+                            </Table.Cell>
+                          ))}
+                        </Table.Row>
+                      );
+                    })}
+                  </Table.Body>
+                </Table>
+              </div>
+              <div>
                 <p className={requirements.core.CPSC[0].status}>CPSC 110</p>
                 <p className={requirements.core.CPSC[1].status}>CPSC 121</p>
                 <p className={requirements.core.CPSC[2].status}>CPSC 210</p>
@@ -333,42 +339,45 @@ class SummaryView extends Component {
                 <p className={requirements.core.COMM}>
                   300+ Communication Requirement
                 </p>
-              </Header>
+              </div>
+              <div className="reccy" />
+            </Header>
 
-              <Header as="h3" block>
-                Bridging Progress: {bridgingPercent}%
-                <Progress
-                  className="prog"
-                  percent={bridgingPercent}
-                  color="olive"
-                  large
-                  active
-                />
-                <p>
-                  You have completed {bridgingComplete} of 5 bridging courses
-                </p>
-                {postBridging}
-              </Header>
+            <Header className="reccy" as="h3" block>
+              Bridging Progress: {bridgingPercent}%<div className="reccy" />
+              <Progress
+                className="prog"
+                percent={bridgingPercent}
+                color="olive"
+                large
+                active
+              />
+              <p>You have completed {bridgingComplete} of 5 bridging courses</p>
+              <div className="paddin">{postBridging}</div>
+              <div className="reccy" />
+            </Header>
 
-              <Header as="h3" block>
-                Elective Progress: {electivePercent}%
-                <Progress
-                  className="prog"
-                  percent={electivePercent}
-                  color="olive"
-                  large
-                  active
-                />
-                <p>You have completed {electiveComplete} of 6 electives</p>
-                {PostElectives}
-              </Header>
+            <Header className="reccy" as="h3" block>
+              Elective Progress: {electivePercent}%<div className="reccy" />
+              <Progress
+                className="prog"
+                percent={electivePercent}
+                color="olive"
+                large
+                active
+              />
+              <p>You have completed {electiveComplete} of 6 electives</p>
+              <div className="paddin">{PostElectives}</div>
+              <div className="reccy" />
+            </Header>
 
-              <Header as="h3" block>
-                Exemption Replacements Remaining: {replacementsLeft}
-                <p>You have used the following exemption replacements</p>
-                {postExemptionReplacements}
-              </Header>
-            </div>
+            <Header className="reccy" as="h3" block>
+              Exemption Replacements Remaining: {replacementsLeft}
+              <div className="reccy" />
+              <p>You have used the following exemption replacements:</p>
+              <div className="paddin">{postExemptionReplacements}</div>
+              <div className="reccy" />
+            </Header>
           </div>
         );
       } else {
