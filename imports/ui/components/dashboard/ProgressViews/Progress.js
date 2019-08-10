@@ -4,7 +4,8 @@ import { createContainer } from "meteor/react-meteor-data";
 import { updateRequirements } from "../../../../ComputeRequirements";
 import { importSession } from "../../../../Session";
 
-const currentSession = importSession;
+// const currentSession = importSession;
+const currentSession = "2019S"
 
 class Progress extends Component {
   getIcon(cell) {

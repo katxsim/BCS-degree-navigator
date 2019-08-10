@@ -5,6 +5,7 @@ import { importSession } from "../../../../Session";
 import _ from "lodash";
 
 const currentSession = importSession;
+// const currentSession = "2019S"
 
 class Timeline extends Component {
   state = {
