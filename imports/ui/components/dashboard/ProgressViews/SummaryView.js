@@ -3,9 +3,8 @@ import { Header, Progress, Icon, Table } from "semantic-ui-react";
 import { createContainer } from "meteor/react-meteor-data";
 import { updateRequirements } from "../../../../ComputeRequirements";
 import { importSession } from "../../../../Session";
-const shortid = require("shortid");
 
-const sess = importSession;
+const currentSession = importSession;
 
 class SummaryView extends Component {
   getIcon(cell) {
@@ -33,7 +32,6 @@ class SummaryView extends Component {
   }
 
   findCellCoordinates(courses) {
-    let currentSession = "2019S";
     let row = [];
     let rows = [];
     let cells = [];

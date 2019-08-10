@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Form, Header, Image, List, Icon, Popup } from 'semantic-ui-react'
+import { Button, Header, List, Icon, Popup } from 'semantic-ui-react'
 import { createContainer } from "meteor/react-meteor-data";
 
 class CourseList extends React.Component {

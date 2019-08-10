@@ -2,6 +2,9 @@ import React, { Component } from "react";
 import { Icon, Table } from "semantic-ui-react";
 import { createContainer } from "meteor/react-meteor-data";
 import { updateRequirements } from "../../../../ComputeRequirements";
+import { importSession } from "../../../../Session";
+
+const currentSession = importSession;
 
 class Progress extends Component {
   getIcon(cell) {
@@ -34,7 +37,6 @@ class Progress extends Component {
     let table = [];
 
     try {
-      let currentSession = "2019S";
       let row = [];
 
       Object.values(this.props.user.courses).forEach(function (course) {

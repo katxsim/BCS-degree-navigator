@@ -1,6 +1,4 @@
-import { Mongo } from 'meteor/mongo';
 import { Meteor } from 'meteor/meteor';
-// import { userCourses } from "../collections/userCourses"
 
 Meteor.methods({
 
@@ -21,18 +19,6 @@ Meteor.methods({
             })
         }
 
-        // else update! 
         Meteor.users.update({ "_id": user._id }, user);
     }
-
-    // "addCoursesField": function (user) {
-    //     if (!Meteor.userId()) {
-    //         throw new Meteor.Error('not-authorized');
-    //     }
-    //     Meteor.users.update(user._id, {
-    //         $set: {
-    //             courses: []
-    //         }
-    //     });
-    // }
 });

@@ -3,14 +3,11 @@ import { Container, Form, Button, Header, Popup, Grid } from 'semantic-ui-react'
 import { createContainer } from "meteor/react-meteor-data";
 import { updateRequirements } from "./../../../ComputeRequirements"
 
-const shortid = require("shortid");
-
 class AddCourse extends React.Component {
     constructor(props) {
         super(props);
         this.state = { dept: '', num: '', grade: '', type: '', year: '', term: '' };
     };
-
 
     handleDeptChange = e =>
         this.setState({
