@@ -36,8 +36,7 @@ class SummaryView extends Component {
     let rows = [];
     let cells = [];
 
-
-    courses.forEach(function (course) {
+    courses.forEach(function(course) {
       let session = course.year + course.term.toUpperCase();
       let cell = {};
       let pastMaxRow = -1;
@@ -45,8 +44,8 @@ class SummaryView extends Component {
       let futureMaxRow = -1;
 
       if (session === currentSession) {
-        rows.forEach(function (row) {
-          row.forEach(function (cell) {
+        rows.forEach(function(row) {
+          row.forEach(function(cell) {
             if (cell.cellColumn === 1 && cell.cellRow > presentMaxRow) {
               presentMaxRow = cell.cellRow;
               rows[presentMaxRow + 1] = [];
@@ -64,8 +63,8 @@ class SummaryView extends Component {
         rows.splice(cell.cellRow, 1, row);
         cells.push(cell);
       } else if (session < currentSession) {
-        rows.forEach(function (row) {
-          row.forEach(function (cell) {
+        rows.forEach(function(row) {
+          row.forEach(function(cell) {
             if (cell.cellColumn === 0 && cell.cellRow > pastMaxRow) {
               pastMaxRow = cell.cellRow;
               rows[pastMaxRow + 1] = [];
@@ -83,8 +82,8 @@ class SummaryView extends Component {
         rows.splice(cell.cellRow, 1, row);
         cells.push(cell);
       } else {
-        rows.forEach(function (row) {
-          row.forEach(function (cell) {
+        rows.forEach(function(row) {
+          row.forEach(function(cell) {
             if (cell.cellColumn === 2 && cell.cellRow > futureMaxRow) {
               futureMaxRow = cell.cellRow;
               rows[futureMaxRow + 1] = [];
@@ -112,8 +111,7 @@ class SummaryView extends Component {
     try {
       let rowCount = 0;
 
-
-      cells.forEach(function (cell) {
+      cells.forEach(function(cell) {
         if (cell.cellRow > rowCount) {
           rowCount = cell.cellRow;
         }
@@ -123,8 +121,7 @@ class SummaryView extends Component {
       while (rowNum <= rowCount) {
         let row = [];
 
-
-        cells.forEach(function (cell) {
+        cells.forEach(function(cell) {
           if (cell.cellRow === rowNum) {
             row[cell.cellColumn] = cell;
           }
@@ -143,7 +140,7 @@ class SummaryView extends Component {
       }
 
       return table;
-    } catch (error) { } // do nothing
+    } catch (error) {} // do nothing
   }
 
   render() {
@@ -160,8 +157,7 @@ class SummaryView extends Component {
     let electivesTable = [];
 
     try {
-
-      Object.values(this.props.user.courses).forEach(function (course) {
+      Object.values(this.props.user.courses).forEach(function(course) {
         if (course.type === "core") {
           coreArray.push(course);
         } else if (course.type === "bridging") {
@@ -173,14 +169,12 @@ class SummaryView extends Component {
 
       coreCells = this.findCellCoordinates(coreArray);
       bridgingCells = this.findCellCoordinates(bridgingArray);
-
       electivesCells = this.findCellCoordinates(electivesArray);
 
       coreTable = this.buildTable(coreCells);
       bridgingTable = this.buildTable(bridgingCells);
       electivesTable = this.buildTable(electivesCells);
-
-    } catch (error) { } // do nothing when object is not loaded
+    } catch (error) {} // do nothing when object is not loaded
     let user = this.props.user;
 
     try {
@@ -190,14 +184,14 @@ class SummaryView extends Component {
       }
 
       let exemptions = [];
-      Object.values(this.props.user.courses).forEach(function (course) {
+      Object.values(this.props.user.courses).forEach(function(course) {
         if (course.type === "exemptions") {
           exemptions.push(course);
         }
       });
 
       let requiredCourses = [];
-      Object.values(requirements.core.CPSC).forEach(function (course) {
+      Object.values(requirements.core.CPSC).forEach(function(course) {
         if (course.status === "incomplete") {
           let newCourse = {
             dept: "CPSC",
@@ -208,48 +202,50 @@ class SummaryView extends Component {
         }
       });
 
-
       let newCourse = {};
-      Object.keys(requirements.core).forEach(function (item) {
-        if (
-          (item === "ENGL" ||
-            item === "MATH" ||
-            item === "STAT" ||
-            item === "COMM") &&
-          requirements.core === "incomplete"
-        ) {
-          if (item === "ENGL") {
-            newCourse = {
-              dept: item,
-              num: 112,
-              status: requirements.core.ENGL
-            };
-            requiredCourses.push(newCourse);
-          } else if (item === "MATH") {
-            newCourse = {
-              dept: item,
-              num: 180,
-              status: requirements.core.MATH
-            };
-            requiredCourses.push(newCourse);
-          } else if (item === "STAT") {
-            newCourse = {
-              dept: item,
-              num: 203,
-              status: requirements.core.STAT
-            };
-            requiredCourses.push(newCourse);
-          } else if (item === "COMM") {
-            newCourse = {
-              dept: item,
-              num: 301,
-              status: requirements.core.COMM
-            };
-            requiredCourses.push(newCourse);
-          }
+      Object.keys(requirements.core).forEach(function(item) {
+        console.log(requirements.core);
+        console.log("got here");
+        if (item === "ENGL") {
+          newCourse = {
+            dept: item,
+            num: 112,
+            status: requirements.core.ENGL
+          };
+          requiredCourses.push(newCourse);
+        } else if (item === "MATH") {
+          newCourse = {
+            dept: item,
+            num: 180,
+            status: requirements.core.MATH
+          };
+          requiredCourses.push(newCourse);
+        } else if (item === "STAT") {
+          newCourse = {
+            dept: item,
+            num: 203,
+            status: requirements.core.STAT
+          };
+          requiredCourses.push(newCourse);
+        } else if (item === "COMM") {
+          newCourse = {
+            dept: item,
+            num: 301,
+            status: requirements.core.COMM
+          };
+          requiredCourses.push(newCourse);
         }
       });
 
+      console.log(requiredCourses);
+
+      let incompleteRequirements = [];
+
+      requiredCourses.forEach(function(course) {
+        if (course.status === "incomplete") {
+          incompleteRequirements.push(course);
+        }
+      });
 
       // load stats for render
       const creditsCompleted = user ? requirements.credits : 0;
@@ -278,39 +274,39 @@ class SummaryView extends Component {
 
       const postBridging = user
         ? Object.values(user.courses).map(course => {
-          if (course.type === "bridging") {
-            return (
-              <p className="complete" key={course.dept + course.num}>
-                {course.dept} {course.num}
-              </p>
-            );
-          }
-        })
+            if (course.type === "bridging") {
+              return (
+                <p className="complete" key={course.dept + course.num}>
+                  {course.dept} {course.num}
+                </p>
+              );
+            }
+          })
         : "";
 
       const PostElectives = user
         ? Object.values(user.courses).map(course => {
-          if (course.type === "electives") {
-            return (
-              <p className="complete" key={course.dept + course.num}>
-                {course.dept} {course.num}
-              </p>
-            );
-          }
-        })
+            if (course.type === "electives") {
+              return (
+                <p className="complete" key={course.dept + course.num}>
+                  {course.dept} {course.num}
+                </p>
+              );
+            }
+          })
         : "";
 
       const postExemptionReplacements = user
         ? Object.values(user.courses).map(course => {
-          if (course.type === "replacement") {
-            return (
-              <p className="complete" key={course.dept + course.num}>
-                <Icon name="checkmark" />
-                {course.dept} {course.num}
-              </p>
-            );
-          }
-        })
+            if (course.type === "replacement") {
+              return (
+                <p className="complete" key={course.dept + course.num}>
+                  <Icon name="checkmark" />
+                  {course.dept} {course.num}
+                </p>
+              );
+            }
+          })
         : "";
 
       if (requirements) {
@@ -372,21 +368,27 @@ class SummaryView extends Component {
                 </Table>
               </div>
               <div>
-              <div className="reccy" />
+                <div className="reccy" />
                 <p>You have exemptions for the following courses: </p>
                 {exemptions.map(course => {
-                  return <p className="comp">
-                    <Icon name="checkmark" />
-                    {course.dept + " " + course.num}</p>;
+                  return (
+                    <p className="comp">
+                      <Icon name="checkmark" />
+                      {course.dept + " " + course.num}
+                    </p>
+                  );
                 })}
               </div>
               <div>
-              <div className="reccy" />
+                <div className="reccy" />
                 <p>You need to complete the following core requirements: </p>
-                {requiredCourses.map(course => {
-                  return <p className="not">
-                  <Icon name="times" />
-                  {course.dept + " " + course.num}</p>;
+                {incompleteRequirements.map(course => {
+                  return (
+                    <p className="not">
+                      <Icon name="times" />
+                      {course.dept + " " + course.num}
+                    </p>
+                  );
                 })}
               </div>
               <div className="reccy" />
@@ -472,7 +474,6 @@ class SummaryView extends Component {
 
             <Header className="reccy" as="h3" block>
               Exemption Replacements Remaining:
-
               {replacementsLeft}
               <div className="reccy" />
               <p>You have used the following exemption replacements: </p>
