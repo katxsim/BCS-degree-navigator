@@ -54,6 +54,12 @@ p.complete {
   color:  #2c662d;
 }
 
+.comp {
+  color:  #2c662d;
+  margin-right: 20px;
+  margin-left: 20px;
+}
+
 p.incomplete {
   color: #f44242;
 }
