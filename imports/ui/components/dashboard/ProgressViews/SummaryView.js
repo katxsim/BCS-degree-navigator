@@ -38,12 +38,8 @@ class SummaryView extends Component {
     let rows = [];
     let cells = [];
 
-
     courses.forEach(function(course) {
-      // console.log("got here");
-      // console.log(course);
       let session = course.year + course.term.toUpperCase();
-      // console.log(session);
       let cell = {};
       let pastMaxRow = -1;
       let presentMaxRow = -1;
@@ -58,7 +54,6 @@ class SummaryView extends Component {
             }
           });
         });
-
 
         cell = {
           cellRow: presentMaxRow + 1,
@@ -111,7 +106,6 @@ class SummaryView extends Component {
           course: course.dept + " " + course.num
         };
 
-
         row[cell.cellColumn] = cell;
         rows.splice(cell.cellRow, 1, row);
         cells.push(cell);
@@ -124,36 +118,25 @@ class SummaryView extends Component {
   buildTable(cells) {
     let table = [];
 
-    console.log("got here");
     try {
       let rowCount = 0;
 
       cells.forEach(function(cell) {
-        console.log("got here 2");
         if (cell.cellRow > rowCount) {
-          console.log("got here 3");
           rowCount = cell.cellRow;
         }
       });
 
-      console.log("got here 4");
-
       let rowNum = 0;
       while (rowNum <= rowCount) {
-        console.log("got here 5");
         let row = [];
 
         cells.forEach(function(cell) {
-          console.log("got here 6");
           if (cell.cellRow === rowNum) {
-            console.log("got here 7");
             row[cell.cellColumn] = cell;
           }
         });
-        console.log("got here 8");
-        console.log(row);
         table.push(row);
-        console.log("got here 9");
         for (let column = 0; column <= 2; column++) {
           if (table[rowNum][column] === undefined) {
             table[rowNum].splice(column, 1, {
@@ -185,8 +168,6 @@ class SummaryView extends Component {
     let electivesTable = [];
 
     try {
-      console.log(this.props.user.courses);
-
       Object.values(this.props.user.courses).forEach(function(course) {
         if (course.type === "core") {
           coreArray.push(course);
@@ -197,27 +178,14 @@ class SummaryView extends Component {
         }
       });
 
-      console.log(coreArray);
-      console.log(bridgingArray);
-      console.log(electivesArray);
-
       coreCells = this.findCellCoordinates(coreArray);
-      console.log(coreCells);
       bridgingCells = this.findCellCoordinates(bridgingArray);
-      console.log(bridgingCells);
+
       electivesCells = this.findCellCoordinates(electivesArray);
-      console.log(electivesCells);
 
       coreTable = this.buildTable(coreCells);
-      console.log("line x");
       bridgingTable = this.buildTable(bridgingCells);
-      console.log("line y");
       electivesTable = this.buildTable(electivesCells);
-      console.log("line z");
-
-      console.log(coreTable);
-      console.log(bridgingTable);
-      console.log(electivesTable);
     } catch (error) {} // do nothing when object is not loaded
 
     let user = this.props.user;
@@ -227,6 +195,73 @@ class SummaryView extends Component {
       if (user.courses) {
         requirements = updateRequirements(user);
       }
+
+      let exemptions = [];
+      Object.values(this.props.user.courses).forEach(function(course) {
+        if (course.type === "exemptions") {
+          exemptions.push(course);
+        }
+      });
+
+      let requiredCourses = [];
+      Object.values(requirements.core.CPSC).forEach(function(course) {
+        console.log(course);
+        if (course.status === "incomplete") {
+          let newCourse = {
+            dept: "CPSC",
+            num: course.num,
+            status: course.status
+          };
+          requiredCourses.push(newCourse);
+        }
+      });
+
+      console.log(requiredCourses);
+
+      let newCourse = {};
+      Object.keys(requirements.core).forEach(function(item) {
+        console.log(item);
+        if (
+          (item === "ENGL" ||
+            item === "MATH" ||
+            item === "STAT" ||
+            item === "COMM") &&
+          requirements.core === "incomplete"
+        ) {
+          if (item === "ENGL") {
+            newCourse = {
+              dept: item,
+              num: 112,
+              status: requirements.core.ENGL
+            };
+            requiredCourses.push(newCourse);
+          } else if (item === "MATH") {
+            newCourse = {
+              dept: item,
+              num: 180,
+              status: requirements.core.MATH
+            };
+            requiredCourses.push(newCourse);
+          } else if (item === "STAT") {
+            newCourse = {
+              dept: item,
+              num: 203,
+              status: requirements.core.STAT
+            };
+            requiredCourses.push(newCourse);
+          } else if (item === "COMM") {
+            newCourse = {
+              dept: item,
+              num: 301,
+              status: requirements.core.COMM
+            };
+            requiredCourses.push(newCourse);
+          }
+        }
+      });
+
+      console.log(exemptions);
+      console.log(requiredCourses);
 
       // load stats for render
       const creditsCompleted = user ? requirements.credits : 0;
@@ -255,39 +290,39 @@ class SummaryView extends Component {
 
       const postBridging = user
         ? Object.values(user.courses).map(course => {
-          if (course.type === "bridging") {
-            return (
-              <p className="complete" key={course.dept + course.num}>
-                {course.dept} {course.num}
-              </p>
-            );
-          }
-        })
+            if (course.type === "bridging") {
+              return (
+                <p className="complete" key={course.dept + course.num}>
+                  {course.dept} {course.num}
+                </p>
+              );
+            }
+          })
         : "";
 
       const PostElectives = user
         ? Object.values(user.courses).map(course => {
-          if (course.type === "electives") {
-            return (
-              <p className="complete" key={course.dept + course.num}>
-                {course.dept} {course.num}
-              </p>
-            );
-          }
-        })
+            if (course.type === "electives") {
+              return (
+                <p className="complete" key={course.dept + course.num}>
+                  {course.dept} {course.num}
+                </p>
+              );
+            }
+          })
         : "";
 
       const postExemptionReplacements = user
         ? Object.values(user.courses).map(course => {
-          if (course.type === "replacement") {
-            return (
-              <p className="complete" key={course.dept + course.num}>
-                <Icon name="checkmark" />
-                {course.dept} {course.num}
-              </p>
-            );
-          }
-        })
+            if (course.type === "replacement") {
+              return (
+                <p className="complete" key={course.dept + course.num}>
+                  <Icon name="checkmark" />
+                  {course.dept} {course.num}
+                </p>
+              );
+            }
+          })
         : "";
 
       if (requirements) {
@@ -349,18 +384,16 @@ class SummaryView extends Component {
                 </Table>
               </div>
               <div>
-                <p className={requirements.core.CPSC[0].status}>CPSC 110</p>
-                <p className={requirements.core.CPSC[1].status}>CPSC 121</p>
-                <p className={requirements.core.CPSC[2].status}>CPSC 210</p>
-                <p className={requirements.core.CPSC[3].status}>CPSC 221</p>
-                <p className={requirements.core.CPSC[4].status}>CPSC 213</p>
-                <p className={requirements.core.CPSC[5].status}>CPSC 310</p>
-                <p className={requirements.core.CPSC[6].status}>CPSC 313</p>
-                <p className={requirements.core.CPSC[7].status}>CPSC 320</p>
-                <p className={requirements.core.ENGL}> ENGL 100+ </p>
-                <p className={requirements.core.MATH}> MATH 180  </p>
-                <p className={requirements.core.STAT}> STAT 203  </p>
-                <p className={requirements.core.COMM}> 300+ Communication Requirement </p>
+                <p>You have exemptions for the following courses: </p>
+                {exemptions.map(course => {
+                  return <p>{course.dept + " " + course.num}</p>;
+                })}
+              </div>
+              <div>
+                <p>You need to compelte the following core requirements: </p>
+                {requiredCourses.map(course => {
+                  return <p>{course.dept + " " + course.num}</p>;
+                })}
               </div>
               <div className="reccy" />
             </Header>
@@ -401,7 +434,6 @@ class SummaryView extends Component {
                   </Table.Body>
                 </Table>
               </div>
-              <div className="paddin">{postBridging}</div>
               <div className="reccy" />
             </Header>
 
@@ -441,21 +473,18 @@ class SummaryView extends Component {
                   </Table.Body>
                 </Table>
               </div>
-              <div className="paddin">{PostElectives}</div>
               <div className="reccy" />
             </Header>
 
             <Header className="reccy" as="h3" block>
-              Exemption Replacements Remaining:   
-          
+              Exemption Replacements Remaining:
               {replacementsLeft}
-
               <div className="reccy" />
               <p>You have used the following exemption replacements: </p>
               <div className="exempt">
-              {/* <div className="paddin"> */}
-              {postExemptionReplacements}
-              {/* </div> */}
+                {/* <div className="paddin"> */}
+                {postExemptionReplacements}
+                {/* </div> */}
               </div>
               <div className="reccy" />
             </Header>
