@@ -55,7 +55,13 @@ p.complete {
 }
 
 .comp {
-  color:  #2c662d;
+  color:  #2c862d;
+  margin-right: 20px;
+  margin-left: 20px;
+}
+
+.not {
+  color: #9f3a38; 
   margin-right: 20px;
   margin-left: 20px;
 }

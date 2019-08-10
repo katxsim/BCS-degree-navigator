@@ -388,6 +388,7 @@ class SummaryView extends Component {
                 </Table>
               </div>
               <div>
+              <div className="reccy" />
                 <p>You have exemptions for the following courses: </p>
                 {exemptions.map(course => {
                   return <p className="comp">
@@ -396,9 +397,12 @@ class SummaryView extends Component {
                 })}
               </div>
               <div>
-                <p>You need to compelte the following core requirements: </p>
+              <div className="reccy" />
+                <p>You need to complete the following core requirements: </p>
                 {requiredCourses.map(course => {
-                  return <p>{course.dept + " " + course.num}</p>;
+                  return <p className="not">
+                  <Icon name="times" />
+                  {course.dept + " " + course.num}</p>;
                 })}
               </div>
               <div className="reccy" />
