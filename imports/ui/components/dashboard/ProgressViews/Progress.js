@@ -37,7 +37,7 @@ class Progress extends Component {
       let currentSession = "2019S";
       let row = [];
 
-      Object.values(this.props.user.courses).forEach(function(course) {
+      Object.values(this.props.user.courses).forEach(function (course) {
         let session = course.year + course.term.toUpperCase();
         let cell = {};
         let pastMaxRow = -1;
@@ -45,8 +45,8 @@ class Progress extends Component {
         let futureMaxRow = -1;
 
         if (session === currentSession) {
-          rows.forEach(function(row) {
-            row.forEach(function(cell) {
+          rows.forEach(function (row) {
+            row.forEach(function (cell) {
               if (cell.cellColumn === 1 && cell.cellRow > presentMaxRow) {
                 presentMaxRow = cell.cellRow;
                 rows[presentMaxRow + 1] = [];
@@ -64,8 +64,8 @@ class Progress extends Component {
           rows.splice(cell.cellRow, 1, row);
           cells.push(cell);
         } else if (session < currentSession) {
-          rows.forEach(function(row) {
-            row.forEach(function(cell) {
+          rows.forEach(function (row) {
+            row.forEach(function (cell) {
               if (cell.cellColumn === 0 && cell.cellRow > pastMaxRow) {
                 pastMaxRow = cell.cellRow;
                 rows[pastMaxRow + 1] = [];
@@ -83,8 +83,8 @@ class Progress extends Component {
           rows.splice(cell.cellRow, 1, row);
           cells.push(cell);
         } else {
-          rows.forEach(function(row) {
-            row.forEach(function(cell) {
+          rows.forEach(function (row) {
+            row.forEach(function (cell) {
               if (cell.cellColumn === 2 && cell.cellRow > futureMaxRow) {
                 futureMaxRow = cell.cellRow;
                 rows[futureMaxRow + 1] = [];
@@ -103,13 +103,12 @@ class Progress extends Component {
           cells.push(cell);
         }
       });
-    } catch (error) {} // do nothing when object is not loaded
+    } catch (error) { } // do nothing when object is not loaded
 
-    console.log(cells);
 
     try {
       let rowCount = 0;
-      cells.forEach(function(cell) {
+      cells.forEach(function (cell) {
         if (cell.cellRow > rowCount) {
           rowCount = cell.cellRow;
         }
@@ -118,7 +117,7 @@ class Progress extends Component {
       let rowNum = 0;
       while (rowNum <= rowCount) {
         let row = [];
-        cells.forEach(function(cell) {
+        cells.forEach(function (cell) {
           if (cell.cellRow === rowNum) {
             row[cell.cellColumn] = cell;
           }
@@ -135,8 +134,7 @@ class Progress extends Component {
         }
         rowNum++;
       }
-      console.log(table);
-    } catch (error) {} // do nothing
+    } catch (error) { } // do nothing
 
     let user = this.props.user;
     let requirements = "";

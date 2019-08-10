@@ -766,7 +766,6 @@ class AddCourse extends React.Component {
 export default createContainer(() => {
     // Set up subscription
     Meteor.subscribe("users");
-    // console.log(Meteor.users.findOne({ "_id": Meteor.userId() }))
     // Return an object as props
     return {
         user: Meteor.users.findOne({ "_id": Meteor.userId() }),
