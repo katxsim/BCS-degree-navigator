@@ -70,7 +70,7 @@ class AddCourse extends React.Component {
             let courses = user.courses
 
             if (!Object.keys(courses).includes("ENGL112")) {
-                let myGrade = prompt('What grade did you receive? (optional)',);
+                let myGrade = prompt('What grade did you receive? (optional)');
                 let year = prompt('During which year did/will you complete this course?');
                 let term = prompt('During which term (W1, W2, or S) did/will you complete this course?');
 
@@ -547,9 +547,9 @@ class AddCourse extends React.Component {
             }
             if (!Object.keys(courses).includes(this.props.dept + this.props.num)) {
 
-                user.courses[this.state.dept + this.state.num] = {
+                user.courses[this.state.dept.toUpperCase() + this.state.num] = {
                     "type": this.state.type,
-                    "dept": this.state.dept,
+                    "dept": this.state.dept.toUpperCase(),
                     "num": Number(this.state.num),
                     "grade": Number(this.state.grade),
                     "year": this.state.year,
@@ -594,7 +594,7 @@ class AddCourse extends React.Component {
                                         </Grid.Column>
                                     </Grid>
                                 </Popup>
-                                <Button.Or/>
+                                <Button.Or />
                                 <Popup trigger={<Button>CPSC 110</Button>} flowing hoverable>
                                     <Grid centered divided columns={2}>
                                         <Grid.Column textAlign='center'>
@@ -608,7 +608,7 @@ class AddCourse extends React.Component {
                                         </Grid.Column>
                                     </Grid>
                                 </Popup>
-                                <Button.Or/>                                <Popup trigger={<Button>STAT 203</Button>} flowing hoverable>
+                                <Button.Or />                                <Popup trigger={<Button>STAT 203</Button>} flowing hoverable>
                                     <Grid centered divided columns={2}>
                                         <Grid.Column textAlign='center'>
                                             <Header as='h4'>Core</Header>
@@ -637,7 +637,7 @@ class AddCourse extends React.Component {
                                         </Grid.Column>
                                     </Grid>
                                 </Popup>
-                                <Button.Or/>                                
+                                <Button.Or />
                                 <Popup trigger={<Button>CPSC 121</Button>} flowing hoverable>
                                     <Grid centered divided columns={2}>
                                         <Grid.Column textAlign='center'>
@@ -650,8 +650,8 @@ class AddCourse extends React.Component {
                                         </Grid.Column>
                                     </Grid>
                                 </Popup>
-                                <Button.Or/>
-                                    <Popup trigger={<Button>CPSC 210</Button>} flowing hoverable>
+                                <Button.Or />
+                                <Popup trigger={<Button>CPSC 210</Button>} flowing hoverable>
                                     <Grid centered divided columns={2}>
                                         <Grid.Column textAlign='center'>
                                             <Header as='h4'>Core</Header>
@@ -665,7 +665,7 @@ class AddCourse extends React.Component {
                                 </Popup>
                             </Button.Group>
                         </div>
-    
+
                         <div className="easyS">
                             <Button.Group widths='3'>
                                 <Popup trigger={<Button>ENGL 301</Button>} flowing hoverable>
@@ -680,7 +680,7 @@ class AddCourse extends React.Component {
                                         </Grid.Column>
                                     </Grid>
                                 </Popup>
-                                <Button.Or/>                                
+                                <Button.Or />
                                 <Popup trigger={<Button>CPSC 213</Button>} flowing hoverable>
                                     <Grid centered divided columns={2} className="progg">
                                         <Grid.Column textAlign='center'>
@@ -693,7 +693,7 @@ class AddCourse extends React.Component {
                                         </Grid.Column>
                                     </Grid>
                                 </Popup>
-                                <Button.Or/>
+                                <Button.Or />
                                 <Popup trigger={<Button>CPSC 221</Button>} flowing hoverable>
                                     <Grid centered divided columns={2}>
                                         <Grid.Column textAlign='center'>
@@ -743,7 +743,7 @@ class AddCourse extends React.Component {
                     </div>
                     <div>
                         <Header size='large' className="reccy">Requirement Type</Header>
-                        <Button.Group> 
+                        <Button.Group>
                             <Button value="core" onClick={this.handleCoreChange.bind(this)}>Core</Button>
                             <Button.Or />
                             <Button value="bridging" onClick={this.handleBridgingChange.bind(this)}>Bridging</Button>

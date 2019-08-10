@@ -355,12 +355,10 @@ class SummaryView extends Component {
                 <p className={requirements.core.CPSC[5].status}>CPSC 310</p>
                 <p className={requirements.core.CPSC[6].status}>CPSC 313</p>
                 <p className={requirements.core.CPSC[7].status}>CPSC 320</p>
-                <p className={requirements.core.ENGL}> ENGL 100+</p>
-                <p className={requirements.core.MATH}>MATH 180</p>
-                <p className={requirements.core.STAT}>STAT 203</p>
-                <p className={requirements.core.COMM}>
-                  300+ Communication Requirement
-                </p>
+                <p className={requirements.core.ENGL}> ENGL 100+ </p>
+                <p className={requirements.core.MATH}> MATH 180  </p>
+                <p className={requirements.core.STAT}> STAT 203  </p>
+                <p className={requirements.core.COMM}> 300+ Communication Requirement </p>
               </div>
               <div className="reccy" />
             </Header>
