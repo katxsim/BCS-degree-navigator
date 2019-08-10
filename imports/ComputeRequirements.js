@@ -49,7 +49,8 @@ export function updateRequirements(user) {
     Object.values(user.courses).forEach(function (course) {
         let session = course.year + course.term;
         if (session < currentSession ||
-            course.type === "exemptions") {
+            course.type === "exemptions" ||
+            session == "") {
             switch (course.type) {
                 case "core":
                     switch (course.dept) {
@@ -247,12 +248,11 @@ export function updateRequirements(user) {
                                 requirements.credits += 3;
                             }
                             return;
-                        default:
-                            if (!course.consumed) {
-                                requirements.elective[1]++;
-                                course.consumed = true;
-                                requirements.credits += 3;
-                            }
+                        case (course.num >= 400):
+                            requirements.elective[1]++;
+                            course.consumed = true;
+                            requirements.credits += 3;
+
                             return;
                     }
 
