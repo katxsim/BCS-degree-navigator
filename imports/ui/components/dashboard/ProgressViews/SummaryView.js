@@ -207,7 +207,65 @@ class SummaryView extends Component {
         }
       });
 
+      let requiredCourses = [];
+      Object.values(requirements.core.CPSC).forEach(function(course) {
+        console.log(course);
+        if (course.status === "incomplete") {
+          let newCourse = {
+            dept: "CPSC",
+            num: course.num,
+            status: course.status
+          };
+          requiredCourses.push(newCourse);
+        }
+      });
+
+      console.log(requiredCourses);
+
+      let newCourse = {};
+      Object.keys(requirements.core).forEach(function(item) {
+        console.log(item);
+        if (
+          (item === "ENGL" ||
+            item === "MATH" ||
+            item === "STAT" ||
+            item === "COMM") &&
+          requirements.core === "incomplete"
+        ) {
+          if (item === "ENGL") {
+            newCourse = {
+              dept: item,
+              num: 112,
+              status: requirements.core.ENGL
+            };
+            requiredCourses.push(newCourse);
+          } else if (item === "MATH") {
+            newCourse = {
+              dept: item,
+              num: 180,
+              status: requirements.core.MATH
+            };
+            requiredCourses.push(newCourse);
+          } else if (item === "STAT") {
+            newCourse = {
+              dept: item,
+              num: 203,
+              status: requirements.core.STAT
+            };
+            requiredCourses.push(newCourse);
+          } else if (item === "COMM") {
+            newCourse = {
+              dept: item,
+              num: 301,
+              status: requirements.core.COMM
+            };
+            requiredCourses.push(newCourse);
+          }
+        }
+      });
+
       console.log(exemptions);
+      console.log(requiredCourses);
 
       // load stats for render
       const creditsCompleted = user ? requirements.credits : 0;
@@ -334,25 +392,14 @@ class SummaryView extends Component {
                 {exemptions.map(course => {
                   return <p className="comp">
               <Icon name="checkmark" />
-                  {course.dept + " " + course.num + " "}</p>;
+                  {course.dept + " " + course.num}</p>;
                 })}
               </div>
               <div>
-                <p className={requirements.core.CPSC[0].status}>CPSC 110</p>
-                <p className={requirements.core.CPSC[1].status}>CPSC 121</p>
-                <p className={requirements.core.CPSC[2].status}>CPSC 210</p>
-                <p className={requirements.core.CPSC[3].status}>CPSC 221</p>
-                <p className={requirements.core.CPSC[4].status}>CPSC 213</p>
-                <p className={requirements.core.CPSC[5].status}>CPSC 310</p>
-                <p className={requirements.core.CPSC[6].status}>CPSC 313</p>
-                <p className={requirements.core.CPSC[7].status}>CPSC 320</p>
-                <p className={requirements.core.ENGL}> ENGL 100+ </p>
-                <p className={requirements.core.MATH}> MATH 180 </p>
-                <p className={requirements.core.STAT}> STAT 203 </p>
-                <p className={requirements.core.COMM}>
-                  {" "}
-                  300+ Communication Requirement{" "}
-                </p>
+                <p>You need to compelte the following core requirements: </p>
+                {requiredCourses.map(course => {
+                  return <p>{course.dept + " " + course.num}</p>;
+                })}
               </div>
               <div className="reccy" />
             </Header>
@@ -393,7 +440,6 @@ class SummaryView extends Component {
                   </Table.Body>
                 </Table>
               </div>
-              <div className="paddin">{postBridging}</div>
               <div className="reccy" />
             </Header>
 
@@ -433,7 +479,6 @@ class SummaryView extends Component {
                   </Table.Body>
                 </Table>
               </div>
-              <div className="paddin">{PostElectives}</div>
               <div className="reccy" />
             </Header>
 
