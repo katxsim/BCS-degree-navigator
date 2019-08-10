@@ -9,7 +9,7 @@ class Progress extends Component {
     if (cell.cellColumn === 0 && cell.course !== "") {
       icon = "checkmark";
     } else if (cell.cellColumn === 1 && cell.course !== "") {
-      icon = "chevron right";
+      icon = "chevron down";
     } else if (cell.cellColumn === 2 && cell.course !== "") {
       icon = "times";
     }
