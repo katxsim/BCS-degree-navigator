@@ -203,7 +203,55 @@ class SummaryView extends Component {
         }
       });
 
+      let requiredCourses = [];
+      Object.values(requirements.core.CPSC).forEach(function(course) {
+        console.log(course);
+        let newCourse = {
+          dept: "CPSC",
+          num: course.num,
+          status: course.status
+        };
+        requiredCourses.push(newCourse);
+      });
+
+      console.log(requiredCourses);
+
+      let newCourse = {};
+      Object.keys(requirements.core).forEach(function(item) {
+        console.log(item);
+        if (item === "ENGL") {
+          newCourse = {
+            dept: item,
+            num: 112,
+            status: requirements.core.ENGL
+          };
+          requiredCourses.push(newCourse);
+        } else if (item === "MATH") {
+          newCourse = {
+            dept: item,
+            num: 180,
+            status: requirements.core.MATH
+          };
+          requiredCourses.push(newCourse);
+        } else if (item === "STAT") {
+          newCourse = {
+            dept: item,
+            num: 203,
+            status: requirements.core.STAT
+          };
+          requiredCourses.push(newCourse);
+        } else if (item === "COMM") {
+          newCourse = {
+            dept: item,
+            num: 301,
+            status: requirements.core.COMM
+          };
+          requiredCourses.push(newCourse);
+        }
+      });
+
       console.log(exemptions);
+      console.log(requiredCourses);
 
       // load stats for render
       const creditsCompleted = user ? requirements.credits : 0;
@@ -328,7 +376,13 @@ class SummaryView extends Component {
               <div>
                 <p>You have exemptions for the following courses: </p>
                 {exemptions.map(course => {
-                  return <p>{course.dept + " " + course.num + " "}</p>;
+                  return <p>{course.dept + " " + course.num}</p>;
+                })}
+              </div>
+              <div>
+                <p>You need to compelte the following core requirements: </p>
+                {requiredCourses.map(course => {
+                  return <p>{course.dept + " " + course.num}</p>;
                 })}
               </div>
               <div>
