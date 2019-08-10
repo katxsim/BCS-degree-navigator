@@ -21,8 +21,9 @@ Users of the BCS Degree Navigator are be able to:
  
  Technologies used:
  - HTML, CSS, Javascript
- - React, Meteor, and the “Front End”
- - NodeJS, Meteor, and other framework “Back Ends”
+ - React  
+ - Meteor
+ - NodeJS
  - NoSQL and MongoDB
  - Heroku
 
