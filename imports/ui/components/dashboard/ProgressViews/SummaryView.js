@@ -324,7 +324,7 @@ class SummaryView extends Component {
                   </Table.Header>
 
                   <Table.Body>
-                    {table.map(row => {
+                    {coreTable.map(row => {
                       return (
                         <Table.Row>
                           {row.map(cell => (
@@ -368,6 +368,32 @@ class SummaryView extends Component {
                 active
               />
               <p>You have completed {bridgingComplete} of 5 bridging courses</p>
+              <div>
+                <Table fixed unstackable>
+                  <Table.Header>
+                    <Table.Row>
+                      <Table.HeaderCell>Completed</Table.HeaderCell>
+                      <Table.HeaderCell>In Progress</Table.HeaderCell>
+                      <Table.HeaderCell>Incomplete</Table.HeaderCell>
+                    </Table.Row>
+                  </Table.Header>
+
+                  <Table.Body>
+                    {bridgingTable.map(row => {
+                      return (
+                        <Table.Row>
+                          {row.map(cell => (
+                            <Table.Cell className={this.getColour(cell)}>
+                              <Icon name={this.getIcon(cell)} />
+                              {cell.course}
+                            </Table.Cell>
+                          ))}
+                        </Table.Row>
+                      );
+                    })}
+                  </Table.Body>
+                </Table>
+              </div>
               <div className="paddin">{postBridging}</div>
               <div className="reccy" />
             </Header>
@@ -382,6 +408,32 @@ class SummaryView extends Component {
                 active
               />
               <p>You have completed {electiveComplete} of 6 electives</p>
+              <div>
+                <Table fixed unstackable>
+                  <Table.Header>
+                    <Table.Row>
+                      <Table.HeaderCell>Completed</Table.HeaderCell>
+                      <Table.HeaderCell>In Progress</Table.HeaderCell>
+                      <Table.HeaderCell>Incomplete</Table.HeaderCell>
+                    </Table.Row>
+                  </Table.Header>
+
+                  <Table.Body>
+                    {electivesTable.map(row => {
+                      return (
+                        <Table.Row>
+                          {row.map(cell => (
+                            <Table.Cell className={this.getColour(cell)}>
+                              <Icon name={this.getIcon(cell)} />
+                              {cell.course}
+                            </Table.Cell>
+                          ))}
+                        </Table.Row>
+                      );
+                    })}
+                  </Table.Body>
+                </Table>
+              </div>
               <div className="paddin">{PostElectives}</div>
               <div className="reccy" />
             </Header>
