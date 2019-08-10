@@ -51,7 +51,7 @@ p {
 }
 
 p.complete {
-  color: #2bd225;
+  color:  #2c662d;
 }
 
 p.incomplete {
@@ -136,7 +136,9 @@ input[type="password"]:not(.browser-default):focus:not([readonly]) + label {
   padding-top: 8px !important;
   padding-bottom: 30px !important;
 }
-
+.exempt {
+  color: #2c662d !important;
+}
 .reccy {
   padding-top: 30px !important;
   padding-bottom: 0px !important;
