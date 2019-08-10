@@ -1,7 +1,10 @@
 import React, { Component } from "react";
 import { Icon, Step } from "semantic-ui-react";
 import { createContainer } from "meteor/react-meteor-data";
+import { importSession } from "../../../../session";
 import _ from "lodash";
+
+const currentSession = importSession;
 
 class Timeline extends Component {
   state = {
@@ -31,7 +34,6 @@ class Timeline extends Component {
   }
 
   getColour(session) {
-    let currentSession = "2019S";
     let colour = "";
     if (session === currentSession) {
       colour = "warning";
@@ -44,7 +46,6 @@ class Timeline extends Component {
   }
 
   getIcon(session) {
-    let currentSession = "2019S";
     let icon = "";
     if (session === currentSession) {
       icon = "chevron right";
@@ -61,7 +62,7 @@ class Timeline extends Component {
     let index = -1;
 
     try {
-      Object.values(this.props.user.courses).forEach(function(course) {
+      Object.values(this.props.user.courses).forEach(function (course) {
         let session = course.year + course.term.toUpperCase();
         if (Object.keys(sessions).includes(session)) {
           sessions[session].push(course.dept + " " + course.num);
@@ -72,12 +73,12 @@ class Timeline extends Component {
           sessions[session] = sessionArray;
         }
       });
-    } catch (error) {} // do nothing when object is not loaded
+    } catch (error) { } // do nothing when object is not loaded
 
     return (
       <div className="ui bottom attached segment active tab scrolling-wrapper">
         <Step.Group>
-          {_.map(Object.keys(sessions).sort(), (session, index) => (
+          {_.map(Object.keys(sessions).sort(), (session) => (
             <Step className={this.getColour(session)}>
               <Icon name={this.getIcon(session)} />
               <Step.Content>

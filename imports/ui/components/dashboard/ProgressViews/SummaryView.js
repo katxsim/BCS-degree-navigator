@@ -2,7 +2,10 @@ import React, { Component } from "react";
 import { Header, Progress, Icon, Table } from "semantic-ui-react";
 import { createContainer } from "meteor/react-meteor-data";
 import { updateRequirements } from "../../../../ComputeRequirements";
+import { importSession } from "../../../../session";
 const shortid = require("shortid");
+
+const sess = importSession;
 
 class SummaryView extends Component {
   getIcon(cell) {
@@ -35,6 +38,7 @@ class SummaryView extends Component {
     let rows = [];
     let cells = [];
 
+
     courses.forEach(function(course) {
       // console.log("got here");
       // console.log(course);
@@ -54,6 +58,7 @@ class SummaryView extends Component {
             }
           });
         });
+
 
         cell = {
           cellRow: presentMaxRow + 1,
@@ -77,8 +82,6 @@ class SummaryView extends Component {
             }
           });
         });
-
-        // console.log("h1");
 
         cell = {
           cellRow: pastMaxRow + 1,
@@ -108,6 +111,7 @@ class SummaryView extends Component {
           course: course.dept + " " + course.num
         };
 
+
         row[cell.cellColumn] = cell;
         rows.splice(cell.cellRow, 1, row);
         cells.push(cell);
@@ -123,6 +127,7 @@ class SummaryView extends Component {
     console.log("got here");
     try {
       let rowCount = 0;
+
       cells.forEach(function(cell) {
         console.log("got here 2");
         if (cell.cellRow > rowCount) {
@@ -137,6 +142,7 @@ class SummaryView extends Component {
       while (rowNum <= rowCount) {
         console.log("got here 5");
         let row = [];
+
         cells.forEach(function(cell) {
           console.log("got here 6");
           if (cell.cellRow === rowNum) {
@@ -159,6 +165,7 @@ class SummaryView extends Component {
         }
         rowNum++;
       }
+
       console.log(table);
       return table;
     } catch (error) {} // do nothing
@@ -248,38 +255,38 @@ class SummaryView extends Component {
 
       const postBridging = user
         ? Object.values(user.courses).map(course => {
-            if (course.type === "bridging") {
-              return (
-                <p className="complete" key={course.dept + course.num}>
-                  {course.dept} {course.num}
-                </p>
-              );
-            }
-          })
+          if (course.type === "bridging") {
+            return (
+              <p className="complete" key={course.dept + course.num}>
+                {course.dept} {course.num}
+              </p>
+            );
+          }
+        })
         : "";
 
       const PostElectives = user
         ? Object.values(user.courses).map(course => {
-            if (course.type === "electives") {
-              return (
-                <p className="complete" key={course.dept + course.num}>
-                  {course.dept} {course.num}
-                </p>
-              );
-            }
-          })
+          if (course.type === "electives") {
+            return (
+              <p className="complete" key={course.dept + course.num}>
+                {course.dept} {course.num}
+              </p>
+            );
+          }
+        })
         : "";
 
       const postExemptionReplacements = user
         ? Object.values(user.courses).map(course => {
-            if (course.type === "replacement") {
-              return (
-                <p className="complete" key={course.dept + course.num}>
-                  {course.dept} {course.num}
-                </p>
-              );
-            }
-          })
+          if (course.type === "replacement") {
+            return (
+              <p className="complete" key={course.dept + course.num}>
+                {course.dept} {course.num}
+              </p>
+            );
+          }
+        })
         : "";
 
       if (requirements) {
