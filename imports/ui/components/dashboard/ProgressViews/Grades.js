@@ -67,7 +67,7 @@ class Grades extends Component {
     let sum = 0;
     let count = 0;
     try {
-      Object.values(this.props.user.courses).forEach(function (course) {
+      Object.values(this.props.user.courses).forEach(function(course) {
         if (Number.isInteger(parseInt(course.grade))) {
           if (course.grade != 0) {
             sum += parseInt(course.grade);
@@ -75,7 +75,7 @@ class Grades extends Component {
           }
         }
       });
-    } catch (error) { } // do nothing if user is not loaded
+    } catch (error) {} // do nothing if user is not loaded
 
     let gpa = (sum / count).toFixed(1);
 
@@ -126,7 +126,7 @@ class Grades extends Component {
                 <Table.Cell>{dept + " " + num}</Table.Cell>
                 <Table.Cell>{grade ? grade : "--"}</Table.Cell>
                 <Table.Cell>
-                  {year} {term.toUpperCase()}
+                  {year} {term}
                 </Table.Cell>
               </Table.Row>
             ))}
