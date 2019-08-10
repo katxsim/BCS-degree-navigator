@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Icon, Step } from "semantic-ui-react";
 import { createContainer } from "meteor/react-meteor-data";
-import { importSession } from "../../../../session";
+import { importSession } from "../../../../Session";
 import _ from "lodash";
 
 const currentSession = importSession;

@@ -1,4 +1,4 @@
-import { importSession } from "./session"
+import { importSession } from "./Session"
 
 const currentSession = importSession;
 

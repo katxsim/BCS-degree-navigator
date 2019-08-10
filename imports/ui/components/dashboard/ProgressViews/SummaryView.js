@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Header, Progress, Icon, Table } from "semantic-ui-react";
 import { createContainer } from "meteor/react-meteor-data";
 import { updateRequirements } from "../../../../ComputeRequirements";
-import { importSession } from "../../../../session";
+import { importSession } from "../../../../Session";
 const shortid = require("shortid");
 
 const sess = importSession;
@@ -39,7 +39,7 @@ class SummaryView extends Component {
     let cells = [];
 
 
-    courses.forEach(function(course) {
+    courses.forEach(function (course) {
       // console.log("got here");
       // console.log(course);
       let session = course.year + course.term.toUpperCase();
@@ -50,8 +50,8 @@ class SummaryView extends Component {
       let futureMaxRow = -1;
 
       if (session === currentSession) {
-        rows.forEach(function(row) {
-          row.forEach(function(cell) {
+        rows.forEach(function (row) {
+          row.forEach(function (cell) {
             if (cell.cellColumn === 1 && cell.cellRow > presentMaxRow) {
               presentMaxRow = cell.cellRow;
               rows[presentMaxRow + 1] = [];
@@ -72,9 +72,9 @@ class SummaryView extends Component {
       } else if (session < currentSession) {
         // console.log("case 2");
         // console.log(rows);
-        rows.forEach(function(row) {
+        rows.forEach(function (row) {
           // console.log("first for each");
-          row.forEach(function(cell) {
+          row.forEach(function (cell) {
             // console.log("second for each");
             if (cell.cellColumn === 0 && cell.cellRow > pastMaxRow) {
               pastMaxRow = cell.cellRow;
@@ -96,8 +96,8 @@ class SummaryView extends Component {
         cells.push(cell);
         console.log(cells);
       } else {
-        rows.forEach(function(row) {
-          row.forEach(function(cell) {
+        rows.forEach(function (row) {
+          row.forEach(function (cell) {
             if (cell.cellColumn === 2 && cell.cellRow > futureMaxRow) {
               futureMaxRow = cell.cellRow;
               rows[futureMaxRow + 1] = [];
@@ -128,7 +128,7 @@ class SummaryView extends Component {
     try {
       let rowCount = 0;
 
-      cells.forEach(function(cell) {
+      cells.forEach(function (cell) {
         console.log("got here 2");
         if (cell.cellRow > rowCount) {
           console.log("got here 3");
@@ -143,7 +143,7 @@ class SummaryView extends Component {
         console.log("got here 5");
         let row = [];
 
-        cells.forEach(function(cell) {
+        cells.forEach(function (cell) {
           console.log("got here 6");
           if (cell.cellRow === rowNum) {
             console.log("got here 7");
@@ -168,7 +168,7 @@ class SummaryView extends Component {
 
       console.log(table);
       return table;
-    } catch (error) {} // do nothing
+    } catch (error) { } // do nothing
   }
 
   render() {
@@ -187,7 +187,7 @@ class SummaryView extends Component {
     try {
       console.log(this.props.user.courses);
 
-      Object.values(this.props.user.courses).forEach(function(course) {
+      Object.values(this.props.user.courses).forEach(function (course) {
         if (course.type === "core") {
           coreArray.push(course);
         } else if (course.type === "bridging") {
@@ -218,7 +218,7 @@ class SummaryView extends Component {
       console.log(coreTable);
       console.log(bridgingTable);
       console.log(electivesTable);
-    } catch (error) {} // do nothing when object is not loaded
+    } catch (error) { } // do nothing when object is not loaded
 
     let user = this.props.user;
 
