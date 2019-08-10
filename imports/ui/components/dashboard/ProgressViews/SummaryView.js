@@ -2,7 +2,10 @@ import React, { Component } from "react";
 import { Header, Progress, Icon, Table } from "semantic-ui-react";
 import { createContainer } from "meteor/react-meteor-data";
 import { updateRequirements } from "../../../../ComputeRequirements";
+import { importSession } from "../../../../session";
 const shortid = require("shortid");
+
+const sess = importSession;
 
 class SummaryView extends Component {
   getIcon(cell) {
@@ -38,7 +41,7 @@ class SummaryView extends Component {
       let currentSession = "2019S";
       let row = [];
 
-      Object.values(this.props.user.courses).forEach(function(course) {
+      Object.values(this.props.user.courses).forEach(function (course) {
         let session = course.year + course.term.toUpperCase();
         let cell = {};
         let pastMaxRow = -1;
@@ -46,8 +49,8 @@ class SummaryView extends Component {
         let futureMaxRow = -1;
 
         if (session === currentSession) {
-          rows.forEach(function(row) {
-            row.forEach(function(cell) {
+          rows.forEach(function (row) {
+            row.forEach(function (cell) {
               if (cell.cellColumn === 1 && cell.cellRow > presentMaxRow) {
                 presentMaxRow = cell.cellRow;
                 rows[presentMaxRow + 1] = [];
@@ -65,8 +68,8 @@ class SummaryView extends Component {
           rows.splice(cell.cellRow, 1, row);
           cells.push(cell);
         } else if (session < currentSession) {
-          rows.forEach(function(row) {
-            row.forEach(function(cell) {
+          rows.forEach(function (row) {
+            row.forEach(function (cell) {
               if (cell.cellColumn === 0 && cell.cellRow > pastMaxRow) {
                 pastMaxRow = cell.cellRow;
                 rows[pastMaxRow + 1] = [];
@@ -84,8 +87,8 @@ class SummaryView extends Component {
           rows.splice(cell.cellRow, 1, row);
           cells.push(cell);
         } else {
-          rows.forEach(function(row) {
-            row.forEach(function(cell) {
+          rows.forEach(function (row) {
+            row.forEach(function (cell) {
               if (cell.cellColumn === 2 && cell.cellRow > futureMaxRow) {
                 futureMaxRow = cell.cellRow;
                 rows[futureMaxRow + 1] = [];
@@ -104,13 +107,13 @@ class SummaryView extends Component {
           cells.push(cell);
         }
       });
-    } catch (error) {} // do nothing when object is not loaded
+    } catch (error) { } // do nothing when object is not loaded
 
     // console.log(cells);
 
     try {
       let rowCount = 0;
-      cells.forEach(function(cell) {
+      cells.forEach(function (cell) {
         if (cell.cellRow > rowCount) {
           rowCount = cell.cellRow;
         }
@@ -119,7 +122,7 @@ class SummaryView extends Component {
       let rowNum = 0;
       while (rowNum <= rowCount) {
         let row = [];
-        cells.forEach(function(cell) {
+        cells.forEach(function (cell) {
           if (cell.cellRow === rowNum) {
             row[cell.cellColumn] = cell;
           }
@@ -137,7 +140,7 @@ class SummaryView extends Component {
         rowNum++;
       }
       // console.log(table);
-    } catch (error) {} // do nothing
+    } catch (error) { } // do nothing
 
     let user = this.props.user;
 
@@ -174,38 +177,38 @@ class SummaryView extends Component {
 
       const postBridging = user
         ? Object.values(user.courses).map(course => {
-            if (course.type === "bridging") {
-              return (
-                <p className="complete" key={course.dept + course.num}>
-                  {course.dept} {course.num}
-                </p>
-              );
-            }
-          })
+          if (course.type === "bridging") {
+            return (
+              <p className="complete" key={course.dept + course.num}>
+                {course.dept} {course.num}
+              </p>
+            );
+          }
+        })
         : "";
 
       const PostElectives = user
         ? Object.values(user.courses).map(course => {
-            if (course.type === "electives") {
-              return (
-                <p className="complete" key={course.dept + course.num}>
-                  {course.dept} {course.num}
-                </p>
-              );
-            }
-          })
+          if (course.type === "electives") {
+            return (
+              <p className="complete" key={course.dept + course.num}>
+                {course.dept} {course.num}
+              </p>
+            );
+          }
+        })
         : "";
 
       const postExemptionReplacements = user
         ? Object.values(user.courses).map(course => {
-            if (course.type === "replacement") {
-              return (
-                <p className="complete" key={course.dept + course.num}>
-                  {course.dept} {course.num}
-                </p>
-              );
-            }
-          })
+          if (course.type === "replacement") {
+            return (
+              <p className="complete" key={course.dept + course.num}>
+                {course.dept} {course.num}
+              </p>
+            );
+          }
+        })
         : "";
 
       if (requirements) {
