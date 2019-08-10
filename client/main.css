@@ -112,7 +112,6 @@ input[type="password"]:not(.browser-default):focus:not([readonly]) + label {
   margin-left: 180px !important;
   margin-right: 180px !important;
   margin-bottom: 50px !important;
-
 }
 
 .easyS {
@@ -134,8 +133,8 @@ input[type="password"]:not(.browser-default):focus:not([readonly]) + label {
 }
 
 .prog {
-padding-top: 8px !important;
-padding-bottom: 30px !important;
+  padding-top: 8px !important;
+  padding-bottom: 30px !important;
 }
 
 .reccy {
@@ -143,14 +142,14 @@ padding-bottom: 30px !important;
   padding-bottom: 0px !important;
 }
 
-.paddin{
+.paddin {
   padding-left: 30px !important;
 }
 
-.butty{
-padding: 3px !important;
+.butty {
+  padding: 3px !important;
 }
 
 .progg {
   padding-bottom: 80px !important;
-  }
+}
