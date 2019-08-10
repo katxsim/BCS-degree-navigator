@@ -126,7 +126,7 @@ class Grades extends Component {
                 <Table.Cell>{dept + " " + num}</Table.Cell>
                 <Table.Cell>{grade ? grade : "--"}</Table.Cell>
                 <Table.Cell>
-                  {year} {term.toUpperCase()}
+                  {year} {term}
                 </Table.Cell>
               </Table.Row>
             ))}
