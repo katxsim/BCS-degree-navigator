@@ -118,23 +118,36 @@ class SummaryView extends Component {
   }
 
   buildTable(cells) {
+    let table = [];
+
+    console.log("got here");
     try {
       let rowCount = 0;
       cells.forEach(function(cell) {
+        console.log("got here 2");
         if (cell.cellRow > rowCount) {
+          console.log("got here 3");
           rowCount = cell.cellRow;
         }
       });
 
+      console.log("got here 4");
+
       let rowNum = 0;
       while (rowNum <= rowCount) {
+        console.log("got here 5");
         let row = [];
         cells.forEach(function(cell) {
+          console.log("got here 6");
           if (cell.cellRow === rowNum) {
+            console.log("got here 7");
             row[cell.cellColumn] = cell;
           }
         });
+        console.log("got here 8");
+        console.log(row);
         table.push(row);
+        console.log("got here 9");
         for (let column = 0; column <= 2; column++) {
           if (table[rowNum][column] === undefined) {
             table[rowNum].splice(column, 1, {
@@ -152,17 +165,19 @@ class SummaryView extends Component {
   }
 
   render() {
-    let table = [];
-
     let coreCells = [];
     let bridgingCells = [];
     let electivesCells = [];
 
-    try {
-      let coreArray = [];
-      let bridgingArray = [];
-      let electivesArray = [];
+    let coreArray = [];
+    let bridgingArray = [];
+    let electivesArray = [];
 
+    let coreTable = [];
+    let bridgingTable = [];
+    let electivesTable = [];
+
+    try {
       console.log(this.props.user.courses);
 
       Object.values(this.props.user.courses).forEach(function(course) {
@@ -178,7 +193,6 @@ class SummaryView extends Component {
       console.log(coreArray);
       console.log(bridgingArray);
       console.log(electivesArray);
-      console.log(exemptionsArray);
 
       coreCells = this.findCellCoordinates(coreArray);
       console.log(coreCells);
@@ -188,14 +202,15 @@ class SummaryView extends Component {
       console.log(electivesCells);
 
       coreTable = this.buildTable(coreCells);
+      console.log("line x");
       bridgingTable = this.buildTable(bridgingCells);
+      console.log("line y");
       electivesTable = this.buildTable(electivesCells);
-      exemptionsTable = this.buildTable(exemptionsCells);
+      console.log("line z");
 
       console.log(coreTable);
       console.log(bridgingTable);
       console.log(electivesTable);
-      console.log(exemptionsTable);
     } catch (error) {} // do nothing when object is not loaded
 
     let user = this.props.user;
