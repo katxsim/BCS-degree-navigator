@@ -80,7 +80,7 @@ class AddCourse extends React.Component {
                     "num": 112,
                     "grade": myGrade,
                     "year": year,
-                    "term": term
+                    "term": term.toUpperCase()
                 }
                 user.courses = courses;
                 Meteor.call('updateUser', user);
@@ -130,7 +130,7 @@ class AddCourse extends React.Component {
                     "num": 110,
                     "grade": myGrade,
                     "year": year,
-                    "term": term
+                    "term": term.toUpperCase()
 
                 }
                 user.courses = courses;
@@ -181,7 +181,7 @@ class AddCourse extends React.Component {
                     "num": 203,
                     "grade": myGrade,
                     "year": year,
-                    "term": term
+                    "term": term.toUpperCase()
                 }
                 user.courses = courses;
                 Meteor.call('updateUser', user);
@@ -233,7 +233,7 @@ class AddCourse extends React.Component {
                     "num": 180,
                     "grade": myGrade,
                     "year": year,
-                    "term": term
+                    "term": term.toUpperCase()
                 }
                 user.courses = courses;
                 Meteor.call('updateUser', user);
@@ -286,7 +286,7 @@ class AddCourse extends React.Component {
                     "num": 121,
                     "grade": myGrade,
                     "year": year,
-                    "term": term
+                    "term": term.toUpperCase()
                 }
                 user.courses = courses;
                 Meteor.call('updateUser', user);
@@ -337,7 +337,7 @@ class AddCourse extends React.Component {
                     "num": 210,
                     "grade": myGrade,
                     "year": year,
-                    "term": term
+                    "term": term.toUpperCase()
                 }
                 user.courses = courses;
                 Meteor.call('updateUser', user);
@@ -388,7 +388,7 @@ class AddCourse extends React.Component {
                     "num": 301,
                     "grade": myGrade,
                     "year": year,
-                    "term": term
+                    "term": term.toUpperCase()
                 }
                 user.courses = courses;
                 Meteor.call('updateUser', user);
@@ -438,7 +438,7 @@ class AddCourse extends React.Component {
                     "num": 213,
                     "grade": myGrade,
                     "year": year,
-                    "term": term
+                    "term": term.toUpperCase()
                 }
                 user.courses = courses;
                 Meteor.call('updateUser', user);
@@ -488,7 +488,7 @@ class AddCourse extends React.Component {
                     "num": 221,
                     "grade": myGrade,
                     "year": year,
-                    "term": term
+                    "term": term.toUpperCase()
                 }
                 user.courses = courses;
                 Meteor.call('updateUser', user);
