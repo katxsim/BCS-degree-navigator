@@ -204,8 +204,6 @@ class SummaryView extends Component {
 
       let newCourse = {};
       Object.keys(requirements.core).forEach(function(item) {
-        console.log(requirements.core);
-        console.log("got here");
         if (item === "ENGL") {
           newCourse = {
             dept: item,
@@ -229,15 +227,13 @@ class SummaryView extends Component {
           requiredCourses.push(newCourse);
         } else if (item === "COMM") {
           newCourse = {
-            dept: item,
+            dept: "ENGL",
             num: 301,
             status: requirements.core.COMM
           };
           requiredCourses.push(newCourse);
         }
       });
-
-      console.log(requiredCourses);
 
       let incompleteRequirements = [];
 
