@@ -1,20 +1,29 @@
-#WELCOME TO THE NEW UBC BACHELOR OF COMPUTER SCIENCE DEGREE NAVIGATOR
+
+WELCOME TO THE NEW UBC BACHELOR OF COMPUTER SCIENCE DEGREE NAVIGATOR
+
+https://bcsdn.herokuapp.com/
 
 Our degree navigator allows students to track their progress through the UBC BCS degree.
 Users enter the courses they have completed and are presented with a visualization of their progress.
 
-*Danny I.
+BY:
+Danny I.
 Cody G.
-Kathryn S.*
+Kathryn S.
 
+Users of the BCS Degree Navigator are be able to:
+ - Store courses that the student has completed, courses in which they are currently enrolled, and courses in which they plan to enroll in the future.
+ - Confirm which degree requirements have been completed and determine which degree requirements are currently outstanding.
+ - Visualize their progress graphically.
+ - Calculate their GPAs.
+ - Email the BCS Director with the click of a button.
+ - Easily access degree information.
+ 
+ Technologies used:
+ - HTML, CSS, Javascript
+ - React, Meteor, and the “Front End”
+ - NodeJS, Meteor, and other framework “Back Ends”
+ - NoSQL and MongoDB
+ - Heroku
 
-# Minimal Requirements
-## Users of the BCS Degree Navigator will be able to:
-Enter data via forms 
-Store data regarding account and contact information.
-Store data regarding courses that they have completed, courses in which they are currently enrolled, and courses in which they plan to enroll in the future.
-Confirm which degree requirements have been completed and determine which degree requirements are currently outstanding.
-Visualize their progress graphically.
-Discover information regarding course prerequisites.
-Ability for student to enter course exemptions
 
