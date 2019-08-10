@@ -60,6 +60,12 @@ p.complete {
   margin-left: 20px;
 }
 
+.not {
+  color: #9f3a38; 
+  margin-right: 20px;
+  margin-left: 20px;
+}
+
 p.incomplete {
   color: #f44242;
 }

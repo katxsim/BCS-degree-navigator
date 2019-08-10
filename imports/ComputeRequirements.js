@@ -210,7 +210,6 @@ export function updateRequirements(user) {
                                             requirements.core.counter++;
                                         }
                                     })
-                                    console.log("should not have made it here " + course.dept + " " + course.num);
                                     return;
                             }
                         case "ENGL": if (course.num > 100) {
@@ -287,7 +286,7 @@ export function updateRequirements(user) {
                         requirements.credits += 3;
                         return;
                     } else { // course num must be too low to quailify
-                        console.log(course.dept + " " + course.num + " was not a valid exemption replacement");
+                        // do nothing 
                     }
                     return;
             } // end switch on course.type

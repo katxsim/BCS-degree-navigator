@@ -3,9 +3,8 @@ import { Header, Progress, Icon, Table } from "semantic-ui-react";
 import { createContainer } from "meteor/react-meteor-data";
 import { updateRequirements } from "../../../../ComputeRequirements";
 import { importSession } from "../../../../Session";
-const shortid = require("shortid");
 
-const sess = importSession;
+const currentSession = importSession;
 
 class SummaryView extends Component {
   getIcon(cell) {
@@ -33,13 +32,12 @@ class SummaryView extends Component {
   }
 
   findCellCoordinates(courses) {
-    let currentSession = "2019S";
     let row = [];
     let rows = [];
     let cells = [];
 
 
-    courses.forEach(function(course) {
+    courses.forEach(function (course) {
       let session = course.year + course.term.toUpperCase();
       let cell = {};
       let pastMaxRow = -1;
@@ -66,12 +64,8 @@ class SummaryView extends Component {
         rows.splice(cell.cellRow, 1, row);
         cells.push(cell);
       } else if (session < currentSession) {
-        // console.log("case 2");
-        // console.log(rows);
         rows.forEach(function (row) {
-          // console.log("first for each");
           row.forEach(function (cell) {
-            // console.log("second for each");
             if (cell.cellColumn === 0 && cell.cellRow > pastMaxRow) {
               pastMaxRow = cell.cellRow;
               rows[pastMaxRow + 1] = [];
@@ -85,12 +79,9 @@ class SummaryView extends Component {
           course: course.dept + " " + course.num
         };
 
-        // console.log(cell);
-
         row[cell.cellColumn] = cell;
         rows.splice(cell.cellRow, 1, row);
         cells.push(cell);
-        console.log(cells);
       } else {
         rows.forEach(function (row) {
           row.forEach(function (cell) {
@@ -112,7 +103,6 @@ class SummaryView extends Component {
         cells.push(cell);
       }
     });
-    console.log(cells);
     return cells;
   }
 
@@ -123,7 +113,7 @@ class SummaryView extends Component {
       let rowCount = 0;
 
 
-      cells.forEach(function(cell) {
+      cells.forEach(function (cell) {
         if (cell.cellRow > rowCount) {
           rowCount = cell.cellRow;
         }
@@ -134,7 +124,7 @@ class SummaryView extends Component {
         let row = [];
 
 
-        cells.forEach(function(cell) {
+        cells.forEach(function (cell) {
           if (cell.cellRow === rowNum) {
             row[cell.cellColumn] = cell;
           }
@@ -152,7 +142,6 @@ class SummaryView extends Component {
         rowNum++;
       }
 
-      console.log(table);
       return table;
     } catch (error) { } // do nothing
   }
@@ -172,7 +161,7 @@ class SummaryView extends Component {
 
     try {
 
-      Object.values(this.props.user.courses).forEach(function(course) {
+      Object.values(this.props.user.courses).forEach(function (course) {
         if (course.type === "core") {
           coreArray.push(course);
         } else if (course.type === "bridging") {
@@ -191,7 +180,7 @@ class SummaryView extends Component {
       bridgingTable = this.buildTable(bridgingCells);
       electivesTable = this.buildTable(electivesCells);
 
-    } catch (error) {} // do nothing when object is not loaded
+    } catch (error) { } // do nothing when object is not loaded
     let user = this.props.user;
 
     try {
@@ -201,15 +190,14 @@ class SummaryView extends Component {
       }
 
       let exemptions = [];
-      Object.values(this.props.user.courses).forEach(function(course) {
+      Object.values(this.props.user.courses).forEach(function (course) {
         if (course.type === "exemptions") {
           exemptions.push(course);
         }
       });
 
       let requiredCourses = [];
-      Object.values(requirements.core.CPSC).forEach(function(course) {
-        console.log(course);
+      Object.values(requirements.core.CPSC).forEach(function (course) {
         if (course.status === "incomplete") {
           let newCourse = {
             dept: "CPSC",
@@ -220,11 +208,9 @@ class SummaryView extends Component {
         }
       });
 
-      console.log(requiredCourses);
 
       let newCourse = {};
-      Object.keys(requirements.core).forEach(function(item) {
-        console.log(item);
+      Object.keys(requirements.core).forEach(function (item) {
         if (
           (item === "ENGL" ||
             item === "MATH" ||
@@ -264,8 +250,6 @@ class SummaryView extends Component {
         }
       });
 
-      console.log(exemptions);
-      console.log(requiredCourses);
 
       // load stats for render
       const creditsCompleted = user ? requirements.credits : 0;
@@ -294,39 +278,39 @@ class SummaryView extends Component {
 
       const postBridging = user
         ? Object.values(user.courses).map(course => {
-            if (course.type === "bridging") {
-              return (
-                <p className="complete" key={course.dept + course.num}>
-                  {course.dept} {course.num}
-                </p>
-              );
-            }
-          })
+          if (course.type === "bridging") {
+            return (
+              <p className="complete" key={course.dept + course.num}>
+                {course.dept} {course.num}
+              </p>
+            );
+          }
+        })
         : "";
 
       const PostElectives = user
         ? Object.values(user.courses).map(course => {
-            if (course.type === "electives") {
-              return (
-                <p className="complete" key={course.dept + course.num}>
-                  {course.dept} {course.num}
-                </p>
-              );
-            }
-          })
+          if (course.type === "electives") {
+            return (
+              <p className="complete" key={course.dept + course.num}>
+                {course.dept} {course.num}
+              </p>
+            );
+          }
+        })
         : "";
 
       const postExemptionReplacements = user
         ? Object.values(user.courses).map(course => {
-            if (course.type === "replacement") {
-              return (
-                <p className="complete" key={course.dept + course.num}>
-                  <Icon name="checkmark" />
-                  {course.dept} {course.num}
-                </p>
-              );
-            }
-          })
+          if (course.type === "replacement") {
+            return (
+              <p className="complete" key={course.dept + course.num}>
+                <Icon name="checkmark" />
+                {course.dept} {course.num}
+              </p>
+            );
+          }
+        })
         : "";
 
       if (requirements) {
@@ -388,17 +372,21 @@ class SummaryView extends Component {
                 </Table>
               </div>
               <div>
+              <div className="reccy" />
                 <p>You have exemptions for the following courses: </p>
                 {exemptions.map(course => {
                   return <p className="comp">
-              <Icon name="checkmark" />
-                  {course.dept + " " + course.num}</p>;
+                    <Icon name="checkmark" />
+                    {course.dept + " " + course.num}</p>;
                 })}
               </div>
               <div>
-                <p>You need to compelte the following core requirements: </p>
+              <div className="reccy" />
+                <p>You need to complete the following core requirements: </p>
                 {requiredCourses.map(course => {
-                  return <p>{course.dept + " " + course.num}</p>;
+                  return <p className="not">
+                  <Icon name="times" />
+                  {course.dept + " " + course.num}</p>;
                 })}
               </div>
               <div className="reccy" />
@@ -511,7 +499,6 @@ export default createContainer(() => {
   // Set up subscription
   Meteor.subscribe("users");
   // Return an object as props
-  // console.log(Meteor.users.findOne(Meteor.userId()))
   return {
     user: Meteor.users.findOne({ _id: Meteor.userId() })
   };

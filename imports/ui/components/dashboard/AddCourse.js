@@ -3,14 +3,11 @@ import { Container, Form, Button, Header, Popup, Grid } from 'semantic-ui-react'
 import { createContainer } from "meteor/react-meteor-data";
 import { updateRequirements } from "./../../../ComputeRequirements"
 
-const shortid = require("shortid");
-
 class AddCourse extends React.Component {
     constructor(props) {
         super(props);
         this.state = { dept: '', num: '', grade: '', type: '', year: '', term: '' };
     };
-
 
     handleDeptChange = e =>
         this.setState({
@@ -766,7 +763,6 @@ class AddCourse extends React.Component {
 export default createContainer(() => {
     // Set up subscription
     Meteor.subscribe("users");
-    // console.log(Meteor.users.findOne({ "_id": Meteor.userId() }))
     // Return an object as props
     return {
         user: Meteor.users.findOne({ "_id": Meteor.userId() }),
