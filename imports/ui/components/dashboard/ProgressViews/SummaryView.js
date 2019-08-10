@@ -328,7 +328,9 @@ class SummaryView extends Component {
               <div>
                 <p>You have exemptions for the following courses: </p>
                 {exemptions.map(course => {
-                  return <p>{course.dept + " " + course.num + " "}</p>;
+                  return <p className="comp">
+              <Icon name="checkmark" />
+                  {course.dept + " " + course.num + " "}</p>;
                 })}
               </div>
               <div>
