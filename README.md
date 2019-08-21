@@ -62,7 +62,7 @@ To achieve the desired behaviour, we wrote an algorithm that calculated the cell
 
 ### Degree Requirement Verification
 
-[Insert a description of the challenge here]
+The first attempt for creating and updating degree requirements for a list of courses iterated through a list of courses, and for each course iterated through a list of requirements. This made the code and case checking overly complex, not to mention the nightmarish debugging when a bug is repeadedtly triggered in the double iteration. The final solution was to iterate over each course and for each course to drill in to a json object of requirements based on the course given. Then, each course simply leads to a small block of code that can perform a few final checks and increment the necessary parts of the json requirements object. Furthermore, to centralize this responsibility, the function was moved to a seperate file that when called returns a json object of degree requirements. We then use this requirements object to render some desired information in the various progress views. 
 
 ## Future Direction
 
