@@ -24,6 +24,7 @@ In addition, the BCS Degree Navigator helps users to plan future course enrollme
 -	Implemented business logic (assessment of degree requirements met) 
 -	Implemented add and delete course functionality
 -	Implemented sorting in timeline component so sessions appear in order
+- Implemented design and actions for handling multiple users
 -	Contributed to Grades component to calculate GPA only for courses with grades
 -	Implemented dynamic session generation to compare dates
 
