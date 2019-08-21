@@ -18,7 +18,14 @@ In addition, the BCS Degree Navigator helps users to plan future course enrollme
 
 ### Danny Israel
 
-[Insert your contributions here]
+- Implemented Redux actions
+- Implemented first versions of CourseList and SummaryView
+-	Designed and implemented data structures to handle degree requirement logic
+-	Implemented business logic (assessment of degree requirements met) 
+-	Implemented add and delete course functionality
+-	Implemented sorting in timeline component so sessions appear in order
+-	Contributed to Grades component to calculate GPA only for courses with grades
+-	Implemented dynamic session generation to compare dates
 
 ### Cody Gagnon
 
