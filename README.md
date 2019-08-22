@@ -4,7 +4,7 @@ By Danny Israel, Cody Gagnon, and Kathryn Simone.
 
 The BCS Degree Navigator enables students to track their progress through the University of British Columbia’s Bachelor of Computer Science (BCS) second degree program. You can find more information about the BCS program here: https://www.cs.ubc.ca/students/undergrad/degree-programs/bcs-program-second-degree.
 
-Unlike students in other programs at the University of British Columbia, whom have access to online tools to help them plan their degrees, students in the BCS program had, until now, only a .pdf document with which to track their degree progress and plan for the future. The BCS Degree Navigator is a multi-featured web application intended to make plotting one’s course through the BCS Degree less complicated and more intuitive.
+Unlike students in other programs at the University of British Columbia, whom have access to online tools to help them plan their degrees, students in the BCS program had only a .pdf document with which to track their degree progress and plan for the future. Thus, we created The BCS Degree Navigator, a multi-featured web application intended to make plotting one’s course through the BCS Degree less complicated and more intuitive.
 
 The BCS Degree Navigator, which can be found at https://bcsdn.herokuapp.com/, enables users to create an account, enter and save information about their courses, and view their progress as displayed in progress bars, sortable tables, and a semester-by-semester timeline.
 
@@ -44,7 +44,16 @@ Cody’s major technical contributions include:
 
 ### Kathryn Simone
 
-[Insert your contributions here]
+- Created user interface with SemanticUI
+- Added accounts and users
+- Created EmailSteve component
+- Added signup and sign-in functionality
+- Created progress bar visuals
+- Created EasySelect for students to add main courses
+- Implemented Meteor methods
+- Added input for session/year
+- Added onHover info for Core/Bridging/Exemptions/Replacements/Electives
+
 
 ## Challenges Overcome
 
